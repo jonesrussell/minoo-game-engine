@@ -1,6 +1,6 @@
 # Minoo framework, runtime and Journey roadmap
 
-Updated September 7, 2026. The core roadmap has eight phases, 54 delivery/decision issues and eight phase trackers. A separate optional Studio track adds three milestones, 10 delivery/decision issues and three trackers. The executable workspace (#2), CI evidence (#3), package boundaries (#33) and Markdown SDD pilot (#32) are delivered. Full gameplay and scene-schema implementation remain backlog work.
+Updated September 7, 2026. The core roadmap has eight phases, 54 delivery/decision issues and eight phase trackers. A separate optional Studio track adds three milestones, 10 delivery/decision issues and three trackers. The executable workspace (#2), CI evidence (#3), package boundaries (#33), Markdown SDD pilot (#32), schema decision (#35) and scene validation (#6) are delivered. Full browser gameplay remains backlog work.
 
 ## Product direction
 
@@ -36,7 +36,9 @@ Phases are acceptance gates, not calendar promises. Independent documentation, c
 
 P0 blocks its milestone. P1 is required planned work in that phase but may be sequenced after the critical P0 path. P2 is deferred improvement. S/M/L are initial relative scope estimates, not days or token budgets. Split an issue if it no longer fits a focused, reviewable PR. No due dates have been invented.
 
-The #35 decision and #6 production scene validation are delivered. The [scene API](scene-validation.md) implements structural and semantic checks with generated types. Next implement headless state/actions in #7, with the renderer decision #40 available separately. Follow the [package boundaries](package-boundaries.md) and [plain Markdown SDD flow](sdd-pilot.md). Licensing #5 and delivery guidance #34 remain independent ready work. Studio integration stays optional.
+The current checkpoint is headless state/actions (#7), versioned replay (#38) and generated invariant tests (#39). Exit evidence is a standalone six-object fixture that produces identical state and events from recorded actions, rejects incompatible logs with an action index, and passes generated sequences against an independent model with reproducible shrinking evidence. Each issue has its own reviewed PR and required CI checks. This checkpoint completes part of M1; asset loading, rendering, storage and their decisions remain separate work.
+
+The [scene API](scene-validation.md) implements structural and semantic checks with generated types. The renderer decision #40 is available separately. Follow the [package boundaries](package-boundaries.md) and [plain Markdown SDD flow](sdd-pilot.md). Licensing #5 and delivery guidance #34 remain independent ready work. Studio integration stays optional.
 
 ## Phase overview
 

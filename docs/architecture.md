@@ -14,7 +14,7 @@ Build a new focused TypeScript engine using browser primitives and ordinary libr
 - games/matcher: added only during the reuse milestone.
 - tests: end-to-end game flows and fixtures.
 
-The engine, authoring and Journey workspaces exist. Engine exports the viewport helper and a separate [scene validation API](scene-validation.md) with canonical schema, generated types and semantic diagnostics. Authoring reserves its package boundary with no API yet. Journey remains an illustrated fixture shell; headless transitions, scene-driven rendering and other capabilities remain later work.
+The engine, authoring and Journey workspaces exist. Engine exports the viewport helper, a separate [scene validation API](scene-validation.md) and the [headless runtime](specs/runtime.md). Runtime sessions validate scenes and process structured actions with immutable public state. Authoring reserves its package boundary with no API yet. Journey remains an illustrated fixture shell; scene-driven browser gameplay remains later work.
 
 ## Contracts
 

@@ -6,6 +6,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./scene": "./src/scene.ts",
+    "./runtime": "./src/runtime.ts",
     "./scene.schema.json": "./src/contracts/scene.schema.json"
   },
   "dependencies": {

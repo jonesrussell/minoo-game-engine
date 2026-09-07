@@ -2,7 +2,7 @@
 
 A game framework designed for reliable agent authoring, with a small 2D browser runtime engine. **Minoo Journey** is the first game: find six objects, learn vocabulary, and restore part of a homestead. Development happens locally through chat.
 
-**Status:** executable workspace, interactive Journey fixture preview and production scene validation API. Full gameplay, scene-driven rendering and authoring tools are still backlog work.
+**Status:** executable workspace, interactive Journey fixture preview, production scene validation and a headless game runtime. Scene-driven browser gameplay and authoring tools are still backlog work.
 
 ## Start here
 
@@ -13,6 +13,7 @@ A game framework designed for reliable agent authoring, with a small 2D browser 
 - [Package ownership and boundaries](docs/package-boundaries.md)
 - [Canonical scene schema decision](docs/decisions/003-canonical-scene-schema.md)
 - [Scene validation API](docs/scene-validation.md)
+- [Headless runtime contract](docs/specs/runtime.md)
 - [Studio capability decision](docs/decisions/002-studio-game-capability.md)
 - [Optional Studio integration roadmap](docs/studio-integration.md)
 - [Roadmap and issues](docs/roadmap.md)
