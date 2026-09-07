@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "status": "candidate",
+  "runtime_enabled": false,
+  "stage": {
+    "width": 1920,
+    "height": 1080
+  },
+  "background": {
+    "id": "S01.BG01",
+    "file": "assets/background.png",
+    "width": 1672,
+    "height": 941
+  },
+  "objects": [
+    {
+      "id": "S01.O1",
+      "label": "Reporter notebook",
+      "file": "assets/S01.O1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "c835842aa5046d76b1c9e4d21d56614289bfda733cc2bf7ee5ff05f236990b69",
+      "bounds": {
+        "x": 350,
+        "y": 740,
+        "width": 190,
+        "height": 126.667
+      },
+      "alpha_policy": "preserve generated RGBA",
+      "approval": "candidate"
+    },
+    {
+      "id": "S01.O2",
+      "label": "Toronto contact sheet",
+      "file": "assets/S01.O2.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "65475ba9c9215e44bc021db7c4768b62f890a711391341e0c1caffc7ee674569",
+      "bounds": {
+        "x": 560,
+        "y": 720,
+        "width": 250,
+        "height": 166.667
+      },
+      "alpha_policy": "preserve generated RGBA",
+      "approval": "candidate"
+    },
+    {
+      "id": "S01.O3",
+      "label": "May 2013 calendar",
+      "file": "assets/S01.O3.png",
+      "width": 1203,
+      "height": 1308,
+      "sha256": "47331f6fcb3c064cac1c4f76390c73af0f908921537346c3faa9e5a876bd35ef",
+      "bounds": {
+        "x": 40,
+        "y": 65,
+        "width": 270,
+        "height": 293.566
+      },
+      "alpha_policy": "preserve generated RGBA",
+      "approval": "candidate",
+      "overlay": [
+        {
+          "text": "MAY 2013",
+          "x": 0.22,
+          "y": 0.27,
+          "size": 0.07
+        },
+        {
+          "text": "Su Mo Tu We Th Fr Sa",
+          "x": 0.22,
+          "y": 0.37,
+          "size": 0.035
+        },
+        {
+          "text": "          1  2  3  4",
+          "x": 0.22,
+          "y": 0.42,
+          "size": 0.035
+        },
+        {
+          "text": " 5  6  7  8  9 10 11",
+          "x": 0.22,
+          "y": 0.47,
+          "size": 0.035
+        },
+        {
+          "text": "12 13 14 15 16 17 18",
+          "x": 0.22,
+          "y": 0.52,
+          "size": 0.035
+        },
+        {
+          "text": "19 20 21 22 23 24 25",
+          "x": 0.22,
+          "y": 0.5700000000000001,
+          "size": 0.035
+        },
+        {
+          "text": "26 27 28 29 30 31   ",
+          "x": 0.22,
+          "y": 0.62,
+          "size": 0.035
+        },
+        {
+          "text": "PATIO??",
+          "x": 0.22,
+          "y": 0.76,
+          "size": 0.06,
+          "strike": true
+        }
+      ]
+    },
+    {
+      "id": "S01.O4",
+      "label": "Assignment folder",
+      "file": "assets/S01.O4.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a5e8edda4e5620e88c495172c36d4e64cdee02575e9ecf789bc1544ec9efe76b",
+      "bounds": {
+        "x": 925,
+        "y": 800,
+        "width": 310,
+        "height": 206.667
+      },
+      "alpha_policy": "preserve generated RGBA",
+      "approval": "candidate"
+    },
+    {
+      "id": "S01.O5",
+      "label": "Published report summary",
+      "file": "assets/S01.O5.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "4eda31ad456f2522a4ec7bff3887d5179c0beca1eb4cb46e1fe953c92581e4e7",
+      "bounds": {
+        "x": 340,
+        "y": 590,
+        "width": 225,
+        "height": 150.0
+      },
+      "alpha_policy": "preserve generated RGBA",
+      "approval": "candidate"
+    },
+    {
+      "id": "S01.O6",
+      "label": "Digital recorder",
+      "file": "assets/S01.O6.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9bf1a8793af195bf186ac174181b808dbffa009cd4abac5278a59c7b5504b7a6",
+      "bounds": {
+        "x": 1560,
+        "y": 560,
+        "width": 185,
+        "height": 123.333
+      },
+      "alpha_policy": "preserve generated RGBA",
+      "approval": "candidate"
+    }
+  ]
+}

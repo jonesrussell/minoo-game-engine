@@ -1,0 +1,177 @@
+{
+  "encoded_png_bytes": 14862282,
+  "rgba8_bytes_no_mips": 44044784,
+  "scope": "one background plus six full-resolution generated source PNGs; not production optimized",
+  "assets": [
+    {
+      "id": "bg",
+      "sha256": "161a4e1cea15f4d4f498ee732a046ecc60ca2947123347aff3e577a51f4066cf",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2497199,
+      "file": "assets/background.png"
+    },
+    {
+      "id": "O1",
+      "sha256": "c835842aa5046d76b1c9e4d21d56614289bfda733cc2bf7ee5ff05f236990b69",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1919363,
+      "file": "assets/S01.O1.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 879236,
+        "near_opaque_pixels": 678557,
+        "nonzero_bounds": [
+          0,
+          27,
+          1408,
+          1000
+        ],
+        "solid_bounds": [
+          135,
+          69,
+          1402,
+          955
+        ]
+      }
+    },
+    {
+      "id": "O2c",
+      "sha256": "65475ba9c9215e44bc021db7c4768b62f890a711391341e0c1caffc7ee674569",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2883444,
+      "file": "assets/S01.O2.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 679171,
+        "near_opaque_pixels": 882204,
+        "nonzero_bounds": [
+          0,
+          23,
+          1502,
+          990
+        ],
+        "solid_bounds": [
+          9,
+          37,
+          1497,
+          984
+        ]
+      }
+    },
+    {
+      "id": "O3",
+      "sha256": "47331f6fcb3c064cac1c4f76390c73af0f908921537346c3faa9e5a876bd35ef",
+      "width": 1203,
+      "height": 1308,
+      "bytes": 1716772,
+      "file": "assets/S01.O3.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 255,
+        "zero_pixels": 535336,
+        "near_opaque_pixels": 1021469,
+        "nonzero_bounds": [
+          0,
+          8,
+          1201,
+          1308
+        ],
+        "solid_bounds": [
+          160,
+          11,
+          1065,
+          1276
+        ]
+      }
+    },
+    {
+      "id": "O4b",
+      "sha256": "a5e8edda4e5620e88c495172c36d4e64cdee02575e9ecf789bc1544ec9efe76b",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1960797,
+      "file": "assets/S01.O4.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 844033,
+        "near_opaque_pixels": 718698,
+        "nonzero_bounds": [
+          66,
+          24,
+          1487,
+          980
+        ],
+        "solid_bounds": [
+          70,
+          27,
+          1481,
+          977
+        ]
+      }
+    },
+    {
+      "id": "O5",
+      "sha256": "4eda31ad456f2522a4ec7bff3887d5179c0beca1eb4cb46e1fe953c92581e4e7",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2205390,
+      "file": "assets/S01.O5.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 826457,
+        "near_opaque_pixels": 733165,
+        "nonzero_bounds": [
+          118,
+          42,
+          1462,
+          984
+        ],
+        "solid_bounds": [
+          125,
+          46,
+          1458,
+          978
+        ]
+      }
+    },
+    {
+      "id": "O6",
+      "sha256": "9bf1a8793af195bf186ac174181b808dbffa009cd4abac5278a59c7b5504b7a6",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1679317,
+      "file": "assets/S01.O6.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 1048617,
+        "near_opaque_pixels": 514577,
+        "nonzero_bounds": [
+          33,
+          20,
+          1438,
+          1005
+        ],
+        "solid_bounds": [
+          168,
+          23,
+          1331,
+          1001
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "approval": "candidate exports pending owner review",
+  "reference_style": "approved 2026-09-07; see ../visual-direction-02/approval.md",
+  "generations": [
+    {
+      "id": "bg",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Edit target: approved Ford Frenzy newsroom image. Produce a clean BACKGROUND PLATE for a layered hidden-object game, same 16:9 composition, GTA IV inspired heavy ink and muted olive/slate/tan/rust. Preserve architecture, furniture, CN Tower, keyboard, monitor, lamps, chair, paper piles as decorative clutter. Remove both people completely and reconstruct the room behind them. Remove ALL SIX target objects completely: foreground notebook, photo contact sheet, wall calendar sheet (leave EMPTY corkboard), foreground mustard folder, foreground newspaper/report sheet, right desk digital recorder. No lookalike replacement target objects anywhere. Remove other calendars and large labelled papers. Keep the masthead sign completely blank and no legible lettering. Empty six distinct resting surfaces remain for later transparent sprite placement: front left desk, area below keyboard, left corkboard, center desk, monitor base area, right side desk. Lift midtones substantially with soft overcast daylight so every desktop and corner is readable while retaining bold dark ink contours. Wry scrappy office, not dirty or derelict. No characters or humanoid figures anywhere, no UI or logos, no transparent background for this asset. Single opaque landscape background plate.",
+      "input": {
+        "id": "ff-concept-newsroom-02",
+        "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880"
+      },
+      "sha256": "161a4e1cea15f4d4f498ee732a046ecc60ca2947123347aff3e577a51f4066cf",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2497199,
+      "mode": "RGB",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "candidate selected for export review",
+      "file": "assets/background.png"
+    },
+    {
+      "id": "O1",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Generate ONE isolated hidden-object game sprite on a genuinely transparent RGBA background, no white rectangle, no checkerboard drawn into pixels, no backdrop. Reference image is ONLY for GTA IV inspired heavy black ink, muted olive/slate/tan/rust palette and drawn perspective. Original 2013 newsroom prop, crisp opaque interior, clean alpha silhouette with generous transparent padding, no labels, logos, text, hands or other objects, no cast shadow beyond the object's silhouette. Desktop perspective seen obliquely from above, front edge nearest viewer. Landscape canvas. A closed worn slate-blue reporter's spiral notebook, cream page block, simple elastic band, no pen. One recognisable whole notebook. Plain unlettered cover.",
+      "input": {
+        "id": "ff-concept-newsroom-02",
+        "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880"
+      },
+      "sha256": "c835842aa5046d76b1c9e4d21d56614289bfda733cc2bf7ee5ff05f236990b69",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1919363,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "candidate selected for export review",
+      "file": "assets/S01.O1.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 879236,
+        "near_opaque_pixels": 678557,
+        "nonzero_bounds": [
+          0,
+          27,
+          1408,
+          1000
+        ],
+        "solid_bounds": [
+          135,
+          69,
+          1402,
+          955
+        ]
+      }
+    },
+    {
+      "id": "O2",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Generate ONE isolated hidden-object game sprite on a genuinely transparent RGBA background, no white rectangle, no checkerboard drawn into pixels, no backdrop. Reference image is ONLY for GTA IV inspired heavy black ink, muted olive/slate/tan/rust palette and drawn perspective. Original 2013 newsroom prop, crisp opaque interior, clean alpha silhouette with generous transparent padding, no labels, logos, text, hands or other objects, no cast shadow beyond the object's silhouette. Desktop perspective seen obliquely from above, front edge nearest viewer. Landscape canvas. One cream photographic contact sheet lying flat at an oblique desktop angle. Three rows of four small monochrome architectural photo thumbnails of street buildings, no people, no writing. Sheet edges clean with slightly bent corner. Clearly a single thin sheet, not a book or stack.",
+      "input": {
+        "id": "ff-concept-newsroom-02",
+        "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880"
+      },
+      "sha256": "e14b6f055339ead8fdd0c897ed6528b9347fb3feffa4d1104a537dc5dd355340",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2522708,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "rejected: non-Toronto thumbnails"
+    },
+    {
+      "id": "O2b",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Keep the single contact sheet's perspective, ink and cream paper and true transparent background. Replace every photo thumbnail with simple hand-inked TORONTO scenes: low redbrick storefronts, streetcar overhead wires, City Hall curved towers and CN Tower glimpses. No New York bridges, water towers, Empire State Building or other non-Toronto landmarks. These are illustrative fictional location thumbnails, not archival photographs. Keep three rows of four thumbnails and NO words. Remove glow/halo outside silhouette; completely transparent outside the sheet. One sheet only, no environment.",
+      "input": {
+        "id": "O2",
+        "sha256": "e14b6f055339ead8fdd0c897ed6528b9347fb3feffa4d1104a537dc5dd355340"
+      },
+      "sha256": "489f86e4dd7c93d606e4ef0f4acb31670e3bfe47ea1d1e3c22776775d9b850a3",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2830975,
+      "mode": "RGB",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "rejected: checkerboard baked into RGB pixels"
+    },
+    {
+      "id": "O2c",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Remove the baked checkerboard background from this single illustrated Toronto contact-sheet sprite. Return an actual RGBA PNG with a genuinely transparent background (alpha zero outside the paper), not a picture of a checkerboard. Preserve the paper silhouette and all twelve Toronto thumbnails exactly. No new background, shadows, glow or halo. This is a transparent-background extraction for a game sprite.",
+      "input": {
+        "id": "O2b",
+        "sha256": "489f86e4dd7c93d606e4ef0f4acb31670e3bfe47ea1d1e3c22776775d9b850a3"
+      },
+      "sha256": "65475ba9c9215e44bc021db7c4768b62f890a711391341e0c1caffc7ee674569",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2883444,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "candidate selected for export review",
+      "file": "assets/S01.O2.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 679171,
+        "near_opaque_pixels": 882204,
+        "nonzero_bounds": [
+          0,
+          23,
+          1502,
+          990
+        ],
+        "solid_bounds": [
+          9,
+          37,
+          1497,
+          984
+        ]
+      }
+    },
+    {
+      "id": "O3",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Create one 2D game prop cutout with genuine transparent background, preserving alpha. NO backdrop, glow, ground plane, or cast shadow. Heavy black hand-inked contours and muted flat colours matching the reference newsroom, GTA IV loading-screen inspired original asset. Clean well-defined silhouette, opaque interior. ONE blank cream wall-calendar sheet with a dark metal hanging clip at the top, upright FRONT VIEW for mounting on a corkboard. Completely blank paper surface: NO grid, numbers, dates or text because all calendar details will be editable overlay. Slight paper curl bottom right. Generous padding.",
+      "input": {
+        "id": "ff-concept-newsroom-02",
+        "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880"
+      },
+      "sha256": "47331f6fcb3c064cac1c4f76390c73af0f908921537346c3faa9e5a876bd35ef",
+      "width": 1203,
+      "height": 1308,
+      "bytes": 1716772,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "candidate selected for export review",
+      "file": "assets/S01.O3.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 255,
+        "zero_pixels": 535336,
+        "near_opaque_pixels": 1021469,
+        "nonzero_bounds": [
+          0,
+          8,
+          1201,
+          1308
+        ],
+        "solid_bounds": [
+          160,
+          11,
+          1065,
+          1276
+        ]
+      }
+    },
+    {
+      "id": "O4",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Create one 2D game prop cutout with genuine transparent background, preserving alpha. NO backdrop, glow, ground plane, or cast shadow. Heavy black hand-inked contours and muted flat colours matching the reference newsroom, GTA IV loading-screen inspired original asset. Clean well-defined silhouette, opaque interior. ONE closed mustard-tan manila assignment folder with a prominent blank tab. Oblique top-down view lying on a desk, front edge nearest viewer. No text, no paper sticking out, no extra objects. Generous padding.",
+      "input": {
+        "id": "ff-concept-newsroom-02",
+        "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880"
+      },
+      "sha256": "3a774610a5019af8487c832a721ef4eef8c904736faebd57f7c39de7dd2a2040",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2066628,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "rejected: looked like bound book"
+    },
+    {
+      "id": "O4b",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Turn this thick bound object into ONE THIN ordinary manila file folder: two folded cardboard leaves, absolutely no visible page block, spine binding, string, buttons or elastic. Keep mustard tan colour, confident ink contours, blank tab at upper right and same oblique desk perspective. Blank cover no writing. True transparent background, no halo, glow, cast shadow or background scenery. Simple recognisable thin office file folder, not a book.",
+      "input": {
+        "id": "O4",
+        "sha256": "3a774610a5019af8487c832a721ef4eef8c904736faebd57f7c39de7dd2a2040"
+      },
+      "sha256": "a5e8edda4e5620e88c495172c36d4e64cdee02575e9ecf789bc1544ec9efe76b",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1960797,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "candidate selected for export review",
+      "file": "assets/S01.O4.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 844033,
+        "near_opaque_pixels": 718698,
+        "nonzero_bounds": [
+          66,
+          24,
+          1487,
+          980
+        ],
+        "solid_bounds": [
+          70,
+          27,
+          1481,
+          977
+        ]
+      }
+    },
+    {
+      "id": "O5",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Create ONE original illustrated game prop on a genuinely transparent RGBA background. Use the reference only for heavy black ink, muted graphite/tan colours and perspective, GTA IV inspired newsroom style. Opaque interior, crisp alpha silhouette. Absolutely no background, halo, glow, shadow outside the object, hands or scenery. Generous transparent margin. One single loose cream newspaper clipping rectangle, thin paper, oblique top-down desk perspective. Blank headline band, three short columns of abstract ink rules (not words), and a small empty rectangular picture box. Paper is torn neatly from a newspaper; NO stack, book, folder, pen or other objects. No legible lettering: attribution will be an editable overlay.",
+      "input": {
+        "id": "ff-concept-newsroom-02",
+        "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880"
+      },
+      "sha256": "4eda31ad456f2522a4ec7bff3887d5179c0beca1eb4cb46e1fe953c92581e4e7",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2205390,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "candidate selected for export review",
+      "file": "assets/S01.O5.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 826457,
+        "near_opaque_pixels": 733165,
+        "nonzero_bounds": [
+          118,
+          42,
+          1462,
+          984
+        ],
+        "solid_bounds": [
+          125,
+          46,
+          1458,
+          978
+        ]
+      }
+    },
+    {
+      "id": "O6",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "date": "2026-09-07",
+      "prompt": "Create ONE original illustrated game prop on a genuinely transparent RGBA background. Use the reference only for heavy black ink, muted graphite/tan colours and perspective, GTA IV inspired newsroom style. Opaque interior, crisp alpha silhouette. Absolutely no background, halo, glow, shadow outside the object, hands or scenery. Generous transparent margin. One small 2013 handheld digital voice recorder, graphite grey body, small blank pale LCD, round record button, simple directional buttons, tiny microphone grille at top. Lying flat, oblique top-down desktop perspective. No cable or charger, no brand, no words or numbers. Not a phone, not a cassette machine.",
+      "input": {
+        "id": "ff-concept-newsroom-02",
+        "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880"
+      },
+      "sha256": "9bf1a8793af195bf186ac174181b808dbffa009cd4abac5278a59c7b5504b7a6",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1679317,
+      "mode": "RGBA",
+      "pixel_edits": "none; original PNG copied byte-for-byte",
+      "review": "candidate selected for export review",
+      "file": "assets/S01.O6.png",
+      "alpha": {
+        "policy": "generated RGBA preserved; no matte removal or threshold edits",
+        "min": 0,
+        "max": 254,
+        "zero_pixels": 1048617,
+        "near_opaque_pixels": 514577,
+        "nonzero_bounds": [
+          33,
+          20,
+          1438,
+          1005
+        ],
+        "solid_bounds": [
+          168,
+          23,
+          1331,
+          1001
+        ]
+      }
+    }
+  ]
+}
