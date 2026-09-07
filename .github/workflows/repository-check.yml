@@ -14,3 +14,41 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - run: node scripts/check-repository.mjs
+  runtime-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - name: Typecheck and production build
+        id: build
+        run: npm run build
+      - name: Desktop keyboard and touch smoke tests
+        run: node scripts/test-browser.mjs
+      - name: Record source and artifact identity
+        if: always()
+        env:
+          SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node scripts/write-evidence.mjs
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-evidence-${{ github.sha }}-${{ github.run_attempt }}
+          path: test-results/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload standalone build
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: journey-build-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/journey/
+          if-no-files-found: error
+          retention-days: 14

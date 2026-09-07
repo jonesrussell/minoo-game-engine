@@ -7,8 +7,10 @@ A game framework designed for reliable agent authoring, with a small 2D browser 
 ## Start here
 
 - [Chat-based development](docs/chat-development.md)
+- [CI and downloadable evidence](docs/ci-evidence.md)
 - [Product scope](docs/product.md)
 - [Architecture decision](docs/architecture.md)
+- [Package ownership and boundaries](docs/package-boundaries.md)
 - [Studio capability decision](docs/decisions/002-studio-game-capability.md)
 - [Optional Studio integration roadmap](docs/studio-integration.md)
 - [Roadmap and issues](docs/roadmap.md)
