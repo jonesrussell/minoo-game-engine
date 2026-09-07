@@ -1,10 +1,10 @@
 # Ford Frenzy campaign outline
 
-**Status:** DRAFT on all scenes, routes and endings. Owner creative review pending.  
-**Storyboard revision:** 2 (see migration note below).  
-**Issue:** [#91](https://github.com/jonesrussell/minoo-game-engine/issues/91)  
-**Production:** jr42 productions  
-**Paper name (exact):** Torrona Haps  
+**Status:** DRAFT on all scenes, routes and endings. Owner creative review pending.
+**Storyboard revision:** 2 (see migration note below).
+**Issue:** [#91](https://github.com/jonesrussell/minoo-game-engine/issues/91)
+**Production:** jr42 productions
+**Paper name (exact):** Torrona Haps
 **Research:** [Ford Frenzy historical ledger](../research/ford-frenzy-history.md), [press-events register](../research/ford-frenzy-press-events.md) for H15-H18.
 
 This six-chapter satirical hidden-object adventure fixes playable shape while leaving release approval, rights, final copy and art selection with the owner. Public history remains fixed. The player is a fictional Haps reporter assembling attributed coverage, never the source of the original video, a police action, a vote or an election result.
@@ -38,7 +38,7 @@ Each shared scene awards one notebook output K01-K18. Every scene has six find t
 
 | Scene | Date and location / objective | Output | Art reference |
 | --- | --- | --- | --- |
-| S01 | 17 May 2013, **Welcome to the Haps**. Dig gear from takeout and invoices; match charger to recorder; separate published report from office rumour. | K01 gear and rumour triage | ff-079/080 agent sheets, candidate only |
+| S01 | 17 May 2013, **Welcome to the Haps**. Dig gear from takeout and invoices; match charger to recorder; separate published report from office rumour. | K01 gear and rumour triage | ff-079 and ff-080 agent sheets, candidate only |
 | S02 | 17 May 2013, **Meanwhile at City Hall**. Public corridor work area; printer-jam press-kit search; May 16/17 only. | K02 corridor timeline | ff-044 City Hall composition, candidate only |
 | S03 | 17 May 2013, **We're Going With WHAT?** Rearranged deadline desk; six finds power silly headline/layout assembly with accurate copy. | K03 first filed Haps piece | BG01 newsroom, evening variant |
 | S04 | 24 May 2013, denial prep room. Build follow-up questions without ambush fantasy. | K04 denial bingo card | BG03 briefing room |
@@ -49,13 +49,13 @@ Each shared scene awards one notebook output K01-K18. Every scene has six find t
 | S09 | 31 Oct 2013, verification deadline. File delta with unknowns visible. | K09 Oct 31 filed package | BG01 October deadline |
 | S10 | 5 Nov 2013, breaking pit. Admission beside earlier denials. | K10 admission stack | BG01 November alert |
 | S11 | 14 Nov 2013 **after afternoon apology**, **Did He Just Say That?** Haps press-kit retelling of morning quote and afternoon sorry. | K11 quote-apology board | BG01 newsroom, Nov 14 kit variant |
-| S12 | 18-19 Nov 2013, powers explainer plus Nov 19 montage slot (H18 Ford Nation one-episode cancellation placeholder). | K12 powers and punchline map | BG01 chart variant |
+| S12 | 19 Nov 2013 after the cancellation report, powers retrospective plus dated montage (H18 Ford Nation one-episode cancellation). | K12 powers and punchline map | BG01 chart variant |
 | S13 | 1 May 2014, leave watch desk. Humane leave coverage. | K13 leave timeline | BG01 spring quiet |
 | S14 | 8 May 2014, fictional local beat while mayor away. | K14 service sidebar | BG06 map table |
 | S15 | 30 Jun 2014, return briefing. Public duty question only. | K15 return brief | BG03 return variant |
 | S16 | 12 Sep 2014, candidate shuffle desk. Doug/Rob race sort. | K16 two-race cheat sheet | BG01 election prep |
-| S17 | 27 Oct 2014, election night. Preliminary labels and **fog machine payoff**. | K17 preliminary night copy | ff-079/080 crowds, candidate only |
-| S18 | 30 Oct 2014, certified retrospective. Two funny Haps career outcomes. | K18 closing retrospective | ff-011/073/075 logo palette only |
+| S17 | 27 Oct 2014, election night. Preliminary labels and **fog machine payoff**. | K17 preliminary night copy | ff-079 and ff-080 crowds, candidate only |
+| S18 | 30 Oct 2014, certified retrospective. Two funny Haps career outcomes. | K18 closing retrospective | ff-011, ff-073 and ff-075 logo palette only |
 
 ### Route scenes (assignment forks)
 
@@ -68,7 +68,7 @@ Persist **AS1** after S10 and **AS2** after S16 **before** entering the selected
 | R2A | AS2-A | After S16, before S17 | 27 Oct 2014 (fiction) | Election Night Field Kit | KR2A |
 | R2B | AS2-B | After S16, before S17 | 27 Oct 2014 (fiction) | Newsroom Broadcast Kit | KR2B |
 
-R1A/R1B use only H15/H16 facts known by afternoon 14 Nov (quote incident, apology, international crush, school-tour relocation notice). No schoolkids in scrum. R2A/R2B are Oct 27 before results; fog machine appears in S17 regardless of route.
+R1A/R1B use only H15/H16 facts known by afternoon 14 Nov (quote incident, apology, international crush, international crews). School-tour relocation is research context, not an afternoon gameplay prop. No schoolkids in scrum. R2A/R2B are Oct 27 before results; fog machine appears in S17 regardless of route.
 
 Route choices affect props and dialogue callbacks at **S11** and **S17**, not ending predicates or historical results.
 
@@ -76,7 +76,7 @@ Route choices affect props and dialogue callbacks at **S11** and **S17**, not en
 
 S01-S03: H01-H02 (17 May 2013). S04: H03. S05-S06: fictional summer. S07-S09: H04 (31 Oct). S10: H05 (5 Nov). **AS1 + route:** H15-H16 staging only. S11: H15 (14 Nov after apology). S12: H07-H08 (18 Nov powers), H18 (19 Nov Ford Nation cancellation montage). S13: H09. S14: fiction (8 May). S15: H10. Optional **H17** chapter-card flashback (3 Mar 2014 Kimmel) before S13, not a live May scene. S16: H11. **AS2 + route:** fiction election-night prep. S17: H12. S18: H13. H00/H14 optional cards.
 
-**H15 quote rule:** the attributed short quote *"I've got more than enough to eat at home."* appears **once** in full-game (S11) and is cited elsewhere by reference only.
+**H15 quote rule:** the short attributed quotation appears once in full-game S11. Elsewhere use the H15 reference.
 
 ## Chapter beats and branch copy (editorial BR-CH1..6)
 
@@ -84,10 +84,10 @@ Six binary editorial choices rename into Haps career voice. They change sidebar 
 
 | After | Branch A (player-facing) | Branch B (player-facing) |
 | --- | --- | --- |
-| S03 | **BR-CH1-A Splash First:** "Run it loud; fix it live." | **BR-CH1-B Lawyer Voice:** "Run it boring; stay employed." |
+| S03 | **BR-CH1-A Splash First:** "Big type. Same facts." | **BR-CH1-B Lawyer Voice:** "Small type. Enormous disclaimer." |
 | S06 | **BR-CH2-A Patio Sidebar:** "Put the neighborhood on page six." | **BR-CH2-B Audit Mode:** "Color-code what we still cannot prove." |
 | S09 | **BR-CH3-A Archive Goblin:** "Keep every denial in a labeled box." | **BR-CH3-B Plain English:** "One sentence a cab driver understands." |
-| S12 | **BR-CH4-A Alert Siren:** "Push notification now; regret later." | **BR-CH4-B Procedure Nerd:** "Lead with what Council actually did." |
+| S12 | **BR-CH4-A Alert Siren:** "Send the alert. Warn the printer." | **BR-CH4-B Procedure Nerd:** "Lead with what Council actually did." |
 | S15 | **BR-CH5-A Service Desk:** "Garbage routes still happen." | **BR-CH5-B Org Chart:** "Who is acting mayor of this spreadsheet?" |
 | S18 | **BR-CH6-A Ward Close:** "End on the seat that stayed weird." | **BR-CH6-B Citywide Close:** "End on the mayor the whole city picked." |
 
@@ -106,7 +106,7 @@ Shared chain:
 
 `S01 -> K01 -> S02 -> K02 -> S03 -> K03 -> BR-CH1 -> S04 -> ... -> S10 -> K10 -> AS1 -> (R1A|R1B) -> KR* -> S11 -> K11 -> S12 -> K12 -> BR-CH4 -> S13 -> ... -> S16 -> K16 -> AS2 -> (R2A|R2B) -> KR* -> S17 -> K17 -> S18 -> K18 -> BR-CH6`
 
-Route outputs KR1A, KR1B, KR2A, KR2B sit beside K outputs in the notebook for callback use only; they are not alternate endings.
+Route outputs KR1A, KR1B, KR2A, KR2B sit beside K outputs in the notebook as required selected-route rejoin gates and callback records; untaken outputs are never required. They are not alternate endings.
 
 ## Deterministic endings
 
@@ -114,10 +114,10 @@ Route outputs KR1A, KR1B, KR2A, KR2B sit beside K outputs in the notebook for ca
 
 Predicate unchanged for implementation churn control:
 
-- **END-A, City Beat Survivor:** if at least three selected: CH1-B, CH2-B, CH3-A, CH4-B, CH5-B, CH6-B. Elliot offers Alex the city beat and custody of the fog machine remote (gag). Sample line: "You filed the chaos without becoming it."
-- **END-B, Patio Columnist:** otherwise. Alex inherits the Harbourview column and Elliot's abandoned headline napkin pile. Sample line: "The city kept spinning. You kept listening."
+- **END-A, City Beat Survivor:** if at least three selected: CH1-B, CH2-B, CH3-A, CH4-B, CH5-B, CH6-B. Elliot offers Alex the city beat and custody of the fog machine remote (gag). Sample line: "Promotion. You now have two things that can catch fire."
+- **END-B, Patio Columnist:** otherwise. Alex inherits the Harbourview column and Elliot's abandoned headline napkin pile. Sample line: "Four chairs. Please do not call it an empire."
 
-Both endings show the same certified history (Tory mayor, Ford Ward 2 per H13). Assignment route affects S11/S17 banter only.
+Both endings show the same certified history (Tory mayor, Ford Ward 2 per H13). Assignment selectors determine different playable searches and S11/S17 callbacks; they do not affect ending selection.
 
 Each ending: (1) close notebook beside Nadia's copy note; (2) wide newsroom (END-A) or cafe (END-B) with cast staging per full-game boards.
 
@@ -139,4 +139,4 @@ ff-011, ff-073, ff-075: logo and title palette only. ff-044: City Hall compositi
 
 ## Owner review items
 
-DRAFT approval pending for paper branding, dialogue, scene boards, routes, candidate art, rights and release copy. Opening slice S01-S03 can proceed without route assets once approved. This outline does not claim approved design or production completion.
+Torrona Haps and satirical direction are owner-selected. DRAFT approval pending for their execution, dialogue, scene boards, routes, candidate art, rights and release copy. Opening slice S01-S03 can proceed without route assets once approved. This outline does not claim approved design or production completion.

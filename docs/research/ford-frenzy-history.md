@@ -175,6 +175,12 @@ correspondence and source archive locations are intentionally absent here.
 
 ## Remaining editorial work
 
+The [press-events register](ford-frenzy-press-events.md) extends this ledger with
+H15-H18 for the Torrona Haps satire revision under #114. It covers public press
+remarks, international media attention and dated television appearances. Existing
+H00-H14 retain their meanings. S11 in revision 2 uses November 14, not the former
+November 13 Council-gallery treatment; H06 remains background history.
+
 Research coverage is sufficient to draft the chosen campaign; release clearance is
 not complete. R01 original retrieval, final quotation or
 recording choices, real-person likenesses and the exact game-facing historical copy

@@ -33,14 +33,18 @@
       "full_boards_issue": 92,
       "opening_issue": 93,
       "chapters": 6,
-      "scenes": 18,
-      "panels": 72,
+      "shared_scenes": 18,
+      "route_scenes": 4,
+      "authored_scenes": 22,
+      "panels": 88,
+      "finds": 132,
       "ending_variants": 2,
       "research_document": "docs/research/ford-frenzy-history.md",
       "campaign_document": "docs/storyboards/campaign.md",
       "storyboard_document": "docs/storyboards/full-game.md",
       "opening_document": "docs/storyboards/opening-handoff.md",
-      "production_scope": "S01-S03 only; S04-S18 design draft, production uncommitted"
+      "production_scope": "S01-S03 only; S04-S18 and R1A/R1B/R2A/R2B design draft, production uncommitted",
+      "rewrite_contract": 114
     }
   },
   "issues": [
@@ -873,6 +877,18 @@
       "effort": "M",
       "dependencies": [
         91
+      ],
+      "parent": 89
+    },
+    {
+      "issue": 114,
+      "title": "Rewrite Ford Frenzy around the Torrona Haps satire and route contract",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "L",
+      "dependencies": [
+        90
       ],
       "parent": 89
     },

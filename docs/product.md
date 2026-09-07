@@ -12,12 +12,16 @@ and research anchors.
 ## Delivery
 
 Storyboard the entire planned campaign, starting with its chapter outline and ending.
-Develop a three-scene opening slice: assignment desk, City Hall records workspace,
-and deadline desk. Those scene treatments remain proposals for owner review. Later
-storyboards and finished campaign art do not block the opening slice.
+Develop a three-scene opening slice for the fictional Torrona Haps local paper:
+Welcome to the Haps, Meanwhile at City Hall, and We're Going With WHAT? Those scene
+treatments remain proposals for owner review. Later storyboards and finished campaign
+art do not block the opening slice.
 
 The player searches, records leads, checks sources, builds a timeline and submits a
-supported account. Include bounded hints, notebook/progression, local save/reset,
+supported account while the local paper competes with worldwide media. Satire is a
+core fictional newsroom voice: editor panic, broken gear, fog-machine election
+broadcasts and deadline comedy can sharpen the reporting loop without changing the
+source boundary. Include bounded hints, notebook/progression, local save/reset,
 mouse/touch/keyboard input and a static browser build. Finding a clue does not verify
 an allegation. Historical facts, attributed reporting and fiction remain distinct.
 

@@ -1,12 +1,12 @@
 # Ford Frenzy: full-game scene storyboards
 
-**Status:** DRAFT on every scene, panel, route and ending. Owner review pending.  
-**Storyboard revision:** 2  
-**Game:** Ford Frenzy by **jr42 productions**  
-**Paper (exact name):** Torrona Haps  
+**Status:** DRAFT on every scene, panel, route and ending. Owner review pending.
+**Storyboard revision:** 2
+**Game:** Ford Frenzy by **jr42 productions**
+**Paper (exact name):** Torrona Haps
 **Issue:** #92
 
-Cast in dialogue: **Alex Chen** (player), **Elliot Vance** (editor), **Priya D'Souza** (photographer), **Nadia Okafor** (copy chief), **Sasha Bell** (intern), **Tomás Reyes** (cafe contact). All dialogue is original fiction.
+Cast in dialogue: **Alex Chen** (player), **Elliot Vance** (editor), **Priya D'Souza** (photographer), **Nadia Okafor** (copy chief), **Sasha Bell** (intern), **Tomás Reyes** (cafe contact). Cast dialogue is original fiction; the single attributed historical quotation in S11 is separately identified.
 
 Text storyboard only. Historical pointers H00-H18 are reference labels; sourcing is parent-verified via [historical ledger](../research/ford-frenzy-history.md) and [press-events register](../research/ford-frenzy-press-events.md).
 
@@ -18,7 +18,7 @@ Text storyboard only. Historical pointers H00-H18 are reference labels; sourcing
 - Props are original fiction summarizing public records; never forged facsimiles of real documents.
 - Original 2013 video is unavailable to the player in 2013 scenes.
 - Player authors attributed coverage; real reporters, arrests, votes and elections remain outside player responsibility.
-- **H15 quote rule:** *"I've got more than enough to eat at home."* appears once in this document (S11 editorial pass). Elsewhere cite H15 without repeating the quote.
+- **H15 quote rule:** one short attributed quotation appears in S11 only. Elsewhere cite H15.
 
 ## Common scene contract
 
@@ -56,7 +56,7 @@ All scenes inherit FF-SCN-001, FF-SAVE-001 and FF-UI-002:
 | H13 | Oct 30 certification | S18 |
 | H14 | Dec 1 term transition | Optional closing card |
 | H15 | Nov 14 quote and apology | S11; quote once |
-| H16 | Nov 14-19 international crush / school tours | R1A, S11 callback |
+| H16 | Nov 14-19 international crush / school tours | R1A press presence; tour relocation is research context |
 | H17 | Mar 3 2014 Kimmel | Optional chapter card before Ch5 |
 | H18 | Nov 18-19 Ford Nation cancel | S12 montage |
 
@@ -144,9 +144,9 @@ Persist AS1/AS2 before route entry. Untaken route never blocks completion.
 
 ### S01: Welcome to the Haps (DRAFT)
 
-**Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013  
-**Play pattern:** clutter search under takeout and invoices; charger-recorder pairing  
-**Entry:** New Game | **Exit:** K01 to S02  
+**Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013 after the public response
+**Play pattern:** clutter search under takeout and invoices; charger-recorder pairing
+**Entry:** New Game or Continue restoring S01 | **Exit:** K01 to S02
 **sceneObjectiveAnswerHint:** "Find your gear, marry the charger to the recorder, and tell a rumour from something that actually ran."
 
 #### S01.P1 Establish and arrival (DRAFT)
@@ -172,20 +172,20 @@ L-shaped desk, side table buried in invoices and food containers.
 
 #### S01.P3 Inspect and compare (DRAFT)
 
-Pair O6 recorder with matching charger from invoice sleeve (not the phone brick). Compare O5 published summary vs O4 folder sticky labeled "OFFICE RUMOUR - Nadia will kill us."
+After all six finds, open the O6 inspection tray. It supplies two connector choices as puzzle controls, not additional hidden finds. Match the recorder socket shape to its charger (not the phone brick). Compare O5 published summary vs O4 folder sticky labeled "OFFICE RUMOUR - Nadia will kill us."
 
 #### S01.P4 Editorial outcome and exit (DRAFT)
 
 Nadia (offscreen note): "If it did not run, it is gossip with stationery."
 
-**Player question:** What can the Haps honestly chase tonight?
+**Player question:** What goes in your City Hall assignment kit?
 
 | Answer | Result |
 | --- | --- |
-| Correct: "The attributed report that already ran, plus on-record follow-up, not the break-room rumour" | K01; S02 |
-| Retry: "The rumour, because it sounds more exciting" | Elliot: "That is how we lose the chair and the building." |
+| Correct: "Matched charger and recorder, the attributed report, and a follow-up question; leave the break-room rumour unfiled" | K01; S02 |
+| Retry: "Wrong charger or the rumour filed as fact" | Elliot: "That is how we lose the chair and the building." |
 
-**Asset brief:** BG01 newsroom. Six sprite layers. ff-079/080 candidate silhouettes in background only.
+**Asset brief:** BG01 newsroom. Six findable sprite layers plus the two-option recorder inspection tray. ff-079 and ff-080 candidate silhouettes in background only.
 
 **Dependencies:** none | **Output:** K01
 
@@ -193,9 +193,9 @@ Nadia (offscreen note): "If it did not run, it is gossip with stationery."
 
 ### S02: Meanwhile at City Hall (DRAFT)
 
-**Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013  
-**Play pattern:** printer-jam press-kit search; date ordering  
-**Entry:** K01 | **Exit:** K02  
+**Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013 after the public response
+**Play pattern:** printer-jam press-kit search; date ordering
+**Entry:** K01 | **Exit:** K02
 **sceneObjectiveAnswerHint:** "Unjam the public kit. May 16 and May 17 only. November is not a prop today."
 
 #### S02.P1 Establish and arrival (DRAFT)
@@ -238,9 +238,9 @@ Clear jam: stack O1+O2 in order. Place O6 before O3 on timeline strip. Reject an
 
 ### S03: We're Going With WHAT? (DRAFT)
 
-**Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013 evening  
-**Play pattern:** headline/layout assembly with six distinct props  
-**Entry:** K01,K02 | **Exit:** K03; BR-CH1  
+**Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013 evening
+**Play pattern:** headline/layout assembly with six distinct props
+**Entry:** K01,K02 | **Exit:** K03; BR-CH1
 **sceneObjectiveAnswerHint:** "Build a headline Elliot deserves but Nadia will allow."
 
 #### S03.P1 Establish and arrival (DRAFT)
@@ -264,7 +264,7 @@ Foreground: silly headline sticky pile. Midground: layout desk with movable bloc
 
 #### S03.P3 Inspect and compare (DRAFT)
 
-Assemble layout: O3 magnets + O4 grid must pair O1 report line with O2 denial line; stamp O6 on uncertainty box; discard O5 pun.
+Assemble layout: O3 magnets + O4 grid must pair O1 report line with O2 denial line; stamp O6 on uncertainty box; discard O5 pun. The word tray contains exact proposed headline options: "MAYOR DENIES VIDEO REPORTS" and "CITY HALL: NO QUIET FRIDAY". Both retain the report/response attribution beneath; neither claims a Haps exclusive. On completion a May 24 next-assignment card promises a denial briefing, then offers episode-complete controls. It does not load S04.
 
 #### S03.P4 Editorial outcome and exit (DRAFT)
 
@@ -291,9 +291,9 @@ Assemble layout: O3 magnets + O4 grid must pair O1 report line with O2 denial li
 
 ### S04: Denial prep room (DRAFT)
 
-**Chapter:** 2 | **Historical:** H03 | **Date:** 24 May 2013 after public denial  
-**Play pattern:** denial bingo / question pairing  
-**Entry:** K03 + BR-CH1-A/B | **Exit:** K04 to S05  
+**Chapter:** 2 | **Historical:** H03 | **Date:** 24 May 2013 after public denial
+**Play pattern:** denial bingo / question pairing
+**Entry:** K03 + BR-CH1-A/B | **Exit:** K04 to S05
 **sceneObjectiveAnswerHint:** "Match each question to what a denial actually answers."
 
 #### S04.P1 Establish and arrival (DRAFT)
@@ -336,9 +336,9 @@ Match O1 question cards to O2 denial bullets; mark "on-record denial" vs "allega
 
 ### S05: Harbourview cafe (DRAFT)
 
-**Chapter:** 2 | **Historical:** none (fiction) | **Date:** 8 Jun 2013  
-**Play pattern:** civic concern map  
-**Entry:** K04 | **Exit:** K05 to S06  
+**Chapter:** 2 | **Historical:** none (fiction) | **Date:** 8 Jun 2013
+**Play pattern:** civic concern map
+**Entry:** K04 | **Exit:** K05 to S06
 **sceneObjectiveAnswerHint:** "Pin real neighborhood needs, not scandal tourism."
 
 #### S05.P1 Establish and arrival (DRAFT)
@@ -347,7 +347,7 @@ Match O1 question cards to O2 denial bullets; mark "on-record denial" vs "allega
 
 Foreground: condiment caddy, sugar packets stacked like evidence. Midground: booth with community bulletin board. Background: BG04 street window, afternoon stripes. Camera: eye-level two-shot space.
 
-**Dialogue:** Tomás: "Write that the job still matters." Alex: "I can do boring. Boring keeps the lights on."
+**Dialogue:** Tomás: "Your paper called my patio an emerging scene. It is four chairs." Alex: "Five if we find the one from the newsroom."
 
 #### S05.P2 Interactive search (DRAFT)
 
@@ -381,9 +381,9 @@ Pin O2, O3, O6 to O1 map layers (services, trust, accountability). O5 is color, 
 
 ### S06: Summer shrug ledger (DRAFT)
 
-**Chapter:** 2 | **Historical:** H03 pointer | **Date:** 30 Aug 2013 (fiction)  
-**Play pattern:** source dedup matrix  
-**Entry:** K04,K05 | **Exit:** K06 to S07; BR-CH2 at S06  
+**Chapter:** 2 | **Historical:** H03 pointer | **Date:** 30 Aug 2013 (fiction)
+**Play pattern:** source dedup matrix
+**Entry:** K04,K05 | **Exit:** K06 to S07; BR-CH2 at S06
 **sceneObjectiveAnswerHint:** "Two copies of the same blog post is still one blog post."
 
 #### S06.P1 Establish and arrival (DRAFT)
@@ -434,9 +434,9 @@ Fill O1 grid: trace duplicates to one origin; retain H03 as dated response; cros
 
 ### S07: Archive bay (DRAFT)
 
-**Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 after announcement  
-**Play pattern:** stack search in archive aisle  
-**Entry:** K06 + BR-CH2-A/B | **Exit:** K07 to S08  
+**Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 after announcement
+**Play pattern:** stack search in archive aisle
+**Entry:** K06 + BR-CH2-A/B | **Exit:** K07 to S08
 **sceneObjectiveAnswerHint:** "Find May denials and tonight's statement stub. No playable video."
 
 #### S07.P1 Establish and arrival (DRAFT)
@@ -479,9 +479,9 @@ Open O6 fiction summary pointing to H04 slot; log on O2 slip; do not unlock vide
 
 ### S08: Statement side-eye (DRAFT)
 
-**Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 after announcement  
-**Play pattern:** authority comparison (police summary vs prior denials)  
-**Entry:** K07 | **Exit:** K08 to S09  
+**Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 after announcement
+**Play pattern:** authority comparison (police summary vs prior denials)
+**Entry:** K07 | **Exit:** K08 to S09
 **sceneObjectiveAnswerHint:** "Attribute the police announcement. Public availability is still a separate question."
 
 #### S08.P1 Establish and arrival (DRAFT)
@@ -524,9 +524,9 @@ Align O1 bullets to O2 denial dates; highlight contradiction without inventing q
 
 ### S09: Verification deadline (DRAFT)
 
-**Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 evening  
-**Play pattern:** chronology ordering + checklist convergence  
-**Entry:** K07,K08 | **Exit:** K09 to S10; BR-CH3 at S09  
+**Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 evening
+**Play pattern:** chronology ordering + checklist convergence
+**Entry:** K07,K08 | **Exit:** K09 to S10; BR-CH3 at S09
 **sceneObjectiveAnswerHint:** "Order tonight's statement against the last denial before you file."
 
 #### S09.P1 Establish and arrival (DRAFT)
@@ -577,9 +577,9 @@ Order O2: May denial, summer audit pause (fiction label), Oct 31 statement. O1 c
 
 ### S10: Breaking pit (DRAFT)
 
-**Chapter:** 4 | **Historical:** H05 | **Date:** 5 Nov 2013  
-**Play pattern:** admission vs denial pairing  
-**Entry:** K09 + BR-CH3-A/B | **Exit:** K10 to AS1  
+**Chapter:** 4 | **Historical:** H05 | **Date:** 5 Nov 2013
+**Play pattern:** admission vs denial pairing
+**Entry:** K09 + BR-CH3-A/B | **Exit:** K10 to AS1
 **sceneObjectiveAnswerHint:** "Compare the new admission with earlier denials. Do not erase history."
 
 #### S10.P1 Establish and arrival (DRAFT)
@@ -622,11 +622,11 @@ Drag O2 bullets beside O5 denial rows; mark new on-record claim without erasing 
 
 ### AS1: Assignment selector (DRAFT)
 
-**When:** After K10, before route. **Persist AS1-A or AS1-B atomically before R1A or R1B entry.**
+**When:** After K10, show a date card advancing from Nov 5 to Nov 14 after the afternoon apology, then select the assignment before its route. **Persist AS1-A or AS1-B atomically before R1A or R1B entry.**
 
 | Option | Copy | Route |
 | --- | --- | --- |
-| AS1-A | Elliot: "CNN left a scarf in the lobby. Go be international." | R1A |
+| AS1-A | Elliot: "A visiting crew left a scarf in the lobby. Go be international." | R1A |
 | AS1-B | Tomás text: "My regulars have opinions. So does my espresso machine." | R1B |
 
 **Transition:** Hard cut to selected route P1. Untaken route available only in separate replay session.
@@ -635,17 +635,17 @@ Drag O2 bullets beside O5 denial rows; mark new on-record claim without erasing 
 
 ### R1A: International Press Kit Scramble (DRAFT)
 
-**Design target:** post-opening milestone; not in first production slice.  
-**Chapter:** 4 fork | **Historical bounds:** H15 apology known; H16 crush and school-tour notice | **Date:** 14 Nov 2013 afternoon (fiction)  
-**Play pattern:** scramble props into borrowed press kit  
-**Entry:** K10, AS1-A persisted | **Exit:** KR1A to S11  
+**Design target:** post-opening milestone; not in first production slice.
+**Chapter:** 4 fork | **Historical bounds:** H15 apology known; H16 international press presence | **Date:** 14 Nov 2013 afternoon (fiction)
+**Play pattern:** scramble props into borrowed press kit
+**Entry:** K10, AS1-A persisted | **Exit:** KR1A to S11
 **sceneObjectiveAnswerHint:** "Pack what the Haps actually has before the satellite trucks eat your desk."
 
 #### R1A.P1 Establish and arrival (DRAFT)
 
-**Beat:** The newsroom looks like a luggage store exploded. Priya needs a clean lens cap. Sasha is mistaken for a producer three times in four minutes. Broken chair wedged in supply closet with a **MEDIA** vest hanging on it.
+**Beat:** The public corridor looks like a luggage store exploded. Priya needs a clean lens cap. Sasha is mistaken for a producer three times in four minutes. An abandoned folding chair holds an oversized **MEDIA** vest.
 
-Foreground: cardboard boxes labeled "NOT FOOD." Midground: BG01 international-crush variant, window shows truck silhouettes (no real network logos). Background: fax machine eating O3. Camera: handheld slight sway.
+Foreground: cardboard boxes labeled "NOT FOOD." Midground: BG02 public corridor press-kit variant, crowded by fictional crews and tripod silhouettes (no real network logos). Background: narrow camera space marked on O3. Camera: handheld slight sway.
 
 **Dialogue:** Elliot: "Look bigger than we are." Priya: "Look accurate." Alex: "Look employed."
 
@@ -655,14 +655,14 @@ Foreground: cardboard boxes labeled "NOT FOOD." Midground: BG01 international-cr
 | --- | --- | --- | --- |
 | R1A.O1 | Haps press credential lanyard | Coat hook | tool |
 | R1A.O2 | Borrowed "MEDIA" vest (too large) | Chair | context |
-| R1A.O3 | School-tour relocation notice H16 | Fax tray | evidence |
+| R1A.O3 | Haps sketch of a clear camera position (fiction) | Clip on equipment case | tool |
 | R1A.O4 | Satellite truck schedule parody sheet | Desk | context |
 | R1A.O5 | Priya spare battery | Bag | tool |
 | R1A.O6 | Elliot's wrong-network business cards | Trash | context |
 
 #### R1A.P3 Inspect and compare (DRAFT)
 
-Pack O1, O3, O5 into kit case; discard O6 wrong cards; label O3 as municipal relocation notice per H16, not "City Hall closed forever."
+Pack O1 and O5; use O3 to choose the clear camera position without blocking the exit; reject O6 wrong cards. The sketch describes fictional staging, not an official access permission.
 
 #### R1A.P4 Editorial outcome and exit (DRAFT)
 
@@ -670,10 +670,10 @@ Pack O1, O3, O5 into kit case; discard O6 wrong cards; label O3 as municipal rel
 
 | Answer | Result |
 | --- | --- |
-| Correct: "Haps ID, camera power, and the relocation notice for context" | KR1A -> S11 |
+| Correct: "Haps ID, camera power, and a camera position that leaves the exit clear" | KR1A -> S11 |
 | Retry: "Pretend we are a cable network" | Priya: "We are a paper that prints twice a week on a good week." |
 
-**Asset brief:** BG01 international-crush variant. Six sprite layers. No schoolchildren props.
+**Asset brief:** BG02 public corridor press-kit variant; original expanded staging, no new recovered-art claim. Six sprite layers. No schoolchildren props.
 
 **Dependencies:** K10, AS1-A, H16 | **Output:** KR1A
 
@@ -681,10 +681,10 @@ Pack O1, O3, O5 into kit case; discard O6 wrong cards; label O3 as municipal rel
 
 ### R1B: Cafe Reaction Beat (DRAFT)
 
-**Design target:** post-opening milestone.  
-**Chapter:** 4 fork | **Historical bounds:** H15 via paraphrase only; no quote repeat | **Date:** 14 Nov 2013 afternoon (fiction)  
-**Play pattern:** gather reaction props for sidebar  
-**Entry:** K10, AS1-B persisted | **Exit:** KR1B to S11  
+**Design target:** post-opening milestone.
+**Chapter:** 4 fork | **Historical bounds:** H15 via paraphrase only; no quote repeat | **Date:** 14 Nov 2013 afternoon (fiction)
+**Play pattern:** gather reaction props for sidebar
+**Entry:** K10, AS1-B persisted | **Exit:** KR1B to S11
 **sceneObjectiveAnswerHint:** "Capture how regulars talk about the circus, not the unverified private allegation."
 
 #### R1B.P1 Establish and arrival (DRAFT)
@@ -727,9 +727,9 @@ Record O3 with O6 consent; draft O4 sidebar layout using O2 annotations; O5 stay
 
 ### S11: Did He Just Say That? (DRAFT)
 
-**Chapter:** 4 | **Historical:** H15 | **Date:** 14 Nov 2013 **after afternoon apology**  
-**Play pattern:** press-kit retelling: morning quote slot vs afternoon apology slot  
-**Entry:** K10 + KR1A or KR1B | **Exit:** K11  
+**Chapter:** 4 | **Historical:** H15 | **Date:** 14 Nov 2013 **after afternoon apology**
+**Play pattern:** press-kit retelling: morning quote slot vs afternoon apology slot
+**Entry:** K10 AND ((AS1-A AND KR1A) OR (AS1-B AND KR1B)) | **Exit:** K11
 **sceneObjectiveAnswerHint:** "Stage the Haps retelling: morning on record, afternoon sorry, no private reenactment."
 
 **Route callbacks:** If KR1A, satellite truck mug on desk. If KR1B, Tomás takeaway cup on desk.
@@ -770,24 +770,24 @@ Order O4 ribbon: morning before afternoon. Place O5 once with attribution label 
 
 **Asset brief:** BG01 Nov 14 press-kit layout. No council gallery.
 
-**Dependencies:** K10, KR*, H15 | **Output:** K11
+**Dependencies:** K10, selected AS1 route output, H15 | **Output:** K11
 
 ---
 
 ### S12: Powers and punchline map (DRAFT)
 
-**Chapter:** 4 | **Historical:** H06-H08, H18 | **Date:** 18-19 Nov 2013  
-**Play pattern:** powers delta chart + Nov 19 montage card  
-**Entry:** K11 | **Exit:** K12 to S13; BR-CH4 at S12  
+**Chapter:** 4 | **Historical:** H06-H08, H18 | **Date:** 19 Nov 2013 after the cancellation report; retrospective on Nov 13, 15 and 18
+**Play pattern:** powers delta chart + Nov 19 montage card
+**Entry:** K11 | **Exit:** K12 to S13; BR-CH4 at S12
 **sceneObjectiveAnswerHint:** "Show which powers moved on which public dates. Slot the one-episode TV cancellation as paraphrase."
 
 #### S12.P1 Establish and arrival (DRAFT)
 
 **Beat:** Elliot finally gives an explainer the splash zone. Sasha queues a montage card for H18: one episode, cancelled next day. Paraphrase only; no ratings speculation.
 
-Foreground: highlighter cap off. Midground: dual charts on easel. Background: pinned timeline Nov 15-19. Camera: straight-on instructional.
+Foreground: highlighter cap off. Midground: dual charts on easel. Background: pinned timeline Nov 15-19. Camera: wide enough to reveal Elliot's discarded twelve-episode planning board. Light: late newsroom desk lamps.
 
-**Dialogue:** Elliot: "Make the machinery boring enough to be true." Alex: "Boring is our brand."
+**Dialogue:** Elliot: "One episode? I ordered a season recap." Sasha: "Good news. It fits on a coaster."
 
 #### S12.P2 Interactive search (DRAFT)
 
@@ -821,7 +821,7 @@ Highlight deltas O1 to O2 through O3 specified functions only. O5 montage slot s
 
 ## Chapter 5 card (DRAFT): "Leave, latte, return"
 
-**Optional H17 card (DRAFT):** Before S13, dated **3 Mar 2014** flashback card: "Ford visited a late-night show. The Haps did not send a correspondent. We sent a strongly worded calendar reminder." Not a playable scene.
+**Optional H17 card (DRAFT):** Before S13, dated **3 Mar 2014** flashback card: "Ford appeared on Jimmy Kimmel Live! in Los Angeles. The Haps did not send a correspondent. We sent a strongly worded calendar reminder." Not a playable scene.
 
 **Transition:** S13.P1.
 
@@ -829,9 +829,9 @@ Highlight deltas O1 to O2 through O3 specified functions only. O5 montage slot s
 
 ### S13: Leave watch (DRAFT)
 
-**Chapter:** 5 | **Historical:** H09 | **Date:** 1 May 2014 after Apr 30 statement  
-**Play pattern:** leave statement timeline with humane tone  
-**Entry:** K12 + BR-CH4-A/B | **Exit:** K13 to S14  
+**Chapter:** 5 | **Historical:** H09 | **Date:** 1 May 2014 after Apr 30 statement
+**Play pattern:** leave statement timeline with humane tone
+**Entry:** K12 + BR-CH4-A/B | **Exit:** K13 to S14
 **sceneObjectiveAnswerHint:** "Cover the public leave statement without ghoulish wordplay."
 
 #### S13.P1 Establish and arrival (DRAFT)
@@ -874,9 +874,9 @@ Align O1 to O2 anchors; apply O6 tone guide; no clinic or medical record props.
 
 ### S14: Service sidebar (DRAFT)
 
-**Chapter:** 5 | **Historical:** none (fiction) | **Date:** 8 May 2014  
-**Play pattern:** spatial map of fictional city-service beats  
-**Entry:** K13 | **Exit:** K14 to S15  
+**Chapter:** 5 | **Historical:** none (fiction) | **Date:** 8 May 2014
+**Play pattern:** spatial map of fictional city-service beats
+**Entry:** K13 | **Exit:** K14 to S15
 **sceneObjectiveAnswerHint:** "Label each fictional request as a follow-up lead, not proof of citywide failure."
 
 #### S14.P1 Establish and arrival (DRAFT)
@@ -919,9 +919,9 @@ Pin O2, O3, O4 to districts; classify with O6 categories as civics beat, separat
 
 ### S15: Return briefing (DRAFT)
 
-**Chapter:** 5 | **Historical:** H10 | **Date:** 30 Jun 2014  
-**Play pattern:** public return Q&A matching  
-**Entry:** K14 | **Exit:** K15 to S16; BR-CH5 at S15  
+**Chapter:** 5 | **Historical:** H10 | **Date:** 30 Jun 2014
+**Play pattern:** public return Q&A matching
+**Entry:** K14 | **Exit:** K15 to S16; BR-CH5 at S15
 **sceneObjectiveAnswerHint:** "Match briefing questions to the public June 30 statement only."
 
 #### S15.P1 Establish and arrival (DRAFT)
@@ -970,9 +970,9 @@ Match O6 prompts to O1 bullets; discard private medical implications.
 
 ### S16: Candidate shuffle (DRAFT)
 
-**Chapter:** 6 | **Historical:** H11 | **Date:** 12 Sep 2014  
-**Play pattern:** mayoral vs ward race card sort  
-**Entry:** K15 + BR-CH5-A/B | **Exit:** K16 to AS2  
+**Chapter:** 6 | **Historical:** H11 | **Date:** 12 Sep 2014
+**Play pattern:** mayoral vs ward race card sort
+**Entry:** K15 + BR-CH5-A/B | **Exit:** K16 to AS2
 **sceneObjectiveAnswerHint:** "Order filing dates before you name the switch."
 
 #### S16.P1 Establish and arrival (DRAFT)
@@ -1015,7 +1015,7 @@ Sort O1 into columns using O5; stamp O3 only on public filing marker.
 
 ### AS2: Assignment selector (DRAFT)
 
-**When:** After K16, before route. **Persist AS2-A or AS2-B atomically before R2A or R2B entry.**
+**When:** After K16, show a date card advancing from Sep 12 to Oct 27 before results, then select the assignment before its route. **Persist AS2-A or AS2-B atomically before R2A or R2B entry.**
 
 | Option | Copy | Route |
 | --- | --- | --- |
@@ -1028,10 +1028,10 @@ Sort O1 into columns using O5; stamp O3 only on public filing marker.
 
 ### R2A: Election Night Field Kit (DRAFT)
 
-**Design target:** post-opening milestone.  
-**Chapter:** 6 fork | **Date:** 27 Oct 2014 before results (fiction)  
-**Play pattern:** field bag packing for preliminary reporting  
-**Entry:** K16, AS2-A persisted | **Exit:** KR2A to S17  
+**Design target:** post-opening milestone.
+**Chapter:** 6 fork | **Date:** 27 Oct 2014 before results (fiction)
+**Play pattern:** field bag packing for preliminary reporting
+**Entry:** K16, AS2-A persisted | **Exit:** KR2A to S17
 **sceneObjectiveAnswerHint:** "Pack for cold sidewalks and careful labels, not a victory party."
 
 #### R2A.P1 Establish and arrival (DRAFT)
@@ -1074,10 +1074,10 @@ Pack O1, O2, O3, O6; leave O5 taped; O4 optional flavor prop.
 
 ### R2B: Newsroom Broadcast Kit (DRAFT)
 
-**Design target:** post-opening milestone.  
-**Chapter:** 6 fork | **Date:** 27 Oct 2014 before results (fiction)  
-**Play pattern:** fix live desk wiring and templates  
-**Entry:** K16, AS2-B persisted | **Exit:** KR2B to S17  
+**Design target:** post-opening milestone.
+**Chapter:** 6 fork | **Date:** 27 Oct 2014 before results (fiction)
+**Play pattern:** fix live desk wiring and templates
+**Entry:** K16, AS2-B persisted | **Exit:** KR2B to S17
 **sceneObjectiveAnswerHint:** "Wire the desk for preliminary labels, not certified victory."
 
 #### R2B.P1 Establish and arrival (DRAFT)
@@ -1120,9 +1120,9 @@ Connect O1 to desk; apply O3 template; fix O2 gaffe; O6 stays untouched gag.
 
 ### S17: Election night preliminary (DRAFT)
 
-**Chapter:** 6 | **Historical:** H12 | **Date:** 27 Oct 2014  
-**Play pattern:** preliminary labeling under fog-machine chaos  
-**Entry:** K16 + KR2A or KR2B | **Exit:** K17 to S18  
+**Chapter:** 6 | **Historical:** H12 | **Date:** 27 Oct 2014 after reported results
+**Play pattern:** preliminary labeling under fog-machine chaos
+**Entry:** K16 AND ((AS2-A AND KR2A) OR (AS2-B AND KR2B)) | **Exit:** K17 to S18
 **sceneObjectiveAnswerHint:** "Label every number preliminary until certification."
 
 **Route callbacks:** KR2A adds field mittens on chair; KR2B adds triple-spelled PRELIMINARY on monitor.
@@ -1130,6 +1130,10 @@ Connect O1 to desk; apply O3 template; fix O2 gaffe; O6 stays untouched gag.
 #### S17.P1 Establish and arrival (DRAFT)
 
 **Beat:** Elliot unveils the **fog machine** for "democracy atmosphere." It activates sideways. Priya gets one clean frame through haze. Sasha's stream says "PRELIMINARY" in three fonts.
+
+Foreground: remote and tangled cable. Midground: BG01 improvised live desk. Background: an opaque fog bank beside the empty sponsor chair. Camera: wide comic reveal; bright monitor glow. Fog never obscures find targets.
+
+**Dialogue:** Elliot: "Can we make the fog say SPONSORED?" Sasha: "We cannot make the microphone say words."
 
 #### S17.P2 Interactive search (DRAFT)
 
@@ -1152,27 +1156,27 @@ Apply PRELIMINARY ribbon to O1 and O5 draft; verify O3/O4 rows match O2 without 
 
 | Answer | Result |
 | --- | --- |
-| Correct: "Preliminary reported: Tory mayor lead; Ford wins Ward 2 H12" | K17 |
+| Correct: "Reported election results: Tory wins mayor; Ford wins Ward 2. Certification follows (H12)" | K17 |
 | Retry: "Certified final totals" | Nadia: "Certification is Thursday. Breathe." |
 
-**Asset brief:** BG01 election night. ff-079/080 optional silhouettes. Six sprite layers.
+**Asset brief:** BG01 election night. ff-079 and ff-080 optional silhouettes. Six sprite layers.
 
-**Dependencies:** K16, KR*, H12 | **Output:** K17
+**Dependencies:** K16, selected AS2 route output, H12 | **Output:** K17
 
 ---
 
 ### S18: Certified retrospective (DRAFT)
 
-**Chapter:** 6 | **Historical:** H13 | **Date:** 30 Oct 2014  
-**Play pattern:** certified vs preliminary compare + BR-CH6 + ending predicate  
-**Entry:** K17 | **Exit:** K18, BR-CH6, END-A or END-B  
+**Chapter:** 6 | **Historical:** H13 | **Date:** 30 Oct 2014 after the public declaration
+**Play pattern:** certified vs preliminary compare + BR-CH6 + ending predicate
+**Entry:** K17 | **Exit:** K18, BR-CH6, END-A or END-B
 **sceneObjectiveAnswerHint:** "Confirm certified winners match preliminary board, then pick your closing emphasis."
 
 #### S18.P1 Establish and arrival (DRAFT)
 
-**Beat:** Dawn light. Broken chair has a support bolt at last. K01 notebook beside K18 draft. Elliot slides two career envelopes (fiction).
+**Beat:** Late-day light after the results declaration. Broken chair has a support bolt at last. K01 notebook beside K18 draft. Elliot slides two career envelopes (fiction).
 
-Foreground: certified print. Midground: BG01 dawn retrospective. Background: season collage wall with fog-machine receipt pinned as joke.
+Foreground: certified print. Midground: BG01 late-day retrospective. Background: season collage wall with fog-machine receipt pinned as joke.
 
 **Dialogue:** Elliot: "You survived our budget choices." Alex: "The city survived worse."
 
@@ -1200,7 +1204,7 @@ Compare O1 date/status to S17; same winners; no invented numeric changes. Select
 | Correct: "Toronto elects Tory mayor; Ford wins Ward 2 seat (H13 certified)" | K18; apply END predicate |
 | Retry: "Election-night estimates were already certified" | Nadia: "Dates matter. Status matters." |
 
-**Asset brief:** BG01 dawn. ff-011/073/075 palette on wall logo only. Six sprite layers.
+**Asset brief:** BG01 late-day retrospective. ff-011, ff-073 and ff-075 palette on wall logo only. Six sprite layers.
 
 **Dependencies:** all K01-K17, H12,H13 | **Output:** K18
 
@@ -1220,7 +1224,7 @@ Compare O1 date/status to S17; same winners; no invented numeric changes. Select
 | S08 | Attribute H04; no public video | Recovery is not broadcast to player |
 | S09 | Dated chain with unknowns | Summer fiction labeled |
 | S10 | H05 plus prior denials | No private episode invention |
-| R1A | H16 notice context | Not permanent closure |
+| R1A | Haps ID, battery and fictional camera-position sketch | Wrong-network cards do not get you a better assignment |
 | R1B | Cafe reaction fiction | Not allegation proof |
 | S11 | AM quote once; PM apology; H15 | Sorry is not proof |
 | S12 | H07/H08 delta; H18 montage | Not removal from office |
@@ -1239,15 +1243,15 @@ Six BR bits at S03, S06, S09, S12, S15, S18. AS1/AS2 do not affect END predicate
 
 **END-A: City Beat Survivor**
 
-**END-A.P1:** Notebook beside Nadia note. Elliot offers city beat and fog remote: "You filed the chaos without becoming it."
+**END-A.P1:** Notebook beside Nadia note. Elliot offers the city beat and fog remote: "Promotion. You now have two things that can catch fire."
 
-**END-A.P2:** Wide BG01 dawn. Priya pins caption; Sasha labels cables; broken chair has bolt. Continue to credits.
+**END-A.P2:** Wide BG01 late afternoon. Priya pins caption; Sasha labels cables; broken chair has bolt. Continue to credits.
 
 **END-B: Patio Columnist**
 
-**END-B.P1:** Tomás slides column assignment: "Write about the patio. Seriously."
+**END-B.P1:** Alex opens Elliot's Harbourview assignment letter beside Nadia's copy note at the cafe. Tomás slides over the rejected headline napkins: "Four chairs. Please do not call it an empire."
 
-**END-B.P2:** Wide BG04 morning. Cast waves off election hangover. Fade credits.
+**END-B.P2:** Wide BG04 late afternoon. The repaired newsroom chair arrives on a handcart as the column's first subject. The fog remote rings in Alex's bag. Nobody answers. Fade to credits.
 
 **Closing card (optional H14):** 1 Dec 2014 term transition. After endings only.
 
@@ -1257,20 +1261,20 @@ Six BR bits at S03, S06, S09, S12, S15, S18. AS1/AS2 do not affect END predicate
 
 ## Credits (DRAFT)
 
-1. Ford Frenzy  
-2. jr42 productions  
-3. Torrona Haps (fictional paper)  
-4. Fictional cast list  
-5. H00-H18 acknowledgements  
-6. Content policy line  
-7. Minoo framework  
+1. Ford Frenzy
+2. jr42 productions
+3. Torrona Haps (fictional paper)
+4. Fictional cast list
+5. H00-H18 acknowledgements
+6. Content policy line
+7. Minoo framework
 8. Play again
 
 ---
 
 ## Art brief summary
 
-BG01 newsroom (+variants), BG02 City Hall corridor, BG03 briefing, BG04 cafe, BG05 gallery (reserved), BG06 map table. Routes reuse with distinct props. ff-044 S02 only. ff-011/073/075 title palette. ff-079/080 silhouettes only.
+BG01 newsroom (+variants), BG02 City Hall corridor, BG03 briefing, BG04 cafe, BG05 gallery (reserved), BG06 map table. Routes reuse with distinct props. ff-044 S02 only. ff-011, ff-073 and ff-075 title palette. ff-079 and ff-080 silhouettes only.
 
 ## Revision 2 migration (design)
 

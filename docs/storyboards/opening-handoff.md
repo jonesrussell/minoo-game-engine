@@ -1,7 +1,7 @@
 # Opening episode: implementation handoff
 
-Issue #93. **Status:** DRAFT for owner review, not approved shipping content.  
-**Storyboard revision:** 2  
+Issue #93. **Status:** DRAFT for owner review, not approved shipping content.
+**Storyboard revision:** 2
 Read [campaign](campaign.md), [scene boards](full-game.md) and the [historical ledger](../research/ford-frenzy-history.md) together. Full-game owns S01.P1 through S03.P4 and all opening object IDs; do not maintain a second conflicting object list here.
 
 ## Bounded build
@@ -22,7 +22,7 @@ Alex arrives at **Torrona Haps** expecting patio openings and invoice filing. Th
 
 **S03 We're Going With WHAT?:** Rearranged deadline desk. Six finds power a silly headline magnet layout while preserving accurate copy: reports allege, mayor denied on record, video not verified by this desk. Nadia's stamp beats Elliot's worst pun. Player chooses **BR-CH1-A Splash First** or **BR-CH1-B Lawyer Voice**; commit **K03** and branch together, then episode-complete screen.
 
-Dialogue in full-game boards is fictional satire. Final performance, visible source copy and paper branding remain owner-review decisions.
+Dialogue in full-game boards is fictional satire. Torrona Haps is the owner-selected name. Final performance and visible source copy remain owner-review decisions.
 
 ## Running gags (opening slice)
 
@@ -58,4 +58,4 @@ Revision 2 adds 22-scene campaign shape with AS1/AS2 and routes R1A-R2B. Opening
 
 Draft is ready for review, not a claim that game schemas already encode it. #43 specifies comparison rules; #95 supplies generalized source references; #96 owns investigation state; #8/#97 render it; #37 owns assets; #105/#106 supply navigation and HUD. Preserve headless deterministic replay and validate candidate content before persistence. Do not put historical evidence into vocabulary fields.
 
-Owner review covers **Torrona Haps** branding, satirical tone, placement, cast and both BR-CH1 emphasis choices. Qualified playable slice later supplies input, save/recovery and pacing evidence. No screenplay or repository link check counts as a successful playtest.
+Owner review covers the revised execution of the accepted **Torrona Haps** name and satirical direction, placement, cast and both BR-CH1 emphasis choices. Qualified playable slice later supplies input, save/recovery and pacing evidence. No screenplay or repository link check counts as a successful playtest.

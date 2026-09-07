@@ -5,11 +5,14 @@ Status: **DRAFT** pending owner review
 Owner: jr42 productions / Minoo storyboard track
 Depends on: campaign draft (#91, owner approval pending), historical source ledger at [docs/research/ford-frenzy-history.md](../research/ford-frenzy-history.md)
 Opening handoff #93 reuses S01-S03 here. Later boards are not an opening prerequisite.
+Revision 2 adds route boards R1A/R1B and R2A/R2B while preserving the canonical
+targets in [campaign.md](../storyboards/campaign.md). This proposal does not create
+a second scene inventory.
 
 ## Why
 
-Ford Frenzy now has a draft text storyboard for all eighteen planned hidden-object
-scenes so individual approved scenes can proceed with stable IDs,
+Ford Frenzy now has a draft text storyboard for eighteen shared hidden-object
+scenes and four assignment-route scenes so individual approved scenes can proceed with stable IDs,
 find targets, notebook outputs and editorial questions. The [first-game brief](../first-game.md)
 defines the opening three scenes at campaign level; this proposal supplies panel-level
 composition, object placement, clue dependencies and playable variation across the
@@ -19,10 +22,10 @@ full six-chapter arc.
 
 In scope:
 
-- Text storyboards for S01 through S18 with four panels each (Sxx.P1 through Sxx.P4)
-- Six finds per scene (Sxx.O1 through Sxx.O6) with evidence/context/tool classification
+- Text storyboards for shared S01 through S18 and route R1A/R1B/R2A/R2B with four panels each
+- Six finds per authored scene with evidence/context/tool classification
 - Notebook outputs K01 through K18 with retained dependencies
-- Historical reference pointers H00 through H14 (no new historical claims)
+- Historical reference pointers H00 through H18, using H15-H18 only through the delivered research register
 - Title sequence, chapter cards, two ending boards and credits treatment
 - Common hint, resume, reset and entry/exit contract inherited across scenes
 - Requirement IDs with Given/When/Then scenarios
@@ -30,7 +33,7 @@ In scope:
 Excluded:
 
 - New runtime code, scene JSON, artwork import or generation
-- Historical source verification, rights clearance and final editorial approval
+- New historical research beyond the delivered ledger, rights clearance and final editorial approval
 - Illustrated final art (text boards only)
 
 ## Deliverables
@@ -45,11 +48,13 @@ Excluded:
 | Metric | Count |
 | --- | --- |
 | Chapters | 6 |
-| Playable scenes | 18 (S01-S18) |
-| Panels | 72 (4 per scene) |
-| Find objects | 108 (6 per scene) |
-| Notebook outputs | 18 (K01-K18) |
-| Historical pointers | 15 (H00-H14) |
+| Shared scenes | 18 (S01-S18) |
+| Route scenes | 4 (R1A/R1B/R2A/R2B) |
+| Authored scenes | 22 |
+| Panels | 88 (4 per authored scene) |
+| Find objects | 132 (6 per authored scene) |
+| Shared notebook outputs | 18 (K01-K18) plus four route outputs (KR1A/KR1B/KR2A/KR2B) |
+| Historical pointers | 19 (H00-H18) |
 | Chapter-ending branch IDs | 6 (BR-CH1-A/B through BR-CH6-A/B pairs) |
 | Ending boards | 2 (END-A / END-B, each two panels) |
 | Requirement IDs | 12 (SB-STRUCT through SB-CRED) |
@@ -58,8 +63,9 @@ Excluded:
 
 ### SB-STRUCT-001: stable scene and panel identity
 
-Every playable scene MUST declare a stable scene ID (S01-S18), four panel IDs
-(Sxx.P1-P4), six object IDs (Sxx.O1-O6) and one notebook output ID (Kxx).
+Every shared scene MUST declare a stable scene ID (S01-S18), four panel IDs,
+six object IDs and one K output. Every route scene MUST declare a stable route ID
+(R1A/R1B/R2A/R2B), four panel IDs, six object IDs and one KR output.
 
 - Scenario: GIVEN the full-game storyboard document, WHEN an implementer maps
   scene JSON, THEN each scene ID appears exactly once with no gaps from S01 to S18.
@@ -111,7 +117,7 @@ at least one retry answer and no permanent failure path.
 
 ### SB-HIST-001: historical pointers without new claims
 
-Historical beats MUST reference H00-H14 as parent-verified pointers only. The game
+Historical beats MUST reference H00-H18 as parent-verified pointers only. The game
 MUST NOT introduce new historical claims, original 2013 video discovery or forged
 public-record facsimiles.
 
@@ -147,7 +153,9 @@ historical staging.
 
 ### SB-CHAP-001: chapter cards and convergence
 
-Six chapter cards MUST precede S01, S04, S07, S10, S13 and S16. Branch IDs
+Six chapter cards MUST precede S01, S04, S07, S10, S13 and S16. Assignment selectors
+AS1 and AS2 MUST sit after S10 and S16 respectively, with their selected route
+rejoining before S11 and S17. Branch IDs
 (BR-CH1-A/B through BR-CH6-A/B) resolve at S03, S06, S09, S12, S15 and S18 and
 change fictional byline or editorial reflection only.
 
@@ -193,27 +201,38 @@ Credits MUST list Ford Frenzy, jr42 productions, content/source acknowledgements
 - Failure example: GIVEN credits that attribute invented dialogue to a real mayor, WHEN
   content review runs, THEN credits fail SB-CRED-001.
 
+### SB-TONE-001: Torrona Haps satire and source chronology
+
+The canonical boards MUST keep Torrona Haps as the owner-selected fictional paper
+and satire as a core voice. S01, S02 and S03 MUST use the May 17 opening titles and
+beats. S11 MUST use 14 November after the afternoon apology, S12 MUST use a
+November 19 retrospective after the cancellation report with dated November 13,
+15 and 18 cards, H17 MUST remain a dated March 3 card, and H18 MUST remain a dated
+one-episode/cancellation card. Route props may be comic, but cannot
+turn attributed allegations into facts.
+
 ## Tasks (planned)
 
 | Task | Requirement IDs | Owner | Planned check |
 | --- | --- | --- | --- |
-| Owner review of all eighteen scene boards | SB-STRUCT, SB-PANEL | Story owner | Manual storyboard review |
-| Historical ledger crosswalk H00-H14 | SB-HIST | Parent verification | Ledger file match |
+| Owner review of eighteen shared and four route boards | SB-STRUCT, SB-PANEL | Story owner | Manual storyboard review |
+| Historical ledger crosswalk H00-H18 | SB-HIST | Parent verification | Source register match, including H15-H18 |
 | Opening slice handoff S01-S03 | SB-PLAY, SB-ART | #93 implementer | Panel/object ID checklist |
 | Art candidate mapping | SB-ART | #103/#104 | Inventory cross-reference |
-| Notebook dependency graph audit | SB-NOTE | #43 reporting loop | K01-K18 DAG review |
+| Notebook dependency graph audit | SB-NOTE | #43 reporting loop | K01-K18 and KR1A/KR1B/KR2A/KR2B DAG review |
 | Ending board copy review | SB-END | Editorial owner | END-A/B two-panel tone check |
 
 ## Verification
 
 - Planned: owner reads [full-game.md](../storyboards/full-game.md); confirms DRAFT
-  panels; checks no new historical claims; validates S01-S03 implementation readiness.
+  panels; checks the H15-H18 source crosswalk and chronology; validates S01-S03
+  implementation readiness.
 - Planned: reconcile object IDs with future scene JSON validation (SCN-IDENTITY-001).
 - Executed: none at proposal submission time.
 
 ## Unresolved decisions (owner / parent)
 
-1. Final historical paraphrases; unverified exact times remain omitted.
+1. Final historical source summaries and H15-H18 review; unverified exact times remain omitted.
 2. Final wording of public-record summaries on props (owner editorial review).
 3. Final visual treatment of the two ending boards.
 

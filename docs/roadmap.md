@@ -8,7 +8,7 @@ See the [asset-to-playable SDD plan](ford-frenzy-delivery.md) and [experience sc
 
 The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. The new game's scene content, notebook and progression are not implemented. The current Journey preview is a legacy fixture. The renderer evaluation #40 now requires a proper rendering engine, frame loop, drawing/sprites, assets and an explicit future-3D boundary; HTML/SVG-only is not the product direction.
 
-Start research #90 and renderer evaluation #40 in parallel. Campaign outline #91 unlocks opening boards #93 and the reporting-loop spec #43. Full campaign storyboard #92 is a separate branch of work and does not block the opening slice. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 are explicit prerequisites.
+Start research #90 and renderer evaluation #40 in parallel. Campaign outline #91 unlocks opening boards #93 and the reporting-loop spec #43. Full campaign storyboard #92 is a separate branch of work and does not block the opening slice. Issue #114 records the Torrona Haps satire and route contract that supersedes conflicting linear wording in #91, #92 and #93. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 are explicit prerequisites.
 
 ## Projects and boundaries
 
@@ -30,6 +30,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 | [#91 Outline the complete investigation campaign and ending](https://github.com/jonesrussell/minoo-game-engine/issues/91) | P0 | content | #90 |
 | [#92 Storyboard every scene in the full campaign](https://github.com/jonesrussell/minoo-game-engine/issues/92) | P0 | content | #91 |
 | [#93 Storyboard the opening three investigative scenes](https://github.com/jonesrussell/minoo-game-engine/issues/93) | P0 | content | #91 |
+| [#114 Rewrite Ford Frenzy around the Torrona Haps satire and route contract](https://github.com/jonesrussell/minoo-game-engine/issues/114) | P0 | content | #90 |
 | [#94 Define Toronto scene art direction and asset briefs](https://github.com/jonesrussell/minoo-game-engine/issues/94) | P0 | content | #93, #103 |
 | [#103 Inventory and import the legacy Ford Frenzy art library](https://github.com/jonesrussell/minoo-game-engine/issues/103) | P0 | content | None |
 | [#104 Establish reference-based artwork generation and export workflow](https://github.com/jonesrussell/minoo-game-engine/issues/104) | P0 | content | #103, #94 |
@@ -191,11 +192,12 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 Full campaign design checkpoint: [historical ledger](research/ford-frenzy-history.md)
 delivered under #90; [six-chapter campaign](storyboards/campaign.md),
-[eighteen scene boards](storyboards/full-game.md) and
+[eighteen shared scene boards plus four route boards](storyboards/full-game.md) and
 [opening handoff](storyboards/opening-handoff.md) are reviewable drafts under
-#91/#92/#93. Owner creative review remains open. S01-S03 remain the production
-slice; S04-S18 have no added implementation or release commitment. Art direction
-#94 follows approval of the opening boards, then #104 proves reference-based art.
+#91/#92/#93/#114. Owner creative review remains open. S01-S03 remain the production
+slice; S04-S18 and R1A/R1B/R2A/R2B have no added implementation or release
+commitment. Art direction #94 follows approval of the opening boards, then #104
+proves reference-based art.
 
 Native dependencies identify prerequisites; sub-issues identify phase ownership. Do not infer readiness from phase order. P0 blocks its gate, P1 is planned required work and P2 is deferred improvement. No dates or full-campaign production commitments have been invented.
 
