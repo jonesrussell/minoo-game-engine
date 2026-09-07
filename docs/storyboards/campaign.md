@@ -1,6 +1,6 @@
 # Ford Frenzy campaign outline
 
-**Status:** DRAFT on all scenes, routes and endings. Owner creative review pending.
+**Status:** STORYBOARD APPROVED on all scenes, routes and endings. Approval is limited to storyboard structure and content review; art, rights, final release copy, runtime implementation and playtest approval remain open.
 **Storyboard revision:** 2 (see migration note below).
 **Issue:** [#91](https://github.com/jonesrussell/minoo-game-engine/issues/91)
 **Production:** jr42 productions
@@ -139,4 +139,4 @@ ff-011, ff-073, ff-075: logo and title palette only. ff-044: City Hall compositi
 
 ## Owner review items
 
-Torrona Haps and satirical direction are owner-selected. DRAFT approval pending for their execution, dialogue, scene boards, routes, candidate art, rights and release copy. Opening slice S01-S03 can proceed without route assets once approved. This outline does not claim approved design or production completion.
+Torrona Haps and satirical direction are owner-selected. The owner approved the revision 2 storyboard content and structure on 2026-09-07. Candidate art, rights, final release copy, runtime implementation and playtest approval remain open. Opening slice S01-S03 can proceed without route assets. This outline does not claim art, rights, release, runtime or playtest completion.

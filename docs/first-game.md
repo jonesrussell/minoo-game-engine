@@ -1,8 +1,9 @@
 # Ford Frenzy: Toronto investigative hidden-object adventure
 
 Status: product direction accepted by the owner. The game title **Ford Frenzy** is
-confirmed. Scene treatments and campaign structure below remain proposals for
-storyboard review, not claims about historical events or implemented gameplay.
+confirmed. Revision 2 scene treatments and campaign structure have
+[owner storyboard approval](storyboards/approval.md). This does not approve visual
+assets or claim implemented gameplay.
 
 This replaces Journey as the first game.
 
@@ -72,12 +73,12 @@ a playable local build and owner review. Score measures finds, not factual certa
 
 ## Entire-game storyboard work
 
-The [researched campaign draft](storyboards/campaign.md) now proposes six chapters
+The [approved campaign storyboard](storyboards/campaign.md) specifies six chapters
 with eighteen shared scenes, plus two binary assignment forks and four route scenes.
 The authored target is 22 scenes, 88 gameplay panels and 132 unique finds. A run
 plays 20 scenes, 80 panels and 120 finds. Play runs from 17 May 2013 through 30
 October 2014, with optional dated background and closing cards. Two fictional
-newsroom endings preserve the real outcomes. Owner approval remains pending; only
+newsroom endings preserve the real outcomes. Storyboard approval is complete; only
 S01-S03 are committed to first production.
 
 Read the [full scene boards](storyboards/full-game.md),

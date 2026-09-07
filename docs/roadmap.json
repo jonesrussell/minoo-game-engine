@@ -27,7 +27,7 @@
       "remaining_M1": "Renderer, assets, persistence and compatibility work remain open."
     },
     "campaign_storyboards": {
-      "status": "draft awaiting owner review",
+      "status": "storyboard approved by owner on 2026-09-07; art, rights, release, runtime and playtest gates remain open",
       "research_issue": 90,
       "outline_issue": 91,
       "full_boards_issue": 92,
@@ -43,8 +43,15 @@
       "campaign_document": "docs/storyboards/campaign.md",
       "storyboard_document": "docs/storyboards/full-game.md",
       "opening_document": "docs/storyboards/opening-handoff.md",
-      "production_scope": "S01-S03 only; S04-S18 and R1A/R1B/R2A/R2B design draft, production uncommitted",
-      "rewrite_contract": 114
+      "approval_record": "docs/storyboards/approval.md",
+      "production_scope": "S01-S03 only; S04-S18 and R1A/R1B/R2A/R2B remain storyboard design, production uncommitted",
+      "rewrite_contract": 114,
+      "next_gates": {
+        "art_direction": {"issue": 94, "status": "unblocked for art draft; art review pending"},
+        "reporting_loop": {"issue": 43, "status": "storyboard dependency satisfied; ready when other dependency checks close"},
+        "owner_release_review": {"status": "open"},
+        "runtime_and_playtest": {"status": "open"}
+      }
     }
   },
   "issues": [
