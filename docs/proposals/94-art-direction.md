@@ -1,16 +1,16 @@
 # Proposal 94: opening art direction
 
-**Issue:** #94. **IDs:** FF-VIS-001..005. **Status:** draft; owner visual approval pending.
+**Issue:** #94. **IDs:** FF-VIS-001..005. **Status:** art direction owner-approved on 2026-09-07.
 
-Revision 2 storyboards (#92, #93) are approved for narrative. This proposal adds [art-direction.md](../art-direction.md), visual acceptance requirements and one generated flat concept with editable presentation. It records #103 reference hashes but ships no runtime textures. #104 stays blocked until visual approval; release exports are #17.
+Revision 2 storyboards (#92, #93) are approved for narrative. This proposal adds [art-direction.md](../art-direction.md), visual acceptance requirements and one generated flat concept with editable presentation. It records #103 reference hashes but ships no runtime textures. #104 now proceeds to pipeline proof; release exports are #17.
 
 ## FF-VIS-001: Editorial comic style
 
-Opening art MUST match satirical 2D editorial comic direction (ink contours, blocky silhouettes, background halftone only, civic blue / cream / mustard / brick red). MUST NOT read as photoreal, pixel art or cozy cottage.
+Opening art MUST match the [approved GTA IV inspired direction](../art/visual-direction-02/approval.md): heavy ink, grounded adult faces, casual clothing, muted olive / slate / tan / rust. MUST NOT read as photoreal, pixel art or cozy cottage.
 
 - Given S01-S03 and shell screens, when visual review runs, then contour, palette and silhouette stay consistent.
 - Given ff-075, when title/menu are composed, then parody tone matches without copying baked logo type.
-- Given rejected style drift, when review runs, then the rejected candidate is not promoted. The owner must approve or revise this proposed brief before it governs production.
+- Given rejected style drift, when review runs, then the rejected candidate is not promoted. The approved direction governs production; earlier experiments remain superseded.
 
 ## FF-VIS-002: Layers and canonical IDs
 
@@ -49,6 +49,8 @@ Exports record reference IDs, hashes, dimensions, alpha policy and review outcom
 
 **Executed:** art-direction.md; object tables cross-checked to full-game.md; reference hashes verified; generated flat concept inspected; editable scene/title view toggles and 390px page overflow checked. Texture-budget arithmetic corrected during independent review. Actual prompt and output metadata are linked in the art brief.
 
-**Planned:** owner mockup/HTML review; browser readability and missing-art checks at #37/#9/#98/#99 commits; budget remeasure after #40/#51 baseline.
+**Owner review executed:** GTA IV inspired concept approved in conversation ("awesome, locked in") on 2026-09-07. See the linked approval record and exact image hash.
 
-**Not claimed:** separate production sprites/background, pipeline proof, owner visual approval or release assets. Hosted check evidence is recorded on the PR.
+**Planned:** browser readability and missing-art checks at #37/#9/#98/#99 commits; budget remeasure after #40/#51 baseline.
+
+**Not claimed:** separate production sprites/background, pipeline proof, final UI acceptance or release assets. Hosted check evidence is recorded on the PR.
