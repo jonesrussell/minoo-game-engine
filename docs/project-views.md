@@ -12,7 +12,7 @@ The primary project contains every roadmap issue and tracker. Journey contains i
 | Phase trackers | Table | Core and optional phase epics and their child progress |
 | Framework and runtime | Table | Contract and runtime workstreams |
 | Agent authoring | Table | Transactions, CLI and MCP work |
-| In review | Table | Implemented work awaiting merge, initially #2 / PR #23 |
+| In review | Table | Implemented work awaiting merge; merged issues leave this view |
 
 Journey also provides Content and review, Release blockers, and Playtesting and quality views. Views are saved in GitHub. Phase is the planning axis; no date-based timeline is presented because dates have not been estimated.
 

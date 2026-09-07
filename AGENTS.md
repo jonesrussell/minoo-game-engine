@@ -4,7 +4,7 @@
 
 Build the smallest reusable browser engine that supports Journey, then validate reuse with Matcher. Read README.md, docs/product.md, docs/architecture.md and the assigned issue before changing code.
 
-The product is a framework with a small runtime engine. Read docs/roadmap.md and the assigned phase tracker for current scope. Specs describe lasting behavior; issues describe delivery work. Follow the SDD pilot decision once #32 is resolved. Do not install every research candidate by default.
+The product is a framework with a small runtime engine. Read docs/roadmap.md and the assigned phase tracker for current scope. Specs describe lasting behavior; issues describe delivery work. Use the plain Markdown flow in docs/sdd-pilot.md and the imports in docs/package-boundaries.md. Keep planned verification distinct from executed evidence. Do not install every research candidate by default.
 
 ## Working through chat
 
