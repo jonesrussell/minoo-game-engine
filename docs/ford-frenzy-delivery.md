@@ -93,3 +93,5 @@ game. Studio remains optional and runtime independently usable.
 | FF-QA-001 | #12 slice qualification, #45 playtest, #50 accessibility, #51 performance, #52 editorial/rights, #18/#19 release |
 
 Plan delivery: #102. Immediate independent starts: #103 asset inventory, #90 research, #40 renderer evaluation and #37 manifests. #11 now waits for the investigative content/progression contracts. #105 can use placeholders; #106 integrates after notebook/hints. #12 requires menus/HUD/sound through native dependencies. #17 final artwork does not form a cycle with slice qualification.
+
+Milestones group capabilities, not a strict chronological sequence. M1 persistence cannot close until the M2 investigation-state contract is available; foundational renderer work proceeds independently. #36 compatibility is an explicit prerequisite for #11, and #42 recovery testing is an explicit prerequisite for #12.

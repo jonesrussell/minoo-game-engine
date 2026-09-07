@@ -57,7 +57,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#11 Persist and recover local game progress](https://github.com/jonesrussell/minoo-game-engine/issues/11) | P1 | engine | #7, #95, #96 |
+| [#11 Persist and recover local game progress](https://github.com/jonesrussell/minoo-game-engine/issues/11) | P1 | engine | #7, #95, #96, #36 |
 | [#8 Render responsive scenes with accessible object controls](https://github.com/jonesrussell/minoo-game-engine/issues/8) | P0 | engine | #6, #7, #40, #97 |
 | [#7 Implement deterministic game state and replayable actions](https://github.com/jonesrussell/minoo-game-engine/issues/7) | P0 | engine | #6 |
 | [#6 Define versioned scene and vocabulary contracts](https://github.com/jonesrussell/minoo-game-engine/issues/6) | P0 | engine | #2, #35 |
@@ -78,7 +78,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#12 Qualify the three-scene investigation slice](https://github.com/jonesrussell/minoo-game-engine/issues/12) | P0 | quality | #10, #11, #3, #41, #98, #99, #106, #107 |
+| [#12 Qualify the three-scene investigation slice](https://github.com/jonesrussell/minoo-game-engine/issues/12) | P0 | quality | #10, #11, #3, #41, #98, #99, #106, #107, #42 |
 | [#10 Add bounded hints and investigation progression feedback](https://github.com/jonesrussell/minoo-game-engine/issues/10) | P1 | game | #9, #96 |
 | [#9 Build investigation scene S01: assignment desk](https://github.com/jonesrussell/minoo-game-engine/issues/9) | P0 | game | #8, #43, #93, #94, #95, #96, #105 |
 | [#43 Specify the hidden-object reporting and evidence loop](https://github.com/jonesrussell/minoo-game-engine/issues/43) | P0 | game | #32, #91 |
