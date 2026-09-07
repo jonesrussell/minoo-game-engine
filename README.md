@@ -58,3 +58,5 @@ Code license selection is pending in #5. No open-source license has been granted
 ## Future Studio capability
 
 Minoo can supply game authoring within Waaseyaa Studio through an optional adapter. Studio supplies shared account/work coordination; Minoo supplies game contracts and execution. The runtime and local authoring remain independently usable. This is planned integration, not an implemented feature or a dependency of Studio's private MVP.
+
+[Ford Frenzy SDD delivery plan](docs/ford-frenzy-delivery.md) tracks source artwork, generation, screens, HUD and opening-scene delivery.

@@ -118,3 +118,5 @@ Journey language learning is deferred. Matcher remains a later conformance game.
 Studio integration stays optional and must not block standalone development or the
 Studio private MVP. No monetization/energy system, full campaign production, native
 export or 3D implementation is committed by this first slice.
+
+[Asset-to-playable SDD plan](ford-frenzy-delivery.md) tracks source artwork, generation, screens, HUD and opening-scene delivery.
