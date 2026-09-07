@@ -23,8 +23,11 @@
   },
   "devDependencies": {
     "@types/node": "24.13.3",
+    "ajv": "8.20.0",
+    "json-schema-to-typescript": "16.0.0",
     "playwright": "1.63.0",
     "typescript": "5.9.3",
-    "vite": "8.2.2"
+    "vite": "8.2.2",
+    "zod": "4.5.4"
   }
 }

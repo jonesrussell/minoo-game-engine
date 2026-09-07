@@ -3,8 +3,9 @@
 Status: accepted pilot contract, not implemented, from issue [#32](https://github.com/jonesrussell/minoo-game-engine/issues/32).
 
 This is a behavior contract for issue [#6](https://github.com/jonesrussell/minoo-game-engine/issues/6).
-It does not choose JSON Schema, Zod, Ajv or another validator. That decision is
-reserved for [#35](https://github.com/jonesrussell/minoo-game-engine/issues/35).
+[ADR 003](../decisions/003-canonical-scene-schema.md) selects JSON Schema Draft-07,
+Ajv and generated TypeScript declarations. The #35 comparison is a pilot,
+not this production scene implementation.
 It follows OWN-001 through OWN-005 in the [package boundaries](../package-boundaries.md).
 
 ## Purpose
@@ -107,8 +108,8 @@ object IDs. Runtime counting, replay and awarding completion belong to issue #7.
 
 ## Exclusions
 
-This pilot does not define the canonical schema format or validator (#35),
-state transitions and replay (#7), rendering, asset placement tools, Studio
+This specification does not implement state transitions and replay (#7),
+rendering, asset placement tools, Studio
 integration, production vocabulary, translations, pronunciation approval,
 multiplayer, native export or generated executable scene code. Fixtures must be
 marked as non-release content and must not invent language or cultural claims.
