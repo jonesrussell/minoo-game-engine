@@ -40,7 +40,7 @@ The product is a framework with a small runtime engine. Read docs/roadmap.md and
 
 - Use Node.js 24.13.1 and npm 11.8.0. Install locked dependencies with npm ci.
 - Checks: npm run typecheck, npm test, npm run build, npm run test:e2e, npm run check:repository. Browser tests include a production build and write screenshots to test-results/. Install Chromium first with npx playwright install chromium (add --with-deps on Linux).
-- The fixture shell and @minoo/engine/scene validation API are implemented. Full Journey gameplay, scene-driven rendering and authoring commands remain separate issues; do not describe the shell as a completed game. Regenerate scene types from the canonical schema and keep validation before external scene use.
+- The fixture shell, @minoo/engine/scene, @minoo/engine/runtime and @minoo/engine/replay are implemented. Read docs/specs/runtime.md, replay.md and runtime-testing.md for their contracts. Full Journey browser gameplay, scene-driven rendering and authoring commands remain separate issues; do not describe the shell as a completed game. Regenerate scene types from the canonical schema and keep validation before external scene use.
 - UI work requires browser exercise and screenshot inspection. Include keyboard/touch behavior where affected. Record tested commit and failures.
 - A green check does not prove learning quality, cultural accuracy or enjoyable play. Keep human acceptance explicit for release content.
 - No deployment to minoo.live is part of routine work. Use the separate review/alpha host defined by its delivery issue.

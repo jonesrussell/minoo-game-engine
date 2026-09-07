@@ -41,8 +41,9 @@ validation without coercion. Option validation is separate and returns
 `RUNTIME_INVALID_OPTIONS` when `hintBudget` is not a nonnegative safe integer.
 The game package chooses the hint budget; Journey uses three hints.
 
-Replay in #38 will consume the same `createRuntime` + `step` sequence. This
-issue does not define versioned serialized logs.
+The [versioned replay API](replay.md), delivered in #38, consumes the same
+`createRuntime` + `step` sequence. [Generated tests](runtime-testing.md) verify
+this contract through its public API in #39.
 
 ## Requirements and scenarios
 
@@ -172,8 +173,8 @@ ID remains. `complete` remains idempotent.
 ### RTN-REPLAY-001: Deterministic transitions
 
 Given the same validated scene, options and action sequence, `step` MUST return
-identical final state and event sequences. Replay evidence in this issue uses
-repeated `createRuntime` + `step` calls; versioned logs are #38.
+identical final state and event sequences. The original #7 evidence uses repeated
+`createRuntime` + `step` calls; #38 adds versioned logs and Node/Chromium agreement.
 
 ### RTN-IMMUTABLE-001: Frozen rules and returned snapshots
 

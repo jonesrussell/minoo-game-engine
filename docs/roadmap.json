@@ -11,6 +11,20 @@
       "production_implementation_issue": 6,
       "schema_document": "packages/engine/src/contracts/scene.schema.json",
       "validation_entry": "@minoo/engine/scene"
+    },
+    "headless_runtime": {
+      "runtime_entry": "@minoo/engine/runtime",
+      "issues": [
+        7,
+        38,
+        39
+      ],
+      "replay_spec": "docs/specs/replay.md",
+      "replay_entry": "@minoo/engine/replay",
+      "runtime_spec": "docs/specs/runtime.md",
+      "status": "implemented",
+      "invariant_spec": "docs/specs/runtime-testing.md",
+      "remaining_M1": "Renderer, assets, persistence and compatibility work remain open."
     }
   },
   "issues": [
