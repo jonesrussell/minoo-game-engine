@@ -21,3 +21,7 @@ Multiplayer, backend accounts, payments, native app stores, neural physics/rende
 ## Release evidence
 
 Approved content provenance; passing checks at the released commit; hosted smoke test; keyboard and touch verification; owner playtest; changelog, known limitations and rollback instructions.
+
+## Optional Studio authoring
+
+Studio may become another authoring interface through [ADR 002](decisions/002-studio-game-capability.md). Reuse its accounts, projects, revisions, agent jobs, approvals and preview presentation as those capabilities become available. Do not build a parallel platform in Minoo or place game definitions in waaseyaa.site. Keep the first game and standalone runtime independent; see [S0-S2](studio-integration.md).

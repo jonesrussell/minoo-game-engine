@@ -25,3 +25,7 @@ Scenes use logical coordinates, stable IDs, explicit vocabulary references and c
 This prioritizes explicit state, testability and accessible 2D interaction over a general-purpose renderer. Start with DOM/SVG where suitable; choose Canvas only with an accessibility strategy and a demonstrated need. Do not build an ECS or plugin system without a concrete use case.
 
 Reproducible builds and deterministic game replay are separate concerns. Lock dependencies for the former; explicit actions and controlled inputs support the latter.
+
+## Studio integration boundary
+
+[ADR 002](decisions/002-studio-game-capability.md) defines a separate optional adapter over Minoo-owned contracts. Studio coordinates authoring; the runtime never imports or calls Studio. Versioned candidate review returns diagnostics and a standalone static preview. Shared revision acceptance is a later, separately gated contract.

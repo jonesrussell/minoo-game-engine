@@ -1,0 +1,811 @@
+{
+  "updated": "2026-09-07",
+  "repository": "jonesrussell/minoo-game-engine",
+  "issues": [
+    {
+      "issue": 21,
+      "title": "Refine engine APIs from Journey and Matcher evidence",
+      "phase": "M5 - Framework reuse",
+      "workstream": "engine",
+      "priority": "P2",
+      "effort": "M",
+      "dependencies": [
+        20,
+        56
+      ]
+    },
+    {
+      "issue": 20,
+      "title": "Prototype Matcher against the shared engine contracts",
+      "phase": "M5 - Framework reuse",
+      "workstream": "engine",
+      "priority": "P2",
+      "effort": "M",
+      "dependencies": [
+        19,
+        55
+      ]
+    },
+    {
+      "issue": 19,
+      "title": "Publish Journey browser alpha with release evidence",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        4,
+        15,
+        18,
+        52,
+        54,
+        53
+      ]
+    },
+    {
+      "issue": 18,
+      "title": "Qualify accessibility touch and supported browsers",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "quality",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        16,
+        17,
+        12,
+        50,
+        51
+      ]
+    },
+    {
+      "issue": 17,
+      "title": "Create and approve final homestead artwork",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "content",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        5,
+        12
+      ]
+    },
+    {
+      "issue": 16,
+      "title": "Approve vocabulary and optional pronunciation content",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        5,
+        9
+      ]
+    },
+    {
+      "issue": 15,
+      "title": "Demonstrate a second scene authored entirely through chat",
+      "phase": "M3 - Agent authoring",
+      "workstream": "journey",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        14,
+        4,
+        12,
+        16
+      ]
+    },
+    {
+      "issue": 14,
+      "title": "Expose inspect validate edit and replay commands",
+      "phase": "M3 - Agent authoring",
+      "workstream": "authoring",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        13,
+        7
+      ]
+    },
+    {
+      "issue": 13,
+      "title": "Implement validated transactional scene editing operations",
+      "phase": "M3 - Agent authoring",
+      "workstream": "authoring",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        6,
+        12,
+        46
+      ]
+    },
+    {
+      "issue": 12,
+      "title": "Qualify the complete Journey vertical slice",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "quality",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        10,
+        11,
+        3,
+        41
+      ]
+    },
+    {
+      "issue": 11,
+      "title": "Persist and recover local game progress",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        7
+      ]
+    },
+    {
+      "issue": 10,
+      "title": "Add three hints and a restoration reward",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "journey",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        9
+      ]
+    },
+    {
+      "issue": 9,
+      "title": "Build the first six-object homestead scene",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "journey",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        8,
+        43
+      ]
+    },
+    {
+      "issue": 8,
+      "title": "Render responsive scenes with accessible object controls",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        6,
+        7,
+        40
+      ]
+    },
+    {
+      "issue": 7,
+      "title": "Implement deterministic game state and replayable actions",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        6
+      ]
+    },
+    {
+      "issue": 6,
+      "title": "Define versioned scene and vocabulary contracts",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        2,
+        35
+      ]
+    },
+    {
+      "issue": 5,
+      "title": "Record code license and content provenance decisions",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": []
+    },
+    {
+      "issue": 4,
+      "title": "Provide local browser previews for chat-based playtesting",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "delivery",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        2,
+        3
+      ]
+    },
+    {
+      "issue": 3,
+      "title": "Add executable CI and downloadable browser evidence",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        2
+      ]
+    },
+    {
+      "issue": 2,
+      "title": "Scaffold TypeScript workspace and browser development commands",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": []
+    },
+    {
+      "issue": 1,
+      "title": "Verify local development through chat",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        2,
+        3
+      ]
+    },
+    {
+      "issue": 32,
+      "title": "Pilot spec-driven development on the scene contract",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": []
+    },
+    {
+      "issue": 33,
+      "title": "Define framework runtime and game ownership",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "framework",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": []
+    },
+    {
+      "issue": 34,
+      "title": "Document issue readiness review and release evidence rules",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "delivery",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": []
+    },
+    {
+      "issue": 35,
+      "title": "Select the canonical schema format and validator",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "framework",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [
+        32,
+        33
+      ]
+    },
+    {
+      "issue": 36,
+      "title": "Define scene version compatibility and migrations",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "framework",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        6
+      ]
+    },
+    {
+      "issue": 37,
+      "title": "Define asset manifests loading and failure behavior",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        6
+      ]
+    },
+    {
+      "issue": 38,
+      "title": "Version replay logs and verify deterministic results",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        7
+      ]
+    },
+    {
+      "issue": 39,
+      "title": "Add generated action-sequence tests for runtime invariants",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "quality",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        7
+      ]
+    },
+    {
+      "issue": 40,
+      "title": "Evaluate the scene renderer against concrete requirements",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        33,
+        6
+      ]
+    },
+    {
+      "issue": 41,
+      "title": "Verify input coordinates and accessible target equivalents",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        8
+      ]
+    },
+    {
+      "issue": 42,
+      "title": "Test save corruption migration and unavailable storage",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "quality",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [
+        11,
+        36
+      ]
+    },
+    {
+      "issue": 43,
+      "title": "Specify the complete first-scene learning loop",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "journey",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [
+        32
+      ]
+    },
+    {
+      "issue": 44,
+      "title": "Add optional pronunciation playback with clear fallback",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "journey",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [
+        9,
+        16
+      ]
+    },
+    {
+      "issue": 45,
+      "title": "Run an owner playtest and triage learning-flow feedback",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "quality",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [
+        12
+      ]
+    },
+    {
+      "issue": 46,
+      "title": "Specify authoring operations errors and transaction boundaries",
+      "phase": "M3 - Agent authoring",
+      "workstream": "authoring",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        6,
+        32
+      ]
+    },
+    {
+      "issue": 47,
+      "title": "Qualify authoring rollback and stale revision handling",
+      "phase": "M3 - Agent authoring",
+      "workstream": "quality",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        13
+      ]
+    },
+    {
+      "issue": 48,
+      "title": "Build repeatable agent authoring acceptance tasks",
+      "phase": "M3 - Agent authoring",
+      "workstream": "quality",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        14,
+        15
+      ]
+    },
+    {
+      "issue": 49,
+      "title": "Present human-readable scene diffs alongside structured output",
+      "phase": "M3 - Agent authoring",
+      "workstream": "authoring",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [
+        13
+      ]
+    },
+    {
+      "issue": 50,
+      "title": "Add automated accessibility checks and manual coverage notes",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "quality",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        12
+      ]
+    },
+    {
+      "issue": 51,
+      "title": "Set and verify browser alpha performance budgets",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "quality",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        17,
+        12
+      ]
+    },
+    {
+      "issue": 52,
+      "title": "Enforce content approval and attribution at release build time",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        5,
+        16,
+        17
+      ]
+    },
+    {
+      "issue": 53,
+      "title": "Provide alpha feedback intake and release support notes",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "delivery",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [
+        45
+      ]
+    },
+    {
+      "issue": 54,
+      "title": "Rehearse deployment rollback before alpha release",
+      "phase": "M4 - Journey browser alpha",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [
+        52
+      ]
+    },
+    {
+      "issue": 55,
+      "title": "Specify Matcher as a framework conformance game",
+      "phase": "M5 - Framework reuse",
+      "workstream": "framework",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [
+        19,
+        33
+      ]
+    },
+    {
+      "issue": 56,
+      "title": "Enforce package boundaries and test two-game compatibility",
+      "phase": "M5 - Framework reuse",
+      "workstream": "quality",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        20
+      ]
+    },
+    {
+      "issue": 57,
+      "title": "Define the smallest supported game extension interface",
+      "phase": "M5 - Framework reuse",
+      "workstream": "framework",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        21
+      ]
+    },
+    {
+      "issue": 58,
+      "title": "Specify the local MCP adapter and capability boundaries",
+      "phase": "M6 - Local MCP authoring",
+      "workstream": "authoring",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [
+        14,
+        48
+      ]
+    },
+    {
+      "issue": 59,
+      "title": "Implement local MCP inspection and validation tools",
+      "phase": "M6 - Local MCP authoring",
+      "workstream": "authoring",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        58
+      ]
+    },
+    {
+      "issue": 60,
+      "title": "Implement scoped MCP edit and undo operations",
+      "phase": "M6 - Local MCP authoring",
+      "workstream": "authoring",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        59,
+        47
+      ]
+    },
+    {
+      "issue": 61,
+      "title": "Qualify CLI and MCP parity with recorded authoring tasks",
+      "phase": "M6 - Local MCP authoring",
+      "workstream": "quality",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        60
+      ]
+    },
+    {
+      "issue": 62,
+      "title": "Publish framework API guide and extension examples",
+      "phase": "M7 - Framework beta and maintenance",
+      "workstream": "framework",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        57,
+        61
+      ]
+    },
+    {
+      "issue": 63,
+      "title": "Qualify and tag the first framework beta",
+      "phase": "M7 - Framework beta and maintenance",
+      "workstream": "delivery",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        62,
+        56
+      ]
+    },
+    {
+      "issue": 64,
+      "title": "Define dependency maintenance and next-release intake",
+      "phase": "M7 - Framework beta and maintenance",
+      "workstream": "delivery",
+      "priority": "P2",
+      "effort": "S",
+      "dependencies": [
+        63
+      ]
+    },
+    {
+      "issue": 69,
+      "title": "Specify the versioned Minoo candidate review boundary",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "authoring",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        33,
+        35
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 70,
+      "title": "Prove the standalone Journey tree-label authoring example",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "journey",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        14,
+        37,
+        38,
+        43
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 71,
+      "title": "Build an optional read-only Studio adapter for Minoo review",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "authoring",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        69,
+        70
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 72,
+      "title": "Qualify the Journey candidate review boundary end to end",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "quality",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        71
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 73,
+      "title": "Verify Studio readiness before shared game authoring",
+      "phase": "S1 - Shared Studio authoring workflow",
+      "workstream": "delivery",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        72
+      ],
+      "external_dependencies": [
+        "waaseyaa/studio#14",
+        "waaseyaa/studio#15",
+        "waaseyaa/studio#16",
+        "waaseyaa/studio#17",
+        "waaseyaa/studio#18",
+        "waaseyaa/studio#19"
+      ]
+    },
+    {
+      "issue": 74,
+      "title": "Connect Minoo candidates to shared Studio revisions jobs and decisions",
+      "phase": "S1 - Shared Studio authoring workflow",
+      "workstream": "authoring",
+      "priority": "P2",
+      "effort": "L",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        73,
+        47
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 75,
+      "title": "Qualify durable Journey authoring and account isolation in Studio",
+      "phase": "S1 - Shared Studio authoring workflow",
+      "workstream": "quality",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        74
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 76,
+      "title": "Decide whether Journey needs embedded Studio previews",
+      "phase": "S2 - Optional Studio preview and publishing",
+      "workstream": "delivery",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        75
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 77,
+      "title": "Qualify isolated Journey preview presentation if adopted",
+      "phase": "S2 - Optional Studio preview and publishing",
+      "workstream": "quality",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        76
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 78,
+      "title": "Specify separate authorization for Studio-assisted game publishing",
+      "phase": "S2 - Optional Studio preview and publishing",
+      "workstream": "delivery",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        75
+      ],
+      "external_dependencies": []
+    }
+  ],
+  "integration_tracks": [
+    {
+      "id": "studio",
+      "optional": true,
+      "architecture": "docs/decisions/002-studio-game-capability.md",
+      "core_release_dependency": false,
+      "studio_private_mvp_dependency": false,
+      "phases": [
+        {
+          "phase": "S0 - Optional Studio review adapter",
+          "milestone": 9,
+          "tracker": 66
+        },
+        {
+          "phase": "S1 - Shared Studio authoring workflow",
+          "milestone": 10,
+          "tracker": 67
+        },
+        {
+          "phase": "S2 - Optional Studio preview and publishing",
+          "milestone": 11,
+          "tracker": 68
+        }
+      ]
+    }
+  ]
+}
