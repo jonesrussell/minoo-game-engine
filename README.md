@@ -4,7 +4,7 @@ A game framework designed for reliable agent authoring, with an independent runt
 
 **Status:** executable workspace, interactive Journey fixture preview, production scene validation and a headless game runtime. Scene-driven browser gameplay and authoring tools are still backlog work.
 
-The [first-game brief](docs/first-game.md) proposes three opening scenes and a separate full-campaign storyboard track. The existing Journey preview is a legacy engineering fixture, not the new game.
+The [first-game brief](docs/first-game.md) proposes the Torrona Haps opening and a separate full-campaign storyboard track. The existing Journey preview is a legacy engineering fixture, not the new game.
 
 - [Chat-based development](docs/chat-development.md)
 - [CI and downloadable evidence](docs/ci-evidence.md)
@@ -25,6 +25,7 @@ The [first-game brief](docs/first-game.md) proposes three opening scenes and a s
 - [Content policy](docs/content-policy.md)
 - [Ford Frenzy full campaign storyboard](docs/storyboards/full-game.md)
 - [Campaign outline and endings](docs/storyboards/campaign.md)
+- [Torrona Haps rewrite contract](docs/proposals/114-torrona-haps-rewrite.md)
 - [Historical timeline and sources](docs/research/ford-frenzy-history.md)
 - [Contribution workflow](CONTRIBUTING.md)
 

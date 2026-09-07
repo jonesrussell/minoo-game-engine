@@ -28,10 +28,14 @@ These presentation screens are not implemented. When built, they must follow:
 
 ## Player experience
 
-Play a fictional investigative journalist at an original fictional Toronto newsroom
+Play a fictional investigative journalist at the fictional Torrona Haps local paper
 during Rob Ford's mayoral tenure, with the 2013 crack-video scandal as the central
-historical backdrop. June's Journey is a reference for illustrated hidden-object
-scenes, narrative reveals and chapter progression. Create original story, art and UI.
+historical backdrop. The Haps competes with worldwide media while its editor tries
+to keep a tiny newsroom functioning. Satire is a core story mode: broken gear,
+absurd deadline fixes and a fog-machine election broadcast are fictional comic
+beats around sourced public chronology. June's Journey is a reference for
+illustrated hidden-object scenes, narrative reveals and chapter progression. Create
+original story, art and UI.
 
 Loop: receive an assignment -> search a detailed scene -> inspect leads -> compare
 sources and chronology -> choose a supported account -> editorial review -> next scene.
@@ -53,9 +57,9 @@ Six findable targets per scene are a prototype budget, not a framework limit.
 
 | Scene | Search and story beat | Investigation outcome |
 |---|---|---|
-| S01: The assignment desk | Original newsroom illustration; locate a notebook, contact sheet, marked calendar, assignment folder, public-report printout and recorder. | Separate a published report, an unverified lead and a question for follow-up. A fictional editor assigns the next check. |
-| S02: The City Hall records workspace | Public-facing workspace reconstructed as original art; find dated agenda pages, a press schedule, a statement reference, filing labels, a contact directory and a notes folder. | Build a timeline and identify what public records do and do not establish. Do not imply that a municipal record proves private drug use. |
-| S03: The deadline desk | Return to a changed newsroom; find the source log, response notes, corrections sheet, caption draft, chronology and editorial checklist. | Assemble a sourced short account, retain uncertainty, request any missing corroboration, and complete the opening episode after editorial review. |
+| S01: Welcome to the Haps | May 17, 2013. Search takeout, invoices and broken newsroom gear; assemble the charger for the recorder and separate a published report from office rumour. | Keep source status visible while the editor assigns the next check. |
+| S02: Meanwhile at City Hall | May 17, 2013. Search a public corridor work area for a jammed printer, press kit, dated public material and filing tools. No November crowds appear in May. | Build a May 16 to May 17 timeline without upgrading an allegation or importing later events. |
+| S03: We're Going With WHAT? | May 17, 2013. Beat the layout deadline with headline pieces, source log, response notes, corrections and a silly but accurate Haps page. | File a sourced short account, retain uncertainty and complete the opening episode after editorial review. |
 
 These are staged gameplay props and fictional interactions. Specific documents,
 quotations and representations of real people require a source record before use.
@@ -69,11 +73,12 @@ a playable local build and owner review. Score measures finds, not factual certa
 ## Entire-game storyboard work
 
 The [researched campaign draft](storyboards/campaign.md) now proposes six chapters
-and eighteen playable scenes: first reports; denial and summer verification;
-police announcement; admission and Council; leave and return; election and reckoning.
-Play runs from 17 May 2013 through 30 October 2014, with optional dated background
-and closing cards. Two fictional newsroom endings preserve the real outcomes.
-Owner approval of this complete draft remains pending.
+with eighteen shared scenes, plus two binary assignment forks and four route scenes.
+The authored target is 22 scenes, 88 gameplay panels and 132 unique finds. A run
+plays 20 scenes, 80 panels and 120 finds. Play runs from 17 May 2013 through 30
+October 2014, with optional dated background and closing cards. Two fictional
+newsroom endings preserve the real outcomes. Owner approval remains pending; only
+S01-S03 are committed to first production.
 
 Read the [full scene boards](storyboards/full-game.md),
 [opening implementation handoff](storyboards/opening-handoff.md) and

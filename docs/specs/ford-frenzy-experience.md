@@ -7,6 +7,12 @@ The owner selected Ford Frenzy, jr42 productions, three opening scenes and reuse
 existing art to guide new generated art. Specific storyboards and visual candidates
 remain subject to owner review.
 
+The owner-selected newsroom is **Torrona Haps**, with satire driving the fictional
+assignments and dialogue. [Revision 2](../proposals/114-torrona-haps-rewrite.md)
+defines the current storyboard and future assignment-route requirements. Its route
+state is a proposed extension, not an implemented save/schema capability. The
+opening remains S01-S03 with no later route assets required.
+
 ## FF-ART-001: preserve and classify source art
 
 The import MUST retain unchanged source files, checksums, dimensions, file type,
@@ -109,8 +115,8 @@ and migration explicitly; do not restore an unknown version as if it were curren
 
 ## FF-SCN-001: three linked investigative scenes
 
-S01 assignment desk, S02 City Hall records and S03 deadline desk follow approved
-opening boards. Each has entry/exit conditions, find targets, hint behavior, source
+S01 Welcome to the Haps, S02 Meanwhile at City Hall and S03 We're Going With WHAT?
+must follow the opening boards once owner-approved. Each has entry/exit conditions, find targets, hint behavior, source
 classification and failure/retry scenarios. Six targets per scene is the starting
 budget. Reusing hallway/office art does not automatically approve a historical
 location, private encounter or story event. Later campaign boards do not block this

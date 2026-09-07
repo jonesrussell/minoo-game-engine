@@ -2,13 +2,22 @@
 
 Issue #93. Status: draft delivered; owner approval pending.
 
-Use the single S01-S03 board sequence from #92 and provide a bounded handoff with
+Use the canonical S01-S03 board sequence from #92 and provide a bounded handoff with
 FF-OPEN-001 through FF-OPEN-012 acceptance scenarios in
 [opening handoff](../storyboards/opening-handoff.md). These scenarios refine the
 existing experience contract; they do not implement a new schema or runtime.
 
+Revision 2 fixes the owner-selected fictional setting and opening chronology:
+S01 is **Welcome to the Haps**, S02 is **Meanwhile at City Hall**, and S03 is
+**We're Going With WHAT?** All three occur on May 17, 2013. S02 is a public
+corridor printer and press-kit search; November crowd material is unavailable in
+the May scene. The Haps is a local paper competing with worldwide media, and
+satire is a core fictional voice expressed through deadline comedy and newsroom
+gear failures.
+
 Scope: opening script, source boundaries, interface/save/retry failure cases,
-issue traceability, three-scene-only asset loading. Excluded: completed gameplay,
+issue traceability, three-scene-only asset loading. The opening handoff must leave
+the later AS1/AS2 forks and route scenes to the canonical full-game boards. Excluded: completed gameplay,
 final art, later campaign production and owner creative approval.
 
 Planned: owner storyboard review and #12/#45 playable qualification. Actual
