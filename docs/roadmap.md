@@ -1,6 +1,6 @@
 # Minoo framework, runtime and Journey roadmap
 
-Updated September 7, 2026. The core roadmap has eight phases, 54 delivery/decision issues and eight phase trackers. A separate optional Studio track adds three milestones, 10 delivery/decision issues and three trackers. It expands the original backlog without closing or replacing existing work. PR #23 remains open for review; its implementation is not yet merged into main.
+Updated September 7, 2026. The core roadmap has eight phases, 54 delivery/decision issues and eight phase trackers. A separate optional Studio track adds three milestones, 10 delivery/decision issues and three trackers. The executable workspace (#2), CI evidence (#3), package boundaries (#33) and Markdown SDD pilot (#32) are delivered. Full gameplay and scene-schema implementation remain backlog work.
 
 ## Product direction
 
@@ -36,7 +36,7 @@ Phases are acceptance gates, not calendar promises. Independent documentation, c
 
 P0 blocks its milestone. P1 is required planned work in that phase but may be sequenced after the critical P0 path. P2 is deferred improvement. S/M/L are initial relative scope estimates, not days or token budgets. Split an issue if it no longer fits a focused, reviewable PR. No due dates have been invented.
 
-The next useful work is review of [PR #23](https://github.com/jonesrussell/minoo-game-engine/pull/23), then #3 once #2 merges. The SDD pilot #32, package-boundary decision #33 and licensing decision #5 can be prepared independently. Schema implementation #6 waits on the spec/schema decisions.
+The next core decision is #35: compare canonical schema/validator options using the [scene specification](specs/scene-contract.md), then implement #6. Follow the [package boundaries](package-boundaries.md) and [plain Markdown SDD flow](sdd-pilot.md). Licensing #5 and delivery guidance #34 remain independent ready work. Studio integration stays optional.
 
 ## Phase overview
 
@@ -187,7 +187,7 @@ Acceptance criteria have evidence at the tested commit; checks appropriate to th
 
 ## Specification discipline
 
-Specs describe lasting behavior; issues describe delivery work. Pilot the smallest useful SDD process in #32. Each substantive capability should identify requirement IDs, examples, failure cases, non-goals and verification. Update the spec when intended behavior changes. Use existing specs for small fixes rather than generating a new collection of documents each time.
+Specs describe lasting behavior; issues describe delivery work. The #32 pilot selects plain Markdown with a short proposal and durable scene specification. Each substantive capability should identify requirement IDs, examples, failure cases, non-goals and verification. Update the spec when intended behavior changes. Use existing specs for small fixes rather than generating a new collection of documents each time.
 
 Important invariants include no duplicate finds, bounded hints, a single completion award, repeatable action replay, valid vocabulary references, recoverable saves and atomic authoring edits. A JSON schema alone does not establish all of these. Runtime, semantic and browser tests cover different parts of the contract.
 

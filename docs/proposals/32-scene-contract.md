@@ -2,7 +2,7 @@
 
 Issue: [#32](https://github.com/jonesrussell/minoo-game-engine/issues/32)
 Delivery issue: [#6](https://github.com/jonesrussell/minoo-game-engine/issues/6)
-Status: proposed
+Status: specification accepted; #6 and #7 implementation remains planned
 Owner: Minoo engine maintainers
 
 ## Why
@@ -50,7 +50,7 @@ and an actionable expected diagnostic.
 
 | Task | Requirement IDs | Owner | Planned check | Expected outcome |
 | --- | --- | --- | --- | --- |
-| Define supported scene version field and rejection rule | SCN-VERSION-001 | #6 implementer | Structural validation fixture | Unsupported version is rejected at `scene.version` with expected versions |
+| Define supported scene version field and rejection rule | SCN-VERSION-001 | #6 implementer | Structural validation fixture | Unsupported version is rejected with the version field's JSON Pointer and expected versions |
 | Define scene and object IDs | SCN-IDENTITY-001 | #6 implementer | Valid and duplicate-ID fixtures | Valid IDs pass; duplicate path is reported |
 | Define logical bounds | SCN-BOUNDS-001 | #6 implementer | In-bounds and out-of-bounds fixtures | Valid placement passes; object path and bounds error are reported |
 | Define vocabulary reference shape | SCN-VOCAB-001 | #6 implementer | Missing reference and Unicode/dialect/source fixture checks | Missing path is reported; fixture metadata is preserved unchanged |
@@ -61,4 +61,3 @@ All checks above are planned. No #6 or #7 implementation check has been
 executed by this pilot. When implementation begins, record the tested commit,
 actual command and result beside the relevant task. Human review remains
 required for language, art and learning quality.
-

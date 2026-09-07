@@ -1,10 +1,11 @@
 # Scene contract specification
 
-Status: pilot for issue [#32](https://github.com/jonesrussell/minoo-game-engine/issues/32)
+Status: accepted pilot contract, not implemented, from issue [#32](https://github.com/jonesrussell/minoo-game-engine/issues/32).
 
 This is a behavior contract for issue [#6](https://github.com/jonesrussell/minoo-game-engine/issues/6).
 It does not choose JSON Schema, Zod, Ajv or another validator. That decision is
 reserved for [#35](https://github.com/jonesrussell/minoo-game-engine/issues/35).
+It follows OWN-001 through OWN-005 in the [package boundaries](../package-boundaries.md).
 
 ## Purpose
 
@@ -30,7 +31,7 @@ versions.
 
 - GIVEN a scene declaring a version the implementation does not support
 - WHEN the validator inspects the scene
-- THEN validation fails at `scene.version` with the expected versions
+- THEN validation fails with the version field's JSON Pointer and expected versions
 
 ### SCN-IDENTITY-001: Stable scene and object identity
 
