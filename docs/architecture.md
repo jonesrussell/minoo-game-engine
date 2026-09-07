@@ -29,3 +29,5 @@ Reproducible builds and deterministic game replay are separate concerns. Lock de
 ## Studio integration boundary
 
 [ADR 002](decisions/002-studio-game-capability.md) defines a separate optional adapter over Minoo-owned contracts. Studio coordinates authoring; the runtime never imports or calls Studio. Versioned candidate review returns diagnostics and a standalone static preview. Shared revision acceptance is a later, separately gated contract.
+
+The package ownership and import rules for this boundary are recorded in [package-boundaries.md](package-boundaries.md). They apply to the planned package layout above and keep rendering behind runtime ports.
