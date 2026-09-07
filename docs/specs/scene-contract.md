@@ -9,7 +9,7 @@ reserved for [#35](https://github.com/jonesrussell/minoo-game-engine/issues/35).
 ## Purpose
 
 Make a scene inspectable before rendering. A scene identifies its objects,
-places them in logical bounds, references approved vocabulary records and states
+places them in logical bounds, references vocabulary or marked fixture records and states
 how completion is determined.
 
 ## Requirements and scenarios
@@ -51,8 +51,8 @@ unique stable identifier within that scene.
 
 ### SCN-BOUNDS-001: Logical placement stays in bounds
 
-Each object MUST have logical placement that lies within the declared scene
-bounds.
+Scene dimensions MUST be finite and positive. Each object MUST have finite
+logical placement and a positive extent entirely within the declared scene bounds.
 
 #### Scenario: valid placement
 
@@ -98,9 +98,9 @@ object IDs. Runtime counting, replay and awarding completion belong to issue #7.
 - WHEN the validator inspects the completion condition
 - THEN validation confirms that the condition names those IDs
 
-#### Failure example: repeated find
+#### Failure example: unresolved completion target
 
-- GIVEN a completion condition with a missing required object ID
+- GIVEN a completion condition referencing an object ID absent from the scene
 - WHEN the validator inspects the scene
 - THEN validation fails with the missing ID path
 
@@ -119,8 +119,12 @@ marked as non-release content and must not invent language or cultural claims.
 | Define scene and object IDs | SCN-IDENTITY-001 | Unit test valid IDs and duplicate-ID diagnostic with path | planned |
 | Define logical bounds | SCN-BOUNDS-001 | Unit test in-bounds and out-of-bounds fixtures | planned |
 | Define vocabulary references | SCN-VOCAB-001 | Unit test missing reference and Unicode/dialect/source preservation | planned |
-| Define completion rule | SCN-COMPLETE-001 | Runtime/replay test for six unique finds and duplicate selection | planned |
+| Define completion rule | SCN-COMPLETE-001 | #6 validation tests for distinct, resolvable target IDs and malformed conditions | planned |
 | Keep unsupported versions rejected | SCN-VERSION-001 | Unit test unsupported version diagnostic | planned |
+
+Runtime counting and duplicate-award checks are owned by #7, as listed in the
+[proposal trace](../proposals/32-scene-contract.md); they do not block completion
+of the #6 schema validation task.
 
 No implementation or tests for #6 or #7 have been executed by this pilot. The table
 intentionally records planned evidence only. When #6 is implemented, replace
