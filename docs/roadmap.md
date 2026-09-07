@@ -4,12 +4,12 @@ Milestones are ordered by acceptance gates, without invented delivery dates. P0 
 
 ## M0 - Development foundation
 
-Exit: a cloud task can install dependencies, run checks, and open a reviewable PR; build and browser evidence available.
+Exit: a local coding task can install dependencies, run checks, and open a reviewable PR; build and browser evidence available.
 
-- [#1: Connect and verify ChatGPT cloud development](https://github.com/jonesrussell/minoo-game-engine/issues/1) (P0)
+- [#1: Verify local development through chat](https://github.com/jonesrussell/minoo-game-engine/issues/1) (P0)
 - [#2: Scaffold TypeScript workspace and browser development commands](https://github.com/jonesrussell/minoo-game-engine/issues/2) (P0)
 - [#3: Add executable CI and downloadable browser evidence](https://github.com/jonesrussell/minoo-game-engine/issues/3) (P0)
-- [#4: Provide hosted review builds for chat-based playtesting](https://github.com/jonesrussell/minoo-game-engine/issues/4) (P1)
+- [#4: Provide local browser previews for chat-based playtesting](https://github.com/jonesrussell/minoo-game-engine/issues/4) (P1)
 - [#5: Record code license and content provenance decisions](https://github.com/jonesrussell/minoo-game-engine/issues/5) (P0)
 
 ## M1 - Journey vertical slice
