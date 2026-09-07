@@ -36,7 +36,7 @@ Phases are acceptance gates, not calendar promises. Independent documentation, c
 
 P0 blocks its milestone. P1 is required planned work in that phase but may be sequenced after the critical P0 path. P2 is deferred improvement. S/M/L are initial relative scope estimates, not days or token budgets. Split an issue if it no longer fits a focused, reviewable PR. No due dates have been invented.
 
-The next core decision is #35: compare canonical schema/validator options using the [scene specification](specs/scene-contract.md), then implement #6. Follow the [package boundaries](package-boundaries.md) and [plain Markdown SDD flow](sdd-pilot.md). Licensing #5 and delivery guidance #34 remain independent ready work. Studio integration stays optional.
+The #35 comparison selects JSON Schema Draft-07, Ajv and generated TypeScript declarations in [ADR 003](decisions/003-canonical-scene-schema.md). Next implement the production scene schema and semantic validation in #6 using the [scene specification](specs/scene-contract.md). Follow the [package boundaries](package-boundaries.md) and [plain Markdown SDD flow](sdd-pilot.md). Licensing #5 and delivery guidance #34 remain independent ready work. Studio integration stays optional.
 
 ## Phase overview
 
@@ -193,7 +193,7 @@ Important invariants include no duplicate finds, bounded hints, a single complet
 
 ## Tool adoption gates
 
-Ajv/JSON Schema versus Zod is decided by #35. Rendering choice is decided by #40 against actual requirements. fast-check is evaluated through runtime invariants in #39. MCP follows stable CLI operations in #58 through #61. None of these issue entries means the dependency is already installed. Keep the existing lightweight workspace while choices are evaluated.
+The #35 development-only proof installs pinned Ajv, json-schema-to-typescript and a Zod comparator; [ADR 003](decisions/003-canonical-scene-schema.md) chooses the JSON Schema path. Production integration remains #6. Rendering choice is decided by #40 against actual requirements. fast-check is evaluated through runtime invariants in #39. MCP follows stable CLI operations in #58 through #61. Those remaining candidates are not installed by this decision.
 
 ## Risks and responses
 

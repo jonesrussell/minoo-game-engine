@@ -11,6 +11,7 @@ A game framework designed for reliable agent authoring, with a small 2D browser 
 - [Product scope](docs/product.md)
 - [Architecture decision](docs/architecture.md)
 - [Package ownership and boundaries](docs/package-boundaries.md)
+- [Canonical scene schema decision](docs/decisions/003-canonical-scene-schema.md)
 - [Studio capability decision](docs/decisions/002-studio-game-capability.md)
 - [Optional Studio integration roadmap](docs/studio-integration.md)
 - [Roadmap and issues](docs/roadmap.md)

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:minoo:experiment:scene-choice:1",
+  "title": "PilotScene",
+  "description": "Issue 35 comparison fixture, not the production scene contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "id", "width", "height", "objects", "vocabulary", "completion"],
+  "properties": {
+    "version": { "const": 1, "type": "integer" },
+    "id": { "$ref": "#/definitions/id" },
+    "width": { "type": "number", "exclusiveMinimum": 0 },
+    "height": { "type": "number", "exclusiveMinimum": 0 },
+    "objects": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "x", "y", "width", "height", "vocabularyId"],
+        "properties": {
+          "id": { "$ref": "#/definitions/id" },
+          "x": { "type": "number", "minimum": 0 },
+          "y": { "type": "number", "minimum": 0 },
+          "width": { "type": "number", "exclusiveMinimum": 0 },
+          "height": { "type": "number", "exclusiveMinimum": 0 },
+          "vocabularyId": { "$ref": "#/definitions/id" }
+        }
+      }
+    },
+    "vocabulary": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "text", "dialect", "source", "fixture"],
+        "properties": {
+          "id": { "$ref": "#/definitions/id" },
+          "text": { "type": "string", "minLength": 1 },
+          "dialect": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "fixture": { "const": true, "type": "boolean" }
+        }
+      }
+    },
+    "completion": {
+      "type": "object", "additionalProperties": false,
+      "required": ["requiredIds"],
+      "properties": { "requiredIds": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/id" } } }
+    }
+  },
+  "definitions": { "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" } }
+}

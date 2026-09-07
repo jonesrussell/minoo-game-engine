@@ -1,6 +1,16 @@
 {
   "updated": "2026-09-07",
   "repository": "jonesrussell/minoo-game-engine",
+  "decisions": {
+    "scene_schema": {
+      "issue": 35,
+      "canonical_format": "JSON Schema Draft-07",
+      "validator": "Ajv",
+      "typescript": "generated with json-schema-to-typescript",
+      "document": "docs/decisions/003-canonical-scene-schema.md",
+      "production_implementation_issue": 6
+    }
+  },
   "issues": [
     {
       "issue": 21,

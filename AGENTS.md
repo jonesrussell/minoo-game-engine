@@ -18,6 +18,7 @@ The product is a framework with a small runtime engine. Read docs/roadmap.md and
 ## Architecture
 
 - Proposed implementation: TypeScript; independent headless state transitions and versioned JSON scene definitions; browser rendering; a static deployable game.
+- Follow docs/decisions/003-canonical-scene-schema.md: canonical JSON Schema Draft-07, strict non-mutating Ajv validation and generated TypeScript declarations. Experiments are not public engine APIs. Keep portable structural constraints separate from Minoo semantic checks; do not maintain parallel handwritten scene types.
 - Shared engine code must not import Journey content. Use structured actions and stable IDs. Inject clocks/randomness if needed and record seeds/actions for replay.
 - Agent edits must validate before persistence and support reversal. Scene definitions are data, never executable code.
 - Build only capabilities needed by the current milestone. Defer neural rendering, multiplayer, native exports, a hosted model service and a custom conversational editor.

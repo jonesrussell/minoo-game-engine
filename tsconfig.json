@@ -11,5 +11,5 @@
     "skipLibCheck": true,
     "types": ["vite/client", "node"]
   },
-  "include": ["packages/**/*.ts", "games/**/*.ts", "tests/**/*.ts", "vite.config.ts"]
+  "include": ["packages/**/*.ts", "games/**/*.ts", "tests/**/*.ts", "experiments/schema-choice/**/*.ts", "vite.config.ts"]
 }
