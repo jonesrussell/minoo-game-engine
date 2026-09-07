@@ -2,10 +2,12 @@
 
 ## First outcome
 
-Build a story-driven hidden-object investigation set in Toronto during Rob Ford's
-mayoral tenure and the crack-video scandal. The player is a fictional investigative
-journalist. June's Journey is a genre reference. The final title is undecided.
-See [the game brief](first-game.md) for the proposed opening and research anchors.
+Build **Ford Frenzy**, a story-driven hidden-object investigation set in Toronto
+during Rob Ford's mayoral tenure and the crack-video scandal. The player is a
+fictional investigative journalist. June's Journey is a genre reference. Production
+presentation uses the **jr42 productions** brand on title screens and credits.
+See [the game brief](first-game.md) for branding requirements, the proposed opening
+and research anchors.
 
 ## Delivery
 

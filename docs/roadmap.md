@@ -1,6 +1,6 @@
 # Minoo framework and first-game roadmap
 
-Updated September 7, 2026. The first game is now a Toronto investigative hidden-object adventure during the Ford era; final title is undecided. See [the product scope](product.md) and [game brief](first-game.md). There are 73 active delivery/decision records plus phase trackers, and 2 deferred Journey learning records.
+Updated September 7, 2026. The first game is **Ford Frenzy**, a Toronto investigative hidden-object adventure during the Ford era. Production presentation uses the **jr42 productions** brand. See [the product scope](product.md) and [game brief](first-game.md). There are 73 active delivery/decision records plus phase trackers, and 2 deferred Journey learning records.
 
 ## Current checkpoint
 
@@ -11,7 +11,7 @@ Start research #90 and renderer evaluation #40 in parallel. Campaign outline #91
 ## Projects and boundaries
 
 - [Framework roadmap](https://github.com/users/jonesrussell/projects/15)
-- [First Game Delivery](https://github.com/users/jonesrussell/projects/16)
+- [Ford Frenzy - Delivery](https://github.com/users/jonesrussell/projects/16)
 - [Milestones](https://github.com/jonesrussell/minoo-game-engine/milestones)
 - [Machine-readable scope and dependencies](roadmap.json)
 - [Project views](project-views.md)
