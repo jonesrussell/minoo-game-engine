@@ -8,7 +8,7 @@ See the [asset-to-playable SDD plan](ford-frenzy-delivery.md) and [experience sc
 
 The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. The new game's scene content, notebook and progression are not implemented. The current Journey preview is a legacy fixture. The renderer evaluation #40 now requires a proper rendering engine, frame loop, drawing/sprites, assets and an explicit future-3D boundary; HTML/SVG-only is not the product direction.
 
-The revision 2 campaign, full-game and opening storyboards (#91, #92 and #93), including the Torrona Haps rewrite contract (#114), received owner storyboard approval on 2026-09-07. This approval covers storyboard structure and content only. Art direction #94 is unblocked for an art draft, with art review still pending; rights, release copy, runtime implementation and playtest remain open. Parent status and issue readiness are reconciled in GitHub after merge. Reporting-loop spec #43 has its storyboard dependency satisfied and becomes ready when its other dependency checks are closed. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 remain explicit prerequisites.
+The revision 2 campaign, full-game and opening storyboards (#91, #92 and #93), including the Torrona Haps rewrite contract (#114), received owner storyboard approval on 2026-09-07. This approval covers storyboard structure and content only. Art direction #94 received separate owner approval on 2026-09-07; #104 is next for the separated-asset proof; rights, release copy, runtime implementation and playtest remain open. Parent status and issue readiness are reconciled in GitHub after merge. Reporting-loop spec #43 has its storyboard dependency satisfied and becomes ready when its other dependency checks are closed. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 remain explicit prerequisites.
 
 ## Projects and boundaries
 
@@ -191,15 +191,14 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 ## Delivery rules
 
 Visual checkpoint #94: [art direction](art-direction.md) and a
-[newsroom/title/HUD concept](art/visual-direction-01/index.html) are ready for owner
-visual review. These are flat concept pixels and editable presentation, not runtime
+[newsroom/title/HUD concept](art/visual-direction-02/index.html) have owner style approval. These are flat concept pixels and editable presentation, not runtime
 gameplay or the separated asset pipeline proof in #104. Storyboard approval is complete.
 
 Full campaign design checkpoint: [historical ledger](research/ford-frenzy-history.md)
 delivered under #90; [six-chapter campaign](storyboards/campaign.md),
 [eighteen shared scene boards plus four route boards](storyboards/full-game.md) and
-[opening handoff](storyboards/opening-handoff.md) are reviewable drafts under
-#91/#92/#93/#114. Owner creative review remains open. S01-S03 remain the production
+[opening handoff](storyboards/opening-handoff.md) have owner storyboard approval under
+#91/#92/#93/#114. Art direction approval is recorded separately under #94. S01-S03 remain the production
 slice; S04-S18 and R1A/R1B/R2A/R2B have no added implementation or release
 commitment. Art direction #94 follows approval of the opening boards, then #104
 proves reference-based art.

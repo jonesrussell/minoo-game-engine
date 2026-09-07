@@ -1,10 +1,15 @@
 # Ford Frenzy art direction (opening slice)
 
-**Issue:** #94. **Status:** DRAFT. Storyboard revision 2 is owner-approved; **visual art approval is not given.** Scope: S01-S03 plus title, menu, HUD, loading and credits. Object IDs are canonical in [full-game storyboards](storyboards/full-game.md).
+**Issue:** #94. **Status:** ART DIRECTION APPROVED on 2026-09-07. See the [owner approval record](art/visual-direction-02/approval.md). Scope: S01-S03 plus title, menu, HUD, loading and credits. Object IDs are canonical in [full-game storyboards](storyboards/full-game.md).
 
 ## Style
 
-Satirical **2D editorial comic illustration**: bold ink contours, blocky readable silhouettes, flat colour, restrained halftone **on backgrounds only**. Palette: civic blue (ff-075), warm paper cream, mustard newsroom lamp, brick red alerts. Civic parody tone; not photoreal, cozy cottage or pixel art. Title **Ford Frenzy** and **jr42 productions** are live text layers, not baked lettering.
+Satirical **2D ink illustration inspired by GTA IV loading-screen artwork**:
+heavy contours, angular grounded adult faces, bold flat shadows and muted olive,
+slate grey, tan and dusty rust. Ordinary staff wear casual clothing; avoid anime
+eyes, suit-and-tie stereotypes and excessive dirty clutter. Brighten gameplay
+lighting while preserving the approved graphic treatment. Title **Ford Frenzy**
+and **jr42 productions** stay editable text. Characters and branding are original.
 
 **2D/3D:** 2D layers for the runtime renderer (#40). No 3D meshes or neural renders. Simulation stays independent of draw order.
 
@@ -28,8 +33,9 @@ S01.O6 is only the recorder; a wrong charger is a non-target distractor. Its two
 connector choices appear in the inspect tray. S03.O3 and S03.O4 each award one find;
 their magnets/grid become separate UI controls after inspection, never extra finds.
 
-Palette tokens: civic blue `#073fb4`, paper `#f6e9ce`, mustard `#dfae45`, brick
-`#ae493b`, ink `#142536`. Ink on paper is the primary reading combination; cream
+Scene palette starting tokens: slate `#354348`, tan `#c1ad89`, olive `#696347`,
+rust `#8c4d34`. UI retains paper `#f6e9ce` and ink `#142536` for readability.
+These tokens guide exports; the approved concept is the visual reference. Ink on paper is the primary reading combination; cream
 on ink supports HUD labels. Blue/mustard selection needs an outline and label as
 well as color. Body and evidence copy is at least 16 CSS px in the inspect tray,
 with a design contrast target of 4.5:1 checked on actual rendered combinations.
@@ -45,10 +51,10 @@ not implement those input/zoom rules; small-screen HUD is a layout study only.
 
 | ID | Use | SHA-256 |
 | --- | --- | --- |
-| ff-075 | Title/menu palette | `e2961e24084a8a43806a5000c113e94af298c7f75756091b59e8ece0142ed216` |
+| ff-075 | Civic parody reference; superseded bright palette | `e2961e24084a8a43806a5000c113e94af298c7f75756091b59e8ece0142ed216` |
 | ff-044 | S02 composition only | `91d754bff6d2f751c1fb798720a1f56b5017fb5b3ff4375acff6ac8b26e1301a` |
-| ff-022 | Silhouette candidate | `ad2f21f48c77c03408a8df7022556d5deb95a3a1b77de035d4f67a09d2ed9fb4` |
-| ff-037 | Silhouette candidate | `335ef3f9df4a5cfb668913c0c677d24c39af92fa59d59140c812b5b198ab7444` |
+| ff-022 | Historical exploration only; no default suited staff | `ad2f21f48c77c03408a8df7022556d5deb95a3a1b77de035d4f67a09d2ed9fb4` |
+| ff-037 | Historical exploration only; no default suited staff | `335ef3f9df4a5cfb668913c0c677d24c39af92fa59d59140c812b5b198ab7444` |
 
 Manifest: `games/ford-frenzy/assets/reference-manifest.json` (ff-044, ff-075).
 ff-022 and ff-037 were visually inspected and their hashes verified on 2026-09-07;
@@ -110,18 +116,19 @@ also includes decode buffers. Do not sum these unlike measurements as one budget
 
 ## Gates
 
-Owner review: (1) flat concept mockup; (2) editable HTML presentation. Not pipeline proof (#104). **#104 blocked** until visual sign-off. Release art is #17. No finished art or gameplay claimed.
+Owner approved the GTA IV inspired concept on 2026-09-07. #104 can now proceed
+to a background plus separate target-sprite proof. Release art remains #17.
+No finished art, renderer selection or gameplay is claimed.
 
-## Review checkpoint
+## Approved checkpoint
 
-Open the [visual presentation](art/visual-direction-01/index.html) for scene/HUD and
-title views, or inspect the [concept image](art/visual-direction-01/newsroom-concept.png).
-Input hashes, exact prompt, output hash/dimensions and limits are in
-[generation.json](art/visual-direction-01/generation.json). This first concept uses
-ff-075, ff-022 and ff-037; ff-044 is reserved for S02, not used in this generation.
+See the [approved concept and presentation](art/visual-direction-02/index.html),
+[owner approval](art/visual-direction-02/approval.md), and
+[generation provenance](art/visual-direction-02/generation.json).
+The earlier [visual direction 01](art/visual-direction-01/index.html) is retained
+as a superseded historical experiment, not the production style guide.
 
-The generated 1672x941 flat image conveys mood and characters. Props are easier to
-spot than final hidden targets, some occlusion differs from the boards, and small
-page marks are not source text. These are production tasks, not claims of finished
-S01 artwork. The HTML review controls switch two mockups; they do not run a game.
-Desktop and 390px views were inspected; both switches and page overflow were checked.
+The approved 1672x941 image is flat: props and characters remain baked in.
+Exact target placement, readable historical copy, final character identities,
+lighting and separate alpha exports remain production tasks. Presentation buttons
+switch mockups and do not run gameplay. UI and release approval remain separate.

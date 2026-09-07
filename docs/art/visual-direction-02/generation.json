@@ -1,0 +1,30 @@
+{
+  "id": "ff-concept-newsroom-02",
+  "date": "2026-09-07",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed by built-in tool",
+  "inputs": [
+    {
+      "id": "ff-concept-newsroom-gta-v",
+      "sha256": "de0683830c36152b98dff81978b9b59ae9a9e9976c370c8169c62cc78c256f2a",
+      "use": "Generated prior newsroom concept; composition and casual clothing reference"
+    }
+  ],
+  "prompt": "prompt.txt",
+  "output": "newsroom-concept.png",
+  "sha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880",
+  "bytes": 2610492,
+  "width": 1672,
+  "height": 941,
+  "review": "Owner approved art direction in conversation: awesome, locked in",
+  "approval_date": "2026-09-07",
+  "pixel_edits": "none",
+  "runtime_enabled": false,
+  "release_approved": false,
+  "limitations": [
+    "Flat concept, not separated production assets",
+    "Gameplay lighting must be brighter and targets tested for readability",
+    "Generated page lettering is not historical evidence",
+    "Character identities, final UI and release exports require production review"
+  ]
+}
