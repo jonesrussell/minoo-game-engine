@@ -1,0 +1,30 @@
+{
+  "name": "minoo-game-engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "games/*"
+  ],
+  "engines": {
+    "node": "24.13.1",
+    "npm": "11.8.0"
+  },
+  "packageManager": "npm@11.8.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/unit/*.test.ts",
+    "test:e2e": "npm run build && node scripts/test-browser.mjs",
+    "check:repository": "node scripts/check-repository.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "playwright": "1.63.0",
+    "typescript": "5.9.3",
+    "vite": "8.2.2"
+  }
+}

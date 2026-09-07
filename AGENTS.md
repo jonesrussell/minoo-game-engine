@@ -37,8 +37,9 @@ The product is a framework with a small runtime engine. Read docs/roadmap.md and
 
 ## Verification and completion
 
-- Current scaffold check: node scripts/check-repository.mjs. This is not a game test.
-- Once tooling lands, run the documented typecheck, unit tests, build and browser tests appropriate to the change.
+- Use Node.js 24.13.1 and npm 11.8.0. Install locked dependencies with npm ci.
+- Checks: npm run typecheck, npm test, npm run build, npm run test:e2e, npm run check:repository. Browser tests include a production build and write screenshots to test-results/. Install Chromium first with npx playwright install chromium (add --with-deps on Linux).
+- The interactive fixture shell is implemented. Full Journey gameplay, scene schemas and authoring commands remain separate issues; do not describe the shell as a completed game.
 - UI work requires browser exercise and screenshot inspection. Include keyboard/touch behavior where affected. Record tested commit and failures.
 - A green check does not prove learning quality, cultural accuracy or enjoyable play. Keep human acceptance explicit for release content.
 - No deployment to minoo.live is part of routine work. Use the separate review/alpha host defined by its delivery issue.
