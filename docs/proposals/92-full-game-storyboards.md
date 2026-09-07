@@ -135,14 +135,14 @@ implementation handoff.
 ### SB-ART-001: asset brief with reuse candidates
 
 Each scene MUST name its new BG base, new layers and any reused candidate IDs.
-The recovered ff011/073/075 references are title-palette authoring references;
-ff044 is a City Hall hallway reconstruction reference for S02 only; ff079/080 are
+The recovered ff-011, ff-073 and ff-075 are title-palette authoring references;
+ff-044 is a City Hall hallway reconstruction reference for S02 only; ff-079 and ff-080 are
 candidate-background references only. Reuse MUST NOT imply combat or unapproved
 historical staging.
 
 - Scenario: GIVEN S01 asset brief, WHEN art import runs, THEN new BG01 newsroom,
   new desk clutter layers are listed with no combat verbs.
-- Failure example: GIVEN agentsff079 used as a villain sprite, WHEN art review runs,
+- Failure example: GIVEN ff-079 used as a villain sprite, WHEN art review runs,
   THEN the usage is rejected.
 
 ### SB-CHAP-001: chapter cards and convergence

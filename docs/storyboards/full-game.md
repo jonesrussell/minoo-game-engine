@@ -756,7 +756,6 @@ Journalist: "Cover the leave statement and its public timeline."
 **Chapter:** 5 | **Date:** May 8, 2014 (fictional newsroom chronology) | **Play pattern:** spatial map of fictional city-service beats
 **Entry:** K13 | **Exit:** K14 to S15
 **sceneObjectiveAnswerHint:** "Label each fictional request as a reporting lead, not proof of a citywide fact."
-**sceneObjectiveAnswerHint:** "Pin which beats are civics coverage vs personality gossip."
 
 #### S14.P1 Establish and arrival (DRAFT)
 
@@ -769,8 +768,8 @@ Foreground: push pins. Midground: city map table. Background: window to ordinary
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
 | S14.O1 | Garbage route map overlay | Map left | context |
-| S14.O2 | Budget hearing notice | Pin stack | evidence |
-| S14.O3 | Transit board agenda summary | Map right | evidence |
+| S14.O2 | Fictional community question about budget hearings | Pin stack | context |
+| S14.O3 | Fictional request to cover transit meetings | Map right | context |
 | S14.O4 | Community contact library hours tip | Sticky note | context |
 | S14.O5 | Photographer parks feature shot list | Camera bag | tool |
 | S14.O6 | Service desk phone tree card | Map corner | tool |
@@ -781,7 +780,7 @@ Pin O2,O3,O4 to map districts; classify each pin as civics beat using O6 phone t
 
 #### S14.P4 Editorial outcome and exit (DRAFT)
 
-Community contact: "Services did not pause."
+Community contact: "Our questions are still here."
 
 Journalist: "That is the week one story."
 
