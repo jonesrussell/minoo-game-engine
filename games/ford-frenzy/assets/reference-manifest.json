@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "ff-044",
+      "path": "references/cityhall-hallway.png",
+      "sha256": "91d754bff6d2f751c1fb798720a1f56b5017fb5b3ff4375acff6ac8b26e1301a",
+      "dimensions": {
+        "width": 8977,
+        "height": 720
+      },
+      "role": "authoring reference",
+      "runtime_enabled": false,
+      "release_approved": false,
+      "source_name": "level1-cityhall-hallway.png"
+    },
+    {
+      "id": "ff-075",
+      "path": "references/crack-nation-logo.jpg",
+      "sha256": "e2961e24084a8a43806a5000c113e94af298c7f75756091b59e8ece0142ed216",
+      "dimensions": {
+        "width": 3261,
+        "height": 1029
+      },
+      "role": "authoring reference",
+      "runtime_enabled": false,
+      "release_approved": false,
+      "source_name": "Logo.jpg"
+    }
+  ]
+}

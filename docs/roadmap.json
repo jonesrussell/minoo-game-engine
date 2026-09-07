@@ -1110,6 +1110,14 @@
       44
     ],
     "experience_spec": "docs/specs/ford-frenzy-experience.md",
-    "delivery_plan": "docs/ford-frenzy-delivery.md"
+    "delivery_plan": "docs/ford-frenzy-delivery.md",
+    "asset_library": {
+      "issue": 103,
+      "inventory": "games/ford-frenzy/assets/legacy-inventory.json",
+      "report": "docs/ford-frenzy-art-library.md",
+      "source_files": 113,
+      "unique_hashes": 99,
+      "release_approved": false
+    }
   }
 }
