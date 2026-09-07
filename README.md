@@ -14,6 +14,7 @@ A game framework designed for reliable agent authoring, with a small 2D browser 
 - [Canonical scene schema decision](docs/decisions/003-canonical-scene-schema.md)
 - [Scene validation API](docs/scene-validation.md)
 - [Headless runtime contract](docs/specs/runtime.md)
+- [Versioned replay contract](docs/specs/replay.md)
 - [Studio capability decision](docs/decisions/002-studio-game-capability.md)
 - [Optional Studio integration roadmap](docs/studio-integration.md)
 - [Roadmap and issues](docs/roadmap.md)
