@@ -190,6 +190,11 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 ## Delivery rules
 
+Visual checkpoint #94: [art direction](art-direction.md) and a
+[newsroom/title/HUD concept](art/visual-direction-01/index.html) are ready for owner
+visual review. These are flat concept pixels and editable presentation, not runtime
+gameplay or the separated asset pipeline proof in #104. Storyboard approval is complete.
+
 Full campaign design checkpoint: [historical ledger](research/ford-frenzy-history.md)
 delivered under #90; [six-chapter campaign](storyboards/campaign.md),
 [eighteen shared scene boards plus four route boards](storyboards/full-game.md) and

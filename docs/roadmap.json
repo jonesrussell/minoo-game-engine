@@ -47,7 +47,7 @@
       "production_scope": "S01-S03 only; S04-S18 and R1A/R1B/R2A/R2B remain storyboard design, production uncommitted",
       "rewrite_contract": 114,
       "next_gates": {
-        "art_direction": {"issue": 94, "status": "unblocked for art draft; art review pending"},
+        "art_direction": {"issue": 94, "status": "visual concept and brief in owner review", "document": "docs/art-direction.md", "preview": "docs/art/visual-direction-01/index.html"},
         "reporting_loop": {"issue": 43, "status": "storyboard dependency satisfied; ready when other dependency checks close"},
         "owner_release_review": {"status": "open"},
         "runtime_and_playtest": {"status": "open"}
