@@ -2,6 +2,10 @@
 
 Status: accepted. The workspace uses npm, TypeScript and Vite, with Node's test runner and Playwright browser checks. Versions are pinned in package.json and package-lock.json.
 
+## Current first-game direction
+
+The [investigative-game brief](first-game.md) supersedes the original Journey-first product scope. Keep completed independent scene/runtime/replay APIs. #40 must evaluate a proper 2D rendering engine, frame scheduling, drawing and asset lifecycle, plus the boundary for possible future 3D. HTML/SVG-only is not the product direction. The new game package and versioned investigative content contract are planned; existing games/journey stays a legacy fixture.
+
 ## Decision
 
 Build a new focused TypeScript engine using browser primitives and ordinary libraries where useful. Use a headless state/action core, versioned JSON content, an accessible browser renderer and a separate authoring package. Ship static assets. AI operates during development; gameplay does not require a model call.
@@ -22,7 +26,7 @@ Scenes use logical coordinates, stable IDs, explicit vocabulary references and c
 
 ## Tradeoffs
 
-This prioritizes explicit state, testability and accessible 2D interaction over a general-purpose renderer. Start with DOM/SVG where suitable; choose Canvas only with an accessibility strategy and a demonstrated need. Do not build an ECS or plugin system without a concrete use case.
+This prioritizes explicit state, testability and accessible 2D interaction over a general-purpose renderer. Choose the rendering engine in #40 using the updated game requirements, with accessible equivalents for interactive scene targets. Do not build an ECS or plugin system without a concrete use case.
 
 Reproducible builds and deterministic game replay are separate concerns. Lock dependencies for the former; explicit actions and controlled inputs support the latter.
 

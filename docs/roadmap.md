@@ -1,63 +1,38 @@
-# Minoo framework, runtime and Journey roadmap
+# Minoo framework and first-game roadmap
 
-Updated September 7, 2026. The core roadmap has eight phases, 54 delivery/decision issues and eight phase trackers. A separate optional Studio track adds three milestones, 10 delivery/decision issues and three trackers. The executable workspace (#2), CI evidence (#3), package boundaries (#33), Markdown SDD pilot (#32), schema decision (#35) and scene validation (#6) are delivered. Full browser gameplay remains backlog work.
+Updated September 7, 2026. The first game is now a Toronto investigative hidden-object adventure during the Ford era; final title is undecided. See [the product scope](product.md) and [game brief](first-game.md). There are 73 active delivery/decision records plus phase trackers, and 2 deferred Journey learning records.
 
-## Product direction
+## Current checkpoint
 
-Build a game framework designed for agents to inspect and operate reliably, with a small runtime engine and Journey as the first game. The framework defines scenes, objects, content references, operations and compatibility rules. The runtime loads those definitions, processes input and actions, manages state and renders results. Game packages own vocabulary, artwork and game-specific rules.
+The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. The new game's scene content, notebook and progression are not implemented. The current Journey preview is a legacy fixture. The renderer evaluation #40 now requires a proper rendering engine, frame loop, drawing/sprites, assets and an explicit future-3D boundary; HTML/SVG-only is not the product direction.
 
-Development stays local through chat. GitHub provides code review, issue tracking and CI. Hosting a finished browser game is a release concern, not a cloud-development requirement. The first release is one small Journey experience; the framework becomes reusable only after Matcher demonstrates it.
+Start research #90 and renderer evaluation #40 in parallel. Campaign outline #91 unlocks opening boards #93 and the reporting-loop spec #43. Full campaign storyboard #92 is a separate branch of work and does not block the opening slice. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 are explicit prerequisites.
 
-## Optional Studio capability
+## Projects and boundaries
 
-[ADR 002](decisions/002-studio-game-capability.md) records the accepted boundary and verified repository evidence. [The optional integration roadmap](studio-integration.md) defines S0-S2 milestones and issues. Studio supplies shared authoring services when ready; Minoo owns game contracts and execution. M0-M7 do not depend on this track. Studio private MVP and local MCP have no game-integration prerequisite.
+- [Framework roadmap](https://github.com/users/jonesrussell/projects/15)
+- [First Game Delivery](https://github.com/users/jonesrussell/projects/16)
+- [Milestones](https://github.com/jonesrussell/minoo-game-engine/milestones)
+- [Machine-readable scope and dependencies](roadmap.json)
+- [Project views](project-views.md)
 
-## Project entry points
+Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio integration remains optional under [ADR 002](decisions/002-studio-game-capability.md) and [S0-S2](studio-integration.md). Its existing Journey tree-label example remains a compatibility fixture, not the new game's story. It never blocks core delivery or Studio's private MVP. Follow [package boundaries](package-boundaries.md) and [Markdown SDD](sdd-pilot.md). Historical facts, attributed allegations and fiction require separate records and review under [content policy](content-policy.md).
 
-- [Framework and Runtime Roadmap](https://github.com/users/jonesrussell/projects/15): complete cross-project backlog, phase trackers and decisions.
-- [Journey Delivery](https://github.com/users/jonesrussell/projects/16): scene work, content, playtesting and browser release.
-- [Milestones](https://github.com/jonesrussell/minoo-game-engine/milestones): phase acceptance gates.
-- [Machine-readable dependencies](roadmap.json): issue references for agents and graph checks.
-- [Research and tooling assessment](research/sdd-and-engine-research.md): rationale and candidate libraries, not a commitment to install all of them.
+## N0 - Investigation storyboards
 
-## Scope and ownership
+[Phase tracker #89](https://github.com/jonesrussell/minoo-game-engine/issues/89). Exit evidence: Research ledger and a reviewed complete campaign storyboard. The opening three-scene boards can be approved before later panels are finished.
 
-| Layer | Owns | Must not own |
-|---|---|---|
-| Framework | Versioned contracts, content references, validation, operations, extension interfaces | Journey-specific assets or invented language content |
-| Runtime | State transitions, input adapters, assets, rendering, saves and replay | Model calls required for ordinary gameplay |
-| Authoring | Inspect, validate, edit, undo, diffs, CLI and later MCP | Independent rules that disagree with runtime validation |
-| Journey | First scene, vocabulary, prompts, hints, restoration and learning review | Generic infrastructure added only for speculative future games |
-| Delivery | Local setup, CI, evidence, release and feedback | Unqualified claims of browser, language or device support |
-
-## Sequencing and commitments
-
-Phases are acceptance gates, not calendar promises. Independent documentation, content decisions and CI work can proceed when their direct dependencies allow it. Do not serialize every task merely because a previous phase tracker is still open. Native GitHub dependency links identify prerequisites; child relationships identify ownership, not scheduling constraints.
-
-P0 blocks its milestone. P1 is required planned work in that phase but may be sequenced after the critical P0 path. P2 is deferred improvement. S/M/L are initial relative scope estimates, not days or token budgets. Split an issue if it no longer fits a focused, reviewable PR. No due dates have been invented.
-
-The headless checkpoint is implemented: state/actions (#7), versioned replay (#38) and generated invariant tests (#39). The standalone six-object fixture produces identical state and events in Node and Chromium, rejects incompatible logs with an action index, and passes 250 generated histories against an independent oracle. A saved synthetic duplicate-score failure is shrunk and reproduced before the real runtime passes its actions. See the [replay contract](specs/replay.md) and [generated-test evidence](specs/runtime-testing.md). Each issue has a separate reviewed PR and required CI checks. This completes part of M1; asset loading, rendering, storage and their decisions remain separate work.
-
-Next evaluate the renderer in #40, then connect the runtime to accessible scene controls in #8. The [scene API](scene-validation.md) supplies validated definitions; browser handlers must emit runtime actions rather than award finds directly. Follow the [package boundaries](package-boundaries.md) and [plain Markdown SDD flow](sdd-pilot.md). Licensing #5 and delivery guidance #34 remain independent ready work. Studio integration stays optional.
-
-## Phase overview
-
-| Phase | Purpose | Tracker |
-|---|---|---|
-| M0 - Local delivery and specifications | Prove a reproducible development loop before adding game complexity. | [#24](https://github.com/jonesrussell/minoo-game-engine/issues/24) |
-| M1 - Framework contracts and runtime | Define the framework contracts separately from rendering and Journey content. | [#25](https://github.com/jonesrussell/minoo-game-engine/issues/25) |
-| M2 - Journey vertical slice | Prove one coherent learning experience and gather owner playtest feedback. | [#26](https://github.com/jonesrussell/minoo-game-engine/issues/26) |
-| M3 - Agent authoring | Make structured authoring measurable before adding an MCP transport. | [#27](https://github.com/jonesrussell/minoo-game-engine/issues/27) |
-| M4 - Journey browser alpha | Ship a small browser alpha with known support limits and a feedback loop. | [#28](https://github.com/jonesrussell/minoo-game-engine/issues/28) |
-| M5 - Framework reuse | Use a second game to decide what is reusable rather than designing speculative abstractions. | [#29](https://github.com/jonesrussell/minoo-game-engine/issues/29) |
-| M6 - Local MCP authoring | Expose the framework to agents without requiring model calls in gameplay. | [#30](https://github.com/jonesrussell/minoo-game-engine/issues/30) |
-| M7 - Framework beta and maintenance | Stabilize the demonstrated framework and small runtime; set future scope from evidence. | [#31](https://github.com/jonesrussell/minoo-game-engine/issues/31) |
+| Issue | Priority | Workstream | Prerequisites |
+|---|---|---|---|
+| [#90 Build the Ford-era research and source ledger](https://github.com/jonesrussell/minoo-game-engine/issues/90) | P0 | content | None |
+| [#91 Outline the complete investigation campaign and ending](https://github.com/jonesrussell/minoo-game-engine/issues/91) | P0 | content | #90 |
+| [#92 Storyboard every scene in the full campaign](https://github.com/jonesrussell/minoo-game-engine/issues/92) | P0 | content | #91 |
+| [#93 Storyboard the opening three investigative scenes](https://github.com/jonesrussell/minoo-game-engine/issues/93) | P0 | content | #91 |
+| [#94 Define Toronto scene art direction and asset briefs](https://github.com/jonesrussell/minoo-game-engine/issues/94) | P0 | content | #93 |
 
 ## M0 - Local delivery and specifications
 
-Prove a reproducible development loop before adding game complexity.
-
-**Exit evidence:** A local task can install, build, test and open a PR; CI retains evidence; a small SDD workflow and license decision are recorded.
+[Phase tracker #24](https://github.com/jonesrussell/minoo-game-engine/issues/24). Exit evidence: Reproducible local setup, specs, licensing and delivery guidance.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
@@ -69,17 +44,16 @@ Prove a reproducible development loop before adding game complexity.
 | [#32 Pilot spec-driven development on the scene contract](https://github.com/jonesrussell/minoo-game-engine/issues/32) | P0 | delivery | None |
 | [#33 Define framework runtime and game ownership](https://github.com/jonesrussell/minoo-game-engine/issues/33) | P0 | framework | None |
 | [#34 Document issue readiness review and release evidence rules](https://github.com/jonesrussell/minoo-game-engine/issues/34) | P1 | delivery | None |
+| [#88 Codify the investigative first-game pivot](https://github.com/jonesrussell/minoo-game-engine/issues/88) | P0 | delivery | None |
 
 ## M1 - Framework contracts and runtime
 
-Define the framework contracts separately from rendering and Journey content.
-
-**Exit evidence:** Versioned scenes validate; actions replay deterministically; input, storage and asset failures have explicit behavior.
+[Phase tracker #25](https://github.com/jonesrussell/minoo-game-engine/issues/25). Exit evidence: Independent schemas/runtime/replay, generalized content, proper renderer/frame loop, assets and storage.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
 | [#11 Persist and recover local game progress](https://github.com/jonesrussell/minoo-game-engine/issues/11) | P1 | engine | #7 |
-| [#8 Render responsive scenes with accessible object controls](https://github.com/jonesrussell/minoo-game-engine/issues/8) | P0 | engine | #6, #7, #40 |
+| [#8 Render responsive scenes with accessible object controls](https://github.com/jonesrussell/minoo-game-engine/issues/8) | P0 | engine | #6, #7, #40, #97 |
 | [#7 Implement deterministic game state and replayable actions](https://github.com/jonesrussell/minoo-game-engine/issues/7) | P0 | engine | #6 |
 | [#6 Define versioned scene and vocabulary contracts](https://github.com/jonesrussell/minoo-game-engine/issues/6) | P0 | engine | #2, #35 |
 | [#35 Select the canonical schema format and validator](https://github.com/jonesrussell/minoo-game-engine/issues/35) | P0 | framework | #32, #33 |
@@ -87,68 +61,63 @@ Define the framework contracts separately from rendering and Journey content.
 | [#37 Define asset manifests loading and failure behavior](https://github.com/jonesrussell/minoo-game-engine/issues/37) | P0 | engine | #6 |
 | [#38 Version replay logs and verify deterministic results](https://github.com/jonesrussell/minoo-game-engine/issues/38) | P0 | engine | #7 |
 | [#39 Add generated action-sequence tests for runtime invariants](https://github.com/jonesrussell/minoo-game-engine/issues/39) | P1 | quality | #7 |
-| [#40 Evaluate the scene renderer against concrete requirements](https://github.com/jonesrussell/minoo-game-engine/issues/40) | P1 | engine | #33, #6 |
+| [#40 Evaluate a proper 2D rendering engine and future 3D boundary](https://github.com/jonesrussell/minoo-game-engine/issues/40) | P1 | engine | #33, #6 |
 | [#41 Verify input coordinates and accessible target equivalents](https://github.com/jonesrussell/minoo-game-engine/issues/41) | P0 | engine | #8 |
 | [#42 Test save corruption migration and unavailable storage](https://github.com/jonesrussell/minoo-game-engine/issues/42) | P1 | quality | #11, #36 |
+| [#95 Generalize content references for investigative scenes](https://github.com/jonesrussell/minoo-game-engine/issues/95) | P0 | framework | #6, #35, #43 |
+| [#97 Implement the rendering frame loop and simulation scheduling](https://github.com/jonesrussell/minoo-game-engine/issues/97) | P0 | engine | #7, #40 |
 
-## M2 - Journey vertical slice
+## M2 - Investigation vertical slice
 
-Prove one coherent learning experience and gather owner playtest feedback.
-
-**Exit evidence:** A six-object scene is usable by pointer and keyboard, with hints, restoration and recoverable progress; initial vocabulary has provenance.
+[Phase tracker #26](https://github.com/jonesrussell/minoo-game-engine/issues/26). Exit evidence: Three linked scenes, notebook/source checks, editorial retry, hints, save/reset and accessible play with owner review.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#16 Approve vocabulary and optional pronunciation content](https://github.com/jonesrussell/minoo-game-engine/issues/16) | P0 | content | #5, #9 |
-| [#12 Qualify the complete Journey vertical slice](https://github.com/jonesrussell/minoo-game-engine/issues/12) | P0 | quality | #10, #11, #3, #41 |
-| [#10 Add three hints and a restoration reward](https://github.com/jonesrussell/minoo-game-engine/issues/10) | P1 | journey | #9 |
-| [#9 Build the first six-object homestead scene](https://github.com/jonesrussell/minoo-game-engine/issues/9) | P0 | journey | #8, #43 |
-| [#43 Specify the complete first-scene learning loop](https://github.com/jonesrussell/minoo-game-engine/issues/43) | P0 | journey | #32 |
-| [#44 Add optional pronunciation playback with clear fallback](https://github.com/jonesrussell/minoo-game-engine/issues/44) | P1 | journey | #9, #16 |
-| [#45 Run an owner playtest and triage learning-flow feedback](https://github.com/jonesrussell/minoo-game-engine/issues/45) | P0 | quality | #12 |
+| [#12 Qualify the three-scene investigation slice](https://github.com/jonesrussell/minoo-game-engine/issues/12) | P0 | quality | #10, #11, #3, #41, #98, #99 |
+| [#10 Add bounded hints and investigation progression feedback](https://github.com/jonesrussell/minoo-game-engine/issues/10) | P1 | game | #9, #96 |
+| [#9 Build investigation scene S01: assignment desk](https://github.com/jonesrussell/minoo-game-engine/issues/9) | P0 | game | #8, #43, #93, #94, #95, #96 |
+| [#43 Specify the hidden-object reporting and evidence loop](https://github.com/jonesrussell/minoo-game-engine/issues/43) | P0 | game | #32, #91 |
+| [#45 Run an owner playtest of investigative clarity and pacing](https://github.com/jonesrussell/minoo-game-engine/issues/45) | P0 | quality | #12 |
+| [#96 Implement replayable investigation notebook and scene progression](https://github.com/jonesrussell/minoo-game-engine/issues/96) | P0 | engine | #7, #43, #95 |
+| [#98 Build investigation scene S02: City Hall records](https://github.com/jonesrussell/minoo-game-engine/issues/98) | P0 | game | #8, #93, #94, #95, #96 |
+| [#99 Build investigation scene S03: deadline review](https://github.com/jonesrussell/minoo-game-engine/issues/99) | P0 | game | #9, #98, #96, #10 |
 
 ## M3 - Agent authoring
 
-Make structured authoring measurable before adding an MCP transport.
-
-**Exit evidence:** An agent can inspect and modify a second scene using validated, reversible operations and replay the result.
+[Phase tracker #27](https://github.com/jonesrussell/minoo-game-engine/issues/27). Exit evidence: Inspect and change investigative scenes through validated, reversible operations with replay evidence.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#15 Demonstrate a second scene authored entirely through chat](https://github.com/jonesrussell/minoo-game-engine/issues/15) | P0 | journey | #14, #4, #12, #16 |
-| [#14 Expose inspect validate edit and replay commands](https://github.com/jonesrussell/minoo-game-engine/issues/14) | P0 | authoring | #13, #7 |
+| [#15 Demonstrate a second scene authored entirely through chat](https://github.com/jonesrussell/minoo-game-engine/issues/15) | P0 | game | #14, #4, #12, #90 |
+| [#14 Expose inspect validate edit and replay commands](https://github.com/jonesrussell/minoo-game-engine/issues/14) | P0 | authoring | #13, #7, #95 |
 | [#13 Implement validated transactional scene editing operations](https://github.com/jonesrussell/minoo-game-engine/issues/13) | P0 | authoring | #6, #12, #46 |
-| [#46 Specify authoring operations errors and transaction boundaries](https://github.com/jonesrussell/minoo-game-engine/issues/46) | P0 | authoring | #6, #32 |
+| [#46 Specify authoring operations errors and transaction boundaries](https://github.com/jonesrussell/minoo-game-engine/issues/46) | P0 | authoring | #6, #32, #95 |
 | [#47 Qualify authoring rollback and stale revision handling](https://github.com/jonesrussell/minoo-game-engine/issues/47) | P0 | quality | #13 |
 | [#48 Build repeatable agent authoring acceptance tasks](https://github.com/jonesrussell/minoo-game-engine/issues/48) | P0 | quality | #14, #15 |
 | [#49 Present human-readable scene diffs alongside structured output](https://github.com/jonesrussell/minoo-game-engine/issues/49) | P1 | authoring | #13 |
 
-## M4 - Journey browser alpha
+## M4 - Investigation browser alpha
 
-Ship a small browser alpha with known support limits and a feedback loop.
-
-**Exit evidence:** Approved art/content, browser and accessibility evidence, tagged hosting and a rollback procedure meet the release checklist.
+[Phase tracker #28](https://github.com/jonesrussell/minoo-game-engine/issues/28). Exit evidence: Reviewed source/fiction classification and content rights, supported browsers, hosting and rollback.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#19 Publish Journey browser alpha with release evidence](https://github.com/jonesrussell/minoo-game-engine/issues/19) | P0 | delivery | #4, #15, #18, #52, #54, #53 |
-| [#18 Qualify accessibility touch and supported browsers](https://github.com/jonesrussell/minoo-game-engine/issues/18) | P0 | quality | #16, #17, #12, #50, #51 |
-| [#17 Create and approve final homestead artwork](https://github.com/jonesrussell/minoo-game-engine/issues/17) | P1 | content | #5, #12 |
+| [#19 Publish first-game browser alpha with release evidence](https://github.com/jonesrussell/minoo-game-engine/issues/19) | P0 | delivery | #4, #15, #18, #52, #54, #53 |
+| [#18 Qualify accessibility touch and supported browsers](https://github.com/jonesrussell/minoo-game-engine/issues/18) | P0 | quality | #90, #17, #12, #50, #51 |
+| [#17 Produce approved original art for the investigative slice](https://github.com/jonesrussell/minoo-game-engine/issues/17) | P1 | content | #94, #37 |
 | [#50 Add automated accessibility checks and manual coverage notes](https://github.com/jonesrussell/minoo-game-engine/issues/50) | P0 | quality | #12 |
 | [#51 Set and verify browser alpha performance budgets](https://github.com/jonesrussell/minoo-game-engine/issues/51) | P1 | quality | #17, #12 |
-| [#52 Enforce content approval and attribution at release build time](https://github.com/jonesrussell/minoo-game-engine/issues/52) | P0 | content | #5, #16, #17 |
+| [#52 Review investigative content, sources and asset rights for release](https://github.com/jonesrussell/minoo-game-engine/issues/52) | P0 | content | #90, #93, #17, #12 |
 | [#53 Provide alpha feedback intake and release support notes](https://github.com/jonesrussell/minoo-game-engine/issues/53) | P1 | delivery | #45 |
 | [#54 Rehearse deployment rollback before alpha release](https://github.com/jonesrussell/minoo-game-engine/issues/54) | P0 | delivery | #52 |
 
 ## M5 - Framework reuse
 
-Use a second game to decide what is reusable rather than designing speculative abstractions.
-
-**Exit evidence:** Matcher uses shared contracts without importing Journey internals; compatibility and package boundaries are demonstrated.
+[Phase tracker #29](https://github.com/jonesrussell/minoo-game-engine/issues/29). Exit evidence: Matcher and the investigative game run independently through shared public contracts.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#21 Refine engine APIs from Journey and Matcher evidence](https://github.com/jonesrussell/minoo-game-engine/issues/21) | P2 | engine | #20, #56 |
+| [#21 Refine engine APIs from first-game and Matcher evidence](https://github.com/jonesrussell/minoo-game-engine/issues/21) | P2 | engine | #20, #56 |
 | [#20 Prototype Matcher against the shared engine contracts](https://github.com/jonesrussell/minoo-game-engine/issues/20) | P2 | engine | #19, #55 |
 | [#55 Specify Matcher as a framework conformance game](https://github.com/jonesrussell/minoo-game-engine/issues/55) | P1 | framework | #19, #33 |
 | [#56 Enforce package boundaries and test two-game compatibility](https://github.com/jonesrussell/minoo-game-engine/issues/56) | P1 | quality | #20 |
@@ -156,9 +125,7 @@ Use a second game to decide what is reusable rather than designing speculative a
 
 ## M6 - Local MCP authoring
 
-Expose the framework to agents without requiring model calls in gameplay.
-
-**Exit evidence:** A local MCP adapter uses the same validated operations as the CLI; capability limits and client conformance are tested.
+[Phase tracker #30](https://github.com/jonesrussell/minoo-game-engine/issues/30). Exit evidence: Local MCP consumes the same tested authoring operations without becoming a gameplay requirement.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
@@ -169,9 +136,7 @@ Expose the framework to agents without requiring model calls in gameplay.
 
 ## M7 - Framework beta and maintenance
 
-Stabilize the demonstrated framework and small runtime; set future scope from evidence.
-
-**Exit evidence:** Versioned API documentation, migration examples, release checks and repeatable agent acceptance tasks support a tagged beta.
+[Phase tracker #31](https://github.com/jonesrussell/minoo-game-engine/issues/31). Exit evidence: Published compatible contracts, migration guidance and repeatable acceptance.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
@@ -179,40 +144,43 @@ Stabilize the demonstrated framework and small runtime; set future scope from ev
 | [#63 Qualify and tag the first framework beta](https://github.com/jonesrussell/minoo-game-engine/issues/63) | P1 | delivery | #62, #56 |
 | [#64 Define dependency maintenance and next-release intake](https://github.com/jonesrussell/minoo-game-engine/issues/64) | P2 | delivery | #63 |
 
-## Definition of ready
+## S0 - Optional Studio review adapter
 
-A task has an observable outcome, bounded scope, acceptance criteria, applicable spec references and satisfied prerequisites. Decisions may be ready even when implementation is blocked. In-review work is not ready for another implementation agent. A completed checkbox is not enough if the evidence is missing or the linked PR is unmerged.
+[Phase tracker #66](https://github.com/jonesrussell/minoo-game-engine/issues/66). Exit evidence: Existing Journey compatibility example over a standalone candidate-review contract.
 
-## Definition of done
+| Issue | Priority | Workstream | Prerequisites |
+|---|---|---|---|
+| [#69 Specify the versioned Minoo candidate review boundary](https://github.com/jonesrussell/minoo-game-engine/issues/69) | P2 | authoring | #33, #35 |
+| [#70 Prove the standalone Journey tree-label authoring example](https://github.com/jonesrussell/minoo-game-engine/issues/70) | P2 | game | #14, #37, #38, #43 |
+| [#71 Build an optional read-only Studio adapter for Minoo review](https://github.com/jonesrussell/minoo-game-engine/issues/71) | P2 | authoring | #69, #70 |
+| [#72 Qualify the Journey candidate review boundary end to end](https://github.com/jonesrussell/minoo-game-engine/issues/72) | P2 | quality | #71 |
 
-Acceptance criteria have evidence at the tested commit; checks appropriate to the change pass; visual changes have browser exercise and screenshot inspection; content changes have provenance; the PR is merged; and downstream readiness has been reconciled. Phase trackers close only after required children and exit evidence are complete. Human learning, language and cultural review must not be inferred from automated checks.
+## S1 - Shared Studio authoring workflow
 
-## Specification discipline
+[Phase tracker #67](https://github.com/jonesrussell/minoo-game-engine/issues/67). Exit evidence: Reuse verified Studio workflow contracts after its private MVP gate.
 
-Specs describe lasting behavior; issues describe delivery work. The #32 pilot selects plain Markdown with a short proposal and durable scene specification. Each substantive capability should identify requirement IDs, examples, failure cases, non-goals and verification. Update the spec when intended behavior changes. Use existing specs for small fixes rather than generating a new collection of documents each time.
+| Issue | Priority | Workstream | Prerequisites |
+|---|---|---|---|
+| [#73 Verify Studio readiness before shared game authoring](https://github.com/jonesrussell/minoo-game-engine/issues/73) | P2 | delivery | #72 plus qualified external dependencies in roadmap.json |
+| [#74 Connect Minoo candidates to shared Studio revisions jobs and decisions](https://github.com/jonesrussell/minoo-game-engine/issues/74) | P2 | authoring | #73, #47 |
+| [#75 Qualify durable Journey authoring and account isolation in Studio](https://github.com/jonesrussell/minoo-game-engine/issues/75) | P2 | quality | #74 |
 
-Important invariants include no duplicate finds, bounded hints, a single completion award, repeatable action replay, valid vocabulary references, recoverable saves and atomic authoring edits. A JSON schema alone does not establish all of these. Runtime, semantic and browser tests cover different parts of the contract.
+## S2 - Optional Studio preview and publishing
 
-## Tool adoption gates
+[Phase tracker #68](https://github.com/jonesrussell/minoo-game-engine/issues/68). Exit evidence: Separately decide isolated embedding and publishing authorization.
 
-The #35 proof pins Ajv, json-schema-to-typescript and a development-only Zod comparator. The #6 scene API declares Ajv as an engine dependency and uses the canonical JSON Schema path. Rendering choice is decided by #40 against actual requirements. fast-check is evaluated through runtime invariants in #39. MCP follows stable CLI operations in #58 through #61. Those remaining candidates are not installed by this work.
+| Issue | Priority | Workstream | Prerequisites |
+|---|---|---|---|
+| [#76 Decide whether Journey needs embedded Studio previews](https://github.com/jonesrussell/minoo-game-engine/issues/76) | P2 | delivery | #75 |
+| [#77 Qualify isolated Journey preview presentation if adopted](https://github.com/jonesrussell/minoo-game-engine/issues/77) | P2 | quality | #76 |
+| [#78 Specify separate authorization for Studio-assisted game publishing](https://github.com/jonesrussell/minoo-game-engine/issues/78) | P2 | delivery | #75 |
 
-## Risks and responses
+## Deferred Journey learning
 
-| Risk | Response and evidence |
-|---|---|
-| Framework scope grows before a useful game exists | Six-object Journey gate, then one Matcher conformance game; no general plugin system before reuse evidence |
-| Agent edits are structurally valid but break play | Semantic validation, independent replay/model tests and human scene review |
-| Content rights or language accuracy are unresolved | #5 and #16 plus release content gate #52; fixtures cannot silently become release content |
-| Rendering excludes keyboard or touch users | #41, #50 and #18 qualify interactions separately from visual appearance |
-| Saves break after content changes | #36, #42 and rollback rehearsal #54 cover migration and recovery |
-| Specs drift from code | Requirement-to-test links, per-PR verification and agent acceptance tasks #48 |
-| Tooling creates unnecessary maintenance | Explicit adoption decisions; pin selected dependencies and verify updates in #64 |
+#16 vocabulary approval and #44 pronunciation playback remain open in a separate deferred milestone. They are not investigative release prerequisites and are not claimed delivered. Existing source/schema fixtures and historical ADRs remain valid engineering evidence.
 
-## Outside this roadmap
+## Delivery rules
 
-Native iOS/Android/console exports, multiplayer, neural rendering or physics, model training, runtime LLM dependence, payments, backend accounts and a full visual editor need separate proposals. MCP here is local authoring infrastructure. Optional Studio authoring integration is scoped separately in S0-S2. No live-site content integration or production data transfer is assumed.
+Native dependencies identify prerequisites; sub-issues identify phase ownership. Do not infer readiness from phase order. P0 blocks its gate, P1 is planned required work and P2 is deferred improvement. No dates or full-campaign production commitments have been invented.
 
-## Maintaining the roadmap
-
-After a merge, verify the linked issue criteria, close the issue when satisfied, and update native dependencies/readiness for downstream work in both projects. Add new issues to the primary roadmap and relevant delivery project, set phase/priority/workstream/effort/readiness and link the phase tracker. Keep roadmap.json and this document aligned when scope changes. Review the next phase in detail at each gate; later phases remain adjustable based on evidence.
+Keep scopes, evidence and project readiness current. A completed issue needs acceptance evidence at the reviewed commit and a merged PR. Planning tasks require the named owner review before their own completion. Phase trackers close only when their required children and exit gate are satisfied. Tests cannot establish historical accuracy, content rights or enjoyable play.

@@ -54,7 +54,7 @@ browser input -> runtime adapter -> structured action -> runtime core
 runtime state -> view model -> renderer -> accessible controls / pixels
 ```
 
-The renderer may choose DOM, SVG, Canvas or a later library after the concrete requirements are evaluated. That choice does not move rules into the renderer. The renderer must provide an accessible equivalent for interactive targets and must report unsupported input or asset failures through the adapter contract. It must not import game-private rules, write persistence directly or call a model.
+The first-game renderer must use a proper rendering engine selected by #40. HTML controls may supply menus and accessibility, but HTML/SVG-only is not the first-game rendering direction. That choice does not move rules into the renderer. The renderer must provide an accessible equivalent for interactive targets and must report unsupported input or asset failures through the adapter contract. It must not import game-private rules, write persistence directly or call a model.
 
 ## Browser and local constraints
 
@@ -75,3 +75,7 @@ Failure: a local play command requires an account token, Studio process, network
 ## Verification
 
 Before implementation, reviewers should verify that each new package has an explicit public entrypoint, that imports follow the table, and that rendering tests exercise input through structured actions. A boundary check should fail for a runtime-to-game or runtime-core-to-browser import. Browser evidence can establish interaction and accessibility behavior; it cannot establish language, cultural or learning approval, which remains human review under [the content policy](content-policy.md).
+
+## First-game pivot
+
+The investigative game described in [the brief](first-game.md) now owns the first-game role. Its package is planned; games/journey remains a legacy fixture. Apply the same game-package import rules to the future package. The game owns Toronto story data and evidence interpretation. The framework owns versioned general content references and reusable progression ports; no game evidence goes into waaseyaa.site or fabricated vocabulary metadata. Rendering uses the engine selected in #40 and the frame-loop work in #97, with accessible browser controls around it.
