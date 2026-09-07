@@ -189,6 +189,14 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 ## Delivery rules
 
+Full campaign design checkpoint: [historical ledger](research/ford-frenzy-history.md)
+delivered under #90; [six-chapter campaign](storyboards/campaign.md),
+[eighteen scene boards](storyboards/full-game.md) and
+[opening handoff](storyboards/opening-handoff.md) are reviewable drafts under
+#91/#92/#93. Owner creative review remains open. S01-S03 remain the production
+slice; S04-S18 have no added implementation or release commitment. Art direction
+#94 follows approval of the opening boards, then #104 proves reference-based art.
+
 Native dependencies identify prerequisites; sub-issues identify phase ownership. Do not infer readiness from phase order. P0 blocks its gate, P1 is planned required work and P2 is deferred improvement. No dates or full-campaign production commitments have been invented.
 
 Keep scopes, evidence and project readiness current. A completed issue needs acceptance evidence at the reviewed commit and a merged PR. Planning tasks require the named owner review before their own completion. Phase trackers close only when their required children and exit gate are satisfied. Tests cannot establish historical accuracy, content rights or enjoyable play.

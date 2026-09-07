@@ -68,10 +68,17 @@ a playable local build and owner review. Score measures finds, not factual certa
 
 ## Entire-game storyboard work
 
-First produce a campaign outline with a finite chapter list and ending. A draft
-five-part shape is: assignment and first reports; pursuit and verification; public
-records and changing claims; public acknowledgement and civic accountability;
-publication and aftermath. Dates, chapter count, cast, tone and ending are not locked.
+The [researched campaign draft](storyboards/campaign.md) now proposes six chapters
+and eighteen playable scenes: first reports; denial and summer verification;
+police announcement; admission and Council; leave and return; election and reckoning.
+Play runs from 17 May 2013 through 30 October 2014, with optional dated background
+and closing cards. Two fictional newsroom endings preserve the real outcomes.
+Owner approval of this complete draft remains pending.
+
+Read the [full scene boards](storyboards/full-game.md),
+[opening implementation handoff](storyboards/opening-handoff.md) and
+[historical ledger](research/ford-frenzy-history.md). These are text storyboards
+with numbered panels and asset briefs, not finished illustrated artwork or gameplay.
 
 Then storyboard every planned scene with a stable ID, chronological placement,
 player objective, establishing composition, findable-object list, evidence links,

@@ -89,7 +89,7 @@ The six branch choices are six binary choices, BR-CH1-A/B through BR-CH6-A/B. Th
 Both endings show the same certified history. Each ending has two numbered shots:
 
 1. A close shot of Alex's marked notebook beside Nadia's final copy note, followed by the ending's sample line.
-2. A wide newsroom shot with Elliot, Priya, Tomás, Nadia, and Sasha resolving their fictional work relationships as the next assignment lands.
+2. A wide newsroom shot for END-A or cafe shot for END-B resolves fictional work relationships as the next assignment lands; the scene boards specify the cast and staging.
 
 No branch can prevent John Tory being named mayor or Rob Ford being named winner of Ward 2 Etobicoke North in S18. The player's six choices affect only voice, sidebar emphasis, and fictional career reflection.
 
