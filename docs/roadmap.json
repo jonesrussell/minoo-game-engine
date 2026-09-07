@@ -8,7 +8,9 @@
       "validator": "Ajv",
       "typescript": "generated with json-schema-to-typescript",
       "document": "docs/decisions/003-canonical-scene-schema.md",
-      "production_implementation_issue": 6
+      "production_implementation_issue": 6,
+      "schema_document": "packages/engine/src/contracts/scene.schema.json",
+      "validation_entry": "@minoo/engine/scene"
     }
   },
   "issues": [

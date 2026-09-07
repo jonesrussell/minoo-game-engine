@@ -1,6 +1,6 @@
 # Package ownership and boundaries
 
-This document records the ownership decision for issue [#33](https://github.com/jonesrussell/minoo-game-engine/issues/33). The `packages/engine`, `packages/authoring` and `games/journey` packages exist in the current workspace. The internal `contracts`, `core` and `adapters` layers below remain planned boundaries; they do not claim that those layers or any service already exist.
+This document records the ownership decision for issue [#33](https://github.com/jonesrussell/minoo-game-engine/issues/33). The engine, authoring and Journey workspaces exist. The scene schema/types now live in `packages/engine/src/contracts`, exposed with validation through `@minoo/engine/scene`. Core and adapter layers below remain planned boundaries. Directory names in the import table describe layers; public exports define consumption.
 
 ## Requirements
 

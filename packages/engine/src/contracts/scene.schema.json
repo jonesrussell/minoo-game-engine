@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:minoo:scene:1",
+  "title": "Scene",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "id", "width", "height", "objects", "vocabulary", "completion"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "id": { "$ref": "#/definitions/id" },
+    "width": { "type": "number", "exclusiveMinimum": 0 },
+    "height": { "type": "number", "exclusiveMinimum": 0 },
+    "objects": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "title": "SceneObject", "type": "object", "additionalProperties": false,
+        "required": ["id", "x", "y", "width", "height", "vocabularyId"],
+        "properties": {
+          "id": { "$ref": "#/definitions/id" },
+          "x": { "type": "number", "minimum": 0 },
+          "y": { "type": "number", "minimum": 0 },
+          "width": { "type": "number", "exclusiveMinimum": 0 },
+          "height": { "type": "number", "exclusiveMinimum": 0 },
+          "vocabularyId": { "$ref": "#/definitions/id" }
+        }
+      }
+    },
+    "vocabulary": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "title": "VocabularyRecord", "type": "object", "additionalProperties": false,
+        "required": ["id", "text", "meaning", "dialect", "source", "attribution", "permittedUse", "approval"],
+        "properties": {
+          "id": { "$ref": "#/definitions/id" },
+          "text": { "$ref": "#/definitions/text" },
+          "meaning": { "$ref": "#/definitions/text" },
+          "dialect": { "$ref": "#/definitions/text" },
+          "source": { "$ref": "#/definitions/text" },
+          "attribution": { "$ref": "#/definitions/text" },
+          "permittedUse": { "$ref": "#/definitions/text" },
+          "approval": {
+            "title": "ContentApproval", "type": "object", "additionalProperties": false,
+            "required": ["status"],
+            "properties": {
+              "status": { "enum": ["fixture", "draft", "approved"] },
+              "reviewedBy": { "$ref": "#/definitions/text" },
+              "reviewedOn": { "$ref": "#/definitions/reviewDate" }
+            },
+            "if": { "properties": { "status": { "const": "approved" } }, "required": ["status"] },
+            "then": {
+              "properties": { "reviewedBy": { "$ref": "#/definitions/text" }, "reviewedOn": { "$ref": "#/definitions/reviewDate" } },
+              "required": ["reviewedBy", "reviewedOn"]
+            }
+          }
+        }
+      }
+    },
+    "completion": {
+      "title": "CompletionRule", "type": "object", "additionalProperties": false,
+      "required": ["type", "requiredIds"],
+      "properties": {
+        "type": { "const": "find-all", "type": "string" },
+        "requiredIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/definitions/id" } }
+      }
+    }
+  },
+  "definitions": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "text": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "reviewDate": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+  }
+}

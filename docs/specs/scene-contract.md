@@ -1,6 +1,6 @@
 # Scene contract specification
 
-Status: accepted pilot contract, not implemented, from issue [#32](https://github.com/jonesrussell/minoo-game-engine/issues/32).
+Status: validation implemented in #6, from the #32 pilot. Runtime gameplay remains #7.
 
 This is a behavior contract for issue [#6](https://github.com/jonesrussell/minoo-game-engine/issues/6).
 [ADR 003](../decisions/003-canonical-scene-schema.md) selects JSON Schema Draft-07,
@@ -15,6 +15,14 @@ places them in logical bounds, references vocabulary or marked fixture records a
 how completion is determined.
 
 ## Requirements and scenarios
+
+### SCN-STRUCTURE-001: Parse and validate without mutation
+
+The input MUST be valid scene-shaped JSON data. Unknown properties, missing
+fields and wrong types MUST be rejected without coercion, normalization or
+removal. Failures MUST include a stable code, JSON Pointer and requirement ID.
+The [version 1 API contract](../scene-validation.md) defines concrete fields,
+diagnostics and authoring versus release behavior.
 
 ### SCN-VERSION-001: Supported scene-contract version
 
@@ -118,20 +126,21 @@ marked as non-release content and must not invent language or cultural claims.
 
 | Proposal task | Requirement IDs | Planned test or review | Status |
 | --- | --- | --- | --- |
-| Define scene and object IDs | SCN-IDENTITY-001 | Unit test valid IDs and duplicate-ID diagnostic with path | planned |
-| Define logical bounds | SCN-BOUNDS-001 | Unit test in-bounds and out-of-bounds fixtures | planned |
-| Define vocabulary references | SCN-VOCAB-001 | Unit test missing reference and Unicode/dialect/source preservation | planned |
-| Define completion rule | SCN-COMPLETE-001 | #6 validation tests for distinct, resolvable target IDs and malformed conditions | planned |
-| Keep unsupported versions rejected | SCN-VERSION-001 | Unit test unsupported version diagnostic | planned |
+| Define scene and object IDs | SCN-IDENTITY-001 | Unit test valid IDs and duplicate-ID diagnostic with path | passed in #6 |
+| Define logical bounds | SCN-BOUNDS-001 | Unit test in-bounds and out-of-bounds fixtures | passed in #6 |
+| Define vocabulary references | SCN-VOCAB-001 | Unit test missing reference and Unicode/dialect/source preservation | passed in #6 |
+| Define completion rule | SCN-COMPLETE-001 | #6 validation tests for distinct, resolvable target IDs and malformed conditions | passed in #6 |
+| Keep unsupported versions rejected | SCN-VERSION-001 | Unit test unsupported version diagnostic | passed in #6 |
 
 Runtime counting and duplicate-award checks are owned by #7, as listed in the
 [proposal trace](../proposals/32-scene-contract.md); they do not block completion
 of the #6 schema validation task.
 
-No implementation or tests for #6 or #7 have been executed by this pilot. The table
-intentionally records planned evidence only. When #6 is implemented, replace
-each status with `executed at <commit>` and link the exact test or browser
-evidence. Human review remains required for language, art and learning quality.
+The original pilot table above describes #6 verification targets. Their
+implemented evidence is linked in [proposal 6](../proposals/6-scene-validation.md)
+and the [API contract](../scene-validation.md). The PR/CI identify tested commits.
+Runtime tests for #7 remain planned. Human language, art and learning review
+remain independent.
 
 ## Small fix updates
 
