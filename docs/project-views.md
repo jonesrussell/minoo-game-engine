@@ -22,4 +22,4 @@ Status is Todo, In Progress or Done. Readiness is Ready, Blocked, In review, Pha
 
 Both projects add **Core delivery** (`is:open -label:integration:studio -label:type:epic`) and **Optional Studio integration** (`is:open label:integration:studio`) table views. Existing views remain available. Phase retains M0-M7 and adds S0-S2 with existing option IDs preserved. Priority P2 and the integration:studio label identify the optional track.
 
-The primary project includes all 13 new entries. Journey includes three trackers and six relevant example, qualification and preview/publishing entries. The Studio readiness issue links to upstream prerequisites without changing Studio project scope.
+Both projects include all 13 new entries so the Journey example can be followed through its adapter and workflow prerequisites. The Studio readiness issue links to upstream prerequisites without changing Studio project scope.
