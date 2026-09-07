@@ -1,6 +1,6 @@
 # Minoo Game Engine
 
-A game framework designed for reliable agent authoring, with an independent runtime and a proper 2D rendering-engine boundary. The first game is a **Toronto investigative hidden-object adventure** set during Rob Ford's mayoral tenure and the crack-video scandal. The title is undecided. Development stays local through chat.
+A game framework designed for reliable agent authoring, with an independent runtime and a proper 2D rendering-engine boundary. The first game is **Ford Frenzy** by **jr42 productions**, a Toronto investigative hidden-object adventure set during Rob Ford's mayoral tenure and the crack-video scandal. Development stays local through chat.
 
 **Status:** executable workspace, interactive Journey fixture preview, production scene validation and a headless game runtime. Scene-driven browser gameplay and authoring tools are still backlog work.
 
@@ -28,7 +28,7 @@ The [first-game brief](docs/first-game.md) proposes three opening scenes and a s
 ## Projects
 
 - [Engine Development](https://github.com/users/jonesrussell/projects/15)
-- [First Game Delivery](https://github.com/users/jonesrussell/projects/16)
+- [Ford Frenzy - Delivery](https://github.com/users/jonesrussell/projects/16)
 - [Milestones](https://github.com/jonesrussell/minoo-game-engine/milestones)
 
 ## Local development

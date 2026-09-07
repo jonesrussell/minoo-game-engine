@@ -1003,11 +1003,18 @@
     "later_boards_block_opening": false
   },
   "first_game": {
-    "status": "direction accepted; scene treatments proposed",
+    "status": "direction accepted; title confirmed; scene treatments proposed",
     "brief": "docs/first-game.md",
     "genre": "narrative hidden-object investigation",
     "setting": "Toronto during Rob Ford mayoral tenure and the crack-video scandal",
-    "title": null,
+    "title": "Ford Frenzy",
+    "production_brand": "jr42 productions",
+    "delivery_project_title": "Ford Frenzy - Delivery",
+    "delivery_project": 16,
+    "branding_anchors": {
+      "art_direction": 94,
+      "release_assets": 17
+    },
     "opening_scene_issues": [
       9,
       98,

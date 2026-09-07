@@ -1,8 +1,30 @@
-# First game: Toronto investigative hidden-object adventure
+# Ford Frenzy: Toronto investigative hidden-object adventure
 
-Status: product direction accepted by the owner; working description, not a final title.
-This replaces Journey as the first game. Scene treatments and campaign structure below
-are proposals for storyboard review, not claims about historical events.
+Status: product direction accepted by the owner. The game title **Ford Frenzy** is
+confirmed. Scene treatments and campaign structure below remain proposals for
+storyboard review, not claims about historical events or implemented gameplay.
+
+This replaces Journey as the first game.
+
+## Names and branding
+
+**Game title:** Ford Frenzy (owner confirmed; not provisional).
+
+**Production brand:** jr42 productions (exact lowercase spelling) on title screens,
+start screens, credits and loading presentation for Ford Frenzy and future games
+from this production line.
+
+**Repository and framework:** Minoo remains the engine and framework name. Package
+scopes, runtime APIs and repository identity are unchanged. The `games/journey` legacy
+fixture and optional Studio contracts stay as documented elsewhere.
+
+These presentation screens are not implemented. When built, they must follow:
+
+| Surface | Requirements |
+|---|---|
+| Title/start screen | Display **Ford Frenzy** as the primary game title and **jr42 productions** as the production credit. Visual treatment follows art direction in [#94](https://github.com/jonesrussell/minoo-game-engine/issues/94). Release-quality title and supporting assets are delivered through [#17](https://github.com/jonesrussell/minoo-game-engine/issues/17). |
+| Credits | Include **jr42 productions** as the production credit line. List content, source and rights acknowledgements separately per [content policy](content-policy.md). |
+| Loading presentation | Show **Ford Frenzy** where a game title appears during load. Include **jr42 productions** where production branding is appropriate. Use approved assets from [#17](https://github.com/jonesrussell/minoo-game-engine/issues/17). Loading behavior follows asset manifest work in [#37](https://github.com/jonesrussell/minoo-game-engine/issues/37). |
 
 ## Player experience
 
