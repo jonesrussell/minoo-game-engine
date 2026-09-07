@@ -92,7 +92,9 @@
       "effort": "M",
       "dependencies": [
         94,
-        37
+        37,
+        104,
+        105
       ]
     },
     {
@@ -148,7 +150,9 @@
         3,
         41,
         98,
-        99
+        99,
+        106,
+        107
       ]
     },
     {
@@ -159,7 +163,9 @@
       "priority": "P1",
       "effort": "M",
       "dependencies": [
-        7
+        7,
+        95,
+        96
       ]
     },
     {
@@ -187,7 +193,8 @@
         93,
         94,
         95,
-        96
+        96,
+        105
       ]
     },
     {
@@ -859,7 +866,8 @@
       "priority": "P0",
       "effort": "M",
       "dependencies": [
-        93
+        93,
+        103
       ],
       "parent": 89
     },
@@ -932,6 +940,80 @@
         98,
         96,
         10
+      ],
+      "parent": 26
+    },
+    {
+      "issue": 102,
+      "title": "Codify the Ford Frenzy asset-to-playable SDD plan",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [],
+      "parent": 24
+    },
+    {
+      "issue": 103,
+      "title": "Inventory and import the legacy Ford Frenzy art library",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "parent": 89
+    },
+    {
+      "issue": 104,
+      "title": "Establish reference-based artwork generation and export workflow",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        103,
+        94
+      ],
+      "parent": 89
+    },
+    {
+      "issue": 105,
+      "title": "Build Ford Frenzy title screen menus and game navigation",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        8,
+        11,
+        37
+      ],
+      "parent": 26
+    },
+    {
+      "issue": 106,
+      "title": "Build investigation HUD notebook and scene transition UI",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        105,
+        96,
+        10
+      ],
+      "parent": 26
+    },
+    {
+      "issue": 107,
+      "title": "Implement sound settings and essential game feedback",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        105,
+        37
       ],
       "parent": 26
     }
@@ -1024,6 +1106,8 @@
     "deferred_learning_issues": [
       16,
       44
-    ]
+    ],
+    "experience_spec": "docs/specs/ford-frenzy-experience.md",
+    "delivery_plan": "docs/ford-frenzy-delivery.md"
   }
 }

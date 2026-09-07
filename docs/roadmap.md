@@ -1,6 +1,8 @@
 # Minoo framework and first-game roadmap
 
-Updated September 7, 2026. The first game is **Ford Frenzy**, a Toronto investigative hidden-object adventure during the Ford era. Production presentation uses the **jr42 productions** brand. See [the product scope](product.md) and [game brief](first-game.md). There are 73 active delivery/decision records plus phase trackers, and 2 deferred Journey learning records.
+Updated September 7, 2026. The first game is **Ford Frenzy**, a Toronto investigative hidden-object adventure during the Ford era. Production presentation uses the **jr42 productions** brand. See [the product scope](product.md) and [game brief](first-game.md). There are 79 active delivery/decision records plus phase trackers, and 2 deferred Journey learning records.
+
+See the [asset-to-playable SDD plan](ford-frenzy-delivery.md) and [experience scenarios](specs/ford-frenzy-experience.md). Asset library #103, generation workflow #104, title/menus #105, HUD #106 and sound/settings #107 complete the visible-game delivery scope.
 
 ## Current checkpoint
 
@@ -28,7 +30,9 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 | [#91 Outline the complete investigation campaign and ending](https://github.com/jonesrussell/minoo-game-engine/issues/91) | P0 | content | #90 |
 | [#92 Storyboard every scene in the full campaign](https://github.com/jonesrussell/minoo-game-engine/issues/92) | P0 | content | #91 |
 | [#93 Storyboard the opening three investigative scenes](https://github.com/jonesrussell/minoo-game-engine/issues/93) | P0 | content | #91 |
-| [#94 Define Toronto scene art direction and asset briefs](https://github.com/jonesrussell/minoo-game-engine/issues/94) | P0 | content | #93 |
+| [#94 Define Toronto scene art direction and asset briefs](https://github.com/jonesrussell/minoo-game-engine/issues/94) | P0 | content | #93, #103 |
+| [#103 Inventory and import the legacy Ford Frenzy art library](https://github.com/jonesrussell/minoo-game-engine/issues/103) | P0 | content | None |
+| [#104 Establish reference-based artwork generation and export workflow](https://github.com/jonesrussell/minoo-game-engine/issues/104) | P0 | content | #103, #94 |
 
 ## M0 - Local delivery and specifications
 
@@ -45,6 +49,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 | [#33 Define framework runtime and game ownership](https://github.com/jonesrussell/minoo-game-engine/issues/33) | P0 | framework | None |
 | [#34 Document issue readiness review and release evidence rules](https://github.com/jonesrussell/minoo-game-engine/issues/34) | P1 | delivery | None |
 | [#88 Codify the investigative first-game pivot](https://github.com/jonesrussell/minoo-game-engine/issues/88) | P0 | delivery | None |
+| [#102 Codify the Ford Frenzy asset-to-playable SDD plan](https://github.com/jonesrussell/minoo-game-engine/issues/102) | P0 | delivery | None |
 
 ## M1 - Framework contracts and runtime
 
@@ -52,7 +57,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#11 Persist and recover local game progress](https://github.com/jonesrussell/minoo-game-engine/issues/11) | P1 | engine | #7 |
+| [#11 Persist and recover local game progress](https://github.com/jonesrussell/minoo-game-engine/issues/11) | P1 | engine | #7, #95, #96 |
 | [#8 Render responsive scenes with accessible object controls](https://github.com/jonesrussell/minoo-game-engine/issues/8) | P0 | engine | #6, #7, #40, #97 |
 | [#7 Implement deterministic game state and replayable actions](https://github.com/jonesrussell/minoo-game-engine/issues/7) | P0 | engine | #6 |
 | [#6 Define versioned scene and vocabulary contracts](https://github.com/jonesrussell/minoo-game-engine/issues/6) | P0 | engine | #2, #35 |
@@ -73,14 +78,17 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#12 Qualify the three-scene investigation slice](https://github.com/jonesrussell/minoo-game-engine/issues/12) | P0 | quality | #10, #11, #3, #41, #98, #99 |
+| [#12 Qualify the three-scene investigation slice](https://github.com/jonesrussell/minoo-game-engine/issues/12) | P0 | quality | #10, #11, #3, #41, #98, #99, #106, #107 |
 | [#10 Add bounded hints and investigation progression feedback](https://github.com/jonesrussell/minoo-game-engine/issues/10) | P1 | game | #9, #96 |
-| [#9 Build investigation scene S01: assignment desk](https://github.com/jonesrussell/minoo-game-engine/issues/9) | P0 | game | #8, #43, #93, #94, #95, #96 |
+| [#9 Build investigation scene S01: assignment desk](https://github.com/jonesrussell/minoo-game-engine/issues/9) | P0 | game | #8, #43, #93, #94, #95, #96, #105 |
 | [#43 Specify the hidden-object reporting and evidence loop](https://github.com/jonesrussell/minoo-game-engine/issues/43) | P0 | game | #32, #91 |
 | [#45 Run an owner playtest of investigative clarity and pacing](https://github.com/jonesrussell/minoo-game-engine/issues/45) | P0 | quality | #12 |
 | [#96 Implement replayable investigation notebook and scene progression](https://github.com/jonesrussell/minoo-game-engine/issues/96) | P0 | engine | #7, #43, #95 |
 | [#98 Build investigation scene S02: City Hall records](https://github.com/jonesrussell/minoo-game-engine/issues/98) | P0 | game | #8, #93, #94, #95, #96 |
 | [#99 Build investigation scene S03: deadline review](https://github.com/jonesrussell/minoo-game-engine/issues/99) | P0 | game | #9, #98, #96, #10 |
+| [#105 Build Ford Frenzy title screen menus and game navigation](https://github.com/jonesrussell/minoo-game-engine/issues/105) | P0 | game | #8, #11, #37 |
+| [#106 Build investigation HUD notebook and scene transition UI](https://github.com/jonesrussell/minoo-game-engine/issues/106) | P0 | game | #105, #96, #10 |
+| [#107 Implement sound settings and essential game feedback](https://github.com/jonesrussell/minoo-game-engine/issues/107) | P0 | game | #105, #37 |
 
 ## M3 - Agent authoring
 
@@ -104,7 +112,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 |---|---|---|---|
 | [#19 Publish first-game browser alpha with release evidence](https://github.com/jonesrussell/minoo-game-engine/issues/19) | P0 | delivery | #4, #15, #18, #52, #54, #53 |
 | [#18 Qualify accessibility touch and supported browsers](https://github.com/jonesrussell/minoo-game-engine/issues/18) | P0 | quality | #90, #17, #12, #50, #51 |
-| [#17 Produce approved original art for the investigative slice](https://github.com/jonesrussell/minoo-game-engine/issues/17) | P1 | content | #94, #37 |
+| [#17 Produce approved original art for the investigative slice](https://github.com/jonesrussell/minoo-game-engine/issues/17) | P1 | content | #94, #37, #104, #105 |
 | [#50 Add automated accessibility checks and manual coverage notes](https://github.com/jonesrussell/minoo-game-engine/issues/50) | P0 | quality | #12 |
 | [#51 Set and verify browser alpha performance budgets](https://github.com/jonesrussell/minoo-game-engine/issues/51) | P1 | quality | #17, #12 |
 | [#52 Review investigative content, sources and asset rights for release](https://github.com/jonesrussell/minoo-game-engine/issues/52) | P0 | content | #90, #93, #17, #12 |
