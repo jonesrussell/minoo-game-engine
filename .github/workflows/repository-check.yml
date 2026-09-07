@@ -31,6 +31,8 @@ jobs:
         run: npm run build
       - name: Desktop keyboard and touch smoke tests
         run: node scripts/test-browser.mjs
+      - name: Public scene validator browser bundle
+        run: node scripts/test-scene-browser.mjs
       - name: Record source and artifact identity
         if: always()
         env:

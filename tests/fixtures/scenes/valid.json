@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "id": "clearing",
+  "width": 960,
+  "height": 460,
+  "objects": [
+    {
+      "id": "tree",
+      "x": 10,
+      "y": 20,
+      "width": 40,
+      "height": 40,
+      "vocabularyId": "tree"
+    },
+    {
+      "id": "rock",
+      "x": 110,
+      "y": 20,
+      "width": 40,
+      "height": 40,
+      "vocabularyId": "rock"
+    },
+    {
+      "id": "water",
+      "x": 210,
+      "y": 20,
+      "width": 40,
+      "height": 40,
+      "vocabularyId": "water"
+    },
+    {
+      "id": "path",
+      "x": 310,
+      "y": 20,
+      "width": 40,
+      "height": 40,
+      "vocabularyId": "path"
+    },
+    {
+      "id": "leaf",
+      "x": 410,
+      "y": 20,
+      "width": 40,
+      "height": 40,
+      "vocabularyId": "leaf"
+    },
+    {
+      "id": "flower",
+      "x": 510,
+      "y": 20,
+      "width": 40,
+      "height": 40,
+      "vocabularyId": "flower"
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "tree",
+      "text": "tree",
+      "meaning": "English engineering fixture: tree",
+      "dialect": "not-applicable-fixture",
+      "source": "original-engineering-fixture",
+      "attribution": "Minoo engineering fixture",
+      "permittedUse": "engineering-tests-only",
+      "approval": {
+        "status": "fixture"
+      }
+    },
+    {
+      "id": "rock",
+      "text": "rock",
+      "meaning": "English engineering fixture: rock",
+      "dialect": "not-applicable-fixture",
+      "source": "original-engineering-fixture",
+      "attribution": "Minoo engineering fixture",
+      "permittedUse": "engineering-tests-only",
+      "approval": {
+        "status": "fixture"
+      }
+    },
+    {
+      "id": "water",
+      "text": "water",
+      "meaning": "English engineering fixture: water",
+      "dialect": "not-applicable-fixture",
+      "source": "original-engineering-fixture",
+      "attribution": "Minoo engineering fixture",
+      "permittedUse": "engineering-tests-only",
+      "approval": {
+        "status": "fixture"
+      }
+    },
+    {
+      "id": "path",
+      "text": "path",
+      "meaning": "English engineering fixture: path",
+      "dialect": "not-applicable-fixture",
+      "source": "original-engineering-fixture",
+      "attribution": "Minoo engineering fixture",
+      "permittedUse": "engineering-tests-only",
+      "approval": {
+        "status": "fixture"
+      }
+    },
+    {
+      "id": "leaf",
+      "text": "leaf",
+      "meaning": "English engineering fixture: leaf",
+      "dialect": "not-applicable-fixture",
+      "source": "original-engineering-fixture",
+      "attribution": "Minoo engineering fixture",
+      "permittedUse": "engineering-tests-only",
+      "approval": {
+        "status": "fixture"
+      }
+    },
+    {
+      "id": "flower",
+      "text": "flower",
+      "meaning": "English engineering fixture: flower",
+      "dialect": "not-applicable-fixture",
+      "source": "original-engineering-fixture",
+      "attribution": "Minoo engineering fixture",
+      "permittedUse": "engineering-tests-only",
+      "approval": {
+        "status": "fixture"
+      }
+    }
+  ],
+  "completion": {
+    "type": "find-all",
+    "requiredIds": [
+      "tree",
+      "rock",
+      "water",
+      "path",
+      "leaf",
+      "flower"
+    ]
+  }
+}
