@@ -30,7 +30,7 @@
   "issues": [
     {
       "issue": 21,
-      "title": "Refine engine APIs from Journey and Matcher evidence",
+      "title": "Refine engine APIs from first-game and Matcher evidence",
       "phase": "M5 - Framework reuse",
       "workstream": "engine",
       "priority": "P2",
@@ -54,8 +54,8 @@
     },
     {
       "issue": 19,
-      "title": "Publish Journey browser alpha with release evidence",
-      "phase": "M4 - Journey browser alpha",
+      "title": "Publish first-game browser alpha with release evidence",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "delivery",
       "priority": "P0",
       "effort": "M",
@@ -71,12 +71,12 @@
     {
       "issue": 18,
       "title": "Qualify accessibility touch and supported browsers",
-      "phase": "M4 - Journey browser alpha",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "quality",
       "priority": "P0",
       "effort": "M",
       "dependencies": [
-        16,
+        90,
         17,
         12,
         50,
@@ -85,40 +85,28 @@
     },
     {
       "issue": 17,
-      "title": "Create and approve final homestead artwork",
-      "phase": "M4 - Journey browser alpha",
+      "title": "Produce approved original art for the investigative slice",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "content",
       "priority": "P1",
       "effort": "M",
       "dependencies": [
-        5,
-        12
-      ]
-    },
-    {
-      "issue": 16,
-      "title": "Approve vocabulary and optional pronunciation content",
-      "phase": "M2 - Journey vertical slice",
-      "workstream": "content",
-      "priority": "P0",
-      "effort": "M",
-      "dependencies": [
-        5,
-        9
+        94,
+        37
       ]
     },
     {
       "issue": 15,
       "title": "Demonstrate a second scene authored entirely through chat",
       "phase": "M3 - Agent authoring",
-      "workstream": "journey",
+      "workstream": "game",
       "priority": "P0",
       "effort": "M",
       "dependencies": [
         14,
         4,
         12,
-        16
+        90
       ]
     },
     {
@@ -130,7 +118,8 @@
       "effort": "M",
       "dependencies": [
         13,
-        7
+        7,
+        95
       ]
     },
     {
@@ -148,8 +137,8 @@
     },
     {
       "issue": 12,
-      "title": "Qualify the complete Journey vertical slice",
-      "phase": "M2 - Journey vertical slice",
+      "title": "Qualify the three-scene investigation slice",
+      "phase": "M2 - Investigation vertical slice",
       "workstream": "quality",
       "priority": "P0",
       "effort": "M",
@@ -157,7 +146,9 @@
         10,
         11,
         3,
-        41
+        41,
+        98,
+        99
       ]
     },
     {
@@ -173,25 +164,30 @@
     },
     {
       "issue": 10,
-      "title": "Add three hints and a restoration reward",
-      "phase": "M2 - Journey vertical slice",
-      "workstream": "journey",
+      "title": "Add bounded hints and investigation progression feedback",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
       "priority": "P1",
       "effort": "M",
       "dependencies": [
-        9
+        9,
+        96
       ]
     },
     {
       "issue": 9,
-      "title": "Build the first six-object homestead scene",
-      "phase": "M2 - Journey vertical slice",
-      "workstream": "journey",
+      "title": "Build investigation scene S01: assignment desk",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
       "priority": "P0",
       "effort": "M",
       "dependencies": [
         8,
-        43
+        43,
+        93,
+        94,
+        95,
+        96
       ]
     },
     {
@@ -204,7 +200,8 @@
       "dependencies": [
         6,
         7,
-        40
+        40,
+        97
       ]
     },
     {
@@ -368,7 +365,7 @@
     },
     {
       "issue": 40,
-      "title": "Evaluate the scene renderer against concrete requirements",
+      "title": "Evaluate a proper 2D rendering engine and future 3D boundary",
       "phase": "M1 - Framework contracts and runtime",
       "workstream": "engine",
       "priority": "P1",
@@ -403,31 +400,20 @@
     },
     {
       "issue": 43,
-      "title": "Specify the complete first-scene learning loop",
-      "phase": "M2 - Journey vertical slice",
-      "workstream": "journey",
+      "title": "Specify the hidden-object reporting and evidence loop",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
       "priority": "P0",
       "effort": "S",
       "dependencies": [
-        32
-      ]
-    },
-    {
-      "issue": 44,
-      "title": "Add optional pronunciation playback with clear fallback",
-      "phase": "M2 - Journey vertical slice",
-      "workstream": "journey",
-      "priority": "P1",
-      "effort": "S",
-      "dependencies": [
-        9,
-        16
+        32,
+        91
       ]
     },
     {
       "issue": 45,
-      "title": "Run an owner playtest and triage learning-flow feedback",
-      "phase": "M2 - Journey vertical slice",
+      "title": "Run an owner playtest of investigative clarity and pacing",
+      "phase": "M2 - Investigation vertical slice",
       "workstream": "quality",
       "priority": "P0",
       "effort": "S",
@@ -444,7 +430,8 @@
       "effort": "M",
       "dependencies": [
         6,
-        32
+        32,
+        95
       ]
     },
     {
@@ -484,7 +471,7 @@
     {
       "issue": 50,
       "title": "Add automated accessibility checks and manual coverage notes",
-      "phase": "M4 - Journey browser alpha",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "quality",
       "priority": "P0",
       "effort": "M",
@@ -495,7 +482,7 @@
     {
       "issue": 51,
       "title": "Set and verify browser alpha performance budgets",
-      "phase": "M4 - Journey browser alpha",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "quality",
       "priority": "P1",
       "effort": "M",
@@ -506,21 +493,22 @@
     },
     {
       "issue": 52,
-      "title": "Enforce content approval and attribution at release build time",
-      "phase": "M4 - Journey browser alpha",
+      "title": "Review investigative content, sources and asset rights for release",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "content",
       "priority": "P0",
       "effort": "M",
       "dependencies": [
-        5,
-        16,
-        17
+        90,
+        93,
+        17,
+        12
       ]
     },
     {
       "issue": 53,
       "title": "Provide alpha feedback intake and release support notes",
-      "phase": "M4 - Journey browser alpha",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "delivery",
       "priority": "P1",
       "effort": "S",
@@ -531,7 +519,7 @@
     {
       "issue": 54,
       "title": "Rehearse deployment rollback before alpha release",
-      "phase": "M4 - Journey browser alpha",
+      "phase": "M4 - Investigation browser alpha",
       "workstream": "delivery",
       "priority": "P0",
       "effort": "S",
@@ -673,7 +661,7 @@
       "issue": 70,
       "title": "Prove the standalone Journey tree-label authoring example",
       "phase": "S0 - Optional Studio review adapter",
-      "workstream": "journey",
+      "workstream": "game",
       "priority": "P2",
       "effort": "M",
       "track": "studio",
@@ -806,6 +794,146 @@
         75
       ],
       "external_dependencies": []
+    },
+    {
+      "issue": 88,
+      "title": "Codify the investigative first-game pivot",
+      "phase": "M0 - Local delivery and specifications",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "parent": 24
+    },
+    {
+      "issue": 90,
+      "title": "Build the Ford-era research and source ledger",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "parent": 89
+    },
+    {
+      "issue": 91,
+      "title": "Outline the complete investigation campaign and ending",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        90
+      ],
+      "parent": 89
+    },
+    {
+      "issue": 92,
+      "title": "Storyboard every scene in the full campaign",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "L",
+      "dependencies": [
+        91
+      ],
+      "parent": 89
+    },
+    {
+      "issue": 93,
+      "title": "Storyboard the opening three investigative scenes",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        91
+      ],
+      "parent": 89
+    },
+    {
+      "issue": 94,
+      "title": "Define Toronto scene art direction and asset briefs",
+      "phase": "N0 - Investigation storyboards",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        93
+      ],
+      "parent": 89
+    },
+    {
+      "issue": 95,
+      "title": "Generalize content references for investigative scenes",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "framework",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        6,
+        35,
+        43
+      ],
+      "parent": 25
+    },
+    {
+      "issue": 96,
+      "title": "Implement replayable investigation notebook and scene progression",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        7,
+        43,
+        95
+      ],
+      "parent": 26
+    },
+    {
+      "issue": 97,
+      "title": "Implement the rendering frame loop and simulation scheduling",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        7,
+        40
+      ],
+      "parent": 25
+    },
+    {
+      "issue": 98,
+      "title": "Build investigation scene S02: City Hall records",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        8,
+        93,
+        94,
+        95,
+        96
+      ],
+      "parent": 26
+    },
+    {
+      "issue": 99,
+      "title": "Build investigation scene S03: deadline review",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        9,
+        98,
+        96,
+        10
+      ],
+      "parent": 26
     }
   ],
   "integration_tracks": [
@@ -833,5 +961,62 @@
         }
       ]
     }
-  ]
+  ],
+  "deferred_issues": [
+    {
+      "issue": 16,
+      "title": "Approve vocabulary and optional pronunciation content",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "content",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "status": "deferred",
+      "historical_dependencies": [
+        5,
+        9
+      ],
+      "reason": "Journey learning is no longer the first game."
+    },
+    {
+      "issue": 44,
+      "title": "Add optional pronunciation playback with clear fallback",
+      "phase": "M2 - Journey vertical slice",
+      "workstream": "journey",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [],
+      "status": "deferred",
+      "historical_dependencies": [
+        9,
+        16
+      ],
+      "reason": "Journey learning is no longer the first game."
+    }
+  ],
+  "narrative_track": {
+    "tracker": 89,
+    "milestone": 12,
+    "phase": "N0 - Investigation storyboards",
+    "full_campaign_storyboard": 92,
+    "opening_storyboards": 93,
+    "later_boards_block_opening": false
+  },
+  "first_game": {
+    "status": "direction accepted; scene treatments proposed",
+    "brief": "docs/first-game.md",
+    "genre": "narrative hidden-object investigation",
+    "setting": "Toronto during Rob Ford mayoral tenure and the crack-video scandal",
+    "title": null,
+    "opening_scene_issues": [
+      9,
+      98,
+      99
+    ],
+    "legacy_fixture": "games/journey",
+    "deferred_learning_issues": [
+      16,
+      44
+    ]
+  }
 }

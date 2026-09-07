@@ -1,0 +1,98 @@
+# First game: Toronto investigative hidden-object adventure
+
+Status: product direction accepted by the owner; working description, not a final title.
+This replaces Journey as the first game. Scene treatments and campaign structure below
+are proposals for storyboard review, not claims about historical events.
+
+## Player experience
+
+Play a fictional investigative journalist at an original fictional Toronto newsroom
+during Rob Ford's mayoral tenure, with the 2013 crack-video scandal as the central
+historical backdrop. June's Journey is a reference for illustrated hidden-object
+scenes, narrative reveals and chapter progression. Create original story, art and UI.
+
+Loop: receive an assignment -> search a detailed scene -> inspect leads -> compare
+sources and chronology -> choose a supported account -> editorial review -> next scene.
+Finding an object is not the same as proving a claim. Some finds provide context;
+others unlock a question or a source to check. An unsupported draft returns to review.
+
+The game is a browser-first 2D game built on a proper rendering engine, frame loop,
+drawing/sprites, asset loading and transitions. Minoo owns authoritative simulation,
+content contracts, investigation state and replay. HTML controls may provide menus
+and accessibility, but HTML/SVG alone is not the selected product direction. #40 must
+compare rendering engines, including PixiJS and the implications of potential 3D.
+Do not promise that a 2D renderer or schema automatically supports 3D.
+
+## Opening slice: three proposed scenes
+
+A proposed opening episode takes place around the first public reports in May 2013.
+The research task determines exact dates and what the player could know at each point.
+Six findable targets per scene are a prototype budget, not a framework limit.
+
+| Scene | Search and story beat | Investigation outcome |
+|---|---|---|
+| S01: The assignment desk | Original newsroom illustration; locate a notebook, contact sheet, marked calendar, assignment folder, public-report printout and recorder. | Separate a published report, an unverified lead and a question for follow-up. A fictional editor assigns the next check. |
+| S02: The City Hall records workspace | Public-facing workspace reconstructed as original art; find dated agenda pages, a press schedule, a statement reference, filing labels, a contact directory and a notes folder. | Build a timeline and identify what public records do and do not establish. Do not imply that a municipal record proves private drug use. |
+| S03: The deadline desk | Return to a changed newsroom; find the source log, response notes, corrections sheet, caption draft, chronology and editorial checklist. | Assemble a sourced short account, retain uncertainty, request any missing corroboration, and complete the opening episode after editorial review. |
+
+These are staged gameplay props and fictional interactions. Specific documents,
+quotations and representations of real people require a source record before use.
+No private meeting or dialogue involving a real person is established by this outline.
+
+Slice acceptance: three linked scenes; a notebook retaining leads and source status;
+bounded hints; one progression award per scene; save/reload/reset and deterministic
+replay across transitions; pointer/touch/keyboard play; understandable asset failure;
+a playable local build and owner review. Score measures finds, not factual certainty.
+
+## Entire-game storyboard work
+
+First produce a campaign outline with a finite chapter list and ending. A draft
+five-part shape is: assignment and first reports; pursuit and verification; public
+records and changing claims; public acknowledgement and civic accountability;
+publication and aftermath. Dates, chapter count, cast, tone and ending are not locked.
+
+Then storyboard every planned scene with a stable ID, chronological placement,
+player objective, establishing composition, findable-object list, evidence links,
+dialogue beats, entry/exit conditions, transitions, hint behavior, asset list and
+source/fiction classification. Include the complete clue dependency graph and ending.
+Mark panels draft/reviewed/approved and record unresolved research instead of filling
+it with invented fact. This is full-campaign design work, not a commitment to produce
+all finished art or implement the full campaign before the opening slice.
+
+The first three scene boards depend on the campaign outline and opening-period
+research. They do not wait for all later scene boards or final campaign assets.
+
+## Historical and creative records
+
+Keep separate event date, publication date, source URL/location, claim, attribution,
+uncertainty, rights status and review status. Distinguish established public fact,
+attributed contemporary allegation and original fiction. Avoid hindsight: facts
+published later cannot appear in an earlier scene without an explicit time jump.
+The playable journalist, editor and newsroom are fictional by default. Historical
+public figures may appear through sourced public events; exact portrayal is a
+storyboard decision. The player's story does not erase the work of real reporters.
+
+Initial research anchors, verified September 7, 2026:
+
+- [Wooga's June's Journey overview](https://www.wooga.com/junes-journey) establishes
+  the hidden-object/narrative reference, not a license to reproduce its content.
+- [Canadian Press chronology, November 5, 2013](https://toronto.citynews.ca/2013/11/05/a-history-of-denials-in-toronto-mayor-rob-fords-alleged-crack-video-scandal/)
+  places initial reports on May 16, police confirmation on October 31, and Ford's
+  public admission on November 5. Use it as a starting index to original reporting.
+- [Toronto Integrity Commissioner report, December 5, 2013](https://www.toronto.ca/legdocs/mmis/2013/cc/bgrd/backgroundfile-64720.pdf)
+  records Council's November 13 motion and subsequent accountability discussion.
+  Quoted allegations and Council statements are attributed records, not blanket
+  findings establishing every claim.
+
+## Existing implementation and limits
+
+Keep the independent runtime/replay and their completed evidence. The existing
+`games/journey` shell and Journey Studio example remain legacy engineering fixtures.
+They are not the new game's implementation. Do not rename working packages in this
+planning change or force evidence into `vocabularyId`. A versioned content-reference
+contract and investigation progression task precede production scene implementation.
+
+Journey language learning is deferred. Matcher remains a later conformance game.
+Studio integration stays optional and must not block standalone development or the
+Studio private MVP. No monetization/energy system, full campaign production, native
+export or 3D implementation is committed by this first slice.
