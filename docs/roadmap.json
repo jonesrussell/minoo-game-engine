@@ -627,6 +627,185 @@
       "dependencies": [
         63
       ]
+    },
+    {
+      "issue": 69,
+      "title": "Specify the versioned Minoo candidate review boundary",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "authoring",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        33,
+        35
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 70,
+      "title": "Prove the standalone Journey tree-label authoring example",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "journey",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        14,
+        37,
+        38,
+        43
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 71,
+      "title": "Build an optional read-only Studio adapter for Minoo review",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "authoring",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        69,
+        70
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 72,
+      "title": "Qualify the Journey candidate review boundary end to end",
+      "phase": "S0 - Optional Studio review adapter",
+      "workstream": "quality",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        71
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 73,
+      "title": "Verify Studio readiness before shared game authoring",
+      "phase": "S1 - Shared Studio authoring workflow",
+      "workstream": "delivery",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        72
+      ],
+      "external_dependencies": [
+        "waaseyaa/studio#14",
+        "waaseyaa/studio#15",
+        "waaseyaa/studio#16",
+        "waaseyaa/studio#17",
+        "waaseyaa/studio#18",
+        "waaseyaa/studio#19"
+      ]
+    },
+    {
+      "issue": 74,
+      "title": "Connect Minoo candidates to shared Studio revisions jobs and decisions",
+      "phase": "S1 - Shared Studio authoring workflow",
+      "workstream": "authoring",
+      "priority": "P2",
+      "effort": "L",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        73,
+        47
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 75,
+      "title": "Qualify durable Journey authoring and account isolation in Studio",
+      "phase": "S1 - Shared Studio authoring workflow",
+      "workstream": "quality",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        74
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 76,
+      "title": "Decide whether Journey needs embedded Studio previews",
+      "phase": "S2 - Optional Studio preview and publishing",
+      "workstream": "delivery",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        75
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 77,
+      "title": "Qualify isolated Journey preview presentation if adopted",
+      "phase": "S2 - Optional Studio preview and publishing",
+      "workstream": "quality",
+      "priority": "P2",
+      "effort": "M",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        76
+      ],
+      "external_dependencies": []
+    },
+    {
+      "issue": 78,
+      "title": "Specify separate authorization for Studio-assisted game publishing",
+      "phase": "S2 - Optional Studio preview and publishing",
+      "workstream": "delivery",
+      "priority": "P2",
+      "effort": "S",
+      "track": "studio",
+      "optional": true,
+      "dependencies": [
+        75
+      ],
+      "external_dependencies": []
+    }
+  ],
+  "integration_tracks": [
+    {
+      "id": "studio",
+      "optional": true,
+      "architecture": "docs/decisions/002-studio-game-capability.md",
+      "core_release_dependency": false,
+      "studio_private_mvp_dependency": false,
+      "phases": [
+        {
+          "phase": "S0 - Optional Studio review adapter",
+          "milestone": 9,
+          "tracker": 66
+        },
+        {
+          "phase": "S1 - Shared Studio authoring workflow",
+          "milestone": 10,
+          "tracker": 67
+        },
+        {
+          "phase": "S2 - Optional Studio preview and publishing",
+          "milestone": 11,
+          "tracker": 68
+        }
+      ]
     }
   ]
 }

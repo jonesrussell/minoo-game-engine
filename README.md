@@ -9,6 +9,8 @@ A game framework designed for reliable agent authoring, with a small 2D browser 
 - [Chat-based development](docs/chat-development.md)
 - [Product scope](docs/product.md)
 - [Architecture decision](docs/architecture.md)
+- [Studio capability decision](docs/decisions/002-studio-game-capability.md)
+- [Optional Studio integration roadmap](docs/studio-integration.md)
 - [Roadmap and issues](docs/roadmap.md)
 - [Project views and planning fields](docs/project-views.md)
 - [SDD and tooling research](docs/research/sdd-and-engine-research.md)
@@ -32,3 +34,7 @@ Inspired by [Minoo's existing games](https://minoo.live/games). This is a separa
 ## Licensing
 
 Code license selection is pending in #5. No open-source license has been granted yet. Dictionary content, recordings and artwork retain their respective rights and must have separate provenance records.
+
+## Future Studio capability
+
+Minoo can supply game authoring within Waaseyaa Studio through an optional adapter. Studio supplies shared account/work coordination; Minoo supplies game contracts and execution. The runtime and local authoring remain independently usable. This is planned integration, not an implemented feature or a dependency of Studio's private MVP.

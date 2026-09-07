@@ -22,6 +22,13 @@ The product is a framework with a small runtime engine. Read docs/roadmap.md and
 - Agent edits must validate before persistence and support reversal. Scene definitions are data, never executable code.
 - Build only capabilities needed by the current milestone. Defer neural rendering, multiplayer, native exports, a hosted model service and a custom conversational editor.
 
+## Optional Studio integration
+
+- Follow accepted docs/decisions/002-studio-game-capability.md and docs/studio-integration.md. Minoo owns game semantics and execution; Studio owns shared authoring coordination.
+- Keep S0-S2 optional. Never add it as a prerequisite for M0-M7, local MCP or Studio private-MVP acceptance. Verify external Studio prerequisites before shared-workflow implementation.
+- Do not put game definitions in waaseyaa.site or build duplicate account/project/job services. Keep the runtime and CLI independently usable.
+- Preserve qualified external_dependencies in docs/roadmap.json and native cross-repository dependency links. An open upstream issue or fixture is not acceptance evidence.
+
 ## Content
 
 - Never invent Anishinaabemowin translations, pronunciation or claims of cultural approval.

@@ -1,12 +1,16 @@
 # Minoo framework, runtime and Journey roadmap
 
-Updated September 7, 2026. This roadmap has eight phases, 54 delivery/decision issues and eight phase trackers. It expands the original backlog without closing or replacing existing work. PR #23 remains open for review; its implementation is not yet merged into main.
+Updated September 7, 2026. The core roadmap has eight phases, 54 delivery/decision issues and eight phase trackers. A separate optional Studio track adds three milestones, 10 delivery/decision issues and three trackers. It expands the original backlog without closing or replacing existing work. PR #23 remains open for review; its implementation is not yet merged into main.
 
 ## Product direction
 
 Build a game framework designed for agents to inspect and operate reliably, with a small runtime engine and Journey as the first game. The framework defines scenes, objects, content references, operations and compatibility rules. The runtime loads those definitions, processes input and actions, manages state and renders results. Game packages own vocabulary, artwork and game-specific rules.
 
 Development stays local through chat. GitHub provides code review, issue tracking and CI. Hosting a finished browser game is a release concern, not a cloud-development requirement. The first release is one small Journey experience; the framework becomes reusable only after Matcher demonstrates it.
+
+## Optional Studio capability
+
+[ADR 002](decisions/002-studio-game-capability.md) records the accepted boundary and verified repository evidence. [The optional integration roadmap](studio-integration.md) defines S0-S2 milestones and issues. Studio supplies shared authoring services when ready; Minoo owns game contracts and execution. M0-M7 do not depend on this track. Studio private MVP and local MCP have no game-integration prerequisite.
 
 ## Project entry points
 
@@ -205,7 +209,7 @@ Ajv/JSON Schema versus Zod is decided by #35. Rendering choice is decided by #40
 
 ## Outside this roadmap
 
-Native iOS/Android/console exports, multiplayer, neural rendering or physics, model training, runtime LLM dependence, payments, backend accounts and a full visual editor need separate proposals. MCP here is local authoring infrastructure. Waaseyaa integration may later supply approved content, but no live-site integration or production data transfer is assumed.
+Native iOS/Android/console exports, multiplayer, neural rendering or physics, model training, runtime LLM dependence, payments, backend accounts and a full visual editor need separate proposals. MCP here is local authoring infrastructure. Optional Studio authoring integration is scoped separately in S0-S2. No live-site content integration or production data transfer is assumed.
 
 ## Maintaining the roadmap
 
