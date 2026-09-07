@@ -14,6 +14,24 @@ how completion is determined.
 
 ## Requirements and scenarios
 
+### SCN-VERSION-001: Supported scene-contract version
+
+The scene MUST declare a scene-contract version supported by the implementation.
+An unsupported version MUST be rejected with the version data path and expected
+versions.
+
+#### Scenario: supported version
+
+- GIVEN a scene declaring a supported contract version
+- WHEN the validator inspects the scene
+- THEN validation proceeds to the remaining scene checks
+
+#### Failure example: unsupported version
+
+- GIVEN a scene declaring a version the implementation does not support
+- WHEN the validator inspects the scene
+- THEN validation fails at `scene.version` with the expected versions
+
 ### SCN-IDENTITY-001: Stable scene and object identity
 
 The scene MUST contain a supported scene identifier and each object MUST have a
@@ -51,8 +69,10 @@ bounds.
 ### SCN-VOCAB-001: Vocabulary references preserve provenance fields
 
 Each prompt or label that uses vocabulary MUST reference a record containing a
-Unicode-safe value and its dialect and source fields. A pronunciation reference
-MUST only be usable when its approval metadata permits playback.
+Unicode-safe value and its dialect and source fields. Marked English fixtures
+MAY be used for engineering. Validation preserves provenance fields and does
+not infer language or cultural approval. A pronunciation reference MUST only be
+usable when its approval metadata permits playback.
 
 #### Scenario: referenced vocabulary
 
@@ -69,20 +89,20 @@ MUST only be usable when its approval metadata permits playback.
 
 ### SCN-COMPLETE-001: Completion rule is explicit
 
-The scene MUST declare a completion rule that can identify the required unique
-finds and award completion once.
+The scene MUST declare a completion rule that identifies the required unique
+object IDs. Runtime counting, replay and awarding completion belong to issue #7.
 
 #### Scenario: six unique finds
 
-- GIVEN a scene requiring six objects
-- WHEN each object is selected once
-- THEN the state reports six unique finds and one completion event
+- GIVEN a scene requiring six object IDs
+- WHEN the validator inspects the completion condition
+- THEN validation confirms that the condition names those IDs
 
 #### Failure example: repeated find
 
-- GIVEN an object already counted as found
-- WHEN it is selected again
-- THEN the found count and completion event count remain unchanged
+- GIVEN a completion condition with a missing required object ID
+- WHEN the validator inspects the scene
+- THEN validation fails with the missing ID path
 
 ## Exclusions
 
@@ -100,9 +120,9 @@ marked as non-release content and must not invent language or cultural claims.
 | Define logical bounds | SCN-BOUNDS-001 | Unit test in-bounds and out-of-bounds fixtures | planned |
 | Define vocabulary references | SCN-VOCAB-001 | Unit test missing reference and Unicode/dialect/source preservation | planned |
 | Define completion rule | SCN-COMPLETE-001 | Runtime/replay test for six unique finds and duplicate selection | planned |
-| Keep unsupported versions rejected | SCN-IDENTITY-001 | Unit test unsupported version diagnostic | planned |
+| Keep unsupported versions rejected | SCN-VERSION-001 | Unit test unsupported version diagnostic | planned |
 
-No implementation or tests for #6 have been executed by this pilot. The table
+No implementation or tests for #6 or #7 have been executed by this pilot. The table
 intentionally records planned evidence only. When #6 is implemented, replace
 each status with `executed at <commit>` and link the exact test or browser
 evidence. Human review remains required for language, art and learning quality.
@@ -112,8 +132,7 @@ evidence. Human review remains required for language, art and learning quality.
 When a small fix changes behavior covered here, update the existing requirement
 or scenario, add a focused regression example, and link the implementation and
 executed check to the same requirement ID. For example, if a duplicate selection
-could award completion twice, extend SCN-COMPLETE-001 with that regression and
-record the failing and passing test commits. Create a new requirement only when
+could award completion twice, update SCN-COMPLETE-001 and the #7 runtime trace
+with that regression, then record the failing and passing test commits. Create a new requirement only when
 the behavior is a new contract, not merely because the code has another helper
 or button.
-

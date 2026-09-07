@@ -25,18 +25,20 @@ and [team workflow](https://github.com/Fission-AI/OpenSpec/blob/main/docs/team-w
 
 ### Decision for this pilot
 
-Use the OpenSpec-shaped proposal/apply/archive flow, represented by ordinary
-Markdown in this repository. Do not install the OpenSpec CLI or another SDD
-workflow during issue 32. The repository is still a planning scaffold, and
-ordinary Markdown keeps the pilot reviewable on Windows and Linux while
-retaining OpenSpec's useful separation of intent, requirements, tasks and
-history. A later issue may adopt the CLI if repeated pilots show that generated
-scaffolding or validation repays its setup cost.
+Choose plain Markdown in this repository. Do not install the OpenSpec CLI or
+another SDD workflow during issue 32. The repository now has an executable
+workspace and a Journey fixture preview, while scene schemas and authoring tools
+remain backlog work. A small proposal plus a durable spec gives this project the
+needed requirement IDs, examples, exclusions and evidence links with less setup
+than a new tool lifecycle. The comparison remains recorded so a later issue can
+revisit OpenSpec if repeated pilots show that generated scaffolding or
+validation repays its setup cost.
 
 The durable behavior lives in [the scene contract spec](specs/scene-contract.md).
+The concrete sample proposal is [proposal 32](proposals/32-scene-contract.md).
 For a new change, create a short proposal, update or add requirement scenarios,
 list tasks, and link each task to requirement IDs. After implementation, record
-actual checks and archive the change context in the same commit or linked PR.
+actual checks in the proposal or linked PR.
 
 ## Review rules
 
