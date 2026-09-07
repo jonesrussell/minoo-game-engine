@@ -1,6 +1,6 @@
 # Ford Frenzy: full-game scene storyboards
 
-**Status:** DRAFT on every scene, panel, route and ending. Owner review pending.
+**Status:** STORYBOARD APPROVED on every scene, panel, route and ending. Revision 2 owner approval recorded 2026-09-07. This does not approve art, rights, final release copy, runtime implementation or playtest completion.
 **Storyboard revision:** 2
 **Game:** Ford Frenzy by **jr42 productions**
 **Paper (exact name):** Torrona Haps
@@ -120,7 +120,7 @@ Persist AS1/AS2 before route entry. Untaken route never blocks completion.
 
 ---
 
-## Title sequence (DRAFT)
+## Title sequence (STORYBOARD APPROVED)
 
 **Composition:** Night Toronto skyline; foreground **Torrona Haps** window with crooked neon; midground CN Tower and council dome as simplified shapes; background indigo gradient.
 
@@ -132,7 +132,7 @@ Persist AS1/AS2 before route entry. Untaken route never blocks completion.
 
 ---
 
-## Chapter 1 card (DRAFT): "Welcome to the circus"
+## Chapter 1 card (STORYBOARD APPROVED): "Welcome to the circus"
 
 **Dates:** 17 May 2013 (H01/H02).
 
@@ -142,14 +142,14 @@ Persist AS1/AS2 before route entry. Untaken route never blocks completion.
 
 ---
 
-### S01: Welcome to the Haps (DRAFT)
+### S01: Welcome to the Haps (STORYBOARD APPROVED)
 
 **Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013 after the public response
 **Play pattern:** clutter search under takeout and invoices; charger-recorder pairing
 **Entry:** New Game or Continue restoring S01 | **Exit:** K01 to S02
 **sceneObjectiveAnswerHint:** "Find your gear, marry the charger to the recorder, and tell a rumour from something that actually ran."
 
-#### S01.P1 Establish and arrival (DRAFT)
+#### S01.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Alex arrives expecting patio listings. Elliot slides a mayor folder over a tower of takeout. The assignment chair lists to the left (running gag). Priya is already photographing the broken chair "for posterity."
 
@@ -157,7 +157,7 @@ Foreground: grease-stained takeout bag, invoice stack. Midground: wobbly chair, 
 
 **Dialogue:** Elliot: "Welcome to the Haps. Patio column is Tuesday. Today you are mayor-adjacent." Alex: "I do not have a chair." Elliot: "You have urgency. Same thing."
 
-#### S01.P2 Interactive search (DRAFT)
+#### S01.P2 Interactive search (STORYBOARD APPROVED)
 
 L-shaped desk, side table buried in invoices and food containers.
 
@@ -170,11 +170,11 @@ L-shaped desk, side table buried in invoices and food containers.
 | S01.O5 | Published report clipping summary (attributed H01) | Monitor stand | evidence |
 | S01.O6 | Digital recorder | Side table, **wrong** charger nearby | tool |
 
-#### S01.P3 Inspect and compare (DRAFT)
+#### S01.P3 Inspect and compare (STORYBOARD APPROVED)
 
 After all six finds, open the O6 inspection tray. It supplies two connector choices as puzzle controls, not additional hidden finds. Match the recorder socket shape to its charger (not the phone brick). Compare O5 published summary vs O4 folder sticky labeled "OFFICE RUMOUR - Nadia will kill us."
 
-#### S01.P4 Editorial outcome and exit (DRAFT)
+#### S01.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 Nadia (offscreen note): "If it did not run, it is gossip with stationery."
 
@@ -191,14 +191,14 @@ Nadia (offscreen note): "If it did not run, it is gossip with stationery."
 
 ---
 
-### S02: Meanwhile at City Hall (DRAFT)
+### S02: Meanwhile at City Hall (STORYBOARD APPROVED)
 
 **Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013 after the public response
 **Play pattern:** printer-jam press-kit search; date ordering
 **Entry:** K01 | **Exit:** K02
 **sceneObjectiveAnswerHint:** "Unjam the public kit. May 16 and May 17 only. November is not a prop today."
 
-#### S02.P1 Establish and arrival (DRAFT)
+#### S02.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Alex flees the newsroom printer curse for City Hall's worse printer. A public corridor work area, not a secret archive. No satellite trucks. No November calendars.
 
@@ -206,7 +206,7 @@ Foreground: out-of-order sign on jammed printer. Midground: public research coun
 
 **Dialogue:** Alex: "Tell me the building has answers." Clerk (fictional extra): "It has agendas and a toner emergency."
 
-#### S02.P2 Interactive search (DRAFT)
+#### S02.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -217,11 +217,11 @@ Foreground: out-of-order sign on jammed printer. Midground: public research coun
 | S02.O5 | Visitor bell | Counter | context |
 | S02.O6 | May 16 reporting summary folder H01 | Table center | evidence |
 
-#### S02.P3 Inspect and compare (DRAFT)
+#### S02.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Clear jam: stack O1+O2 in order. Place O6 before O3 on timeline strip. Reject any prop dated after 17 May.
 
-#### S02.P4 Editorial outcome and exit (DRAFT)
+#### S02.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** What does this corridor establish?
 
@@ -236,14 +236,14 @@ Clear jam: stack O1+O2 in order. Place O6 before O3 on timeline strip. Reject an
 
 ---
 
-### S03: We're Going With WHAT? (DRAFT)
+### S03: We're Going With WHAT? (STORYBOARD APPROVED)
 
 **Chapter:** 1 | **Historical:** H01/H02 | **Date:** 17 May 2013 evening
 **Play pattern:** headline/layout assembly with six distinct props
 **Entry:** K01,K02 | **Exit:** K03; BR-CH1
 **sceneObjectiveAnswerHint:** "Build a headline Elliot deserves but Nadia will allow."
 
-#### S03.P1 Establish and arrival (DRAFT)
+#### S03.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Desks rearranged for "breaking energy." Elliot pitches headlines on sticky notes: "CRACK CITY?" Nadia stares. Sasha plugs a monitor cable into a label maker.
 
@@ -251,7 +251,7 @@ Foreground: silly headline sticky pile. Midground: layout desk with movable bloc
 
 **Dialogue:** Elliot: "We need a splash." Nadia: "We need a fact." Alex: "We need a working HDMI port."
 
-#### S03.P2 Interactive search (DRAFT)
+#### S03.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -262,11 +262,11 @@ Foreground: silly headline sticky pile. Midground: layout desk with movable bloc
 | S03.O5 | Elliot's rejected pun napkin | Floor | context |
 | S03.O6 | Nadia's "boring but legal" stamp | Clipboard | tool |
 
-#### S03.P3 Inspect and compare (DRAFT)
+#### S03.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Assemble layout: O3 magnets + O4 grid must pair O1 report line with O2 denial line; stamp O6 on uncertainty box; discard O5 pun. The word tray contains exact proposed headline options: "MAYOR DENIES VIDEO REPORTS" and "CITY HALL: NO QUIET FRIDAY". Both retain the report/response attribution beneath; neither claims a Haps exclusive. On completion a May 24 next-assignment card promises a denial briefing, then offers episode-complete controls. It does not load S04.
 
-#### S03.P4 Editorial outcome and exit (DRAFT)
+#### S03.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Which filed lede survives copy desk?
 
@@ -281,7 +281,7 @@ Assemble layout: O3 magnets + O4 grid must pair O1 report line with O2 denial li
 
 ---
 
-## Chapter 2 card (DRAFT): "Denial season"
+## Chapter 2 card (STORYBOARD APPROVED): "Denial season"
 
 **Dates:** 24 May onward (H03). **Copy:** "Summer is hot. Denials are repetitive. The printer is still jammed."
 
@@ -289,14 +289,14 @@ Assemble layout: O3 magnets + O4 grid must pair O1 report line with O2 denial li
 
 ---
 
-### S04: Denial prep room (DRAFT)
+### S04: Denial prep room (STORYBOARD APPROVED)
 
 **Chapter:** 2 | **Historical:** H03 | **Date:** 24 May 2013 after public denial
 **Play pattern:** denial bingo / question pairing
 **Entry:** K03 + BR-CH1-A/B | **Exit:** K04 to S05
 **sceneObjectiveAnswerHint:** "Match each question to what a denial actually answers."
 
-#### S04.P1 Establish and arrival (DRAFT)
+#### S04.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Priya refuses to shoot a "reenactment of guilt." Elliot pitches "DENIAL DENIAL DENIAL" as a three-part headline. Alex builds questions that sound like journalism, not a wrestling promo.
 
@@ -304,7 +304,7 @@ Foreground: teleprompter glass with fingerprint smear. Midground: prep table, in
 
 **Dialogue:** Priya: "I shoot faces, not fan fiction." Elliot: "Give me a question that lands." Alex: "Give me one that survives Nadia."
 
-#### S04.P2 Interactive search (DRAFT)
+#### S04.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -315,11 +315,11 @@ Foreground: teleprompter glass with fingerprint smear. Midground: prep table, in
 | S04.O5 | Priya lens cap | Table corner | tool |
 | S04.O6 | Run-of-show sheet | Tablet prop rear | tool |
 
-#### S04.P3 Inspect and compare (DRAFT)
+#### S04.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Match O1 question cards to O2 denial bullets; mark "on-record denial" vs "allegation repeat"; O6 run-of-show is planning only.
 
-#### S04.P4 Editorial outcome and exit (DRAFT)
+#### S04.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** May 24 coverage should lead with?
 
@@ -334,14 +334,14 @@ Match O1 question cards to O2 denial bullets; mark "on-record denial" vs "allega
 
 ---
 
-### S05: Harbourview cafe (DRAFT)
+### S05: Harbourview cafe (STORYBOARD APPROVED)
 
 **Chapter:** 2 | **Historical:** none (fiction) | **Date:** 8 Jun 2013
 **Play pattern:** civic concern map
 **Entry:** K04 | **Exit:** K05 to S06
 **sceneObjectiveAnswerHint:** "Pin real neighborhood needs, not scandal tourism."
 
-#### S05.P1 Establish and arrival (DRAFT)
+#### S05.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Tomás watches Alex order the smallest coffee. "You only visit when the mayor breaks something." A TV muted in the corner shows a loop of City Hall b-roll. Alex promises a transit sidebar the Haps might actually print.
 
@@ -349,7 +349,7 @@ Foreground: condiment caddy, sugar packets stacked like evidence. Midground: boo
 
 **Dialogue:** Tomás: "Your paper called my patio an emerging scene. It is four chairs." Alex: "Five if we find the one from the newsroom."
 
-#### S05.P2 Interactive search (DRAFT)
+#### S05.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -360,11 +360,11 @@ Foreground: condiment caddy, sugar packets stacked like evidence. Midground: boo
 | S05.O5 | Street festival photo print | Window ledge | context |
 | S05.O6 | Sticky cluster "what city hall owes us" | Map margin | evidence |
 
-#### S05.P3 Inspect and compare (DRAFT)
+#### S05.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Pin O2, O3, O6 to O1 map layers (services, trust, accountability). O5 is color, not corroboration.
 
-#### S05.P4 Editorial outcome and exit (DRAFT)
+#### S05.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Cafe scene supports which notebook entry?
 
@@ -379,14 +379,14 @@ Pin O2, O3, O6 to O1 map layers (services, trust, accountability). O5 is color, 
 
 ---
 
-### S06: Summer shrug ledger (DRAFT)
+### S06: Summer shrug ledger (STORYBOARD APPROVED)
 
 **Chapter:** 2 | **Historical:** H03 pointer | **Date:** 30 Aug 2013 (fiction)
 **Play pattern:** source dedup matrix
 **Entry:** K04,K05 | **Exit:** K06 to S07; BR-CH2 at S06
 **sceneObjectiveAnswerHint:** "Two copies of the same blog post is still one blog post."
 
-#### S06.P1 Establish and arrival (DRAFT)
+#### S06.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Sasha labels three printouts "SOURCE A/B/C" because the fonts differ. Alex introduces the summer shrug: attributed, not verified, still employed.
 
@@ -394,7 +394,7 @@ Foreground: audit printouts, fan set to maximum. Midground: four-chair huddle un
 
 **Dialogue:** Sasha: "Three sources!" Alex: "One blog, three printers." Elliot: "Audit before amplify."
 
-#### S06.P2 Interactive search (DRAFT)
+#### S06.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -405,11 +405,11 @@ Foreground: audit printouts, fan set to maximum. Midground: four-chair huddle un
 | S06.O5 | May 24 denial summary H03 | Monitor | evidence |
 | S06.O6 | Redaction marker | Pen cup | tool |
 
-#### S06.P3 Inspect and compare (DRAFT)
+#### S06.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Fill O1 grid: trace duplicates to one origin; retain H03 as dated response; cross out anonymous-only column.
 
-#### S06.P4 Editorial outcome and exit (DRAFT)
+#### S06.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Summer audit status?
 
@@ -424,7 +424,7 @@ Fill O1 grid: trace duplicates to one origin; retain H03 as dated response; cros
 
 ---
 
-## Chapter 3 card (DRAFT): "October arrives"
+## Chapter 3 card (STORYBOARD APPROVED): "October arrives"
 
 **Dates:** 31 Oct 2013 (H04). **Copy:** "Police speak. Elliot hears angels. Nadia hears liability."
 
@@ -432,14 +432,14 @@ Fill O1 grid: trace duplicates to one origin; retain H03 as dated response; cros
 
 ---
 
-### S07: Archive bay (DRAFT)
+### S07: Archive bay (STORYBOARD APPROVED)
 
 **Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 after announcement
 **Play pattern:** stack search in archive aisle
 **Entry:** K06 + BR-CH2-A/B | **Exit:** K07 to S08
 **sceneObjectiveAnswerHint:** "Find May denials and tonight's statement stub. No playable video."
 
-#### S07.P1 Establish and arrival (DRAFT)
+#### S07.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Halloween candy on the rolling cart. Alex's May notebook is finally useful while everyone else runs in circles. Elliot shouts from the pit: "Headline goblins need files!"
 
@@ -447,7 +447,7 @@ Foreground: rolling cart with squeaky wheel. Midground: labeled boxes "2013-Q2."
 
 **Dialogue:** Alex: "May called. It wants its denials back." Sasha (distant): "I plugged the archive into the coffee maker again."
 
-#### S07.P2 Interactive search (DRAFT)
+#### S07.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -458,11 +458,11 @@ Foreground: rolling cart with squeaky wheel. Midground: labeled boxes "2013-Q2."
 | S07.O5 | Source-handling checklist | Cart side | tool |
 | S07.O6 | H04 announcement summary envelope | Top box | evidence |
 
-#### S07.P3 Inspect and compare (DRAFT)
+#### S07.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Open O6 fiction summary pointing to H04 slot; log on O2 slip; do not unlock video player UI.
 
-#### S07.P4 Editorial outcome and exit (DRAFT)
+#### S07.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Archive scene establishes?
 
@@ -477,14 +477,14 @@ Open O6 fiction summary pointing to H04 slot; log on O2 slip; do not unlock vide
 
 ---
 
-### S08: Statement side-eye (DRAFT)
+### S08: Statement side-eye (STORYBOARD APPROVED)
 
 **Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 after announcement
 **Play pattern:** authority comparison (police summary vs prior denials)
 **Entry:** K07 | **Exit:** K08 to S09
 **sceneObjectiveAnswerHint:** "Attribute the police announcement. Public availability is still a separate question."
 
-#### S08.P1 Establish and arrival (DRAFT)
+#### S08.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Elliot wants "POLICE HAVE THE TAPE" in 72-point type. Priya makes Alex keep the limitation visible like a neon sign.
 
@@ -492,7 +492,7 @@ Foreground: reporter notepad, chewed pen. Midground: briefing desk, **Public Sta
 
 **Dialogue:** Elliot: "Clear headline. Now." Priya: "Clear is not the same as complete."
 
-#### S08.P2 Interactive search (DRAFT)
+#### S08.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -503,11 +503,11 @@ Foreground: reporter notepad, chewed pen. Midground: briefing desk, **Public Sta
 | S08.O5 | Quote approval tick box sheet | Clipboard | tool |
 | S08.O6 | Public broadcast clock | Wall | context |
 
-#### S08.P3 Inspect and compare (DRAFT)
+#### S08.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Align O1 bullets to O2 denial dates; highlight contradiction without inventing quotes; tick O5 attribution boxes.
 
-#### S08.P4 Editorial outcome and exit (DRAFT)
+#### S08.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Headline supported tonight?
 
@@ -522,14 +522,14 @@ Align O1 bullets to O2 denial dates; highlight contradiction without inventing q
 
 ---
 
-### S09: Verification deadline (DRAFT)
+### S09: Verification deadline (STORYBOARD APPROVED)
 
 **Chapter:** 3 | **Historical:** H04 | **Date:** 31 Oct 2013 evening
 **Play pattern:** chronology ordering + checklist convergence
 **Entry:** K07,K08 | **Exit:** K09 to S10; BR-CH3 at S09
 **sceneObjectiveAnswerHint:** "Order tonight's statement against the last denial before you file."
 
-#### S09.P1 Establish and arrival (DRAFT)
+#### S09.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** October rain on the window. S03 desk variant returns with more cables. Alex is now who Sasha calls when the printer screams.
 
@@ -537,7 +537,7 @@ Foreground: coffee timer (narrative only, no countdown). Midground: BG01 October
 
 **Dialogue:** Nadia: "Publish the delta, not the fantasy." Alex: "Delta with unknowns attached."
 
-#### S09.P2 Interactive search (DRAFT)
+#### S09.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -548,11 +548,11 @@ Foreground: coffee timer (narrative only, no countdown). Midground: BG01 October
 | S09.O5 | Court docket public page summary card | Clipboard rear | context |
 | S09.O6 | Coffee timer dial | Foreground corner | tool |
 
-#### S09.P3 Inspect and compare (DRAFT)
+#### S09.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Order O2: May denial, summer audit pause (fiction label), Oct 31 statement. O1 checklist must include O3 draft with unknowns field.
 
-#### S09.P4 Editorial outcome and exit (DRAFT)
+#### S09.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** What belongs in tonight's filed package?
 
@@ -567,7 +567,7 @@ Order O2: May denial, summer audit pause (fiction label), Oct 31 statement. O1 c
 
 ---
 
-## Chapter 4 card (DRAFT): "On record, on camera, on fire"
+## Chapter 4 card (STORYBOARD APPROVED): "On record, on camera, on fire"
 
 **Dates:** 5 Nov; 14 Nov; 18-19 Nov 2013. **Copy:** "Admissions, apologies, and a printer that finally achieves sentience."
 
@@ -575,14 +575,14 @@ Order O2: May denial, summer audit pause (fiction label), Oct 31 statement. O1 c
 
 ---
 
-### S10: Breaking pit (DRAFT)
+### S10: Breaking pit (STORYBOARD APPROVED)
 
 **Chapter:** 4 | **Historical:** H05 | **Date:** 5 Nov 2013
 **Play pattern:** admission vs denial pairing
 **Entry:** K09 + BR-CH3-A/B | **Exit:** K10 to AS1
 **sceneObjectiveAnswerHint:** "Compare the new admission with earlier denials. Do not erase history."
 
-#### S10.P1 Establish and arrival (DRAFT)
+#### S10.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Red alert lights. Elliot pitches "CRACK CONFIRMED CRACK CONFIRMED." Nadia pitches "words exist, dates matter." Broken chair has a red alert sticker on it.
 
@@ -590,7 +590,7 @@ Foreground: ringing phone light. Midground: BG01 November alert lighting. Backgr
 
 **Dialogue:** Elliot: "This is on record now." Alex: "So were the denials. Both stay."
 
-#### S10.P2 Interactive search (DRAFT)
+#### S10.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -601,11 +601,11 @@ Foreground: ringing phone light. Midground: BG01 November alert lighting. Backgr
 | S10.O5 | Prior denial printout | Left clip | evidence |
 | S10.O6 | Headset with frayed cable | Desk edge | context |
 
-#### S10.P3 Inspect and compare (DRAFT)
+#### S10.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Drag O2 bullets beside O5 denial rows; mark new on-record claim without erasing dated history; forbid unsourced private detail.
 
-#### S10.P4 Editorial outcome and exit (DRAFT)
+#### S10.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Supported breaking lead?
 
@@ -620,7 +620,7 @@ Drag O2 bullets beside O5 denial rows; mark new on-record claim without erasing 
 
 ---
 
-### AS1: Assignment selector (DRAFT)
+### AS1: Assignment selector (STORYBOARD APPROVED)
 
 **When:** After K10, show a date card advancing from Nov 5 to Nov 14 after the afternoon apology, then select the assignment before its route. **Persist AS1-A or AS1-B atomically before R1A or R1B entry.**
 
@@ -633,7 +633,7 @@ Drag O2 bullets beside O5 denial rows; mark new on-record claim without erasing 
 
 ---
 
-### R1A: International Press Kit Scramble (DRAFT)
+### R1A: International Press Kit Scramble (STORYBOARD APPROVED)
 
 **Design target:** post-opening milestone; not in first production slice.
 **Chapter:** 4 fork | **Historical bounds:** H15 apology known; H16 international press presence | **Date:** 14 Nov 2013 afternoon (fiction)
@@ -641,7 +641,7 @@ Drag O2 bullets beside O5 denial rows; mark new on-record claim without erasing 
 **Entry:** K10, AS1-A persisted | **Exit:** KR1A to S11
 **sceneObjectiveAnswerHint:** "Pack what the Haps actually has before the satellite trucks eat your desk."
 
-#### R1A.P1 Establish and arrival (DRAFT)
+#### R1A.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** The public corridor looks like a luggage store exploded. Priya needs a clean lens cap. Sasha is mistaken for a producer three times in four minutes. An abandoned folding chair holds an oversized **MEDIA** vest.
 
@@ -649,7 +649,7 @@ Foreground: cardboard boxes labeled "NOT FOOD." Midground: BG02 public corridor 
 
 **Dialogue:** Elliot: "Look bigger than we are." Priya: "Look accurate." Alex: "Look employed."
 
-#### R1A.P2 Interactive search (DRAFT)
+#### R1A.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -660,11 +660,11 @@ Foreground: cardboard boxes labeled "NOT FOOD." Midground: BG02 public corridor 
 | R1A.O5 | Priya spare battery | Bag | tool |
 | R1A.O6 | Elliot's wrong-network business cards | Trash | context |
 
-#### R1A.P3 Inspect and compare (DRAFT)
+#### R1A.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Pack O1 and O5; use O3 to choose the clear camera position without blocking the exit; reject O6 wrong cards. The sketch describes fictional staging, not an official access permission.
 
-#### R1A.P4 Editorial outcome and exit (DRAFT)
+#### R1A.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Kit ready for City Hall crush?
 
@@ -679,7 +679,7 @@ Pack O1 and O5; use O3 to choose the clear camera position without blocking the 
 
 ---
 
-### R1B: Cafe Reaction Beat (DRAFT)
+### R1B: Cafe Reaction Beat (STORYBOARD APPROVED)
 
 **Design target:** post-opening milestone.
 **Chapter:** 4 fork | **Historical bounds:** H15 via paraphrase only; no quote repeat | **Date:** 14 Nov 2013 afternoon (fiction)
@@ -687,7 +687,7 @@ Pack O1 and O5; use O3 to choose the clear camera position without blocking the 
 **Entry:** K10, AS1-B persisted | **Exit:** KR1B to S11
 **sceneObjectiveAnswerHint:** "Capture how regulars talk about the circus, not the unverified private allegation."
 
-#### R1B.P1 Establish and arrival (DRAFT)
+#### R1B.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Tomás has the TV on mute. Regulars argue about whether the mayor or the media is louder. Alex is here because Elliot said "local color" and Priya refused to shoot the espresso machine as B-roll.
 
@@ -695,7 +695,7 @@ Foreground: steam from O1. Midground: BG04 afternoon, news glow on faces. Backgr
 
 **Dialogue:** Tomás: "You want quotes? Buy a second round." Alex: "I want sentences Nadia will not set on fire."
 
-#### R1B.P2 Interactive search (DRAFT)
+#### R1B.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -706,11 +706,11 @@ Foreground: steam from O1. Midground: BG04 afternoon, news glow on faces. Backgr
 | R1B.O5 | "World media" TV mute remote | Bar | context |
 | R1B.O6 | Consent card stack | Register | tool |
 
-#### R1B.P3 Inspect and compare (DRAFT)
+#### R1B.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Record O3 with O6 consent; draft O4 sidebar layout using O2 annotations; O5 stays muted background gag.
 
-#### R1B.P4 Editorial outcome and exit (DRAFT)
+#### R1B.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Sidebar focus?
 
@@ -725,7 +725,7 @@ Record O3 with O6 consent; draft O4 sidebar layout using O2 annotations; O5 stay
 
 ---
 
-### S11: Did He Just Say That? (DRAFT)
+### S11: Did He Just Say That? (STORYBOARD APPROVED)
 
 **Chapter:** 4 | **Historical:** H15 | **Date:** 14 Nov 2013 **after afternoon apology**
 **Play pattern:** press-kit retelling: morning quote slot vs afternoon apology slot
@@ -734,7 +734,7 @@ Record O3 with O6 consent; draft O4 sidebar layout using O2 annotations; O5 stay
 
 **Route callbacks:** If KR1A, satellite truck mug on desk. If KR1B, Tomás takeaway cup on desk.
 
-#### S11.P1 Establish and arrival (DRAFT)
+#### S11.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Nadia spreads a **Torrona Haps press kit** on the rearranged desk: morning appearance, afternoon apology, no private reenactment. Elliot waves a fog-machine brochure. "Apology atmosphere," he says. Nadia says no.
 
@@ -742,7 +742,7 @@ Foreground: kit folders labeled AM and PM. Midground: BG01 Nov 14 layout, route 
 
 **Dialogue:** Nadia: "We explain the day. We do not cosplay the bedroom." Elliot: "What if the fog is tasteful?" Alex: "What if we file?"
 
-#### S11.P2 Interactive search (DRAFT)
+#### S11.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -753,11 +753,11 @@ Foreground: kit folders labeled AM and PM. Midground: BG01 Nov 14 layout, route 
 | S11.O5 | Single-quote placard (H15 text once) | Kit center | evidence |
 | S11.O6 | Elliot fog-machine brochure | Trash | context |
 
-#### S11.P3 Inspect and compare (DRAFT)
+#### S11.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Order O4 ribbon: morning before afternoon. Place O5 once with attribution label (sole H15 quote instance). O6 brochure to joke bin.
 
-#### S11.P4 Editorial outcome and exit (DRAFT)
+#### S11.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** What does Nov 14 coverage document?
 
@@ -774,14 +774,14 @@ Order O4 ribbon: morning before afternoon. Place O5 once with attribution label 
 
 ---
 
-### S12: Powers and punchline map (DRAFT)
+### S12: Powers and punchline map (STORYBOARD APPROVED)
 
 **Chapter:** 4 | **Historical:** H06-H08, H18 | **Date:** 19 Nov 2013 after the cancellation report; retrospective on Nov 13, 15 and 18
 **Play pattern:** powers delta chart + Nov 19 montage card
 **Entry:** K11 | **Exit:** K12 to S13; BR-CH4 at S12
 **sceneObjectiveAnswerHint:** "Show which powers moved on which public dates. Slot the one-episode TV cancellation as paraphrase."
 
-#### S12.P1 Establish and arrival (DRAFT)
+#### S12.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Elliot finally gives an explainer the splash zone. Sasha queues a montage card for H18: one episode, cancelled next day. Paraphrase only; no ratings speculation.
 
@@ -789,7 +789,7 @@ Foreground: highlighter cap off. Midground: dual charts on easel. Background: pi
 
 **Dialogue:** Elliot: "One episode? I ordered a season recap." Sasha: "Good news. It fits on a coaster."
 
-#### S12.P2 Interactive search (DRAFT)
+#### S12.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -800,11 +800,11 @@ Foreground: highlighter cap off. Midground: dual charts on easel. Background: pi
 | S12.O5 | H18 cancellation chyron card (paraphrase) | Monitor | evidence |
 | S12.O6 | Highlighter | Foreground tray | tool |
 
-#### S12.P3 Inspect and compare (DRAFT)
+#### S12.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Highlight deltas O1 to O2 through O3 specified functions only. O5 montage slot separate from powers chart. No "mayor removed" language.
 
-#### S12.P4 Editorial outcome and exit (DRAFT)
+#### S12.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Accurate explainer core?
 
@@ -819,22 +819,22 @@ Highlight deltas O1 to O2 through O3 specified functions only. O5 montage slot s
 
 ---
 
-## Chapter 5 card (DRAFT): "Leave, latte, return"
+## Chapter 5 card (STORYBOARD APPROVED): "Leave, latte, return"
 
-**Optional H17 card (DRAFT):** Before S13, dated **3 Mar 2014** flashback card: "Ford appeared on Jimmy Kimmel Live! in Los Angeles. The Haps did not send a correspondent. We sent a strongly worded calendar reminder." Not a playable scene.
+**Optional H17 card (STORYBOARD APPROVED):** Before S13, dated **3 Mar 2014** flashback card: "Ford appeared on Jimmy Kimmel Live! in Los Angeles. The Haps did not send a correspondent. We sent a strongly worded calendar reminder." Not a playable scene.
 
 **Transition:** S13.P1.
 
 ---
 
-### S13: Leave watch (DRAFT)
+### S13: Leave watch (STORYBOARD APPROVED)
 
 **Chapter:** 5 | **Historical:** H09 | **Date:** 1 May 2014 after Apr 30 statement
 **Play pattern:** leave statement timeline with humane tone
 **Entry:** K12 + BR-CH4-A/B | **Exit:** K13 to S14
 **sceneObjectiveAnswerHint:** "Cover the public leave statement without ghoulish wordplay."
 
-#### S13.P1 Establish and arrival (DRAFT)
+#### S13.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Alex drafts a pun headline, hears Nadia's footsteps, deletes it in one motion. Elliot is uncharacteristically quiet. Fog machine brochure reappears as a bookmark.
 
@@ -842,7 +842,7 @@ Foreground: potted plant. Midground: health beat corner, muted newsroom. Backgro
 
 **Dialogue:** Nadia: "No ghoulish wordplay." Alex: "I was thinking 'May the fourth be with...'" Nadia: "No."
 
-#### S13.P2 Interactive search (DRAFT)
+#### S13.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -853,11 +853,11 @@ Foreground: potted plant. Midground: health beat corner, muted newsroom. Backgro
 | S13.O5 | Press pool schedule | Side tray | context |
 | S13.O6 | "No ghoulish puns" card from Nadia | Drawer front | tool |
 
-#### S13.P3 Inspect and compare (DRAFT)
+#### S13.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Align O1 to O2 anchors; apply O6 tone guide; no clinic or medical record props.
 
-#### S13.P4 Editorial outcome and exit (DRAFT)
+#### S13.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Supported leave coverage?
 
@@ -872,14 +872,14 @@ Align O1 to O2 anchors; apply O6 tone guide; no clinic or medical record props.
 
 ---
 
-### S14: Service sidebar (DRAFT)
+### S14: Service sidebar (STORYBOARD APPROVED)
 
 **Chapter:** 5 | **Historical:** none (fiction) | **Date:** 8 May 2014
 **Play pattern:** spatial map of fictional city-service beats
 **Entry:** K13 | **Exit:** K14 to S15
 **sceneObjectiveAnswerHint:** "Label each fictional request as a follow-up lead, not proof of citywide failure."
 
-#### S14.P1 Establish and arrival (DRAFT)
+#### S14.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Alex keeps the S05 promise. Priya photographs a park permit signing, not a mayor cardboard cutout. Elliot calls twice; Alex ignores one call successfully.
 
@@ -887,7 +887,7 @@ Foreground: push pins. Midground: BG06 map table. Background: ordinary street th
 
 **Dialogue:** Priya: "Permission first." Alex: "Revolutionary concept."
 
-#### S14.P2 Interactive search (DRAFT)
+#### S14.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -898,11 +898,11 @@ Foreground: push pins. Midground: BG06 map table. Background: ordinary street th
 | S14.O5 | Priya parks feature shot list | Camera bag | tool |
 | S14.O6 | Service desk phone tree card | Map corner | tool |
 
-#### S14.P3 Inspect and compare (DRAFT)
+#### S14.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Pin O2, O3, O4 to districts; classify with O6 categories as civics beat, separate from H09 leave reporting.
 
-#### S14.P4 Editorial outcome and exit (DRAFT)
+#### S14.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Week-one emphasis while mayor away?
 
@@ -917,14 +917,14 @@ Pin O2, O3, O4 to districts; classify with O6 categories as civics beat, separat
 
 ---
 
-### S15: Return briefing (DRAFT)
+### S15: Return briefing (STORYBOARD APPROVED)
 
 **Chapter:** 5 | **Historical:** H10 | **Date:** 30 Jun 2014
 **Play pattern:** public return Q&A matching
 **Entry:** K14 | **Exit:** K15 to S16; BR-CH5 at S15
 **sceneObjectiveAnswerHint:** "Match briefing questions to the public June 30 statement only."
 
-#### S15.P1 Establish and arrival (DRAFT)
+#### S15.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Elliot wants a "gotcha." Alex prepares a public-duty question the record can support. Sasha labels the audio cables with masking tape legends.
 
@@ -932,7 +932,7 @@ Foreground: cordon tape roll. Midground: BG03 return briefing layout. Background
 
 **Dialogue:** Elliot: "One hard question." Nadia: "One fair one."
 
-#### S15.P2 Interactive search (DRAFT)
+#### S15.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -943,11 +943,11 @@ Foreground: cordon tape roll. Midground: BG03 return briefing layout. Background
 | S15.O5 | Security cordon map | Floor clip | context |
 | S15.O6 | Return Q&A cards | Tray | tool |
 
-#### S15.P3 Inspect and compare (DRAFT)
+#### S15.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Match O6 prompts to O1 bullets; discard private medical implications.
 
-#### S15.P4 Editorial outcome and exit (DRAFT)
+#### S15.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Return briefing covers?
 
@@ -962,20 +962,20 @@ Match O6 prompts to O1 bullets; discard private medical implications.
 
 ---
 
-## Chapter 6 card (DRAFT): "Vote, fog, futures"
+## Chapter 6 card (STORYBOARD APPROVED): "Vote, fog, futures"
 
 **Transition:** S16.P1.
 
 ---
 
-### S16: Candidate shuffle (DRAFT)
+### S16: Candidate shuffle (STORYBOARD APPROVED)
 
 **Chapter:** 6 | **Historical:** H11 | **Date:** 12 Sep 2014
 **Play pattern:** mayoral vs ward race card sort
 **Entry:** K15 + BR-CH5-A/B | **Exit:** K16 to AS2
 **sceneObjectiveAnswerHint:** "Order filing dates before you name the switch."
 
-#### S16.P1 Establish and arrival (DRAFT)
+#### S16.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Sasha nearly merges both races on one map color. Alex separates them and lets Sasha stamp the correction herself. Elliot pitches headline: "BROTHER BOWL."
 
@@ -983,7 +983,7 @@ Foreground: filing stamp pad. Midground: BG01 election prep, ward map without ca
 
 **Dialogue:** Sasha: "Same last name, same map?" Alex: "Different ballot, different story."
 
-#### S16.P2 Interactive search (DRAFT)
+#### S16.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -994,11 +994,11 @@ Foreground: filing stamp pad. Midground: BG01 election prep, ward map without ca
 | S16.O5 | Mayor-race / Ward 2 explainer card | Folder | tool |
 | S16.O6 | Priya lens chart | Bag flap | tool |
 
-#### S16.P3 Inspect and compare (DRAFT)
+#### S16.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Sort O1 into columns using O5; stamp O3 only on public filing marker.
 
-#### S16.P4 Editorial outcome and exit (DRAFT)
+#### S16.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Candidate change coverage states?
 
@@ -1013,7 +1013,7 @@ Sort O1 into columns using O5; stamp O3 only on public filing marker.
 
 ---
 
-### AS2: Assignment selector (DRAFT)
+### AS2: Assignment selector (STORYBOARD APPROVED)
 
 **When:** After K16, show a date card advancing from Sep 12 to Oct 27 before results, then select the assignment before its route. **Persist AS2-A or AS2-B atomically before R2A or R2B entry.**
 
@@ -1026,7 +1026,7 @@ Sort O1 into columns using O5; stamp O3 only on public filing marker.
 
 ---
 
-### R2A: Election Night Field Kit (DRAFT)
+### R2A: Election Night Field Kit (STORYBOARD APPROVED)
 
 **Design target:** post-opening milestone.
 **Chapter:** 6 fork | **Date:** 27 Oct 2014 before results (fiction)
@@ -1034,7 +1034,7 @@ Sort O1 into columns using O5; stamp O3 only on public filing marker.
 **Entry:** K16, AS2-A persisted | **Exit:** KR2A to S17
 **sceneObjectiveAnswerHint:** "Pack for cold sidewalks and careful labels, not a victory party."
 
-#### R2A.P1 Establish and arrival (DRAFT)
+#### R2A.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Priya tests batteries by the loading dock. Elliot's fog-machine remote is taped to a "DO NOT TOUCH" sign. Alex pretends not to see it.
 
@@ -1042,7 +1042,7 @@ Foreground: open field bag. Midground: BG01 staging corner. Background: election
 
 **Dialogue:** Priya: "Preliminary means cold fingers." Alex: "Preliminary means we label everything twice."
 
-#### R2A.P2 Interactive search (DRAFT)
+#### R2A.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -1053,11 +1053,11 @@ Foreground: open field bag. Midground: BG01 staging corner. Background: election
 | R2A.O5 | Elliot fog-machine remote (taped) | Coat pocket | context |
 | R2A.O6 | Results call sheet blank | Clipboard | tool |
 
-#### R2A.P3 Inspect and compare (DRAFT)
+#### R2A.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Pack O1, O2, O3, O6; leave O5 taped; O4 optional flavor prop.
 
-#### R2A.P4 Editorial outcome and exit (DRAFT)
+#### R2A.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Field kit complete?
 
@@ -1072,7 +1072,7 @@ Pack O1, O2, O3, O6; leave O5 taped; O4 optional flavor prop.
 
 ---
 
-### R2B: Newsroom Broadcast Kit (DRAFT)
+### R2B: Newsroom Broadcast Kit (STORYBOARD APPROVED)
 
 **Design target:** post-opening milestone.
 **Chapter:** 6 fork | **Date:** 27 Oct 2014 before results (fiction)
@@ -1080,7 +1080,7 @@ Pack O1, O2, O3, O6; leave O5 taped; O4 optional flavor prop.
 **Entry:** K16, AS2-B persisted | **Exit:** KR2B to S17
 **sceneObjectiveAnswerHint:** "Wire the desk for preliminary labels, not certified victory."
 
-#### R2B.P1 Establish and arrival (DRAFT)
+#### R2B.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Sasha's cable map looks like modern art. Nadia demands three different spellings of PRELIMINARY on screen. Cold pizza arrives as a prop, not a celebration.
 
@@ -1088,7 +1088,7 @@ Foreground: pizza box. Midground: BG01 election pre-show desk. Background: **LIV
 
 **Dialogue:** Sasha: "Green cable is audio. Or video. I will check." Nadia: "Spell preliminary correctly or I sit on the remote."
 
-#### R2B.P2 Interactive search (DRAFT)
+#### R2B.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -1099,11 +1099,11 @@ Foreground: pizza box. Midground: BG01 election pre-show desk. Background: **LIV
 | R2B.O5 | Headset | Hook | tool |
 | R2B.O6 | Cold pizza box | Foreground | context |
 
-#### R2B.P3 Inspect and compare (DRAFT)
+#### R2B.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Connect O1 to desk; apply O3 template; fix O2 gaffe; O6 stays untouched gag.
 
-#### R2B.P4 Editorial outcome and exit (DRAFT)
+#### R2B.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Broadcast desk ready?
 
@@ -1118,7 +1118,7 @@ Connect O1 to desk; apply O3 template; fix O2 gaffe; O6 stays untouched gag.
 
 ---
 
-### S17: Election night preliminary (DRAFT)
+### S17: Election night preliminary (STORYBOARD APPROVED)
 
 **Chapter:** 6 | **Historical:** H12 | **Date:** 27 Oct 2014 after reported results
 **Play pattern:** preliminary labeling under fog-machine chaos
@@ -1127,7 +1127,7 @@ Connect O1 to desk; apply O3 template; fix O2 gaffe; O6 stays untouched gag.
 
 **Route callbacks:** KR2A adds field mittens on chair; KR2B adds triple-spelled PRELIMINARY on monitor.
 
-#### S17.P1 Establish and arrival (DRAFT)
+#### S17.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Elliot unveils the **fog machine** for "democracy atmosphere." It activates sideways. Priya gets one clean frame through haze. Sasha's stream says "PRELIMINARY" in three fonts.
 
@@ -1135,7 +1135,7 @@ Foreground: remote and tangled cable. Midground: BG01 improvised live desk. Back
 
 **Dialogue:** Elliot: "Can we make the fog say SPONSORED?" Sasha: "We cannot make the microphone say words."
 
-#### S17.P2 Interactive search (DRAFT)
+#### S17.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -1146,11 +1146,11 @@ Foreground: remote and tangled cable. Midground: BG01 improvised live desk. Back
 | S17.O5 | Push draft phone | Desk | tool |
 | S17.O6 | Fog machine remote (payoff) | Elliot hand | context |
 
-#### S17.P3 Inspect and compare (DRAFT)
+#### S17.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Apply PRELIMINARY ribbon to O1 and O5 draft; verify O3/O4 rows match O2 without certified language. O6 activates sideways fog gag (reduced-motion: static puff overlay).
 
-#### S17.P4 Editorial outcome and exit (DRAFT)
+#### S17.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Safe election night push?
 
@@ -1165,14 +1165,14 @@ Apply PRELIMINARY ribbon to O1 and O5 draft; verify O3/O4 rows match O2 without 
 
 ---
 
-### S18: Certified retrospective (DRAFT)
+### S18: Certified retrospective (STORYBOARD APPROVED)
 
 **Chapter:** 6 | **Historical:** H13 | **Date:** 30 Oct 2014 after the public declaration
 **Play pattern:** certified vs preliminary compare + BR-CH6 + ending predicate
 **Entry:** K17 | **Exit:** K18, BR-CH6, END-A or END-B
 **sceneObjectiveAnswerHint:** "Confirm certified winners match preliminary board, then pick your closing emphasis."
 
-#### S18.P1 Establish and arrival (DRAFT)
+#### S18.P1 Establish and arrival (STORYBOARD APPROVED)
 
 **Beat:** Late-day light after the results declaration. Broken chair has a support bolt at last. K01 notebook beside K18 draft. Elliot slides two career envelopes (fiction).
 
@@ -1180,7 +1180,7 @@ Foreground: certified print. Midground: BG01 late-day retrospective. Background:
 
 **Dialogue:** Elliot: "You survived our budget choices." Alex: "The city survived worse."
 
-#### S18.P2 Interactive search (DRAFT)
+#### S18.P2 Interactive search (STORYBOARD APPROVED)
 
 | ID | Object | Position | Class |
 | --- | --- | --- | --- |
@@ -1191,11 +1191,11 @@ Foreground: certified print. Midground: BG01 late-day retrospective. Background:
 | S18.O5 | Elliot career letter (fiction) | Envelope | context |
 | S18.O6 | Priya election night contact sheet | Wall | evidence |
 
-#### S18.P3 Inspect and compare (DRAFT)
+#### S18.P3 Inspect and compare (STORYBOARD APPROVED)
 
 Compare O1 date/status to S17; same winners; no invented numeric changes. Select O4 emphasis; resolve BR-CH6.
 
-#### S18.P4 Editorial outcome and exit (DRAFT)
+#### S18.P4 Editorial outcome and exit (STORYBOARD APPROVED)
 
 **Player question:** Retrospective lede supported by certified results?
 
@@ -1210,7 +1210,7 @@ Compare O1 date/status to S17; same winners; no invented numeric changes. Select
 
 ---
 
-## Comparison keys (DRAFT)
+## Comparison keys (STORYBOARD APPROVED)
 
 | Scene | Required comparison | Retry explanation |
 | --- | --- | --- |
@@ -1237,7 +1237,7 @@ Compare O1 date/status to S17; same winners; no invented numeric changes. Select
 | S17 | H12 preliminary labels | Certification later |
 | S18 | H13 matches H12 winners | Status change only |
 
-## Branch resolution and endings (DRAFT)
+## Branch resolution and endings (STORYBOARD APPROVED)
 
 Six BR bits at S03, S06, S09, S12, S15, S18. AS1/AS2 do not affect END predicate.
 
@@ -1259,7 +1259,7 @@ Six BR bits at S03, S06, S09, S12, S15, S18. AS1/AS2 do not affect END predicate
 
 ---
 
-## Credits (DRAFT)
+## Credits (STORYBOARD APPROVED)
 
 1. Ford Frenzy
 2. jr42 productions
@@ -1280,12 +1280,16 @@ BG01 newsroom (+variants), BG02 City Hall corridor, BG03 briefing, BG04 cafe, BG
 
 Revision 1 boards lacked routes and used Ledger Gazette tone. Revision 2 renames paper to Torrona Haps, moves S11 to Nov 14 H15 beat, adds R1A-R2B and AS selectors. Runtime save migration not specified here.
 
-## Review checklist (planned)
+## Review checklist
 
-- [ ] 22 scenes, 4 panels each (88)
-- [ ] 132 unique object IDs (108 shared + 24 route)
-- [ ] K01-K18 + KR* chain acyclic
-- [ ] H15 quote once in S11
-- [ ] S01-S03 production-ready text
-- [ ] Routes fully boarded (design)
-- [ ] Owner DRAFT approval
+- [x] 22 scenes, 4 panels each (88)
+- [x] 132 unique object IDs (108 shared + 24 route)
+- [x] K01-K18 + KR* chain acyclic
+- [x] H15 quote once in S11
+- [x] S01-S03 storyboard text complete (runtime still open)
+- [x] Routes fully boarded (design)
+- [x] Owner storyboard approval recorded for revision 2 on 2026-09-07
+- [ ] Art selection and production artwork
+- [ ] Rights and release review
+- [ ] Runtime implementation and validation
+- [ ] Playtest and pacing acceptance

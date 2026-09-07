@@ -1,6 +1,6 @@
 # Proposal 93: opening storyboard handoff
 
-Issue #93. Status: draft delivered; owner approval pending.
+Issue #93. Status: storyboard approved by owner on 2026-09-07; not approved shipping content.
 
 Use the canonical S01-S03 board sequence from #92 and provide a bounded handoff with
 FF-OPEN-001 through FF-OPEN-012 acceptance scenarios in
@@ -18,7 +18,9 @@ gear failures.
 Scope: opening script, source boundaries, interface/save/retry failure cases,
 issue traceability, three-scene-only asset loading. The opening handoff must leave
 the later AS1/AS2 forks and route scenes to the canonical full-game boards. Excluded: completed gameplay,
-final art, later campaign production and owner creative approval.
+final art, later campaign production, rights and release approval, runtime implementation,
+playtest qualification and final shipping approval.
 
-Planned: owner storyboard review and #12/#45 playable qualification. Actual
-documentation checks and integration review will be recorded in the PR.
+Owner storyboard review was completed on 2026-09-07. #12/#45 playable qualification,
+art, rights, runtime and release checks remain open. Actual documentation checks and
+integration review will be recorded in the PR.

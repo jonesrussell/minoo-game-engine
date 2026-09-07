@@ -1,9 +1,9 @@
 # Proposal 92: full-game scene storyboards
 
 Issue: [#92](https://github.com/jonesrussell/minoo-game-engine/issues/92)
-Status: **DRAFT** pending owner review
+Status: **STORYBOARD APPROVED** by owner on 2026-09-07
 Owner: jr42 productions / Minoo storyboard track
-Depends on: campaign draft (#91, owner approval pending), historical source ledger at [docs/research/ford-frenzy-history.md](../research/ford-frenzy-history.md)
+Depends on: campaign storyboard approval (#91), historical source ledger at [docs/research/ford-frenzy-history.md](../research/ford-frenzy-history.md)
 Opening handoff #93 reuses S01-S03 here. Later boards are not an opening prerequisite.
 Revision 2 adds route boards R1A/R1B and R2A/R2B while preserving the canonical
 targets in [campaign.md](../storyboards/campaign.md). This proposal does not create
@@ -40,8 +40,8 @@ Excluded:
 
 | Artifact | Path | Status |
 | --- | --- | --- |
-| Full-game storyboards | [docs/storyboards/full-game.md](../storyboards/full-game.md) | DRAFT |
-| This proposal | docs/proposals/92-full-game-storyboards.md | DRAFT |
+| Full-game storyboards | [docs/storyboards/full-game.md](../storyboards/full-game.md) | STORYBOARD APPROVED |
+| This proposal | docs/proposals/92-full-game-storyboards.md | STORYBOARD APPROVED |
 
 ## Draft coverage (content inventory, not gameplay evidence)
 
@@ -224,11 +224,11 @@ turn attributed allegations into facts.
 
 ## Verification
 
-- Planned: owner reads [full-game.md](../storyboards/full-game.md); confirms DRAFT
+- Executed: owner reads [full-game.md](../storyboards/full-game.md); storyboard approval recorded 2026-09-07
   panels; checks the H15-H18 source crosswalk and chronology; validates S01-S03
   implementation readiness.
 - Planned: reconcile object IDs with future scene JSON validation (SCN-IDENTITY-001).
-- Executed: none at proposal submission time.
+- Executed: owner storyboard approval recorded 2026-09-07. Art, rights, final release copy, runtime implementation and playtest checks remain open.
 
 ## Unresolved decisions (owner / parent)
 
@@ -242,4 +242,4 @@ turn attributed allegations into facts.
 - [content-policy.md](../content-policy.md)
 - [ford-frenzy-experience.md](../specs/ford-frenzy-experience.md)
 - [proposal 102](102-ford-frenzy-experience.md)
-- [Campaign draft](../storyboards/campaign.md), owner review pending
+- [Campaign storyboard](../storyboards/campaign.md), owner approval recorded 2026-09-07
