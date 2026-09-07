@@ -10,7 +10,7 @@ Build the smallest reusable browser engine that supports Journey, then validate 
 - Work one bounded issue per branch and PR. Read dependency issues before starting. Resolve routine choices within the agreed scope; record material architecture decisions.
 - Use issue acceptance criteria as the delivery contract. Reference the issue in the PR and report actual evidence, never planned checks as completed.
 - After a dependency closes, check downstream issues and update blocked/ready labels. Keep project status aligned with actual progress.
-- Keep the repository usable from a clean Linux cloud checkout. Do not require a local editor, desktop-only software, private machine paths or secrets in source.
+- Develop locally through the Codex desktop app. Keep setup reproducible on Windows and checks runnable in Linux CI. The agent handles commands and editing; the owner directs and reviews through chat. Do not require a cloud coding environment or commit private machine paths or secrets.
 
 ## Architecture
 
