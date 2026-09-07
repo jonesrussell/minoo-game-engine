@@ -18,7 +18,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/unit/*.test.ts",
-    "test:e2e": "npm run build && node scripts/test-browser.mjs && node scripts/test-scene-browser.mjs",
+    "test:e2e": "npm run build && node scripts/test-browser.mjs && node scripts/test-scene-browser.mjs && node scripts/test-replay-browser.mjs",
     "generate:scene-types": "node scripts/generate-scene-types.mjs",
     "check:repository": "node scripts/check-repository.mjs"
   },

@@ -7,6 +7,7 @@
     ".": "./src/index.ts",
     "./scene": "./src/scene.ts",
     "./runtime": "./src/runtime.ts",
+    "./replay": "./src/replay.ts",
     "./scene.schema.json": "./src/contracts/scene.schema.json"
   },
   "dependencies": {
