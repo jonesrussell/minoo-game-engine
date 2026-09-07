@@ -23,6 +23,9 @@ The [first-game brief](docs/first-game.md) proposes three opening scenes and a s
 - [Scene contract SDD pilot](docs/sdd-pilot.md)
 - [Scene contract specification](docs/specs/scene-contract.md)
 - [Content policy](docs/content-policy.md)
+- [Ford Frenzy full campaign storyboard](docs/storyboards/full-game.md)
+- [Campaign outline and endings](docs/storyboards/campaign.md)
+- [Historical timeline and sources](docs/research/ford-frenzy-history.md)
 - [Contribution workflow](CONTRIBUTING.md)
 
 ## Projects

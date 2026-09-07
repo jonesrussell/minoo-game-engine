@@ -25,6 +25,22 @@
       "status": "implemented",
       "invariant_spec": "docs/specs/runtime-testing.md",
       "remaining_M1": "Renderer, assets, persistence and compatibility work remain open."
+    },
+    "campaign_storyboards": {
+      "status": "draft awaiting owner review",
+      "research_issue": 90,
+      "outline_issue": 91,
+      "full_boards_issue": 92,
+      "opening_issue": 93,
+      "chapters": 6,
+      "scenes": 18,
+      "panels": 72,
+      "ending_variants": 2,
+      "research_document": "docs/research/ford-frenzy-history.md",
+      "campaign_document": "docs/storyboards/campaign.md",
+      "storyboard_document": "docs/storyboards/full-game.md",
+      "opening_document": "docs/storyboards/opening-handoff.md",
+      "production_scope": "S01-S03 only; S04-S18 design draft, production uncommitted"
     }
   },
   "issues": [
