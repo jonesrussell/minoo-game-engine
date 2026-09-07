@@ -49,9 +49,9 @@
       "next_gates": {
         "art_direction": {
           "issue": 94,
-          "status": "visual concept and brief in owner review",
+          "status": "owner-approved on 2026-09-07",
           "document": "docs/art-direction.md",
-          "preview": "docs/art/visual-direction-01/index.html"
+          "preview": "docs/art/visual-direction-02/index.html"
         },
         "reporting_loop": {
           "issue": 43,
