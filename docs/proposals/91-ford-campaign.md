@@ -99,5 +99,5 @@ This is a documentation-only draft. Owner creative approval remains pending for 
 - FF-CAM-003: Given either BR-CH4 choice, when chapter five begins, then S13 receives the chosen sidebar and remains reachable. No earlier scene changes retrospectively.
 - FF-CAM-004/005: Given any branch and route sequence, when S18 completes, then the same certified winners appear. Given May gameplay, when media is inspected, then the original video is unavailable and November material is absent.
 - FF-CAM-007: Given repeated incorrect submissions, when the player corrects the draft, then completion works without an ending penalty.
-- FF-CAM-008: Given any of the 64 binary sequences, when the ending predicate runs, then exactly one ending is selected. Three matching choices select END-A; two select END-B.
+- FF-CAM-008: Given any of the 64 binary sequences, when the ending predicate runs, then exactly one ending is selected. At least three matching choices select END-A; otherwise END-B.
 - FF-CAM-009: Given only opening assets, when S03 completes, then the episode ends without fetching S04 or contacting Studio.
