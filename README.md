@@ -24,6 +24,7 @@ The [first-game brief](docs/first-game.md) proposes the Torrona Haps opening and
 - [Scene contract specification](docs/specs/scene-contract.md)
 - [Content policy](docs/content-policy.md)
 - [Ford Frenzy full campaign storyboard](docs/storyboards/full-game.md)
+- [Ford Frenzy visual direction and concept](docs/art-direction.md)
 - [Campaign outline and endings](docs/storyboards/campaign.md)
 - [Torrona Haps rewrite contract](docs/proposals/114-torrona-haps-rewrite.md)
 - [Historical timeline and sources](docs/research/ford-frenzy-history.md)

@@ -1,0 +1,23 @@
+{
+  "id": "ff-concept-newsroom-01",
+  "date": "2026-09-07",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed by built-in tool",
+  "inputs": [
+    {"id":"ff-075","sha256":"e2961e24084a8a43806a5000c113e94af298c7f75756091b59e8ece0142ed216","use":"palette and graphic boldness"},
+    {"id":"ff-022","sha256":"ad2f21f48c77c03408a8df7022556d5deb95a3a1b77de035d4f67a09d2ed9fb4","use":"silhouette and contour reference"},
+    {"id":"ff-037","sha256":"335ef3f9df4a5cfb668913c0c677d24c39af92fa59d59140c812b5b198ab7444","use":"silhouette and contour reference"}
+  ],
+  "prompt": "prompt.txt",
+  "output": "newsroom-concept.png",
+  "sha256": "29f9e6dbf8f03bfa058063d6117237a4fd01b62653d4ed68ad8f1725447a5710",
+  "bytes": 2481754,
+  "width": 1672,
+  "height": 941,
+  "review": "Concept inspected by Codex; owner visual review pending",
+  "pixel_edits": "none; generated original preserved",
+  "presentation": "index.html adds editable masthead, title and HUD",
+  "runtime_enabled": false,
+  "release_approved": false,
+  "limitations": ["Flat concept: objects and characters baked into image", "Not a #104 background plus alpha-sprite pipeline proof", "Target occlusion differs from final storyboard placements", "Generated tiny page marks are not usable historical copy", "Small-screen gameplay input, zoom and readable inspect UI are not implemented"]
+}
