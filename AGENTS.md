@@ -4,12 +4,15 @@
 
 Build the smallest reusable browser engine that supports Journey, then validate reuse with Matcher. Read README.md, docs/product.md, docs/architecture.md and the assigned issue before changing code.
 
+The product is a framework with a small runtime engine. Read docs/roadmap.md and the assigned phase tracker for current scope. Specs describe lasting behavior; issues describe delivery work. Follow the SDD pilot decision once #32 is resolved. Do not install every research candidate by default.
+
 ## Working through chat
 
 - The owner directs work through ChatGPT/Codex. Perform editing, commands and verification yourself when tools permit; provide results, links and the next concrete step.
 - Work one bounded issue per branch and PR. Read dependency issues before starting. Resolve routine choices within the agreed scope; record material architecture decisions.
 - Use issue acceptance criteria as the delivery contract. Reference the issue in the PR and report actual evidence, never planned checks as completed.
 - After a dependency closes, check downstream issues and update blocked/ready labels. Keep project status aligned with actual progress.
+- Use native GitHub dependencies for prerequisites and sub-issues for phase membership. Add work to the primary roadmap project and the relevant Journey subset. Reconcile Phase, Priority, Workstream, Effort and Readiness fields with labels when issues change. In-review work remains open until merged. Keep docs/roadmap.json aligned with scope changes.
 - Develop locally through the Codex desktop app. Keep setup reproducible on Windows and checks runnable in Linux CI. The agent handles commands and editing; the owner directs and reviews through chat. Do not require a cloud coding environment or commit private machine paths or secrets.
 
 ## Architecture

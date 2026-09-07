@@ -1,6 +1,6 @@
 # Minoo Game Engine
 
-A small, agent-authorable 2D browser engine, developed through conversation. **Minoo Journey** is the first game: find six objects, learn vocabulary, and restore part of a homestead.
+A game framework designed for reliable agent authoring, with a small 2D browser runtime engine. **Minoo Journey** is the first game: find six objects, learn vocabulary, and restore part of a homestead. Development happens locally through chat.
 
 **Status:** repository and delivery planning established; the game and runtime are not implemented yet.
 
@@ -10,6 +10,8 @@ A small, agent-authorable 2D browser engine, developed through conversation. **M
 - [Product scope](docs/product.md)
 - [Architecture decision](docs/architecture.md)
 - [Roadmap and issues](docs/roadmap.md)
+- [Project views and planning fields](docs/project-views.md)
+- [SDD and tooling research](docs/research/sdd-and-engine-research.md)
 - [Content policy](docs/content-policy.md)
 - [Contribution workflow](CONTRIBUTING.md)
 
