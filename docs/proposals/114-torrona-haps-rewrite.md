@@ -1,7 +1,7 @@
 # Proposal 114: Torrona Haps satire and route contract
 
 Issue: [#114](https://github.com/jonesrussell/minoo-game-engine/issues/114)
-Status: revision 2 documentation contract, owner approval pending
+Status: revision 2 documentation contract, storyboard approved by owner on 2026-09-07
 Depends on: [#90 research ledger](../research/ford-frenzy-history.md) and the H15-H18 press-events register
 Canonical targets: [campaign outline](../storyboards/campaign.md) and [full-game boards](../storyboards/full-game.md)
 
@@ -94,7 +94,9 @@ as a May or November live scene.
 
 ## Review and implementation boundary
 
-This is a documentation contract. It does not implement gameplay, route persistence,
-scene JSON, final art or owner approval. Production commitment remains S01-S03 only.
+This is a documentation contract. The owner approved its revision 2 storyboard content
+and structure on 2026-09-07. It does not implement gameplay, route persistence, scene
+JSON, final art, rights, release copy or playtest approval. Production commitment remains
+S01-S03 only.
 The full route boards are design targets and must be reviewed against the canonical
 storyboards before implementation.

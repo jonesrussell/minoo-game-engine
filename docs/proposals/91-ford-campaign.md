@@ -1,7 +1,7 @@
 # Proposal 91: complete investigation campaign outline
 
 Issue: [#91](https://github.com/jonesrussell/minoo-game-engine/issues/91)  
-Status: revision 2 creative draft awaiting owner review
+Status: revision 2 storyboard approved by owner on 2026-09-07
 Depends on: [#90 historical ledger](../research/ford-frenzy-history.md)  
 Unlocks: #92 scene storyboards and #93 opening scene boards
 
@@ -91,7 +91,7 @@ stay explicit.
 
 ## Verification status
 
-This is a documentation-only draft. Owner creative approval remains pending for final dialogue, scene boards, candidate art, rights, and release copy; Torrona Haps ownership and satire direction are accepted. Historical dates and narrow events were integrated against #90. Actual repository checks are recorded in the PR.
+This is a documentation-only storyboard approval. The owner approved the revision 2 campaign structure and content on 2026-09-07. Candidate art, rights, final release copy, runtime implementation and playtest approval remain open; Torrona Haps ownership and satire direction are accepted. Historical dates and narrow events were integrated against #90. Actual repository checks are recorded in the PR.
 
 ## Acceptance scenarios (planned gameplay checks)
 
