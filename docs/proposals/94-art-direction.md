@@ -2,7 +2,7 @@
 
 **Issue:** #94. **IDs:** FF-VIS-001..005. **Status:** draft; owner visual approval pending.
 
-Revision 2 storyboards (#92, #93) are satisfactory for narrative. This proposal adds [art-direction.md](../art-direction.md) and visual acceptance requirements. Records #103 reference hashes; does not generate or ship textures. #104 stays blocked until visual approval; release exports are #17.
+Revision 2 storyboards (#92, #93) are approved for narrative. This proposal adds [art-direction.md](../art-direction.md), visual acceptance requirements and one generated flat concept with editable presentation. It records #103 reference hashes but ships no runtime textures. #104 stays blocked until visual approval; release exports are #17.
 
 ## FF-VIS-001: Editorial comic style
 
@@ -10,7 +10,7 @@ Opening art MUST match satirical 2D editorial comic direction (ink contours, blo
 
 - Given S01-S03 and shell screens, when visual review runs, then contour, palette and silhouette stay consistent.
 - Given ff-075, when title/menu are composed, then parody tone matches without copying baked logo type.
-- Given rejected style drift, when selection runs, then this brief remains authoritative.
+- Given rejected style drift, when review runs, then the rejected candidate is not promoted. The owner must approve or revise this proposed brief before it governs production.
 
 ## FF-VIS-002: Layers and canonical IDs
 
@@ -41,14 +41,14 @@ Neutral silhouette while manifests validate. Missing art shows retry/back; no fa
 Exports record reference IDs, hashes, dimensions, alpha policy and review outcome (FF-ART-002). Repository references stay authoring-only until #17.
 
 - Given ff-044, when BG02 is composed, then hallway line follows reference; unrelated marks removed.
-- Given ff-022/ff-037, when silhouette style is judged, then parent inspection approves or rejects before export.
+- Given ff-022/ff-037, when silhouette style is judged, then visual inspection and hash verification are recorded separately from owner and rights approval before production export.
 - Given no owner visual sign-off, when #104 is considered, then generation automation remains blocked.
 - Given opening visual QA, when evidence is collected, then screenshots cover title, HUD, loading, error retry and all three scenes; simulation evidence stays separate.
 
 ## Verification
 
-**Executed:** art-direction.md; object tables cross-checked to full-game.md; manifest and inventory hashes recorded.
+**Executed:** art-direction.md; object tables cross-checked to full-game.md; reference hashes verified; generated flat concept inspected; editable scene/title view toggles and 390px page overflow checked. Texture-budget arithmetic corrected during independent review. Actual prompt and output metadata are linked in the art brief.
 
 **Planned:** owner mockup/HTML review; browser readability and missing-art checks at #37/#9/#98/#99 commits; budget remeasure after #40/#51 baseline.
 
-**Not claimed:** generated pixels, pipeline proof, CI green, release assets.
+**Not claimed:** separate production sprites/background, pipeline proof, owner visual approval or release assets. Hosted check evidence is recorded on the PR.

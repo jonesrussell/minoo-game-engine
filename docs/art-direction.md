@@ -22,6 +22,25 @@ Logical stage **1920x1080**; background art candidate **2560x1440** (budget prop
 
 No hidden finds in background bitmaps. Parallax is decorative.
 
+This layer rule applies to production assets. The review concept is a flat image
+with baked props and characters, explicitly unsuitable as the final search backdrop.
+S01.O6 is only the recorder; a wrong charger is a non-target distractor. Its two
+connector choices appear in the inspect tray. S03.O3 and S03.O4 each award one find;
+their magnets/grid become separate UI controls after inspection, never extra finds.
+
+Palette tokens: civic blue `#073fb4`, paper `#f6e9ce`, mustard `#dfae45`, brick
+`#ae493b`, ink `#142536`. Ink on paper is the primary reading combination; cream
+on ink supports HUD labels. Blue/mustard selection needs an outline and label as
+well as color. Body and evidence copy is at least 16 CSS px in the inspect tray,
+with a design contrast target of 4.5:1 checked on actual rendered combinations.
+Do not expect text baked into artwork to carry historical evidence.
+
+At 390x844, 844x390 and 1440x900, inspect the fitted scene and keyboard navigation.
+When a scaled target is too small, a 44 CSS px list control focuses and opens it;
+zoom/pan must reveal the whole target without changing its canonical hit mapping.
+Selected and focused objects need distinct outlines. The flat review mockup does
+not implement those input/zoom rules; small-screen HUD is a layout study only.
+
 ## References (authoring only, not release)
 
 | ID | Use | SHA-256 |
@@ -31,7 +50,11 @@ No hidden finds in background bitmaps. Parallax is decorative.
 | ff-022 | Silhouette candidate | `ad2f21f48c77c03408a8df7022556d5deb95a3a1b77de035d4f67a09d2ed9fb4` |
 | ff-037 | Silhouette candidate | `335ef3f9df4a5cfb668913c0c677d24c39af92fa59d59140c812b5b198ab7444` |
 
-Manifest: `games/ford-frenzy/assets/reference-manifest.json` (ff-044, ff-075). ff-022/ff-037 in legacy inventory; parent inspection pending. ff-079/ff-080 may inform distant S01 silhouettes only.
+Manifest: `games/ford-frenzy/assets/reference-manifest.json` (ff-044, ff-075).
+ff-022 and ff-037 were visually inspected and their hashes verified on 2026-09-07;
+creator attribution and release rights remain unresolved. ff-079 and ff-080 may
+inform distant neutral standing silhouettes only: exclude combat, injury and death
+frames. Hash verification is not content-rights approval.
 
 ## Scenes
 
@@ -45,6 +68,10 @@ Manifest: `games/ford-frenzy/assets/reference-manifest.json` (ff-044, ff-075). f
 | S01.O6 | Side table: recorder plus wrong charger (inspect tray is UI) |
 
 **S02 Meanwhile at City Hall (BG02):** Public corridor from ff-044 line; cool blue-grey walls, cream counter, brick red printer sign. No November or post-May-17 props.
+
+ff-044 is 8977x720, about 12.47:1. Recompose selected architectural motifs into
+a new 16:9 public workspace, not a stretch or automatic center crop. Remove old
+marks and reconstruct search surfaces; verify all six placements before export.
 
 | ID | Placement |
 | --- | --- |
@@ -68,12 +95,33 @@ Manifest: `games/ford-frenzy/assets/reference-manifest.json` (ff-044, ff-075). f
 
 WebP backgrounds, PNG alpha sprites; sizes per renderer #40, no 2048-only assumption.
 
-| Group | Decoded GPU | Transfer |
+| Group | RGBA8 texture arithmetic, no mipmaps | Transfer target, not measured |
 | --- | --- | --- |
-| BG01 day + evening + BG02 | 18-28 MB | 2.3-3.7 MB |
-| 18 object sprites + shell | 6-12 MB | 0.8-1.6 MB |
-| **Opening total** | **24-40 MB** | **3-5 MB** |
+| Three separate 2560x1440 backgrounds | 42.19 MiB if all resident; 14.06 MiB each | 2.3-3.7 MB |
+| 18 object sprites | Pending dimensions/atlas packing | 0.8-1.6 MB |
+| Title/menu, HUD, loading, error, credits | Text/CSS or renderer primitives plus reused background; extra textures pending inventory | Pending export |
+
+RGBA8 bytes = width x height x 4; full mip chains increase the background estimate
+to about 56.25 MiB. Compressed GPU formats are not assumed. Stream scene textures
+and release prior assets where replay/navigation permits; simultaneous residency
+must be measured in #40. Transfer is the sum of actual encoded file bytes after
+export, decoded residency includes textures/atlases/mipmaps, and process memory
+also includes decode buffers. Do not sum these unlike measurements as one budget.
 
 ## Gates
 
 Owner review: (1) flat concept mockup; (2) editable HTML presentation. Not pipeline proof (#104). **#104 blocked** until visual sign-off. Release art is #17. No finished art or gameplay claimed.
+
+## Review checkpoint
+
+Open the [visual presentation](art/visual-direction-01/index.html) for scene/HUD and
+title views, or inspect the [concept image](art/visual-direction-01/newsroom-concept.png).
+Input hashes, exact prompt, output hash/dimensions and limits are in
+[generation.json](art/visual-direction-01/generation.json). This first concept uses
+ff-075, ff-022 and ff-037; ff-044 is reserved for S02, not used in this generation.
+
+The generated 1672x941 flat image conveys mood and characters. Props are easier to
+spot than final hidden targets, some occlusion differs from the boards, and small
+page marks are not source text. These are production tasks, not claims of finished
+S01 artwork. The HTML review controls switch two mockups; they do not run a game.
+Desktop and 390px views were inspected; both switches and page overflow were checked.
