@@ -2,7 +2,7 @@
 
 A small, agent-authorable 2D browser engine, developed through conversation. **Minoo Journey** is the first game: find six objects, learn vocabulary, and restore part of a homestead.
 
-**Status:** repository and delivery planning established; the game and runtime are not implemented yet.
+**Status:** executable workspace and interactive Journey fixture preview. Full gameplay, scene schemas and authoring tools are still backlog work.
 
 ## Start here
 
@@ -19,9 +19,21 @@ A small, agent-authorable 2D browser engine, developed through conversation. **M
 - [Journey Delivery](https://github.com/users/jonesrussell/projects/16)
 - [Milestones](https://github.com/jonesrussell/minoo-game-engine/milestones)
 
-## Repository checks
+## Local development
 
-Node.js 22 or later: run `node scripts/check-repository.mjs`. This checks the planning scaffold only. Runtime build, unit tests and browser tests are tracked in #2 and #3.
+Use Node.js **24.13.1** and npm **11.8.0**. From the repository root:
+
+```sh
+npm ci
+npx playwright install chromium
+npm run dev
+```
+
+Open http://127.0.0.1:5173. On Windows PowerShell, use `npm.cmd` and `npx.cmd` if script execution policy blocks the `.ps1` wrappers. Stop the server with Ctrl+C. An occupied port fails explicitly; use `npm run dev -- --port 5174` to select another.
+
+Checks: `npm run typecheck`, `npm test`, `npm run test:e2e`, and `npm run check:repository`. The browser check builds the production game, starts an isolated preview server and verifies keyboard/touch flows. Screenshots are saved in `test-results/`.
+
+`npm run build` produces `dist/journey`. Use `npm run preview` to inspect the static build locally. This package boundary is private source consumed by Vite, not a published engine library. [Setup details](docs/chat-development.md).
 
 ## Relationship to Minoo
 

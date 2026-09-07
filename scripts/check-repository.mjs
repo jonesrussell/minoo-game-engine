@@ -12,4 +12,4 @@ for(const file of required){
  }
 }
 if(errors.length){console.error(errors.join('\n'));process.exit(1);}
-console.log('Repository documentation and local links verified. No runtime tests exist yet.');
+console.log('Repository documentation and local links verified. Run npm test and npm run test:e2e for runtime checks.');

@@ -1,6 +1,6 @@
 # ADR 001: Browser-first, structured authoring
 
-Status: accepted starting direction; dependency choices finalized in the tooling issue.
+Status: accepted. The workspace uses npm, TypeScript and Vite, with Node's test runner and Playwright browser checks. Versions are pinned in package.json and package-lock.json.
 
 ## Decision
 
@@ -14,7 +14,7 @@ Build a new focused TypeScript engine using browser primitives and ordinary libr
 - games/matcher: added only during the reuse milestone.
 - tests: end-to-end game flows and fixtures.
 
-These paths describe the implementation plan and are not implemented packages yet.
+The engine, authoring and Journey workspaces now exist. Engine currently exports a viewport fitting helper used by the canvas fixture; authoring reserves its package boundary with no API yet. Journey contains an original illustrated fixture shell. The remaining capabilities listed above are the implementation plan for later issues.
 
 ## Contracts
 
