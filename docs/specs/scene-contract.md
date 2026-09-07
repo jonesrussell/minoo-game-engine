@@ -1,6 +1,7 @@
 # Scene contract specification
 
-Status: validation implemented in #6, from the #32 pilot. Runtime gameplay remains #7.
+Status: validation implemented in #6, from the #32 pilot. Runtime counting is
+implemented in #7, with replay in #38 and generated invariant tests in #39.
 
 This is a behavior contract for issue [#6](https://github.com/jonesrussell/minoo-game-engine/issues/6).
 [ADR 003](../decisions/003-canonical-scene-schema.md) selects JSON Schema Draft-07,
@@ -139,8 +140,9 @@ of the #6 schema validation task.
 The original pilot table above describes #6 verification targets. Their
 implemented evidence is linked in [proposal 6](../proposals/6-scene-validation.md)
 and the [API contract](../scene-validation.md). The PR/CI identify tested commits.
-Runtime tests for #7 remain planned. Human language, art and learning review
-remain independent.
+Runtime evidence is documented in the [runtime spec](runtime.md),
+[replay spec](replay.md) and [generated-test contract](runtime-testing.md).
+Human language, art and learning review remain independent.
 
 ## Small fix updates
 

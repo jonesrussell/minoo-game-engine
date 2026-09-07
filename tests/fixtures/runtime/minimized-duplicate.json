@@ -1,0 +1,11 @@
+{
+  "kind": "synthetic-duplicate-score-fault",
+  "fastCheckVersion": "4.9.0",
+  "seed": 39073907,
+  "path": "0:1:0:0",
+  "actions": [
+    { "type": "select", "objectId": "tree" },
+    { "type": "select", "objectId": "tree" }
+  ],
+  "expectedFault": "A faulty adapter that increments score for every select reports 2 instead of 1."
+}
