@@ -14,6 +14,8 @@ A game framework designed for reliable agent authoring, with a small 2D browser 
 - [Roadmap and issues](docs/roadmap.md)
 - [Project views and planning fields](docs/project-views.md)
 - [SDD and tooling research](docs/research/sdd-and-engine-research.md)
+- [Scene contract SDD pilot](docs/sdd-pilot.md)
+- [Scene contract specification](docs/specs/scene-contract.md)
 - [Content policy](docs/content-policy.md)
 - [Contribution workflow](CONTRIBUTING.md)
 
