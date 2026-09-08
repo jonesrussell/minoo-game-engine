@@ -10,7 +10,8 @@
     "id": "S01.BG01",
     "file": "assets/background.png",
     "width": 1672,
-    "height": 941
+    "height": 941,
+    "sha256": "161a4e1cea15f4d4f498ee732a046ecc60ca2947123347aff3e577a51f4066cf"
   },
   "objects": [
     {
