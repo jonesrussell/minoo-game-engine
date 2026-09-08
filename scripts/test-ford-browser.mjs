@@ -18,6 +18,10 @@ try{
     const state=()=>page.evaluate(()=>JSON.parse(window.render_game_to_text()));
     const press=async selector=>{if(input==='keyboard'){await page.locator(selector).focus();await page.keyboard.press('Enter');}else if(input==='touch')await page.locator(selector).tap();else await page.locator(selector).click();};
     await page.goto(url);await page.locator('#new-game').waitFor();
+    await page.locator('.title-art').evaluate(async image => { await image.decode(); });
+    assert.equal(await page.locator('.title-art').evaluate(image => image.naturalWidth > 0),true);
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+    await page.screenshot({path:`test-results/ford/${input}-title.png`,fullPage:true});
     if(input==='pointer')await page.screenshot({path:'test-results/ford/title.png',fullPage:true});
     assert(await page.locator('#continue').isDisabled());
     await press('#settings');assert(await page.locator('#motion').isChecked());await press('#return-title');assert.equal(await page.evaluate(()=>document.activeElement.id),'settings');
