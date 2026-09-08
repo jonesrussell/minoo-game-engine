@@ -8,7 +8,7 @@ See the [asset-to-playable SDD plan](ford-frenzy-delivery.md) and [experience sc
 
 The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. The new game's scene content, notebook and progression are not implemented. The current Journey preview is a legacy fixture. The renderer evaluation #40 now requires a proper rendering engine, frame loop, drawing/sprites, assets and an explicit future-3D boundary; HTML/SVG-only is not the product direction.
 
-The revision 2 campaign, full-game and opening storyboards (#91, #92 and #93), including the Torrona Haps rewrite contract (#114), received owner storyboard approval on 2026-09-07. This approval covers storyboard structure and content only. Art direction #94 received separate owner approval on 2026-09-07; #104 is next for the separated-asset proof; rights, release copy, runtime implementation and playtest remain open. Parent status and issue readiness are reconciled in GitHub after merge. Reporting-loop spec #43 has its storyboard dependency satisfied and becomes ready when its other dependency checks are closed. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 remain explicit prerequisites.
+The revision 2 campaign, full-game and opening storyboards (#91, #92 and #93), including the Torrona Haps rewrite contract (#114), received owner storyboard approval on 2026-09-07. This approval covers storyboard structure and content only. Art direction #94 received separate owner approval on 2026-09-07; #104 has owner proof approval; runtime integration is next; rights, release copy, runtime implementation and playtest remain open. Parent status and issue readiness are reconciled in GitHub after merge. Reporting-loop spec #43 has its storyboard dependency satisfied and becomes ready when its other dependency checks are closed. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 remain explicit prerequisites.
 
 ## Projects and boundaries
 
@@ -208,6 +208,5 @@ Native dependencies identify prerequisites; sub-issues identify phase ownership.
 Keep scopes, evidence and project readiness current. A completed issue needs acceptance evidence at the reviewed commit and a merged PR. Planning tasks require the named owner review before their own completion. Phase trackers close only when their required children and exit gate are satisfied. Tests cannot establish historical accuracy, content rights or enjoyable play.
 
 Asset workflow #104: [generation workflow](art-generation-workflow.md) and
-[layered S01 proof](art/pipeline-proof-01/index.html) are available for candidate
-export review. One background and six independent PNG targets; approval and
-production integration remain open. The diagnostic viewer does not select #40.
+[layered S01 proof](art/pipeline-proof-01/index.html) have owner proof approval. One background and six independent PNG targets;
+production integration and release remain open. The diagnostic viewer does not select #40.

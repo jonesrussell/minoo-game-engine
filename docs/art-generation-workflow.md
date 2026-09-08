@@ -18,8 +18,8 @@ silent replacement, or in-place regeneration. Any revision gets a new asset ID,
 output hash, and review record; rejected candidates remain available for audit.
 
 Style approval for the reference does not approve a new background or target
-export. The current candidates are owner-export approval pending. Issue #104
-remains open until an actual background proof is reviewed and approved.
+export. The current proof has separate owner approval recorded below; future
+exports still require their own review.
 
 ## Export contract
 
@@ -54,3 +54,9 @@ The proof manifest links each stable ID to source IDs/hashes, candidate output
 hash and dimensions, alpha policy, logical scale, prompt/tool/model/date,
 manual-edit status, review state, and immutable file path. It also records the
 QA checks and their evidence paths. Missing evidence is pending, not passed.
+
+## Proof accepted
+
+The owner approved the completed separated-asset proof on 2026-09-07.
+See [approval record](art/pipeline-proof-01/approval.md).
+The approval gate is satisfied for these exact proof exports. Future revisions and release art remain separately reviewed.
