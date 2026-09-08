@@ -6,9 +6,11 @@
   "exports": {
     ".": "./src/index.ts",
     "./scene": "./src/scene.ts",
+    "./scene-v2": "./src/scene-v2.ts",
     "./runtime": "./src/runtime.ts",
     "./replay": "./src/replay.ts",
-    "./scene.schema.json": "./src/contracts/scene.schema.json"
+    "./scene.schema.json": "./src/contracts/scene.schema.json",
+    "./scene-v2.schema.json": "./src/contracts/scene-v2.schema.json"
   },
   "dependencies": {
     "ajv": "8.20.0"

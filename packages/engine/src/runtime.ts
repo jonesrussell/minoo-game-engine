@@ -1,5 +1,4 @@
-import { validateScene, type SceneDiagnostic } from './scene.ts';
-import type { Scene } from './contracts/scene.generated.d.ts';
+import { validateAnyScene, type AnyScene, type SceneDiagnostic } from './scene.ts';
 
 export type RuntimeSelectAction = { type: 'select'; objectId: string };
 export type RuntimeHintAction = { type: 'hint' };
@@ -193,7 +192,7 @@ class RuntimeSession implements Runtime {
   readonly #hintBudget: number;
   #internal: InternalState;
 
-  constructor(scene: Scene, hintBudget: number) {
+  constructor(scene: AnyScene, hintBudget: number) {
     this.#sceneId = scene.id;
     this.#objectIds = new Set(scene.objects.map(object => object.id));
     this.#requiredIds = Object.freeze([...scene.completion.requiredIds]);
@@ -290,7 +289,7 @@ export function createRuntime(scene: unknown, options: unknown): RuntimeCreateRe
     return freeze({ ok: false, errors: sortedDiagnostics(optionErrors) });
   }
 
-  const validation = validateScene(scene);
+  const validation = validateAnyScene(scene);
   if (!validation.ok) return freeze({ ok: false, errors: [...validation.errors] });
 
   const snapshot = freeze(deepClone(validation.scene));

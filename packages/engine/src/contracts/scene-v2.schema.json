@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:minoo:scene:2",
+  "title": "SceneV2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "id", "width", "height", "objects", "contents", "sources", "completion"],
+  "properties": {
+    "version": { "type": "integer", "const": 2 },
+    "id": { "$ref": "#/definitions/id" },
+    "width": { "type": "number", "exclusiveMinimum": 0 },
+    "height": { "type": "number", "exclusiveMinimum": 0 },
+    "objects": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "title": "SceneObjectV2", "type": "object", "additionalProperties": false,
+        "required": ["id", "x", "y", "width", "height", "contentId"],
+        "properties": {
+          "id": { "$ref": "#/definitions/id" },
+          "x": { "type": "number", "minimum": 0 },
+          "y": { "type": "number", "minimum": 0 },
+          "width": { "type": "number", "exclusiveMinimum": 0 },
+          "height": { "type": "number", "exclusiveMinimum": 0 },
+          "contentId": { "$ref": "#/definitions/id" }
+        }
+      }
+    },
+    "contents": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "title": "InvestigativeContent", "type": "object", "additionalProperties": false,
+        "required": ["id", "label", "clueId", "classification", "sourceRefs", "editorial", "rights"],
+        "properties": {
+          "id": { "$ref": "#/definitions/id" },
+          "label": { "$ref": "#/definitions/text" },
+          "clueId": { "$ref": "#/definitions/id" },
+          "classification": { "enum": ["fact", "allegation", "fiction"] },
+          "sourceRefs": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/definitions/id" } },
+          "editorial": { "$ref": "#/definitions/editorial" },
+          "rights": { "$ref": "#/definitions/rights" }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "title": "SourceRecord", "type": "object", "additionalProperties": false,
+        "required": ["id", "title", "url", "publishedOn"],
+        "properties": {
+          "id": { "$ref": "#/definitions/id" },
+          "title": { "$ref": "#/definitions/text" },
+          "url": { "type": "string", "pattern": "^https?://\\S+$" },
+          "publishedOn": { "$ref": "#/definitions/reviewDate" }
+        }
+      }
+    },
+    "completion": {
+      "title": "CompletionRuleV2", "type": "object", "additionalProperties": false,
+      "required": ["type", "requiredIds"],
+      "properties": {
+        "type": { "const": "find-all", "type": "string" },
+        "requiredIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/definitions/id" } }
+      }
+    }
+  },
+  "definitions": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9.-]*$" },
+    "text": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "reviewDate": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "editorial": {
+      "title": "EditorialMetadata", "type": "object", "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["fixture", "draft", "reviewed", "approved"] },
+        "reviewedBy": { "$ref": "#/definitions/text" },
+        "reviewedOn": { "$ref": "#/definitions/reviewDate" },
+        "notes": { "$ref": "#/definitions/text" }
+      },
+      "if": { "properties": { "status": { "enum": ["reviewed", "approved"] } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "reviewedBy": { "$ref": "#/definitions/text" },
+          "reviewedOn": { "$ref": "#/definitions/reviewDate" }
+        },
+        "required": ["reviewedBy", "reviewedOn"]
+      }
+    },
+    "rights": {
+      "title": "RightsMetadata", "type": "object", "additionalProperties": false,
+      "required": ["status", "basis"],
+      "properties": {
+        "status": { "enum": ["fixture", "unresolved", "cleared"] },
+        "basis": { "$ref": "#/definitions/text" },
+        "attribution": { "$ref": "#/definitions/text" }
+      }
+    }
+  }
+}
