@@ -24,3 +24,14 @@ const titleSource = new URL('docs/art/visual-direction-02/newsroom-toronna.png',
 const titleBytes = await readFile(titleSource);
 if (createHash('sha256').update(titleBytes).digest('hex') !== '45bbadd3908d62822793254a4e6ad0bfc6c9c4a97fbffd32a07bc73ba0fc9a7f') throw Error('Title reference hash mismatch');
 await copyFile(titleSource, new URL('title-newsroom.png', destination));
+
+// Optional character presentation stays local and outside simulation manifests.
+const dialogueSource = new URL('docs/art/dialogue-01/', root);
+const dialogue = JSON.parse(await readFile(new URL('manifest.json', dialogueSource), 'utf8'));
+for (const id of ['elliot', 'alex']) {
+  const asset = dialogue.assets.find(asset => asset.id === id);
+  if (!asset || asset.file !== `${id}.png`) throw Error(`Missing dialogue portrait: ${id}`);
+  const source = new URL(asset.file, dialogueSource);
+  if (createHash('sha256').update(await readFile(source)).digest('hex') !== asset.sha256) throw Error(`Dialogue portrait hash mismatch: ${id}`);
+  await copyFile(source, new URL(`dialogue-${id}.png`, destination));
+}

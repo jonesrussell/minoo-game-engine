@@ -1094,6 +1094,39 @@
         37
       ],
       "parent": 26
+    },
+    {
+      "issue": 138,
+      "dependencies": [
+        136
+      ],
+      "title": "Stage S01 opening dialogue with visible Elliot and Alex",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M"
+    },
+    {
+      "issue": 139,
+      "dependencies": [
+        138
+      ],
+      "title": "Add consistent character expressions and dialogue reactions",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M"
+    },
+    {
+      "issue": 140,
+      "dependencies": [
+        139
+      ],
+      "title": "Stage closing conversations and tune discovery pacing",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M"
     }
   ],
   "integration_tracks": [

@@ -1,0 +1,29 @@
+{
+  "issue": 138,
+  "date": "2026-09-07",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed by built-in tool",
+  "source": "../visual-direction-02/newsroom-toronna.png",
+  "sourceSha256": "45bbadd3908d62822793254a4e6ad0bfc6c9c4a97fbffd32a07bc73ba0fc9a7f",
+  "prompts": "prompts.json",
+  "review": "Candidate portraits. Elliot alpha correction pending; not release approved.",
+  "release_approved": false,
+  "assets": [
+    {
+      "id": "elliot",
+      "file": "elliot.png",
+      "sha256": "d4d2c714b200fb9ec370652741adf9d42aafccdecb788de0136787f2b2665fc7",
+      "width": 1023,
+      "height": 1537,
+      "mode": "RGB"
+    },
+    {
+      "id": "alex",
+      "file": "alex.png",
+      "sha256": "e1b6c4f5bad27b18511a37bd55ad1270ed9aeb4904c404ee38d6ea32c938b905",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA"
+    }
+  ]
+}

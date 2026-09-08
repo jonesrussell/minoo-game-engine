@@ -26,3 +26,5 @@ Owner clarification #128: restore source checking through a fictional embedded H
 Owner correction #134: Toronna Haps spelling in current copy and storyboards; title art uses a separate corrected derivative, original provenance retained. No gameplay or save format changes.
 
 Issue136: S01 opening dialogue, visual connector comparison, result receipt, optional sound and warm sprite lighting. Source scene/action/save semantics unchanged. First browser attempt caught a test case mismatch against CSS-uppercase Cable A; corrected assertion case sensitivity. Qualification in progress.
+
+Issue138: tracked character presentation order #138 -> #139 -> #140 in GitHub native dependencies and roadmap. Opening conversation uses transient index, unchanged session/save actions, visible speaker and optional portraits. Qualification pending portrait alpha verification.

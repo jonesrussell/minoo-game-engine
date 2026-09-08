@@ -101,3 +101,26 @@ comparison, optional synthesized equipment cues and a City Hall handoff card.
 It is a bounded contribution to #105/#106/#107, not completion of their three-scene
 scope. Owner playtest #45 follows this local preview; timing and fun remain human
 acceptance. S02 and S03 remain #98 and #99.
+
+## Character presentation order
+
+1. **#138: visible opening conversation.** Derive Elliot and Alex portraits from
+   the approved newsroom concept. Stage one line at a time, identify the speaker,
+   and provide Next, Back and Skip with equivalent pointer/touch/keyboard controls.
+   The conversation blocks search; entering the assignment removes the portraits.
+2. **#139: consistent expressions.** After the opening presentation, review neutral,
+   annoyed, amused and surprised variants without drifting identities or clothing.
+   Missing variants fall back to neutral. Nadia joins when her scene is delivered.
+3. **#140: closing conversation and discovery pace.** Use the character/expression
+   pattern for the assignment payoff, add dialogue replay/history, and playtest
+   interruption frequency and transitions before extending it to S02/S03.
+
+All three tasks belong to M2, the primary roadmap and the Ford Frenzy delivery
+project. Native dependencies preserve this order. The first pass uses candidate
+portraits; style approval is not final character or release approval.
+
+Presentation references: Wooga's [dialogue example](https://wooga.theymes.com/hc/en/junes-journey/articles/what-is-the-detective-partners-event-463)
+shows character-led communication. Its [gameplay guide](https://wooga.theymes.com/hc/en/junes-journey/articles/how-do-i-play-junes-journey-394)
+describes search and adventure-puzzle scene types. Our implementation uses original
+art and satire, a standalone runtime, and no outside links in gameplay. These are
+presentation lessons, not a commitment to the reference game's economy or structure.
