@@ -4,7 +4,7 @@ Status: proposed for owner review. Date: 2026-09-07.
 
 ## Decision
 
-Use PixiJS 8.20.1 behind the engine renderer adapter for the first-game 2D slice. Keep the headless runtime and deterministic fixed-step scheduling independent of PixiJS. The adapter owns drawing, sprites, asset loading, resize, pointer/touch translation and the canvas frame ticker; accessible HTML controls remain the equivalent for target discovery and keyboard use.
+Use PixiJS 8.20.1 behind the engine renderer adapter for the first-game 2D slice. Keep the headless runtime and action-driven scheduling independent of PixiJS. The adapter owns drawing, sprites, asset loading, resize, pointer/touch translation and the canvas frame ticker; accessible HTML controls remain the equivalent for target discovery and keyboard use.
 
 ## Evidence
 
@@ -20,7 +20,7 @@ The slice needs a renderer boundary and a scene graph, sprites, asset cache, poi
 
 ## Scheduling and future 3D boundary
 
-Simulation advances through an injected clock with a fixed-step accumulator and emits immutable view models. The PixiJS ticker only requests presentation frames; it never mutates game state or becomes the simulation clock. Pause, replay and reduced-motion behavior therefore remain deterministic and testable headlessly.
+The current runtime advances from structured actions and emits immutable view models. The PixiJS ticker only requests presentation frames; it never mutates game state or becomes a simulation clock. If future timed simulation is added, it must use an injected clock and fixed-step accumulator outside the renderer. Pause, replay and reduced-motion behavior therefore remain deterministic and testable headlessly.
 
 This decision is 2D-only. It does not promise a path to 3D. A future 3D requirement would trigger a separate evaluation of a WebGL/WebGPU or 3D engine, asset pipeline, camera model, accessibility equivalents and device budgets. Neither candidate's 2D scene graph is treated as a 3D abstraction.
 
