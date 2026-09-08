@@ -210,3 +210,7 @@ Keep scopes, evidence and project readiness current. A completed issue needs acc
 Asset workflow #104: [generation workflow](art-generation-workflow.md) and
 [layered S01 proof](art/pipeline-proof-01/index.html) have owner proof approval. One background and six independent PNG targets;
 production integration and release remain open. The diagnostic viewer does not select #40.
+
+## S01 playable checkpoint
+
+The first local Ford Frenzy assignment is playable through New Game, six sprite finds, recorder pairing, source checking and K01 submission. Use npm run dev:ford. The independent runtime and Journey fixture remain usable. This is the bounded #9 checkpoint, with S01 session work from #96 and browser foundation slices from #8/#37/#97/#105. S02/S03, campaign saves, final art and owner playtest remain open. See [checkpoint contract](proposals/9-first-playable.md).

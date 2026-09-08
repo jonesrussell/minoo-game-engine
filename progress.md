@@ -10,3 +10,5 @@ Verification: clean npm ci, typecheck, three unit tests, production build and Ch
 Next: #3 adds executable GitHub CI and artifact delivery; #6 defines scene contracts. Authoring package is deliberately a reserved boundary with no placeholder commands. No approved language content or full game mechanics exist yet. Linux setup is documented, not yet qualified by executable CI.
 
 Current request: build the first playable S01 checkpoint after artwork approval. Parent owns browser shell, public renderer adapter integration and browser evidence. S02 and S03 remain later work.
+
+S01 playable candidate 85311ad: 88 unit tests, existing Journey production/browser/validation/replay checks, repository checks and Ford production pointer/touch/keyboard completion passed. Required texture abort/retry and corrupt-save preservation passed. Inspected title, scene and result screenshots; bundled game client passed. Integrated reviewed prerequisites at36c5a48 without code delta. Next: owner playtest, proper connector visuals, occlusion/search balancing, then S02/S03. Broader parent issues remain open.
