@@ -1,5 +1,11 @@
 Original prompt: ok move onto #2
 
+Current owner correction #130: keyboard access must preserve searching. Replaced
+direct object buttons with a free scene cursor, broad location announcements,
+fine/coarse arrow movement and explicit inspection. Movement never selects targets
+or consumes hints; modal focus and normal Tab exit remain available. Production
+pointer/touch/keyboard completion and empty-space checks passed.
+
 Issue #2: npm workspaces, pinned tooling, real checks and an interactive browser shell.
 Use original geometric fixture art and English labels. Scene schemas, full gameplay and authoring commands remain later issues.
 
