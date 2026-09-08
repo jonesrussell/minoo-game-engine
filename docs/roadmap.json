@@ -79,6 +79,16 @@
         "document": "docs/art-generation-workflow.md",
         "preview": "docs/art/pipeline-proof-01/index.html"
       }
+    },
+    "s01_playable": {
+      "issue": 9,
+      "status": "local playable checkpoint; broader scene and foundation acceptance remains open",
+      "renderer": "PixiJS 8.20.1",
+      "entry": "games/ford-frenzy",
+      "command": "npm run dev:ford",
+      "verification": "npm run test:ford",
+      "session_issue": 96,
+      "remaining": "S02/S03, campaign saves, production art, puzzle balancing and owner playtest"
     }
   },
   "issues": [

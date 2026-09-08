@@ -10,9 +10,11 @@
     "./runtime": "./src/runtime.ts",
     "./replay": "./src/replay.ts",
     "./scene.schema.json": "./src/contracts/scene.schema.json",
-    "./scene-v2.schema.json": "./src/contracts/scene-v2.schema.json"
+    "./scene-v2.schema.json": "./src/contracts/scene-v2.schema.json",
+    "./browser": "./src/browser.ts"
   },
   "dependencies": {
-    "ajv": "8.20.0"
+    "ajv": "8.20.0",
+    "pixi.js": "8.20.1"
   }
 }
