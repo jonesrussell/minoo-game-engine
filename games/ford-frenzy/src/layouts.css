@@ -22,7 +22,7 @@
 .keyboard-tools button { min-height: 26px; font-size: 11px; padding: 2px 0; color: #c4c4b8; }
 .keyboard-tools span { font-size: 11px; color: #c4c4b8; }
 .feedback, .search-location, .save-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-#app:has(#stage:focus) .search-location { position: fixed; left: 24px; bottom: 108px; width: auto; height: auto; max-width: calc(100% - 48px); padding: 8px 12px; margin: 0; clip-path: none; white-space: normal; background: #101716f2; color: #f4e8cc; }
+#app:has(#stage[data-keyboard-search=true]:focus) .search-location { position: fixed; left: 24px; bottom: 108px; width: auto; height: auto; max-width: calc(100% - 48px); padding: 8px 12px; margin: 0; clip-path: none; white-space: normal; background: #101716f2; color: #f4e8cc; }
 #app:not([data-screen=playing]) #hud, #app:not([data-screen=playing]) #brand { visibility: hidden; }
 .panel:not(.title-panel):not(.conversation-panel) { background: #172020; color: #eee4cc; border-top-color: #ac4934; box-shadow: 8px 8px #0008; }
 .panel .eyebrow, .panel .speaker { color: #d8ad79; }
@@ -57,7 +57,7 @@
   .keyboard-tools { align-items: flex-start; gap: 5px; }
   .keyboard-tools button { min-height: 40px; }
   .keyboard-tools span { max-width: none; line-height: 1.5; }
-  #app:has(#stage:focus) .search-location { position: static; width: auto; max-width: none; }
+  #app:has(#stage[data-keyboard-search=true]:focus) .search-location { position: static; width: auto; max-width: none; }
   #overlay { padding: 14px; align-items: center; }
   .panel { max-height: calc(100dvh - 28px); margin: 0; }
 }

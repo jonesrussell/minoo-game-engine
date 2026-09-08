@@ -47,3 +47,9 @@ client passed and final captures inspected. Independent approval_record review
 found no substantive issue. Hosted run34186813595 passed all required checks.
 The subsequent documentation-only record reconciles delivered scope; human
 playtest, final art, #139 expressions and #140 closing/history remain open.
+
+Issue147: fix branch fix/147-search-input from merged ce59e4b. Capture input
+intent separately from focus; gate cursor and location overlay together. Parent
+owns main/layout/spec and regression checks. Existing scene/action/save semantics
+unchanged. Qualification planned: pointer/touch/keyboard switching and modal
+return, then production assignment/recovery.

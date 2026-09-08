@@ -125,3 +125,16 @@ index is transient; Back and Skip cannot discover clues, and resume uses the sto
 assignment state. Required texture, portrait, audio and save failures have separate
 recovery paths. Production browser evidence and exact candidate are recorded in the
 linked PR, not inferred from this document.
+
+### PRES-006: input intent controls the search cursor (#147)
+
+Pointer focus alone MUST NOT enable the keyboard crosshair or location overlay.
+Tab navigation into the scene, supported search keys and the explicit keyboard
+search control enable it. Actual pointer movement or pointer/touch press hides
+both, retaining the search position. Blur and modal entry also hide them.
+
+Scenario: clicking empty scenery leaves no crosshair. Choosing keyboard search
+shows it; moving the mouse hides it without changing progress. Arrow input on the
+focused scene enables it again. Tab exit hides it; keyboard return restores it.
+Returning from a panel follows the latest input method, including pointer close.
+No action, target coordinate or save contract changes are part of this behaviour.
