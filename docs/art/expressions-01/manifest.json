@@ -1,0 +1,93 @@
+{
+  "issue": 139,
+  "tool": "image_gen.imagegen",
+  "date": "2026-09-08",
+  "status": "candidate; owner character acceptance pending",
+  "release_approved": false,
+  "pixel_edits": "Local background alpha cleanup under standing owner authorization; original RGB preserved.",
+  "assets": [
+    {
+      "character": "elliot",
+      "expression": "annoyed",
+      "file": "elliot-annoyed.png",
+      "sha256": "a921aa74f8d8c1e852ab0ae2f57ebcd7dbcd523db44e574c77caeedbf8b1c872",
+      "width": 1023,
+      "height": 1537,
+      "mode": "RGBA",
+      "source": "../dialogue-01/elliot.png",
+      "sourceSha256": "e091633c35293827db6ddf5d915f20bfdde6118215a620cd6fb5acf91bc2c742",
+      "original": "elliot-annoyed-source.png",
+      "originalSha256": "c511f09dab48e939eb986c013e6cab4cb4deebf71aa7d6ee3d16a364a6a8eed2"
+    },
+    {
+      "character": "elliot",
+      "expression": "amused",
+      "file": "elliot-amused.png",
+      "sha256": "52fbb0fb088343c51457c48a1309ade2f01d06a0aeb7e7b0ff3ae87603f3539c",
+      "width": 1023,
+      "height": 1537,
+      "mode": "RGBA",
+      "source": "../dialogue-01/elliot.png",
+      "sourceSha256": "e091633c35293827db6ddf5d915f20bfdde6118215a620cd6fb5acf91bc2c742",
+      "original": "elliot-amused-source.png",
+      "originalSha256": "99815c3242b13eddc4d7c22c75ca8cced9ee055400493f540a9dd772231b46cb"
+    },
+    {
+      "character": "elliot",
+      "expression": "surprised",
+      "file": "elliot-surprised.png",
+      "sha256": "a041b7be5baf07fc5587d15246eabfdb7a4d2676f51e8dd3f70934aae0dc7f6e",
+      "width": 1023,
+      "height": 1537,
+      "mode": "RGBA",
+      "source": "../dialogue-01/elliot.png",
+      "sourceSha256": "e091633c35293827db6ddf5d915f20bfdde6118215a620cd6fb5acf91bc2c742",
+      "original": "elliot-surprised-source.png",
+      "originalSha256": "de9b87d7019b7d2f4036aaf1f14b0e16dc9373682be1b4f74c364c805b05dae8"
+    },
+    {
+      "character": "alex",
+      "expression": "annoyed",
+      "file": "alex-annoyed.png",
+      "sha256": "e158df3356238b5caec7315dd331e7503554373922024d18638adf2385aa243f",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "source": "../dialogue-01/alex.png",
+      "sourceSha256": "e1b6c4f5bad27b18511a37bd55ad1270ed9aeb4904c404ee38d6ea32c938b905",
+      "original": "alex-annoyed-source.png",
+      "originalSha256": "7a7211dd29943b994283c13b98a5c738f6e33cebfd2afbe459f331da860310da"
+    },
+    {
+      "character": "alex",
+      "expression": "amused",
+      "file": "alex-amused.png",
+      "sha256": "ee8349dde6542e702149b8ba973561b79c166793489ed9cb2e67b9fa6a555114",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "source": "../dialogue-01/alex.png",
+      "sourceSha256": "e1b6c4f5bad27b18511a37bd55ad1270ed9aeb4904c404ee38d6ea32c938b905",
+      "original": "alex-amused-source.png",
+      "originalSha256": "9c72dc722c5a4cc2a19b4c4d7e9edb57ccdb8e9a25225eca1c86289aeed3b44f"
+    },
+    {
+      "character": "alex",
+      "expression": "surprised",
+      "file": "alex-surprised.png",
+      "sha256": "0082ce49922003503e0ab61ce294d42e8ff18b78db817e47545c822512b3c5d2",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "source": "../dialogue-01/alex.png",
+      "sourceSha256": "e1b6c4f5bad27b18511a37bd55ad1270ed9aeb4904c404ee38d6ea32c938b905",
+      "original": "alex-surprised-source.png",
+      "originalSha256": "a9f9da46a5eb7fa4a4181391eb74f344292ea76de7b3f9a802aaad6b0b76143b"
+    }
+  ],
+  "local_edit": {
+    "authorization": "Owner explicitly approved local background removal in this conversation; same cleanup applied to expression derivatives.",
+    "method": "Boundary-connected neutral-bright matte removal; Alex enclosed arm opening uses predicate-checked seeds; 0.35px alpha edge softening. Original RGB retained.",
+    "script": "remove-background.py"
+  }
+}

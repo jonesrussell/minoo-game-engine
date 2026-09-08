@@ -24,7 +24,7 @@
     "dev:ford": "node scripts/prepare-ford-assets.mjs && vite --config vite.ford.config.ts",
     "build:ford": "node scripts/prepare-ford-assets.mjs && npm run typecheck && vite build --config vite.ford.config.ts",
     "preview:ford": "vite preview --config vite.ford.config.ts",
-    "test:ford": "npm run build:ford && node scripts/test-ford-browser.mjs"
+    "test:ford": "npm run build:ford && node scripts/test-ford-browser.mjs && node scripts/test-ford-expression-fallback.mjs"
   },
   "devDependencies": {
     "@types/node": "24.13.3",

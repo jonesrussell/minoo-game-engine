@@ -98,9 +98,23 @@ function openingDialogue(index=0) {
   panel('conversation', `<img class="conversation-backdrop" src="./assets/background.png" alt="">${renderConversation(presentation, index, button)}`);
   overlay.querySelector('.panel')!.classList.add('conversation-panel');
   for(const portrait of overlay.querySelectorAll<HTMLImageElement>('.character-portrait')){
-    const fallback=()=>{portrait.hidden=true;(portrait.nextElementSibling as HTMLElement).hidden=false;};
-    portrait.addEventListener('error',fallback,{once:true});
-    if(portrait.complete && !portrait.naturalWidth)fallback();
+    let retriedNeutral = false;
+    let settled = false;
+    const fallback=()=>{
+      if (settled) return;
+      if (!retriedNeutral && portrait.dataset.expression !== 'neutral' && portrait.dataset.neutralSrc) {
+        retriedNeutral = true;
+        portrait.dataset.expression = 'neutral';
+        portrait.src = portrait.dataset.neutralSrc;
+        return;
+      }
+      settled = true;
+      portrait.hidden=true;
+      (portrait.nextElementSibling as HTMLElement).hidden=false;
+    };
+    portrait.addEventListener('load', () => { if (portrait.naturalWidth > 0) settled = true; });
+    portrait.addEventListener('error',fallback);
+    if(portrait.complete){ if (portrait.naturalWidth > 0) settled = true; else fallback(); }
   }
   bind('dialogue-next',()=>line.index+1<line.total?openingDialogue(line.index+1):play());
   bind('dialogue-back',()=>openingDialogue(Math.max(0,index-1)));

@@ -17,7 +17,25 @@ test('validates S01 and reuses the same conversation layout for the fixture', ()
   assert.equal(second.ok, true);
   if (!first.ok || !second.ok) return;
   assert.equal(conversationView(first.presentation, 0).beat.speaker, 'elliot');
+  assert.equal(conversationView(first.presentation, 1).beat.expression, 'annoyed');
+  const annoyedMarkup = renderConversation(first.presentation, 1, (id, text) => `<button id="${id}">${text}</button>`);
+  assert.match(annoyedMarkup, /dialogue-alex-annoyed\.png/);
+  assert.match(annoyedMarkup, /data-expression="neutral"[^>]+src="\.\/assets\/dialogue-elliot\.png"/);
   assert.match(renderConversation(second.presentation, 0, (id, text) => `<button id="${id}">${text}</button>`), /same conversation layout/);
+});
+
+test('missing optional expression mapping falls back to neutral art', () => {
+  const fixture = structuredClone(reuseFixture) as { characters: Array<{ id: string; expressions: Record<string, string> }>; dialogue: Array<{ expression: string }> };
+  fixture.dialogue[0]!.expression = 'amused';
+  const result = validatePresentation(fixture);
+  assert.equal(result.ok, true);
+  if (!result.ok) return;
+  const markup = renderConversation(result.presentation, 0, (id, text) => `<button id="${id}">${text}</button>`);
+  assert.match(markup, /dialogue-alex\.png/);
+  assert.doesNotMatch(markup, /dialogue-alex-amused\.png/);
+  const unknown = structuredClone(reuseFixture) as { dialogue: Array<{ expression: string }> };
+  unknown.dialogue[0]!.expression = 'confused';
+  assert.equal(validatePresentation(unknown).ok, false);
 });
 
 test('rejects unknown references before activation', () => {
@@ -93,4 +111,11 @@ test('target references, local asset paths and input types reject before activat
     assert.equal(validatePresentation(candidate, ids).ok, false);
     assert.deepEqual(candidate, before);
   }
+});
+
+test('expression references must resolve to catalogued optional assets', () => {
+  const ids = scene.objects.map(object => object.id);
+  const brokenExpression = structuredClone(s01) as { characters: Array<{ expressions: Record<string, string> }> };
+  brokenExpression.characters[0]!.expressions.annoyed = 'missing-expression-asset';
+  assert.equal(validatePresentation(brokenExpression, ids).ok, false);
 });

@@ -25,19 +25,22 @@
     {
       "id": "alex",
       "name": "Alex / You",
-      "assetId": "portrait-alex"
+      "assetId": "portrait-alex",
+      "expressions": { "neutral": "portrait-alex" }
     },
     {
       "id": "elliot",
       "name": "Elliot / Editor",
-      "assetId": "portrait-elliot"
+      "assetId": "portrait-elliot",
+      "expressions": { "neutral": "portrait-elliot" }
     }
   ],
   "dialogue": [
     {
       "id": "fixture-01",
       "speaker": "alex",
-      "line": "The same conversation layout can render another beat."
+      "line": "The same conversation layout can render another beat.",
+      "expression": "neutral"
     }
   ],
   "targetLabels": [

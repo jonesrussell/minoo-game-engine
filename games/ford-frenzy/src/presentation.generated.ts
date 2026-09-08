@@ -45,11 +45,23 @@ export interface FordFrenzyGamePresentation {
       id: string;
       name: string;
       assetId: string;
+      expressions: {
+        neutral: string;
+        annoyed?: string;
+        amused?: string;
+        surprised?: string;
+      };
     },
     ...{
       id: string;
       name: string;
       assetId: string;
+      expressions: {
+        neutral: string;
+        annoyed?: string;
+        amused?: string;
+        surprised?: string;
+      };
     }[]
   ];
   /**
@@ -60,11 +72,13 @@ export interface FordFrenzyGamePresentation {
       id: string;
       speaker: string;
       line: string;
+      expression: "neutral" | "annoyed" | "amused" | "surprised";
     },
     ...{
       id: string;
       speaker: string;
       line: string;
+      expression: "neutral" | "annoyed" | "amused" | "surprised";
     }[]
   ];
   /**
