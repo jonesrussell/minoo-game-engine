@@ -1,0 +1,8 @@
+import Phaser from 'phaser';
+export async function create({stage,urls,onStatus,onSelect}){
+ let game,scene; const targets=['S01.O1','S01.O2','S01.O3','S01.O4','S01.O5','S01.O6'];
+ async function load(){onStatus('phaser loading'); scene=undefined; let loadFailed=false; const config={type:Phaser.AUTO,parent:stage,width:800,height:450,backgroundColor:'#121820',scale:{mode:Phaser.Scale.RESIZE,autoCenter:Phaser.Scale.CENTER_BOTH},scene:{preload(){urls.forEach((url,i)=>this.load.image(i?'target'+i:'background',url));this.load.on('loaderror',()=>{loadFailed=true;onStatus('phaser load failed')});},create(){scene=this;if(loadFailed){onStatus('phaser load failed: retry required');return;} render();onStatus('phaser ready')}}}; game?.destroy(true); game=new Phaser.Game(config); await new Promise((resolve,reject)=>{const timer=setInterval(()=>{if(scene){clearInterval(timer);resolve()}},20);setTimeout(()=>{clearInterval(timer);reject(new Error('load timeout'))},8000)}); }
+ function render(){scene.children.removeAll(); const bg=scene.add.image(400,225,'background').setOrigin(.5); bg.setDisplaySize(scene.scale.width,scene.scale.height); targets.forEach((id,i)=>{const s=scene.add.image(scene.scale.width*(.18+i*.13),scene.scale.height*.55,'target'+(i+1)).setInteractive({useHandCursor:true});s.setDisplaySize(110,80);s.setData('target',id);s.on('pointerdown',()=>onSelect(id));});scene.add.text(12,12,'Phaser 4 • Scene + Loader • unified pointer',{color:'#ffffff',fontSize:'14px'});}
+ function select(i){scene?.children.list.filter(x=>x.texture?.key?.startsWith('target')).forEach((s,n)=>s.setAlpha(n===i?1:.62));}
+ await load(); return {load,select};
+}
