@@ -1,6 +1,6 @@
 # Proposal 104: reference-based art generation and export
 
-Issue #104 · FF-ART-002 · status: pipeline proof pending owner export approval.
+Issue #104 · FF-ART-002 · status: owner-approved separated-asset proof.
 
 This proposal defines a bounded S01 proof: one background plus six independent
 alpha target PNGs. It uses the owner-approved visual-direction-02 concept as a
@@ -42,14 +42,12 @@ navigation and focus. Readability and recognizable target bounds must hold after
 scaling. Evidence belongs in the proof manifest/viewer; planned checks are not
 completion evidence.
 
-Owner export approval is the gate for this issue. Until the actual background
-and targets are approved, candidates remain pending and #104 stays open. On
-rejection, retain the prior approved revision and its manifest entry. This
-workflow does not claim finished art or release approval.
+Owner export approval was the remaining gate and is now recorded below. Future
+rejected revisions retain the prior approved manifest. This workflow does not
+claim finished art or release approval.
 
 ## Proof accepted
 
 The owner approved the completed separated-asset proof on 2026-09-07.
 See [approval record](../art/pipeline-proof-01/approval.md).
-Earlier pending-review wording describes the candidate gate; it is now satisfied
-for these exact proof exports. Future revisions and release art remain separately reviewed.
+The approval gate is satisfied for these exact proof exports. Future revisions and release art remain separately reviewed.
