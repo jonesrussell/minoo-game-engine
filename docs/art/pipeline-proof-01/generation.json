@@ -1,5 +1,5 @@
 {
-  "approval": "candidate exports pending owner review",
+  "approval": "owner approved separated-asset proof on 2026-09-07; release approval remains separate",
   "reference_style": "approved 2026-09-07; see ../visual-direction-02/approval.md",
   "generations": [
     {
@@ -18,7 +18,7 @@
       "bytes": 2497199,
       "mode": "RGB",
       "pixel_edits": "none; original PNG copied byte-for-byte",
-      "review": "candidate selected for export review",
+      "review": "owner approved pipeline proof on 2026-09-07; not release approval",
       "file": "assets/background.png"
     },
     {
@@ -37,7 +37,7 @@
       "bytes": 1919363,
       "mode": "RGBA",
       "pixel_edits": "none; original PNG copied byte-for-byte",
-      "review": "candidate selected for export review",
+      "review": "owner approved pipeline proof on 2026-09-07; not release approval",
       "file": "assets/S01.O1.png",
       "alpha": {
         "policy": "generated RGBA preserved; no matte removal or threshold edits",
@@ -111,7 +111,7 @@
       "bytes": 2883444,
       "mode": "RGBA",
       "pixel_edits": "none; original PNG copied byte-for-byte",
-      "review": "candidate selected for export review",
+      "review": "owner approved pipeline proof on 2026-09-07; not release approval",
       "file": "assets/S01.O2.png",
       "alpha": {
         "policy": "generated RGBA preserved; no matte removal or threshold edits",
@@ -149,7 +149,7 @@
       "bytes": 1716772,
       "mode": "RGBA",
       "pixel_edits": "none; original PNG copied byte-for-byte",
-      "review": "candidate selected for export review",
+      "review": "owner approved pipeline proof on 2026-09-07; not release approval",
       "file": "assets/S01.O3.png",
       "alpha": {
         "policy": "generated RGBA preserved; no matte removal or threshold edits",
@@ -205,7 +205,7 @@
       "bytes": 1960797,
       "mode": "RGBA",
       "pixel_edits": "none; original PNG copied byte-for-byte",
-      "review": "candidate selected for export review",
+      "review": "owner approved pipeline proof on 2026-09-07; not release approval",
       "file": "assets/S01.O4.png",
       "alpha": {
         "policy": "generated RGBA preserved; no matte removal or threshold edits",
@@ -243,7 +243,7 @@
       "bytes": 2205390,
       "mode": "RGBA",
       "pixel_edits": "none; original PNG copied byte-for-byte",
-      "review": "candidate selected for export review",
+      "review": "owner approved pipeline proof on 2026-09-07; not release approval",
       "file": "assets/S01.O5.png",
       "alpha": {
         "policy": "generated RGBA preserved; no matte removal or threshold edits",
@@ -281,7 +281,7 @@
       "bytes": 1679317,
       "mode": "RGBA",
       "pixel_edits": "none; original PNG copied byte-for-byte",
-      "review": "candidate selected for export review",
+      "review": "owner approved pipeline proof on 2026-09-07; not release approval",
       "file": "assets/S01.O6.png",
       "alpha": {
         "policy": "generated RGBA preserved; no matte removal or threshold edits",
