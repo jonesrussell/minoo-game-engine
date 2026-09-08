@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "candidate",
+  "status": "approved-proof",
   "runtime_enabled": false,
   "stage": {
     "width": 1920,
@@ -28,7 +28,7 @@
         "height": 126.667
       },
       "alpha_policy": "preserve generated RGBA",
-      "approval": "candidate"
+      "approval": "approved-proof"
     },
     {
       "id": "S01.O2",
@@ -44,7 +44,7 @@
         "height": 166.667
       },
       "alpha_policy": "preserve generated RGBA",
-      "approval": "candidate"
+      "approval": "approved-proof"
     },
     {
       "id": "S01.O3",
@@ -60,7 +60,7 @@
         "height": 293.566
       },
       "alpha_policy": "preserve generated RGBA",
-      "approval": "candidate",
+      "approval": "approved-proof",
       "overlay": [
         {
           "text": "MAY 2013",
@@ -127,7 +127,7 @@
         "height": 206.667
       },
       "alpha_policy": "preserve generated RGBA",
-      "approval": "candidate"
+      "approval": "approved-proof"
     },
     {
       "id": "S01.O5",
@@ -143,7 +143,7 @@
         "height": 150.0
       },
       "alpha_policy": "preserve generated RGBA",
-      "approval": "candidate"
+      "approval": "approved-proof"
     },
     {
       "id": "S01.O6",
@@ -159,7 +159,8 @@
         "height": 123.333
       },
       "alpha_policy": "preserve generated RGBA",
-      "approval": "candidate"
+      "approval": "approved-proof"
     }
-  ]
+  ],
+  "approval_record": "approval.md"
 }
