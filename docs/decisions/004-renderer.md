@@ -1,6 +1,6 @@
 # ADR 004: renderer for the first-game 2D slice
 
-Status: proposed for owner review. Date: 2026-09-07.
+Status: accepted for the S01 playable checkpoint. Date: 2026-09-07.
 
 ## Decision
 
@@ -33,3 +33,4 @@ This decision is 2D-only. It does not promise a path to 3D. A future 3D requirem
 - [Phaser Scenes](https://docs.phaser.io/phaser/concepts/scenes)
 - [Phaser Loader](https://docs.phaser.io/phaser/concepts/loader)
 - [Phaser Input](https://docs.phaser.io/phaser/concepts/input)
+
