@@ -1,0 +1,49 @@
+{
+  "$schema": "./presentation.schema.json",
+  "version": 1,
+  "id": "presentation-reuse-fixture",
+  "layout": "conversation",
+  "mission": {
+    "brand": "ALTERNATE DESK",
+    "eyebrow": "fixture / alternate beat",
+    "title": "CHECK THE DESK.",
+    "totalTargets": 1
+  },
+  "assets": [
+    {
+      "id": "portrait-alex",
+      "url": "./assets/dialogue-alex.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot",
+      "url": "./assets/dialogue-elliot.png",
+      "required": false
+    }
+  ],
+  "characters": [
+    {
+      "id": "alex",
+      "name": "Alex / You",
+      "assetId": "portrait-alex"
+    },
+    {
+      "id": "elliot",
+      "name": "Elliot / Editor",
+      "assetId": "portrait-elliot"
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "fixture-01",
+      "speaker": "alex",
+      "line": "The same conversation layout can render another beat."
+    }
+  ],
+  "targetLabels": [
+    {
+      "objectId": "fixture.object",
+      "label": "Fixture find"
+    }
+  ]
+}

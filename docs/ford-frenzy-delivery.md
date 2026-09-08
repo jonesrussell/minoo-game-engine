@@ -136,7 +136,7 @@ order without undoing the working runtime, dialogue or input checks.
    mockup using the existing art as reference. Include compact integrated HUD and
    mission copy over the scene, strong ink shapes and a recognisable Toronto
    street/neighbourhood context. Keep the scene readable and the satire present
-   in the environment. Owner acceptance is still required.
+   in the environment. Owner accepted composition 01 in chat on 2026-09-07.
 2. **#143: implement the selected composition.** After #142 approval, implement
    editable game UI and separate scene/prop assets, preserving input and saves.
    A flat concept image is not a playable scene or production asset package.
@@ -152,6 +152,9 @@ Candidate and provenance: [gameplay composition 01](art/gameplay-composition-01/
 The mockup's generated UI lettering is for composition review; production UI
 must remain editable and accessible. The live playable build stays unchanged
 until the selected direction is implemented under #143.
+
+#142 visual approval is recorded. #143 is now in progress under PRES-001 through
+PRES-005. Expressions #139 and closing dialogue #140 remain blocked on delivery.
 
 ## Structured scene creation
 

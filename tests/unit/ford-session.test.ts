@@ -29,14 +29,14 @@ function complete(session: NewsroomSession) {
   ]);
 }
 
-test('bundled S01 v2 data uses canonical IDs, proof-manifest bounds and fictional embedded content', async () => {
+test('bundled S01 v2 data uses canonical IDs, Toronto presentation bounds and fictional embedded content', async () => {
   const scene = JSON.parse(await readFile('games/ford-frenzy/data/s01.json', 'utf8'));
   assert.equal(validateSceneV2(scene).ok, true);
   assert.deepEqual(scene.completion.requiredIds, ['S01.O1', 'S01.O2', 'S01.O3', 'S01.O4', 'S01.O5', 'S01.O6']);
   assert.deepEqual(scene.objects.map((object: { id: string; contentId: string }) => [object.id, object.contentId]),
     Array.from({ length: 6 }, (_, index) => [`S01.O${index + 1}`, `S01.C${index + 1}`]));
-  assert.deepEqual(scene.objects[0], { id: 'S01.O1', x: 350, y: 740, width: 190, height: 126.667, contentId: 'S01.C1' });
-  assert.deepEqual(scene.objects[5], { id: 'S01.O6', x: 1560, y: 560, width: 185, height: 123.333, contentId: 'S01.C6' });
+  assert.deepEqual(scene.objects[0], { id: 'S01.O1', x: 550, y: 780, width: 190, height: 126.667, contentId: 'S01.C1' });
+  assert.deepEqual(scene.objects[5], { id: 'S01.O6', x: 1530, y: 595, width: 185, height: 123.333, contentId: 'S01.C6' });
   assert.equal(scene.contents[2].classification, 'fiction');
   assert.ok(scene.contents.filter((content: { classification: string }) => content.classification === 'fiction')
     .every((content: { rights: { status: string; basis: string } }) => content.rights.status === 'unresolved' && /draft/i.test(content.rights.basis)));
@@ -231,4 +231,29 @@ test('invalid shapes and failed prerequisites do not mutate state or enter the j
   assert.equal(accessed, false);
   assert.deepEqual(session.getState(), before);
   assert.deepEqual(session.getActions(), []);
+});
+
+
+test('pre-composition object-ID saves restore unchanged progress after prop relocation', () => {
+  const savedBeforeComposition = {
+    version: 1,
+    sceneRevision: 'ford-frenzy-s01-v2-embedded-clipping-2026-09-07',
+    actions: [
+      { type: 'select', objectId: 'S01.O6' },
+      { type: 'pair-recorder', connector: 'recorder' },
+      { type: 'select', objectId: 'S01.O5' },
+      { type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' },
+      { type: 'hint' },
+    ],
+  };
+  const restored = restoreNewsroomSession(savedBeforeComposition);
+  assert.equal(restored.ok, true);
+  if (!restored.ok) return;
+  const state = restored.session.getState();
+  assert.deepEqual(state.foundIds, ['S01.O6', 'S01.O5']);
+  assert.equal(state.chargerPaired, 'recorder');
+  assert.deepEqual(state.sourceChecks, ['S01.C5']);
+  assert.equal(state.hintsUsed, 1);
+  assert.equal(state.k01Awarded, false);
+  assert.deepEqual(restored.session.exportSave(), savedBeforeComposition);
 });

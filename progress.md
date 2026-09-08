@@ -28,3 +28,15 @@ Owner correction #134: Toronna Haps spelling in current copy and storyboards; ti
 Issue136: S01 opening dialogue, visual connector comparison, result receipt, optional sound and warm sprite lighting. Source scene/action/save semantics unchanged. First browser attempt caught a test case mismatch against CSS-uppercase Cable A; corrected assertion case sensitivity. Qualification in progress.
 
 Issue138: tracked character presentation order #138 -> #139 -> #140 in GitHub native dependencies and roadmap. Opening conversation uses transient index, unchanged session/save actions, visible speaker and optional portraits. Qualification pending portrait alpha verification.
+
+Issue143: owner approved full-screen Toronto composition on 2026-09-07. Branch feat/143-toronto-presentation base2879c8f. Parent owns assets/preparation, positions, docs and integration; renderer40 owns game presentation code/data; content95 owns browser test updates. Existing save action IDs and revision preserved. New background has no painted UI/characters/collectibles. Qualification pending.
+
+Issue143 integration: replaced the first incomplete worker's handwritten structural
+validation with canonical strict Ajv; extracted reusable HUD and accepted-event
+reactions. Fixed hidden keyboard controls, stale background lettering, portrait
+backdrop, HUD target labels and direct search entry. Interrupted an obsolete
+browser run stuck on hidden controls; added 20s browser action/navigation timeouts.
+Latest integration production pointer/touch/keyboard and recovery run passed;
+102 unit tests passed. Inspected desktop/phone play and desktop dialogue captures.
+Source/prompt/background provenance recorded in toronto-runtime-01. Exact-candidate
+review/CI pending. No final artwork or release approval is inferred.

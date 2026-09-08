@@ -183,12 +183,13 @@ people, not a result established by automated completion tests.
 
 New Game presents visible Elliot and Alex over the newsroom, with one complete
 line at a time and a named, visually emphasized speaker. Next/Back move only the
-transient dialogue index; Skip opens the assignment summary. Clicking the scene
+transient dialogue index; Skip enters search directly (#143). Clicking the scene
 or pressing search keys while dialogue is open cannot discover a clue. The final
-line leads to the summary, then search removes all character overlays. No automatic
+line enters search directly, removing all character overlays. No automatic
 reading timer, essential sound or expression-only meaning is allowed.
 
 Portraits are optional presentation assets with a visible speaker-name fallback
-on load failure. Save/session actions and clue bounds do not change. Reloading a
+on load failure. Save/session actions do not change. #143 relocates clue bounds
+for the approved environment while preserving stable object-ID saves. Reloading a
 newly started save resumes the assignment rather than persisting the dialogue
 index; replay/history is planned under #140. Character expressions are #139.

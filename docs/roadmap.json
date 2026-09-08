@@ -91,7 +91,7 @@
       "remaining": "S02/S03, campaign saves, production art, puzzle balancing and owner playtest"
     },
     "game_presentation": {
-      "status": "accepted design; implementation pending",
+      "status": "accepted design; #142 visual direction approved; #143 implementation in progress",
       "spec": "docs/specs/game-presentation.md",
       "proposal": "docs/proposals/143-structured-presentation.md",
       "implementation_issue": 143,

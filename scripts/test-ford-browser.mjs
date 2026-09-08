@@ -5,13 +5,19 @@ import {chromium} from 'playwright';
 const server=await preview({configFile:'vite.ford.config.ts',preview:{host:'127.0.0.1',port:0,open:false}});
 const url=`http://127.0.0.1:${server.httpServer.address().port}`;
 const browser=await chromium.launch();
+async function testContext(options) {
+  const context = await browser.newContext(options);
+  context.setDefaultTimeout(20000);
+  context.setDefaultNavigationTimeout(20000);
+  return context;
+}
 await mkdir('test-results/ford',{recursive:true});
 const records=[];
 const scene=JSON.parse(await readFile('games/ford-frenzy/data/s01.json','utf8'));
 const saveKey='ford-frenzy.s01.save.v1';
 try{
   for(const input of ['pointer','touch','keyboard']){
-    const context=await browser.newContext({viewport:input==='touch'?{width:390,height:844}:{width:1440,height:960},hasTouch:input==='touch',reducedMotion:'reduce'});
+    const context=await testContext({viewport:input==='touch'?{width:390,height:844}:{width:1440,height:960},hasTouch:input==='touch',reducedMotion:'reduce'});
     const external=[];await context.route('**/*',route=>{if(new URL(route.request().url()).origin!==new URL(url).origin){external.push(route.request().url());return route.abort();}return route.continue();});
     const page=await context.newPage();const errors=[];
     page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
@@ -61,9 +67,15 @@ try{
     await press('#dialogue-next');await press('#dialogue-next');
     assert.match(await page.locator('.spoken-line').innerText(),/folder|recorder|coffee/i);
     await press('#dialogue-next');
-    assert.equal((await state()).mode,'assignment');
-    assert.match(await page.locator('.assignment-slip').innerText(),/GET YOUR KIT/i);
-    await page.screenshot({path:`test-results/ford/${input}-assignment.png`,fullPage:true});await press('#start-assignment');
+    assert.equal((await state()).mode,'playing');
+    assert.equal(await page.locator('.character-portrait').count(),0);
+    assert.equal(await page.locator('.assignment-slip').count(),0);
+    assert.equal(await page.locator('#stage').getAttribute('inert'),null);
+    assert.match(await page.locator('#hud').innerText(),/WELCOME TO THE HAPS/i);
+    assert.match(await page.locator('#hud').innerText(),/0\s*\/\s*6/i);
+    assert.equal(await page.locator('.target-names span').count(),scene.objects.length);
+    for(const selector of ['#notebook','#hint','#pause']) assert.equal(await page.locator(selector).isEnabled(),true);
+    assert.match(await page.evaluate(()=>document.activeElement.id),/^(notebook|hint|pause|keyboard-search|stage)$/);
     await page.screenshot({path:`test-results/ford/${input}-scene.png`,fullPage:true});
     // A click in an empty piece of the scene must not count as a target.
     const canvas=await page.locator('canvas').boundingBox();await page.mouse.click(canvas.x+canvas.width*.52,canvas.y+canvas.height*.35);
@@ -103,6 +115,7 @@ try{
       assert.equal((await state()).mode,'inspect',`target O${i} inspection`);
       assert.equal((await state()).state.foundIds.length,i);
       await press('#back-search');
+      if(i===1){assert.match(await page.locator('#hud').innerText(),/1\s*\/\s*6/i);assert.equal(await page.locator('.target-names span.found').count(),1);}
       if(input==='keyboard')assert.equal(await page.evaluate(()=>document.activeElement.id),'stage');
     }
     assert.equal((await state()).state.k01Awarded,false);
@@ -127,13 +140,13 @@ try{
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
     assert.deepEqual(errors,[]);assert.deepEqual(external,[]);records.push({input,status:'passed',errors});await context.close();
   }
-  const context=await browser.newContext();const page=await context.newPage();
+  const context=await testContext();const page=await context.newPage();
   await page.addInitScript(key=>localStorage.setItem(key,'broken-save'),saveKey);
   await page.goto(url);await page.locator('#new-game').waitFor();assert(await page.locator('#continue').isDisabled());
   assert.equal(await page.evaluate(key=>localStorage.getItem(key),saveKey),'broken-save');
   await page.locator('#new-game').click();await page.locator('#cancel-new').click();assert.equal(await page.evaluate(key=>localStorage.getItem(key),saveKey),'broken-save');
   await context.close();records.push({input:'corrupt save preserved',status:'passed'});
-  const portraitContext=await browser.newContext({viewport:{width:390,height:844},hasTouch:true});
+  const portraitContext=await testContext({viewport:{width:390,height:844},hasTouch:true});
   const portraitPage=await portraitContext.newPage();
   await portraitPage.route('**/dialogue-*.png',route=>route.abort());
   await portraitPage.goto(url);await portraitPage.locator('#new-game').tap();
@@ -142,22 +155,24 @@ try{
   assert.equal(await portraitPage.locator('.spoken-line').isVisible(),true);
   await portraitPage.locator('.portrait-fallback').first().waitFor({state:'visible'});
   assert.equal(await portraitPage.locator('.portrait-fallback:visible').count(),2);
-  await portraitPage.locator('#dialogue-skip').tap();assert.equal(await portraitPage.locator('.assignment-slip').isVisible(),true);await portraitPage.locator('#start-assignment').tap();
+  await portraitPage.locator('#dialogue-skip').tap();
   assert.equal(await portraitPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');
+  assert.equal(await portraitPage.locator('.portrait-fallback').count(),0);
+  assert.equal(await portraitPage.locator('#stage').getAttribute('inert'),null);
+  assert.deepEqual((await portraitPage.evaluate(()=>JSON.parse(window.render_game_to_text()))).state.foundIds,[]);
   await portraitContext.close();records.push({input:'broken dialogue portraits remain playable',status:'passed'});  for(const failure of ['missing','blocked']){
-  const silentContext=await browser.newContext();const silentPage=await silentContext.newPage();const silentErrors=[];silentPage.on('pageerror',e=>silentErrors.push(String(e)));
+  const silentContext=await testContext();const silentPage=await silentContext.newPage();const silentErrors=[];silentPage.on('pageerror',e=>silentErrors.push(String(e)));
   await silentPage.addInitScript(failure=>{class BlockedAudio{state='suspended';resume(){return Promise.reject(new Error('policy'));}suspend(){return Promise.resolve();}close(){return Promise.resolve();}}Object.defineProperty(window,'AudioContext',{value:failure==='blocked'?BlockedAudio:undefined});Object.defineProperty(window,'webkitAudioContext',{value:undefined});},failure);
   await silentPage.goto(url);await silentPage.locator('#settings').click();await silentPage.locator('#test-sound').click();assert.match(await silentPage.locator('#sound-status').innerText(),/unavailable/);
-  await silentPage.locator('#return-title').click();await silentPage.locator('#new-game').click();await silentPage.locator('#dialogue-skip').click();await silentPage.locator('#start-assignment').click();assert.equal(await silentPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');assert.deepEqual(silentErrors,[]);await silentContext.close();records.push({input:failure+' audio permits silent play',status:'passed'});
+  await silentPage.locator('#return-title').click();await silentPage.locator('#new-game').click();await silentPage.locator('#dialogue-skip').click();assert.equal(await silentPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');assert.deepEqual(silentErrors,[]);await silentContext.close();records.push({input:failure+' audio permits silent play',status:'passed'});
   }
-  const failContext=await browser.newContext();const failPage=await failContext.newPage();
+  const failContext=await testContext();const failPage=await failContext.newPage();
   await failPage.route('**/S01.O6.png',route=>route.abort());await failPage.goto(url);await failPage.locator('#retry').waitFor();assert.equal(await failPage.locator('canvas').count(),0);
   await failPage.locator('#return-title').click();await failPage.locator('#settings').click();await failPage.locator('#return-title').click();await failPage.locator('#new-game').click();await failPage.locator('#retry').waitFor();
   await failPage.unroute('**/S01.O6.png');await failPage.locator('#retry').click();await failPage.locator('#new-game').waitFor();assert.equal(await failPage.locator('canvas').count(),1);
   await failContext.close();records.push({input:'required texture failure and retry',status:'passed'});
   console.log(JSON.stringify(records,null,2));
 }finally{await writeFile('test-results/ford/results.json',JSON.stringify(records,null,2));await browser.close();await new Promise(r=>server.httpServer.close(r));}
-
 
 
 
