@@ -153,8 +153,8 @@ The mockup's generated UI lettering is for composition review; production UI
 must remain editable and accessible. The live playable build stays unchanged
 until the selected direction is implemented under #143.
 
-#142 visual approval is recorded. #143 is now in progress under PRES-001 through
-PRES-005. Expressions #139 and closing dialogue #140 remain blocked on delivery.
+#142 visual approval is recorded. #143 implements the S01 foundation under PRES-001 through PRES-005.
+Expression work #139 follows its merge; closing dialogue #140 follows expressions.
 
 ## Structured scene creation
 

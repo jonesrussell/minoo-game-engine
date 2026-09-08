@@ -1,6 +1,6 @@
 # Structured game presentation
 
-Status: accepted design direction, 2026-09-07. S01 implementation candidate in #143;
+Status: accepted design direction, 2026-09-07. S01 implementation under #143;
 #142 visual direction approved by owner. Final asset and playtest acceptance remain separate.
 
 ## Ownership and structure

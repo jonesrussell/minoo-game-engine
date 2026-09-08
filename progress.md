@@ -40,3 +40,10 @@ Latest integration production pointer/touch/keyboard and recovery run passed;
 102 unit tests passed. Inspected desktop/phone play and desktop dialogue captures.
 Source/prompt/background provenance recorded in toronto-runtime-01. Exact-candidate
 review/CI pending. No final artwork or release approval is inferred.
+
+Candidate01391c7: exact production assignment/recovery checks passed for pointer,
+touch and keyboard with no console or external-request errors; bundled game
+client passed and final captures inspected. Independent approval_record review
+found no substantive issue. Hosted run34186813595 passed all required checks.
+The subsequent documentation-only record reconciles delivered scope; human
+playtest, final art, #139 expressions and #140 closing/history remain open.
