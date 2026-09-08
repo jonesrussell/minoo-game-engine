@@ -2,6 +2,7 @@ import Ajv from 'ajv';
 import type { ErrorObject } from 'ajv';
 import sceneSchema from './contracts/scene.schema.json' with { type: 'json' };
 import type { Scene } from './contracts/scene.generated.d.ts';
+import { validateSceneV2, type SceneV2, type SceneV2Validation } from './scene-v2.ts';
 
 export type { Scene, SceneObject, VocabularyRecord, ContentApproval, CompletionRule } from './contracts/scene.generated.d.ts';
 export { sceneSchema };
@@ -13,6 +14,8 @@ export interface SceneDiagnostic {
   message: string;
 }
 export type SceneValidation = { ok: true; scene: Scene } | { ok: false; errors: SceneDiagnostic[] };
+export type AnyScene = Scene | SceneV2;
+export type AnySceneValidation = { ok: true; scene: AnyScene } | { ok: false; errors: SceneDiagnostic[] };
 
 // Only compile the bundled trusted schema. No remote lookup, custom keywords,
 // coercion, defaults or removal of unknown data.
@@ -98,5 +101,17 @@ export function parseScene(json: string): SceneValidation {
   let input: unknown;
   try { input = JSON.parse(json); }
   catch { return { ok: false, errors: [{ code: 'SCENE_INVALID_JSON', pointer: '', requirement: 'SCN-STRUCTURE-001', message: 'Scene must be valid JSON; correct its syntax before validation.' }] }; }
+  return validateScene(input);
+}
+
+/** Dispatch external scene data by its explicit version without migration or metadata inference. */
+export function validateAnyScene(input: unknown): AnySceneValidation {
+  if (input !== null && typeof input === 'object' && !Array.isArray(input) && Object.hasOwn(input, 'version')) {
+    if ((input as { version?: unknown }).version === 2) {
+      // A v1-shaped record with only its version changed is not a v2 migration.
+      if (Object.hasOwn(input, 'vocabulary') && !Object.hasOwn(input, 'contents')) return validateScene(input);
+      return validateSceneV2(input) as SceneV2Validation;
+    }
+  }
   return validateScene(input);
 }
