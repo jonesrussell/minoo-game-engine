@@ -24,12 +24,12 @@ function complete(session: NewsroomSession) {
   apply(session, [
     ...finds,
     { type: 'pair-recorder', connector: 'recorder' },
-    { type: 'check-source', contentId: 'S01.C5' },
+    { type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' },
     { type: 'submit-draft', basis: 'published-report' },
   ]);
 }
 
-test('bundled S01 v2 data uses canonical IDs, proof-manifest bounds and H01 attribution', async () => {
+test('bundled S01 v2 data uses canonical IDs, proof-manifest bounds and fictional embedded content', async () => {
   const scene = JSON.parse(await readFile('games/ford-frenzy/data/s01.json', 'utf8'));
   assert.equal(validateSceneV2(scene).ok, true);
   assert.deepEqual(scene.completion.requiredIds, ['S01.O1', 'S01.O2', 'S01.O3', 'S01.O4', 'S01.O5', 'S01.O6']);
@@ -40,9 +40,10 @@ test('bundled S01 v2 data uses canonical IDs, proof-manifest bounds and H01 attr
   assert.equal(scene.contents[2].classification, 'fiction');
   assert.ok(scene.contents.filter((content: { classification: string }) => content.classification === 'fiction')
     .every((content: { rights: { status: string; basis: string } }) => content.rights.status === 'unresolved' && /draft/i.test(content.rights.basis)));
-  assert.equal(scene.contents[4].classification, 'allegation');
-  assert.deepEqual(scene.contents[4].sourceRefs, ['H01']);
-  assert.equal(scene.sources[0].publishedOn, '2013-05-16');
+  assert.equal(scene.contents[4].classification, 'fiction');
+  assert.deepEqual(scene.contents[4].sourceRefs, []);
+  assert.deepEqual(scene.sources, []);
+  assert.doesNotMatch(JSON.stringify(scene), /Toronto Star|thestar\.com|Doolittle|Donovan/);
 });
 
 test('six finds complete search but never check a source or award K01', () => {
@@ -59,10 +60,10 @@ test('six finds complete search but never check a source or award K01', () => {
 
 test('source checks require the linked find and are idempotent', () => {
   const session = createNewsroomSession();
-  const early = session.step({ type: 'check-source', contentId: 'S01.C5' });
+  const early = session.step({ type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' });
   assert.equal(early.ok, false);
   assert.deepEqual(session.getActions(), []);
-  apply(session, [{ type: 'select', objectId: 'S01.O5' }, { type: 'check-source', contentId: 'S01.C5' }, { type: 'check-source', contentId: 'S01.C5' }]);
+  apply(session, [{ type: 'select', objectId: 'S01.O5' }, { type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' }, { type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' }]);
   assert.deepEqual(session.getState().sourceChecks, ['S01.C5']);
   assert.equal(session.getState().notebook.find(entry => entry.id === 'S01.C5')?.checked, true);
 });
@@ -76,7 +77,7 @@ test('recorder pairing is available after O6 and wrong choices remain replayable
   assert.equal(session.getActions().length, 2);
 });
 
-test('wrong choices preserve finds; completing S01 needs no source checks', () => {
+test('wrong choices and unread clipping preserve finds for retry', () => {
   const session = createNewsroomSession();
   apply(session, [...finds, { type: 'pair-recorder', connector: 'phone' }]);
   const first = session.step({ type: 'submit-draft', basis: 'office-rumour' });
@@ -90,7 +91,13 @@ test('wrong choices preserve finds; completing S01 needs no source checks', () =
   const unchecked = session.step({ type: 'submit-draft', basis: 'published-report' });
   assert.equal(unchecked.ok, true);
   assert.deepEqual(unchecked.state.sourceChecks, []);
-  assert.equal(unchecked.state.k01Awarded, true);
+  assert.equal(unchecked.state.k01Awarded, false);
+  const wrong = session.step({type:'check-source',contentId:'S01.C5',reading:'proven-claim'});
+  assert.equal(wrong.ok,true);
+  assert.deepEqual(wrong.state.sourceChecks,[]);
+  assert.match(wrong.state.lastMessage,/headline cowboy/);
+  apply(session,[{type:'check-source',contentId:'S01.C5',reading:'reported-account'},{type:'submit-draft',basis:'published-report'}]);
+  assert.equal(session.getState().k01Awarded,true);
   const restored = restoreNewsroomSession(session.exportSave());
   assert.equal(restored.ok, true);
   if (restored.ok) assert.deepEqual(restored.session.getState(), session.getState());
@@ -116,7 +123,7 @@ test('post-K01 choices cannot contradict the awarded progression state', () => {
   const actionCount = session.getActions().length;
   const wrongConnector = session.step({ type: 'pair-recorder', connector: 'phone' });
   const wrongBasis = session.step({ type: 'submit-draft', basis: 'office-rumour' });
-  const newCheck = session.step({ type: 'check-source', contentId: 'S01.C1' });
+  const newCheck = session.step({ type: 'check-source', contentId: 'S01.C1', reading: 'reported-account' });
   assert.equal(wrongConnector.ok, false);
   assert.equal(wrongBasis.ok, false);
   assert.equal(newCheck.ok, false);
@@ -128,7 +135,7 @@ test('post-K01 choices cannot contradict the awarded progression state', () => {
   assert.equal(session.getState().transitionS02, 'unlocked');
 
   assert.equal(session.step({ type: 'pair-recorder', connector: 'recorder' }).ok, true);
-  assert.equal(session.step({ type: 'check-source', contentId: 'S01.C5' }).ok, true);
+  assert.equal(session.step({ type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' }).ok, true);
   assert.equal(session.step({ type: 'submit-draft', basis: 'published-report' }).ok, true);
   assert.equal(session.getState().notebook.filter(entry => entry.id === 'K01').length, 1);
 });
@@ -163,7 +170,7 @@ test('snapshots, action logs, saves, notebook entries and events are readonly co
 
 test('scene reset works before completion, retains notebook, and is rejected after K01', () => {
   const session = createNewsroomSession();
-  apply(session, [{ type: 'select', objectId: 'S01.O5' }, { type: 'check-source', contentId: 'S01.C5' }, { type: 'reset', scope: 'scene' }]);
+  apply(session, [{ type: 'select', objectId: 'S01.O5' }, { type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' }, { type: 'reset', scope: 'scene' }]);
   const reset = session.getState();
   assert.deepEqual(reset.foundIds, []);
   assert.deepEqual(reset.sourceChecks, []);
@@ -193,7 +200,7 @@ test('session reset clears all progression and remains part of deterministic his
 test('valid save restoration reproduces state and accepted action journal exactly', () => {
   const session = createNewsroomSession();
   apply(session, [...finds, { type: 'pair-recorder', connector: 'phone' }, { type: 'submit-draft', basis: 'office-rumour' },
-    { type: 'pair-recorder', connector: 'recorder' }, { type: 'check-source', contentId: 'S01.C5' }, { type: 'submit-draft', basis: 'published-report' }]);
+    { type: 'pair-recorder', connector: 'recorder' }, { type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' }, { type: 'submit-draft', basis: 'published-report' }]);
   const save = session.exportSave();
   const restored = restoreNewsroomSession(save);
   assert.equal(restored.ok, true);

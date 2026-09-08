@@ -14,3 +14,5 @@ Current request: build the first playable S01 checkpoint after artwork approval.
 S01 playable candidate 85311ad: 88 unit tests, existing Journey production/browser/validation/replay checks, repository checks and Ford production pointer/touch/keyboard completion passed. Required texture abort/retry and corrupt-save preservation passed. Inspected title, scene and result screenshots; bundled game client passed. Integrated reviewed prerequisites at36c5a48 without code delta. Next: owner playtest, proper connector visuals, occlusion/search balancing, then S02/S03. Broader parent issues remain open.
 
 Owner request: remove source cards from the game. Removed screens, buttons, classification badges and the completion gate; kept research metadata. Changed scene revision to prevent silently reinterpreting earlier saves.
+
+Owner clarification #128: restore source checking through a fictional embedded Hogtown Howler clipping, meaningful reading choice and retry. Remove real press identities/links from shipped data and credits. No external requests during gameplay.

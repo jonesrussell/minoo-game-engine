@@ -11,6 +11,7 @@ const saveKey='ford-frenzy.s01.save.v1';
 try{
   for(const input of ['pointer','touch','keyboard']){
     const context=await browser.newContext({viewport:input==='touch'?{width:390,height:844}:{width:1440,height:960},hasTouch:input==='touch',reducedMotion:'reduce'});
+    const external=[];await context.route('**/*',route=>{if(new URL(route.request().url()).origin!==new URL(url).origin){external.push(route.request().url());return route.abort();}return route.continue();});
     const page=await context.newPage();const errors=[];
     page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
     const state=()=>page.evaluate(()=>JSON.parse(window.render_game_to_text()));
@@ -42,16 +43,23 @@ try{
     }
     assert.equal((await state()).state.k01Awarded,false);
     await press('#file-draft');await press('#rumour-basis');assert.equal((await state()).state.k01Awarded,false);await press('#back-search');
-    await press('#notebook');assert.equal(await page.getByText(/source card|source checked/i).count(),0);await press('#back-search');
+    await press('#notebook');await press('#source');
+    assert.equal(await page.locator('a[href^="http"]').count(),0);
+    assert.match(await page.locator('.clipping').innerText(),/Hogtown Howler/);
+    assert.doesNotMatch(await page.locator('body').innerText(),/Toronto Star|Doolittle|Donovan/);
+    await press('#reading-proof');assert.deepEqual((await state()).state.sourceChecks,[]);
+    await page.screenshot({path:`test-results/ford/${input}-clipping.png`,fullPage:true});
+    await press('#reading-report');assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
+    await press('#back-search');
     await press('#notebook');await press('#recorder');await press('#phone-cable');assert.equal((await state()).state.chargerPaired,'phone');await press('#recorder-cable');assert.equal((await state()).state.chargerPaired,'recorder');await press('#back-search');
     await press('#pause');const before=(await state()).state;await page.keyboard.press('Escape');assert.deepEqual((await state()).state,before);assert.equal(await page.evaluate(()=>document.activeElement.id),'pause');
     await page.reload();await page.locator('#continue').waitFor();await press('#continue');assert.deepEqual((await state()).state,before);
-    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'result');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,[]);
+    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'result');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
     await page.screenshot({path:`test-results/ford/${input}-result.png`,fullPage:true});
-    await press('#return-title');await press('#new-game');await press('#cancel-new');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,[]);
+    await press('#return-title');await press('#new-game');await press('#cancel-new');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
     assert.equal(await page.locator('canvas').count(),1);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-    assert.deepEqual(errors,[]);records.push({input,status:'passed',errors});await context.close();
+    assert.deepEqual(errors,[]);assert.deepEqual(external,[]);records.push({input,status:'passed',errors});await context.close();
   }
   const context=await browser.newContext();const page=await context.newPage();
   await page.addInitScript(key=>localStorage.setItem(key,'broken-save'),saveKey);
