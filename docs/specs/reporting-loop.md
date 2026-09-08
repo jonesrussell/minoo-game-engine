@@ -211,7 +211,7 @@ when scaled hits are too small (#41, #8).
 | FF-LOOP-002 | Given five finds, when `submit-draft` runs, then the step is rejected without clearing finds. | #96, #9 |
 | FF-LOOP-003 | Given six finds and `chargerPaired: phone`, when `submit-draft` runs, then feedback cites the wrong charger and finds persist. | #9, #43 |
 | FF-LOOP-004 | Given six finds and `submit-draft` with `basis: office-rumour`, when review runs, then feedback cites rumour-as-fact and finds persist. | #9, #43 |
-| FF-LOOP-005 | Given six finds, `chargerPaired: recorder`, S01.C5 checked through a eported-account reading, when `submit-draft` uses `published-report`, then K01 is awarded once and `transitionS02` is `unlocked`. | #9, #96 |
+| FF-LOOP-005 | Given six finds, `chargerPaired: recorder`, S01.C5 checked through a `reported-account` reading, when `submit-draft` uses `published-report`, then K01 is awarded once and `transitionS02` is `unlocked`. | #9, #96 |
 | FF-LOOP-006 | Given K01 awarded, when the success path repeats, then no second K01 is recorded. | #96, #9 |
 | FF-LOOP-007 | Given `hintBudget: 3`, when three hints are used, then further hints fail with exhausted diagnostic and editorial retry still explains failures. | #10, #106 |
 | FF-LOOP-008 | Given a recorded S01 action sequence, when replay runs twice, then final notebook and flags match. | #96, #38 |
@@ -259,4 +259,3 @@ certainty. Wrong reading is journaled and retryable without losing finds.
 
 Scene revision changes for this content/action contract. Incompatible earlier saves
 remain intact until confirmed New Game; they are not replayed under new semantics.
-
