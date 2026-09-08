@@ -10,6 +10,7 @@ This comparison answers the first-game 2D renderer question with a reproducible,
 cd experiments/renderer-choice
 npm ci
 npm run build
+npm run build:candidates
 npm run test:e2e
 ```
 
@@ -17,22 +18,23 @@ The experiment package has its own lockfile and `node_modules`; root dependencie
 
 ## Results
 
-The production build completed for both import paths. The generated candidate chunks measured:
+Separate production builds completed for each candidate with `npm run build:candidates`. The complete JavaScript graphs measured:
 
 | Actual Vite chunk | Raw JavaScript | gzip (mtime=0) |
 |---|---:|---:|
-| `pixi-BE29Enr0.js` | 246,174 bytes | 71,668 bytes |
-| `phaser-DHkTmIPz.js` | 1,198,218 bytes | 317,965 bytes |
+| Candidate graph | Raw JavaScript | gzip (mtime=0) |
+| PixiJS 8.20.1 (`dist-pixi`) | 570,445 bytes | 170,813 bytes |
+| Phaser 4.2.1 (`dist-phaser`) | 1,379,398 bytes | 358,131 bytes |
 
-Reproduce the raw and gzip counts after `npm run build` with Node's bundled zlib:
+Reproduce the raw and gzip counts after `npm run build:candidates` with Node's bundled zlib:
 
 ```powershell
-node -e "const fs=require('fs'),z=require('zlib'); for(const f of fs.readdirSync('dist/assets').filter(x=>x.endsWith('.js'))){const b=fs.readFileSync('dist/assets/'+f); console.log(f,b.length,z.gzipSync(b,{mtime:0}).length)}"
+node -e "const fs=require('fs'),z=require('zlib'); for(const d of ['dist-pixi','dist-phaser']){let a=fs.readdirSync(d+'/assets').filter(x=>x.endsWith('.js')).map(f=>fs.readFileSync(d+'/assets/'+f)); console.log(d,a.reduce((s,b)=>s+b.length,0),a.reduce((s,b)=>s+z.gzipSync(b,{mtime:0}).length,0))}"
 ```
 
 The experiment is one Vite application with a query-selected adapter, so one build includes both candidates. The final comparison therefore reports per-adapter entry chunks from the actual build output rather than presenting an invented isolated number. Texture transfer and decoded/GPU memory are excluded because they are asset-pipeline measurements, not JavaScript build size.
 
-| Dimension | PixiJS 8.20.1 | Phaser 3.90.0 |
+| Dimension | PixiJS 8.20.1 | Phaser 4.2.1 |
 |---|---|---|
 | Frame scheduling | Application ticker; adapter can start/stop it | Scene game loop; adapter lifecycle is implicit in Game |
 | Sprites/drawing | Display tree and Sprite | Game Objects and Scene display list |

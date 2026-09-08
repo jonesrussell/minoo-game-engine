@@ -1,7 +1,7 @@
 import './style.css';
-const params = new URLSearchParams(location.search); const choice = params.get('renderer') || 'pixi';
+const params = new URLSearchParams(location.search); const buildChoice=import.meta.env.VITE_RENDERER; const choice = buildChoice || params.get('renderer') || 'pixi';
 const targets = ['S01.O1','S01.O2','S01.O3','S01.O4','S01.O5','S01.O6'];
-const urls = ['background.png', ...targets.map((x)=>`${x}.png`)].map((x)=>`/assets/${x}`);
+const urls = ['background.png', ...targets.map((x)=>`${x}.png`)].map((x)=>`/assets/${x}`); let attempt=0;
 const status = document.querySelector('#status'); const live = document.querySelector('#live'); const stage = document.querySelector('#stage');
 const controls = document.querySelector('#controls');
 controls.innerHTML = `<button id="retry">Retry assets</button><button id="motion">Toggle reduced motion</button><span id="scene-label"></span>`;
@@ -11,10 +11,12 @@ function select(i){selected=(i+targets.length)%targets.length; sceneLabel.textCo
 targets.forEach((id,i)=>{const b=document.createElement('button');b.textContent=id;b.dataset.target=id;b.addEventListener('click',()=>select(i));controls.append(b);});
 document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')select(selected+1); if(e.key==='ArrowLeft'||e.key==='ArrowUp')select(selected-1);});
 document.querySelector('#motion').addEventListener('click',()=>{reduced=!reduced; document.documentElement.dataset.reduced=reduced?'true':'false'; announce(`Reduced motion ${reduced?'on':'off'}`);});
-document.querySelector('#retry').addEventListener('click',()=>runtime?.load());
+document.querySelector('#retry').addEventListener('click',()=>runtime?.load() ?? boot());
 async function boot(){
   status.textContent=`${choice} loading`; stage.replaceChildren();
-  runtime = choice==='phaser' ? await import('./phaser.js').then(m=>m.create({stage,urls,onStatus:(x)=>{status.textContent=x},onSelect:()=>announce('Target clicked')})) : await import('./pixi.js').then(m=>m.create({stage,urls,onStatus:(x)=>{status.textContent=x},onSelect:()=>announce('Target clicked')}));
+  const attemptUrls=urls.map((url)=>`${url}?attempt=${attempt++}`);
+  const onStatus=(x)=>{status.textContent=x;if(x.includes('failed')) announce('Asset load failed; use Retry assets')};
+  runtime = choice==='phaser' ? await import('./phaser.js').then(m=>m.create({stage,urls:attemptUrls,onStatus,onSelect:()=>announce('Target clicked')})) : await import('./pixi.js').then(m=>m.create({stage,urls:attemptUrls,onStatus,onSelect:()=>announce('Target clicked')}));
   select(0);
 }
 boot().catch((e)=>{status.textContent='load failed: '+e.message; announce('Asset load failed; use Retry assets');});
