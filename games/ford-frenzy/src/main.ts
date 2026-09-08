@@ -51,6 +51,7 @@ function panel(next: string, body: string, title = false) {
   if (mode === 'playing') originFocusId = document.activeElement?.id || 'notebook';
   if (mode === 'title') titleFocusId = document.activeElement?.id || 'new-game';
   mode = next;
+  document.getElementById('app')!.dataset.screen = next;
   stage.inert = true;
   renderer?.setSearchCursor(null);
   renderer?.setPaused(true);
@@ -58,7 +59,7 @@ function panel(next: string, body: string, title = false) {
   overlay.querySelector<HTMLElement>('button, a, input')?.focus();
 }
 function title() {
-  panel('title', `<div class="eyebrow">A Torrona Haps adventure</div><h1>FORD<br>FRENZY</h1><p class="byline">jr42 productions</p><p class="edition-card">You wanted the patio beat.<br>Toronto had other plans.</p><div class="buttons">${button('new-game','New Game',true)}${button('continue','Continue',false,!saveExists && !session.getActions().length)}</div><div class="buttons">${button('settings','Settings')}${button('credits','Credits')}</div><p class="muted">First playable • Welcome to the Haps<br>Search the scene. Get your kit. Get the story.</p>${badSave ? '<p class="muted">The saved game could not be read. It will be preserved until you confirm a new game.</p>' : ''}` , true);
+  panel('title', `<img class="title-art" src="./assets/title-newsroom.png" alt=""><div class="title-shade" aria-hidden="true"></div><div class="title-content"><div class="issue-stamp">TORONTO, 2013 <span>THE CITY'S GONE SIDEWAYS.</span></div><div class="eyebrow">A Torrona Haps story</div><h1><span>FORD</span><span>FRENZY</span></h1><div class="nation-stamp">WELCOME TO CRACK NATION</div><p class="edition-card">The world's watching.<br>You're just trying to get paid.</p><nav class="title-menu" aria-label="Main menu">${button('new-game','Hit the streets',true)}${button('continue','Back on the beat',false,!saveExists && !session.getActions().length)}${button('settings','Options')}${button('credits','The usual suspects')}</nav><p class="byline">jr42 productions <span>presents</span></p>${badSave ? '<p class="save-warning">Your earlier save is incompatible. It stays untouched until you confirm a new game.</p>' : ''}</div><div class="city-slug" aria-hidden="true"><span>ONE CITY.</span><span>NO CHILL.</span></div>` , true);
   bind('new-game', () => {
     if (!renderer) { void boot(); return; }
     if (saveExists || badSave || session.getActions().length) confirmNew();
@@ -82,7 +83,7 @@ function newGame() {
 }
 function play() {
   if (session.getState().k01Awarded) { result(); return; }
-  mode = 'playing'; stage.inert = false; overlay.innerHTML = ''; renderer?.setPaused(false); update();
+  mode = 'playing'; document.getElementById('app')!.dataset.screen = 'playing'; stage.inert = false; overlay.innerHTML = ''; renderer?.setPaused(false); update();
   (document.getElementById(originFocusId) ?? document.getElementById('notebook'))?.focus();
 }
 function act(action: NewsroomAction) {
@@ -96,7 +97,7 @@ function update() {
   const state = session.getState();
   renderer?.setView({foundIds:state.foundIds,hintedObjectId:state.hintedObjectId});
   const focusedId = document.activeElement?.id;
-  hud.innerHTML = `<div class="hud-row"><div class="objective"><div class="eyebrow">01 / Welcome to the Haps</div><strong>Find your reporting kit</strong> <span class="big-number">${state.foundIds.length}<small> / 6</small></span></div>${button('hint',`Hint • ${state.hintBudget-state.hintsUsed} left`,false,state.hintsUsed>=state.hintBudget || state.searchCompleted)}${button('notebook','Notebook')}${button('file-draft','File draft',true,!state.searchCompleted)}${button('pause','Pause')}</div><p class="target-names">${scene.contents.map(c=>`<span class="${state.foundIds.includes(scene.objects.find(o=>o.contentId===c.id)!.id)?'found':''}">${escapeHtml(c.label.replace(' with office rumour note',''))}</span>`).join('')}</p><p id="feedback" class="feedback" role="status">${escapeHtml(state.lastMessage)}</p><div class="keyboard-tools">${button('keyboard-search','Search with keyboard')}<span id="search-help">Arrows move · Shift + arrows for fine movement · Enter inspects · Tab leaves the scene</span></div><p id="search-location" class="search-location" role="status" aria-live="polite"></p>`;
+  hud.innerHTML = `<div class="hud-row"><div class="objective"><div class="eyebrow">01 / Welcome to the Haps</div><strong>GET YOUR SHIT TOGETHER.</strong> <span class="big-number">${state.foundIds.length}<small> / 6</small></span></div>${button('hint',`Hint • ${state.hintBudget-state.hintsUsed} left`,false,state.hintsUsed>=state.hintBudget || state.searchCompleted)}${button('notebook','Your notes')}${button('file-draft','File it',true,!state.searchCompleted)}${button('pause','Pause')}</div><p class="target-names">${scene.contents.map(c=>`<span class="${state.foundIds.includes(scene.objects.find(o=>o.contentId===c.id)!.id)?'found':''}">${escapeHtml(c.label.replace(' with office rumour note',''))}</span>`).join('')}</p><p id="feedback" class="feedback" role="status">${escapeHtml(state.lastMessage)}</p><div class="keyboard-tools">${button('keyboard-search','Search with keyboard')}<span id="search-help">Arrows move · Shift + arrows for fine movement · Enter inspects · Tab leaves the scene</span></div><p id="search-location" class="search-location" role="status" aria-live="polite"></p>`;
   bind('hint',()=>act({type:'hint'})); bind('notebook',notebook); bind('pause',pause); bind('file-draft',submit);
   bind('keyboard-search',()=>stage.focus());
   if (focusedId) document.getElementById(focusedId)?.focus();
@@ -112,7 +113,7 @@ const jokes: Record<string,string> = {
 };
 function inspect(id: string) {
   const content = scene.contents.find(c=>c.id===scene.objects.find(o=>o.id===id)!.contentId)!;
-  panel('inspect', `<div class="eyebrow">Added to your notebook</div><h2>${escapeHtml(content.label)}</h2><p>${jokes[id]}</p><div class="buttons">${id==='S01.O5'?button('source','Read the clipping',true):''}${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
+  panel('inspect', `<div class="eyebrow">Bagged it. / Added to your notes</div><h2>${escapeHtml(content.label)}</h2><p>${jokes[id]}</p><div class="buttons">${id==='S01.O5'?button('source','Read the clipping',true):''}${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
   bind('back-search',play); bind('source',sourceCheck); bind('recorder',recorderPuzzle);
 }
 function sourceCheck() {
@@ -136,7 +137,7 @@ function notebook() {
   bind('source',sourceCheck);bind('recorder',recorderPuzzle);bind('back-search',play);
 }
 function submit() {
-  panel('submit', `<div class="eyebrow">First draft</div><h2>What are we going with?</h2><p>The editor wants a starting point for the assignment. Choose the basis for your draft.</p><div class="buttons">${button('report-basis','The published report',true)}${button('rumour-basis','The office rumour')}</div><p id="draft-feedback" role="status">Read the clipping and get the recorder ready, then pick your story.</p><div class="buttons">${button('back-search','Back to my notes')}</div>`);
+  panel('submit', `<div class="eyebrow">Torrona Haps / Stop the presses</div><h2>What are we going with?</h2><p>The editor wants a starting point for the assignment. Choose the basis for your draft.</p><div class="buttons">${button('report-basis','The published report',true)}${button('rumour-basis','The office rumour')}</div><p id="draft-feedback" role="status">Read the clipping and get the recorder ready, then pick your story.</p><div class="buttons">${button('back-search','Back to my notes')}</div>`);
   for(const basis of ['published-report','office-rumour'] as const) bind(basis==='published-report'?'report-basis':'rumour-basis',()=>{act({type:'submit-draft',basis}); const feedback=document.getElementById('draft-feedback');if(feedback)feedback.textContent=basis==='office-rumour'?'The editor has enough rumours. Read the clipping and bring a working recorder.':session.getState().lastMessage;});
   bind('back-search',play);
 }
