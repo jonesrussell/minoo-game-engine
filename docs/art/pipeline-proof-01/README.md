@@ -1,6 +1,6 @@
 # S01 asset pipeline proof
 
-Candidate exports for #104. Reference style is approved; these new assets are not.
+Owner-approved separated-asset proof for #104. See [approval.md](approval.md).
 Run from the repository root with any local static HTTP server, then open
 `docs/art/pipeline-proof-01/index.html`. File URLs cannot fetch the manifest.
 Validation command: `node scripts/check-art-proof.mjs` (uses locked Playwright).
@@ -41,5 +41,5 @@ art work will select optimized exports and atlas/streaming budgets.
   scene targets are too small for standalone touch gameplay; use the 44px list and
   enlarged preview for this review. Runtime zoom/hit mapping remains separate work.
 
-Owner decision: accept this background and target treatment as the pipeline proof,
-or identify a specific visual revision. #104 stays open until that decision.
+Owner accepted the background and target treatment. #104 proof is complete;
+production runtime and release work remain separate.
