@@ -6,7 +6,7 @@
 **Owner:** project owner
 **Approval source:** actual owner conversation in this task
 
-The owner confirmed satisfaction with the revision 2 Torrona Haps storyboard package
+The owner confirmed satisfaction with the revision 2 Toronna Haps storyboard package
 and directed the next steps to proceed. This records approval of the storyboard content
 and structure for the campaign outline, full-game boards, opening handoff, and the
 associated proposals #91, #92, #93 and #114.

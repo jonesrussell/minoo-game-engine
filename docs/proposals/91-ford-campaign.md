@@ -80,9 +80,9 @@ S01-S03 remain implementable without S04-S18 assets. Later scenes remain outline
 
 Art references are candidates only pending owner selection. ff-011, ff-073 and ff-075 refer to logo and civic palette, not desk textures. ff-044 refers to City Hall hallway, not a generic newsroom. ff-079 and ff-080 are non-combat silhouette candidates.
 
-### FF-CAM-011: Torrona Haps tone and opening chronology
+### FF-CAM-011: Toronna Haps tone and opening chronology
 
-The owner-selected fictional Torrona Haps is the local paper and the player-facing
+The owner-selected fictional Toronna Haps is the local paper and the player-facing
 newsroom. S01 is Welcome to the Haps, S02 is Meanwhile at City Hall, and S03 is
 We're Going With WHAT?, all on May 17. S02 contains public corridor printer and
 press-kit work and no November crowd material. Comedy may escalate through editor
@@ -91,7 +91,7 @@ stay explicit.
 
 ## Verification status
 
-This is a documentation-only storyboard approval. The owner approved the revision 2 campaign structure and content on 2026-09-07. Candidate art, rights, final release copy, runtime implementation and playtest approval remain open; Torrona Haps ownership and satire direction are accepted. Historical dates and narrow events were integrated against #90. Actual repository checks are recorded in the PR.
+This is a documentation-only storyboard approval. The owner approved the revision 2 campaign structure and content on 2026-09-07. Candidate art, rights, final release copy, runtime implementation and playtest approval remain open; Toronna Haps ownership and satire direction are accepted. Historical dates and narrow events were integrated against #90. Actual repository checks are recorded in the PR.
 
 ## Acceptance scenarios (planned gameplay checks)
 

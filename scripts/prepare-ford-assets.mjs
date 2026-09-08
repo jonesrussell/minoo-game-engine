@@ -19,8 +19,8 @@ await writeFile(new URL('manifest.json', destination), JSON.stringify({
 }, null, 2));
 console.log(`Prepared ${assets.length} hash-verified S01 textures.`);
 
-// Approved visual-direction concept, reused unchanged for the title composition.
-const titleSource = new URL('docs/art/visual-direction-02/newsroom-concept.png', root);
+// Spelling-corrected derivative of the approved concept; see toronna-edit.json.
+const titleSource = new URL('docs/art/visual-direction-02/newsroom-toronna.png', root);
 const titleBytes = await readFile(titleSource);
-if (createHash('sha256').update(titleBytes).digest('hex') !== '0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880') throw Error('Title reference hash mismatch');
+if (createHash('sha256').update(titleBytes).digest('hex') !== '45bbadd3908d62822793254a4e6ad0bfc6c9c4a97fbffd32a07bc73ba0fc9a7f') throw Error('Title reference hash mismatch');
 await copyFile(titleSource, new URL('title-newsroom.png', destination));

@@ -3,7 +3,7 @@
 Research checkpoint: 7 September 2026. This file extends the historical ledger with
 H15–H18 only. It records bounded public events for newsroom staging. Allegations in
 the contemporary coverage remain attributed allegations; they are not treated as
-findings. The fictional Torrona Haps staff, dialogue, deadlines and comic staging
+findings. The fictional Toronna Haps staff, dialogue, deadlines and comic staging
 must remain distinct from real reporters, broadcasters and sources.
 
 ## Claim register
@@ -21,7 +21,7 @@ must remain distinct from real reporters, broadcasters and sources.
 
 **R19: CityNews, 14 November 2013.** [“Toronto city hall deemed unsafe for kids amid Ford media circus; tours relocated”](https://toronto.citynews.ca/2013/11/14/toronto-city-hall-deemed-unsafe-for-kids-amid-ford-media-circus-tours-relocated/), posted 7:06 p.m. A City spokeswoman said school trips for Monday and Tuesday were relocated to the Toronto Archives because of the number of people and activity, described as health and safety concerns. The article says no decision had yet been made about trips beyond those two days; do not generalize it to a permanent closure.
 
-**R20: J-Source, Ellin Bessner, 19 November 2013.** [“Is Toronto City Hall safe for journalists?”](https://j-source.ca/is-toronto-city-hall-safe-for-journalists/), dated 19 Nov. The journalism-industry report describes local and international networks, dozens of producers/reporters and camera equipment around Ford’s office, and reported Nov 14 incidents involving camera operators. It is a mediated account of safety concerns and expert opinions, not a complete census or official incident finding. Use the scale/context only; do not stage an assault as an invented Torrona Haps event.
+**R20: J-Source, Ellin Bessner, 19 November 2013.** [“Is Toronto City Hall safe for journalists?”](https://j-source.ca/is-toronto-city-hall-safe-for-journalists/), dated 19 Nov. The journalism-industry report describes local and international networks, dozens of producers/reporters and camera equipment around Ford’s office, and reported Nov 14 incidents involving camera operators. It is a mediated account of safety concerns and expert opinions, not a complete census or official incident finding. Use the scale/context only; do not stage an assault as an invented Toronna Haps event.
 
 **R21: CityNews, 3 March 2014.** [“Jimmy Kimmel ‘excited’ to have Mayor Ford on show”](https://toronto.citynews.ca/2014/03/03/jimmy-kimmel-excited-to-have-mayor-ford-on-show/), posted 3 Mar. It confirms the scheduled Monday appearance and the prior public promotion by Kimmel. [“WATCH: Toronto Mayor Ford makes late-night cameo on Kimmel special”](https://toronto.citynews.ca/2014/03/03/toronto-mayor-ford-makes-late-night-cameo-on-kimmel-special-after-oscars/), also posted 3 Mar, separately supports the Oscar-special cameo before the main appearance. [ABC News report](https://abcnews.com/blogs/entertainment/2014/03/rob-ford-grilled-on-jimmy-kimmel-live), 4 Mar, describes the completed interview; it is a next-day report, not the event date.
 
@@ -29,7 +29,7 @@ must remain distinct from real reporters, broadcasters and sources.
 
 ## Editorial boundaries
 
-The real events supply dates and public media artifacts only. Torrona Haps may stage
+The real events supply dates and public media artifacts only. Toronna Haps may stage
 an original deadline board, a school-tour relocation memo, a crowded press scrum seen
 from a fictional newsroom, or a fictional review of a cancelled broadcast. It may not
 recreate private allegations, add real reporters as game characters, invent a source

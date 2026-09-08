@@ -64,7 +64,7 @@ frames. Hash verification is not content-rights approval.
 
 ## Scenes
 
-**S01 Welcome to the Haps (BG01 day):** Scrappy May 2013 Torrona Haps newsroom: takeout, invoices, broken chair left-mid, crooked masthead, mustard lamps on cream paper.
+**S01 Welcome to the Haps (BG01 day):** Scrappy May 2013 Toronna Haps newsroom: takeout, invoices, broken chair left-mid, crooked masthead, mustard lamps on cream paper.
 
 | ID | Placement |
 | --- | --- |

@@ -12,7 +12,7 @@ and research anchors.
 ## Delivery
 
 Storyboard the entire planned campaign, starting with its chapter outline and ending.
-Develop a three-scene opening slice for the fictional Torrona Haps local paper:
+Develop a three-scene opening slice for the fictional Toronna Haps local paper:
 Welcome to the Haps, Meanwhile at City Hall, and We're Going With WHAT? Those scene
 treatments have owner storyboard approval recorded in [approval.md](storyboards/approval.md). Finished campaign
 art do not block the opening slice.

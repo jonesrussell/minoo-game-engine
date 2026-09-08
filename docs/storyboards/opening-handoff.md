@@ -6,7 +6,7 @@ Read [campaign](campaign.md), [scene boards](full-game.md) and the [historical l
 
 ## Bounded build
 
-Build **S01-S03** as one standalone episode for **Ford Frenzy** by **jr42 productions**. The fictional paper name is **Torrona Haps** (exact spelling). No S04 assets, route scenes, model service, account or Studio connection is required. Episode end offers review notebook, replay episode in a separate session, credits or return to title. Campaign continuation may remain unavailable.
+Build **S01-S03** as one standalone episode for **Ford Frenzy** by **jr42 productions**. The fictional paper name is **Toronna Haps** (exact spelling). No S04 assets, route scenes, model service, account or Studio connection is required. Episode end offers review notebook, replay episode in a separate session, credits or return to title. Campaign continuation may remain unavailable.
 
 All scenes use original staged environments with separate findable prop layers. BG01 newsroom is new artwork reused with a deadline lighting variant in S03. S02 may adapt ff-044 as a City Hall composition reference. ff-011, ff-073 and ff-075 inform title palette only. Source art candidate approval stays with #94/#104/#17. Placeholders support #9/#98/#99.
 
@@ -14,7 +14,7 @@ All scenes use original staged environments with separate findable prop layers. 
 
 ## Reviewable opening script
 
-Alex arrives at **Torrona Haps** expecting patio openings and invoice filing. The previous mayor-beat reporter quit without forwarding their charger. Elliot assigns the Ford story because the broken chair is currently occupied by classifieds. The opening is after the first public reports, not inside a secret viewing or a reenactment of the original scoop.
+Alex arrives at **Toronna Haps** expecting patio openings and invoice filing. The previous mayor-beat reporter quit without forwarding their charger. Elliot assigns the Ford story because the broken chair is currently occupied by classifieds. The opening is after the first public reports, not inside a secret viewing or a reenactment of the original scoop.
 
 **S01 Welcome to the Haps:** Search gear buried under takeout and invoices. Match the digital recorder to the correct charger (not the phone brick). Distinguish the attributed published report summary from the office rumour folder. Six distinct finds, not six identical paper cards. Award **K01** when the player identifies what the Haps can honestly chase tonight. Natural newsroom action, not a lecture about metadata.
 
@@ -22,7 +22,7 @@ Alex arrives at **Torrona Haps** expecting patio openings and invoice filing. Th
 
 **S03 We're Going With WHAT?:** Rearranged deadline desk. Six finds power a silly headline magnet layout while preserving accurate copy: reports allege, mayor denied on record, video not verified by this desk. Nadia's stamp beats Elliot's worst pun. Player chooses **BR-CH1-A Splash First** or **BR-CH1-B Lawyer Voice**; commit **K03** and branch together, then episode-complete screen.
 
-Dialogue in full-game boards is fictional satire. Torrona Haps is the owner-selected name. Revision 2 storyboard content and structure were approved by the owner on 2026-09-07. Final performance, visible source copy, art, rights, runtime implementation and playtest remain open.
+Dialogue in full-game boards is fictional satire. Toronna Haps is the owner-selected name. Revision 2 storyboard content and structure were approved by the owner on 2026-09-07. Final performance, visible source copy, art, rights, runtime implementation and playtest remain open.
 
 ## Running gags (opening slice)
 
@@ -58,4 +58,4 @@ Revision 2 adds 22-scene campaign shape with AS1/AS2 and routes R1A-R2B. Opening
 
 The storyboard is approved for handoff, not a claim that game schemas already encode it. #43 specifies comparison rules; #95 supplies generalized source references; #96 owns investigation state; #8/#97 render it; #37 owns assets; #105/#106 supply navigation and HUD. Preserve headless deterministic replay and validate candidate content before persistence. Do not put historical evidence into vocabulary fields.
 
-Owner review covers the revised execution of the accepted **Torrona Haps** name and satirical direction, placement, cast and both BR-CH1 emphasis choices. Qualified playable slice later supplies input, save/recovery and pacing evidence. No screenplay or repository link check counts as a successful playtest.
+Owner review covers the revised execution of the accepted **Toronna Haps** name and satirical direction, placement, cast and both BR-CH1 emphasis choices. Qualified playable slice later supplies input, save/recovery and pacing evidence. No screenplay or repository link check counts as a successful playtest.

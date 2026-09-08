@@ -1,0 +1,12 @@
+{
+  "issue": 134,
+  "date": "2026-09-07",
+  "tool": "image_gen.imagegen",
+  "source": "newsroom-concept.png",
+  "sourceSha256": "0bf1e81cd1b91b4ac8ca229744e7308f4e5be365b72852cb80892c9364aad880",
+  "output": "newsroom-toronna.png",
+  "sha256": "45bbadd3908d62822793254a4e6ad0bfc6c9c4a97fbffd32a07bc73ba0fc9a7f",
+  "instruction": "Correct newspaper masthead to Toronna Haps. Preserve the existing composition and style.",
+  "review": "Agent visually verified corrected masthead and retained composition. Generative edit can alter incidental pixels. Original approved asset preserved.",
+  "release_approved": false
+}
