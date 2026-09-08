@@ -26,27 +26,38 @@
       "id": "alex",
       "name": "Alex / You",
       "assetId": "portrait-alex",
-      "expressions": { "neutral": "portrait-alex" }
+      "expressions": {
+        "neutral": "portrait-alex"
+      }
     },
     {
       "id": "elliot",
       "name": "Elliot / Editor",
       "assetId": "portrait-elliot",
-      "expressions": { "neutral": "portrait-elliot" }
-    }
-  ],
-  "dialogue": [
-    {
-      "id": "fixture-01",
-      "speaker": "alex",
-      "line": "The same conversation layout can render another beat.",
-      "expression": "neutral"
+      "expressions": {
+        "neutral": "portrait-elliot"
+      }
     }
   ],
   "targetLabels": [
     {
       "objectId": "fixture.object",
-      "label": "Fixture find"
+      "label": "Fixture find",
+      "inspection": "brief"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "fixture-conversation",
+      "beats": [
+        {
+          "id": "fixture-01",
+          "speaker": "alex",
+          "line": "The same conversation layout can render another beat.",
+          "expression": "neutral"
+        }
+      ],
+      "title": "Another assignment"
     }
   ]
 }

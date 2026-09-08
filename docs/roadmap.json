@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-09-08",
   "repository": "jonesrussell/minoo-game-engine",
   "decisions": {
     "scene_schema": {
@@ -91,7 +91,7 @@
       "remaining": "S02/S03, campaign saves, production art, puzzle balancing and owner playtest"
     },
     "game_presentation": {
-      "status": "S01 reusable presentation implemented under #143; #139 expression candidates implemented with owner acceptance pending; closing/history remains #140",
+      "status": "S01 reusable presentation implemented under #143; #139 expression candidates and #140 closing/history implemented for review; owner character and pacing acceptance pending",
       "spec": "docs/specs/game-presentation.md",
       "proposal": "docs/proposals/143-structured-presentation.md",
       "implementation_issue": 143,

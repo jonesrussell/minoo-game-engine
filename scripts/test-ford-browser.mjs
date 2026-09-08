@@ -51,6 +51,7 @@ try{
     const page=await context.newPage();const errors=[];
     page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
     const state=()=>page.evaluate(()=>JSON.parse(window.render_game_to_text()));
+    const sessionSnapshot=()=>page.evaluate(key=>({state:JSON.parse(window.render_game_to_text()).state,save:localStorage.getItem(key)}),saveKey);
     const press=async selector=>{if(input==='keyboard'){await page.locator(selector).focus();await page.keyboard.press('Enter');}else if(input==='touch')await page.locator(selector).tap();else await page.locator(selector).click();};
     await page.goto(url);await page.locator('#new-game').waitFor();
     await page.locator('.title-art').evaluate(async image => { await image.decode(); });
@@ -106,6 +107,15 @@ try{
     for(const selector of ['#notebook','#hint','#pause']) assert.equal(await page.locator(selector).isEnabled(),true);
     assert.match(await page.evaluate(()=>document.activeElement.id),/^(notebook|hint|pause|keyboard-search|stage)$/);
     await page.screenshot({path:`test-results/ford/${input}-scene.png`,fullPage:true});
+    await press('#pause');await press('#history');
+    assert.equal((await state()).mode,'history');assert.equal(await page.locator('#history-opening').isVisible(),true);assert.equal(await page.locator('#history-closing').count(),0);
+    const beforeOpeningReplay=await sessionSnapshot();
+    await press('#history-opening');assert.equal((await state()).mode,'conversation');assert.deepEqual(await sessionSnapshot(),beforeOpeningReplay);
+    await press('#dialogue-next');assert.deepEqual(await sessionSnapshot(),beforeOpeningReplay);
+    await press('#dialogue-back');assert.deepEqual(await sessionSnapshot(),beforeOpeningReplay);
+    await press('#dialogue-skip');assert.equal((await state()).mode,'history');assert.equal(await page.evaluate(()=>document.activeElement.id),'history-opening');assert.deepEqual(await sessionSnapshot(),beforeOpeningReplay);
+    await press('#history-back');assert.equal((await state()).mode,'paused');assert.equal(await page.evaluate(()=>document.activeElement.id),'history');assert.deepEqual(await sessionSnapshot(),beforeOpeningReplay);
+    await press('#resume');
     // A click in an empty piece of the scene must not count as a target.
     const canvas=await page.locator('canvas').boundingBox();await page.mouse.click(canvas.x+canvas.width*.52,canvas.y+canvas.height*.35);
     assert.equal((await state()).state.foundIds.length,0);
@@ -141,9 +151,10 @@ try{
         if(input==='touch')await page.touchscreen.tap(target.x+target.width/2,target.y+target.height/2);
         else await page.mouse.click(target.x+target.width/2,target.y+target.height/2);
       }
-      assert.equal((await state()).mode,'inspect',`target O${i} inspection`);
+      assert.equal((await state()).mode,i<=4?'playing':'inspect',`target O${i} pacing`);
       assert.equal((await state()).state.foundIds.length,i);
-      await press('#back-search');
+      if(i>4) await press('#back-search');
+      else {assert.notEqual((await state()).state.lastMessage,'');assert.equal(await page.locator('.panel').count(),0);assert.equal(await page.locator('#feedback').isVisible(),true);}
       if(i===1){assert.match(await page.locator('#hud').innerText(),/1\s*\/\s*6/i);assert.equal(await page.locator('.target-names span.found').count(),1);}
       if(input==='keyboard')assert.equal(await page.evaluate(()=>document.activeElement.id),'stage');
     }
@@ -162,8 +173,26 @@ try{
     await press('#phone-cable');assert.equal((await state()).state.chargerPaired,'phone');await press('#recorder-cable');assert.equal((await state()).state.chargerPaired,'recorder');assert(await page.locator('#recorder-cable').isDisabled());assert.match(await page.locator('.recorder-display').innerText(),/READY/);await press('#back-search');
     await press('#pause');const before=(await state()).state;await page.keyboard.press('Escape');assert.deepEqual((await state()).state,before);assert.equal(await page.evaluate(()=>document.activeElement.id),'pause');
     await page.reload();await page.locator('#continue').waitFor();await press('#continue');assert.deepEqual((await state()).state,before);
-    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'result');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
+    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'conversation');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
+    assert.match(await page.locator('.spoken-line').innerText(),/Published report logged/i);
+    const completedSnapshot=await sessionSnapshot();
+    if(input!=='keyboard')await page.screenshot({path:`test-results/ford/${input}-closing.png`,fullPage:true});
+    await press('#dialogue-next');assert.match(await page.locator('.spoken-line').innerText(),/Competence makes/i);assert.deepEqual(await sessionSnapshot(),completedSnapshot);
+    await press('#dialogue-back');assert.match(await page.locator('.spoken-line').innerText(),/Published report logged/i);assert.deepEqual(await sessionSnapshot(),completedSnapshot);
+    if(input==='touch')await press('#dialogue-skip');
+    else if(input==='keyboard')await page.keyboard.press('Escape');
+    else {await press('#dialogue-next');assert.deepEqual(await sessionSnapshot(),completedSnapshot);await press('#dialogue-next');assert.deepEqual(await sessionSnapshot(),completedSnapshot);await press('#dialogue-next');}
+    assert.equal((await state()).mode,'result');assert.deepEqual(await sessionSnapshot(),completedSnapshot);
     await page.screenshot({path:`test-results/ford/${input}-result.png`,fullPage:true});
+    await page.reload();await page.locator('#continue').waitFor();await press('#continue');
+    assert.equal((await state()).mode,'result');assert.equal(await page.locator('.conversation-panel').count(),0);assert.deepEqual(await sessionSnapshot(),completedSnapshot);
+    await press('#history');assert.equal((await state()).mode,'history');assert.equal(await page.locator('#history-opening').isVisible(),true);assert.equal(await page.locator('#history-closing').isVisible(),true);
+    await press('#history-closing');assert.equal((await state()).mode,'conversation');assert.match(await page.locator('.spoken-line').innerText(),/Published report logged/i);assert.deepEqual(await sessionSnapshot(),completedSnapshot);
+    await press('#dialogue-next');assert.deepEqual(await sessionSnapshot(),completedSnapshot);await press('#dialogue-skip');
+    assert.equal((await state()).mode,'history');assert.equal(await page.evaluate(()=>document.activeElement.id),'history-closing');assert.deepEqual(await sessionSnapshot(),completedSnapshot);
+    await press('#history-opening');assert.equal((await state()).mode,'conversation');assert.match(await page.locator('.spoken-line').innerText(),/Welcome to the Haps/i);assert.deepEqual(await sessionSnapshot(),completedSnapshot);
+    await page.keyboard.press('Escape');assert.equal((await state()).mode,'history');assert.equal(await page.evaluate(()=>document.activeElement.id),'history-opening');assert.deepEqual(await sessionSnapshot(),completedSnapshot);
+    await press('#history-back');assert.equal((await state()).mode,'result');assert.equal(await page.evaluate(()=>document.activeElement.id),'history');assert.deepEqual(await sessionSnapshot(),completedSnapshot);
     await press('#return-title');await press('#new-game');await press('#cancel-new');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
     assert.equal(await page.locator('canvas').count(),1);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);

@@ -67,18 +67,48 @@ export interface FordFrenzyGamePresentation {
   /**
    * @minItems 1
    */
-  dialogue: [
+  conversations: [
     {
       id: string;
-      speaker: string;
-      line: string;
-      expression: "neutral" | "annoyed" | "amused" | "surprised";
+      /**
+       * @minItems 1
+       */
+      beats: [
+        {
+          id: string;
+          speaker: string;
+          line: string;
+          expression: "neutral" | "annoyed" | "amused" | "surprised";
+        },
+        ...{
+          id: string;
+          speaker: string;
+          line: string;
+          expression: "neutral" | "annoyed" | "amused" | "surprised";
+        }[]
+      ];
+      title: string;
     },
     ...{
       id: string;
-      speaker: string;
-      line: string;
-      expression: "neutral" | "annoyed" | "amused" | "surprised";
+      /**
+       * @minItems 1
+       */
+      beats: [
+        {
+          id: string;
+          speaker: string;
+          line: string;
+          expression: "neutral" | "annoyed" | "amused" | "surprised";
+        },
+        ...{
+          id: string;
+          speaker: string;
+          line: string;
+          expression: "neutral" | "annoyed" | "amused" | "surprised";
+        }[]
+      ];
+      title: string;
     }[]
   ];
   /**
@@ -88,10 +118,12 @@ export interface FordFrenzyGamePresentation {
     {
       objectId: string;
       label: string;
+      inspection: "brief" | "inspect";
     },
     ...{
       objectId: string;
       label: string;
+      inspection: "brief" | "inspect";
     }[]
   ];
 }

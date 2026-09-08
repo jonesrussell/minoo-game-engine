@@ -149,3 +149,18 @@ the renderer selects neutral art. If a requested expression image fails, the
 browser presentation retries neutral once and then reveals the character name
 fallback if neutral also fails. Expressions do not alter session actions, saves,
 replay, or progression.
+
+## Closing dialogue and history (#140)
+
+Opening and closing beats are named validated conversations. The transient dialogue
+controller owns only conversation ID, beat index, return destination, and replay
+state; it never imports or mutates the session. New Game opens `s01-opening`,
+while the first accepted `k01-awarded` event opens `s01-closing` once. Its final
+Next or Skip enters the existing receipt. Restored completed sessions enter the
+receipt directly. Pause and receipt expose history replay; opening is always
+available after a started game and closing is available only when authoritative
+session state reports K01 awarded. Replay Back, Skip, Escape, and navigation do
+not append actions or change saves. O1-O4 accepted finds remain in search with
+HUD feedback; O5/O6 retain their inspection panels.
+
+Conversation titles and discovery inspection modes are validated presentation data. Replaying returns to the history list and restores its launching control; leaving history restores its entry control on Pause or the receipt. Escape uses the same safe destination as Skip. Panel replacement clears abandoned conversation callbacks.

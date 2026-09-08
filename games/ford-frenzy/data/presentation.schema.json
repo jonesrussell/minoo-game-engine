@@ -11,7 +11,7 @@
     "mission",
     "assets",
     "characters",
-    "dialogue",
+    "conversations",
     "targetLabels"
   ],
   "properties": {
@@ -112,18 +112,28 @@
           "expressions": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["neutral"],
+            "required": [
+              "neutral"
+            ],
             "properties": {
-              "neutral": { "type": "string" },
-              "annoyed": { "type": "string" },
-              "amused": { "type": "string" },
-              "surprised": { "type": "string" }
+              "neutral": {
+                "type": "string"
+              },
+              "annoyed": {
+                "type": "string"
+              },
+              "amused": {
+                "type": "string"
+              },
+              "surprised": {
+                "type": "string"
+              }
             }
           }
         }
       }
     },
-    "dialogue": {
+    "conversations": {
       "type": "array",
       "minItems": 1,
       "items": {
@@ -131,24 +141,52 @@
         "additionalProperties": false,
         "required": [
           "id",
-          "speaker",
-          "line",
-          "expression"
+          "beats",
+          "title"
         ],
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[a-z][a-z0-9-]*$"
           },
-          "speaker": {
-            "type": "string"
+          "beats": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "speaker",
+                "line",
+                "expression"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*$"
+                },
+                "speaker": {
+                  "type": "string"
+                },
+                "line": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expression": {
+                  "enum": [
+                    "neutral",
+                    "annoyed",
+                    "amused",
+                    "surprised"
+                  ]
+                }
+              }
+            }
           },
-          "line": {
+          "title": {
             "type": "string",
             "minLength": 1
-          },
-          "expression": {
-            "enum": ["neutral", "annoyed", "amused", "surprised"]
           }
         }
       }
@@ -161,7 +199,8 @@
         "additionalProperties": false,
         "required": [
           "objectId",
-          "label"
+          "label",
+          "inspection"
         ],
         "properties": {
           "objectId": {
@@ -171,6 +210,12 @@
           "label": {
             "type": "string",
             "minLength": 1
+          },
+          "inspection": {
+            "enum": [
+              "brief",
+              "inspect"
+            ]
           }
         }
       }
