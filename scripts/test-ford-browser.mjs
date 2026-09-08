@@ -106,10 +106,12 @@ try{
   assert.equal(await page.evaluate(key=>localStorage.getItem(key),saveKey),'broken-save');
   await page.locator('#new-game').click();await page.locator('#cancel-new').click();assert.equal(await page.evaluate(key=>localStorage.getItem(key),saveKey),'broken-save');
   await context.close();records.push({input:'corrupt save preserved',status:'passed'});
+  for(const failure of ['missing','blocked']){
   const silentContext=await browser.newContext();const silentPage=await silentContext.newPage();const silentErrors=[];silentPage.on('pageerror',e=>silentErrors.push(String(e)));
-  await silentPage.addInitScript(()=>{Object.defineProperty(window,'AudioContext',{value:undefined});Object.defineProperty(window,'webkitAudioContext',{value:undefined});});
+  await silentPage.addInitScript(failure=>{class BlockedAudio{state='suspended';resume(){return Promise.reject(new Error('policy'));}suspend(){return Promise.resolve();}close(){return Promise.resolve();}}Object.defineProperty(window,'AudioContext',{value:failure==='blocked'?BlockedAudio:undefined});Object.defineProperty(window,'webkitAudioContext',{value:undefined});},failure);
   await silentPage.goto(url);await silentPage.locator('#settings').click();await silentPage.locator('#test-sound').click();assert.match(await silentPage.locator('#sound-status').innerText(),/unavailable/);
-  await silentPage.locator('#return-title').click();await silentPage.locator('#new-game').click();await silentPage.locator('#start-assignment').click();assert.equal(await silentPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');assert.deepEqual(silentErrors,[]);await silentContext.close();records.push({input:'unavailable audio permits silent play',status:'passed'});
+  await silentPage.locator('#return-title').click();await silentPage.locator('#new-game').click();await silentPage.locator('#start-assignment').click();assert.equal(await silentPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');assert.deepEqual(silentErrors,[]);await silentContext.close();records.push({input:failure+' audio permits silent play',status:'passed'});
+  }
   const failContext=await browser.newContext();const failPage=await failContext.newPage();
   await failPage.route('**/S01.O6.png',route=>route.abort());await failPage.goto(url);await failPage.locator('#retry').waitFor();assert.equal(await failPage.locator('canvas').count(),0);
   await failPage.locator('#return-title').click();await failPage.locator('#settings').click();await failPage.locator('#return-title').click();await failPage.locator('#new-game').click();await failPage.locator('#retry').waitFor();

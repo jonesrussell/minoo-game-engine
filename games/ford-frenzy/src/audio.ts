@@ -88,9 +88,9 @@ export function createGameAudio() {
     active.clear();
   };
 
-  const resumeContext = (): void => {
+  const resumeContext = async (): Promise<void> => {
     try {
-      void context?.resume?.().catch(() => undefined);
+      await context?.resume?.();
     } catch {
       // Browser policy/device failures are intentionally silent.
     }
@@ -119,7 +119,7 @@ export function createGameAudio() {
   const unlock = async (): Promise<void> => {
     if (disposed) return;
     if (context) {
-      if (!paused && !hidden) resumeContext();
+      if (!paused && !hidden) await resumeContext();
       return;
     }
     const Constructor = audioContextConstructor();
@@ -183,7 +183,7 @@ export function createGameAudio() {
     }
   };
 
-  const getState = (): AudioState => ({ muted, volume, available: Boolean(context) && !disposed });
+  const getState = (): AudioState => ({ muted, volume, available: context?.state === 'running' && !disposed });
 
   const dispose = (): void => {
     if (disposed) return;

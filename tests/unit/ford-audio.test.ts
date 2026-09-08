@@ -145,3 +145,18 @@ test('pause and mute stop active voices and block later playback', async () => {
   audio.dispose();
 });
 
+test('rejected audio resume reports unavailable and never queues a cue', async () => {
+  class BlockedContext extends FakeContext {
+    override async resume(): Promise<void> { throw new Error('browser policy'); }
+  }
+  scope.AudioContext = BlockedContext;
+  const audio = createGameAudio();
+  await audio.unlock();
+  assert.equal(audio.getState().available, false);
+  audio.play('find');
+  assert.equal(FakeContext.instances[0]!.oscillators.length, 0);
+  await audio.unlock();
+  assert.equal(audio.getState().available, false);
+  audio.dispose();
+});
+
