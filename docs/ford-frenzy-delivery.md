@@ -95,3 +95,9 @@ game. Studio remains optional and runtime independently usable.
 Plan delivery: #102. Immediate independent starts: #103 asset inventory, #90 research, #40 renderer evaluation and #37 manifests. #11 now waits for the investigative content/progression contracts. #105 can use placeholders; #106 integrates after notebook/hints. #12 requires menus/HUD/sound through native dependencies. #17 final artwork does not form a cycle with slice qualification.
 
 Milestones group capabilities, not a strict chronological sequence. M1 persistence cannot close until the M2 investigation-state contract is available; foundational renderer work proceeds independently. #36 compatibility is an explicit prerequisite for #11, and #42 recovery testing is an explicit prerequisite for #12.
+
+S01 polish checkpoint #136 supplies fictional editor dialogue, visual connector
+comparison, optional synthesized equipment cues and a City Hall handoff card.
+It is a bounded contribution to #105/#106/#107, not completion of their three-scene
+scope. Owner playtest #45 follows this local preview; timing and fun remain human
+acceptance. S02 and S03 remain #98 and #99.

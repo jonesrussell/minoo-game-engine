@@ -4,6 +4,9 @@ import { validateSceneV2 } from '@minoo/engine/scene-v2';
 import { createNewsroomSession, restoreNewsroomSession, type NewsroomAction } from './session.ts';
 import sceneData from '../data/s01.json';
 import clipping from '../data/s01-clipping.json';
+import { createGameAudio } from './audio.ts';
+
+const audio = createGameAudio();
 
 const validation = validateSceneV2(sceneData);
 if (!validation.ok) throw Error('Invalid bundled S01 scene');
@@ -30,7 +33,8 @@ stage.setAttribute('aria-label','Search the newsroom');
 stage.setAttribute('aria-describedby','search-help search-location');
 const escapeHtml = (s: string) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const button = (id: string, text: string, primary = false, disabled = false) => `<button id="${id}" ${primary ? 'class="primary"' : ''} ${disabled ? 'disabled' : ''}>${text}</button>`;
-const bind = (id: string, action: () => void) => document.getElementById(id)?.addEventListener('click', action);
+const bind = (id: string, action: () => void) => document.getElementById(id)?.addEventListener('click', () => { void audio.unlock(); action(); });
+const dialogue = (lines: [string,string][]) => `<div class="dialogue">${lines.map(([speaker,line])=>`<div class="dialogue-line"><span class="speaker">${escapeHtml(speaker)}</span><p>${escapeHtml(line)}</p></div>`).join('')}</div>`;
 
 try {
   const raw = localStorage.getItem(SAVE);
@@ -51,6 +55,7 @@ function panel(next: string, body: string, title = false) {
   if (mode === 'playing') originFocusId = document.activeElement?.id || 'notebook';
   if (mode === 'title') titleFocusId = document.activeElement?.id || 'new-game';
   mode = next;
+  audio.setPaused(['paused','title','loading','error'].includes(next));
   document.getElementById('app')!.dataset.screen = next;
   stage.inert = true;
   renderer?.setSearchCursor(null);
@@ -78,18 +83,24 @@ function confirmNew() {
 }
 function newGame() {
   session = createNewsroomSession(); badSave = false; persist();
-  panel('assignment', `<div class="eyebrow">01 / Welcome to the Haps</div><h2>So much for patio season.</h2><p>You were hired to review patios. Congratulations. You're on the mayor beat.</p><p>The editor needs your notebook, contact sheet, calendar, assignment folder, report summary and recorder. Naturally, they're somewhere in this disaster.</p><p class="muted">Find six objects, read the clipping, get the recorder working, then decide what belongs in the first draft. No timer. Three hints. Use the keyboard search control to explore with arrow keys and inspect with Enter.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
+  panel('assignment', `<div class="eyebrow">01 / Toronna Haps / Friday morning</div><h2>So much for patio season.</h2>${dialogue([['Elliot / Editor','Welcome to the Haps. Patio desk is Tuesday. Today you\'re on the mayor beat.'],['Alex / You','I don\'t even have a chair.'],['Elliot / Editor','Classifieds has the chair. You get the folder, the recorder, and whatever coffee still answers to coffee.']])}<div class="assignment-slip"><strong>YOUR FIRST SHIFT</strong><p>Find your six pieces of kit. Read the clipping. Wake up the recorder. Bring Elliot a story he can actually chase.</p></div><p class="muted">No timer. Three optional hints. Keyboard search uses arrows to explore and Enter to inspect.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
   bind('start-assignment', play);
 }
 function play() {
   if (session.getState().k01Awarded) { result(); return; }
+  audio.setPaused(false);
   mode = 'playing'; document.getElementById('app')!.dataset.screen = 'playing'; stage.inert = false; overlay.innerHTML = ''; renderer?.setPaused(false); update();
   (document.getElementById(originFocusId) ?? document.getElementById('notebook'))?.focus();
 }
 function act(action: NewsroomAction) {
+  const before = session.getState();
   const result = session.step(action);
   if (!result.ok) { const message = result.errors.map(e => e.message).join(' '); document.querySelector('#feedback')!.textContent = message; return; }
   persist(); update();
+  if (result.state.k01Awarded && !before.k01Awarded) audio.play('complete');
+  else if (result.state.foundIds.length > before.foundIds.length) audio.play('find');
+  else if ((action.type==='pair-recorder' && action.connector==='recorder') || (action.type==='check-source' && action.reading==='reported-account')) audio.play('ready');
+  else if (action.type==='pair-recorder' || action.type==='check-source' || action.type==='submit-draft') audio.play('wrong');
   if (result.state.k01Awarded) { resultScreen(); return; }
   if (action.type === 'select') inspect(action.objectId);
 }
@@ -113,7 +124,7 @@ const jokes: Record<string,string> = {
 };
 function inspect(id: string) {
   const content = scene.contents.find(c=>c.id===scene.objects.find(o=>o.id===id)!.contentId)!;
-  panel('inspect', `<div class="eyebrow">Bagged it. / Added to your notes</div><h2>${escapeHtml(content.label)}</h2><p>${jokes[id]}</p><div class="buttons">${id==='S01.O5'?button('source','Read the clipping',true):''}${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
+  panel('inspect', `<div class="eyebrow">Bagged it. / Added to your notes</div><div class="find-detail"><img src="./assets/${id}.png" alt=""><div><h2>${escapeHtml(content.label)}</h2><p>${jokes[id]}</p></div></div><div class="buttons">${id==='S01.O5'?button('source','Read the clipping',true):''}${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
   bind('back-search',play); bind('source',sourceCheck); bind('recorder',recorderPuzzle);
 }
 function sourceCheck() {
@@ -127,8 +138,10 @@ function sourceCheck() {
   bind('back-search',play);
 }
 function recorderPuzzle() {
-  panel('recorder', `<div class="eyebrow">Equipment desk</div><h2>One job. Two cables.</h2><p>The recorder takes its matching connector. The phone cable looks optimistic.</p><div class="buttons">${button('phone-cable','Try the phone cable')}${button('recorder-cable','Use the recorder connector',true)}</div><p id="cable-feedback" role="status">${session.getState().chargerPaired==='recorder'?'Recorder ready. The editor is out of excuses.':'Pick a connector for the recorder.'}</p><div class="buttons">${button('back-search','Back to the mess')}</div>`);
-  for (const connector of ['phone','recorder'] as const) bind(`${connector}-cable`,()=>{act({type:'pair-recorder',connector}); document.getElementById('cable-feedback')!.textContent = connector==='phone'?'Wrong cable. The phone is thrilled. The recorder remains unemployed.':'Recorder ready. The editor is out of excuses.';});
+  const ready=session.getState().chargerPaired==='recorder';
+  const plug=(kind:'phone'|'recorder')=>`<svg viewBox="0 0 160 90" aria-hidden="true"><path d="M80 90V65" stroke="#292d2c" stroke-width="20"/><path d="${kind==='recorder'?'M30 15H130L142 55L122 68H38L18 55Z':'M30 15H130Q142 15 142 28V55Q142 68 130 68H30Q18 68 18 55V28Q18 15 30 15Z'}" fill="#848b85" stroke="#202b2b" stroke-width="5"/>${Array.from({length:kind==='recorder'?5:4},(_,i)=>`<rect x="${43+i*(kind==='recorder'?16:21)}" y="30" width="10" height="23" fill="#d3aa54"/>`).join('')}</svg>`;
+  panel('recorder', `<div class="eyebrow">Equipment desk / Match the connector</div><h2>One job. Two cables.</h2><p>Elliot's filing system: one drawer, every cable since 1998.</p><div class="recorder-bench"><div class="recorder-body"><span class="recorder-brand">HAPS PROPERTY · DO NOT LOSE</span><div class="recorder-display ${ready?'powered':''}">${ready?'REC ● READY':'BATTERY EMPTY'}</div><div class="socket">${plug('recorder')}<span>Recorder socket: angled sides, five contacts</span></div></div><div class="cable-choices"><button id="phone-cable" ${ready?'disabled':''} aria-label="Cable A: rounded sides, four contacts">${plug('phone')}<strong>Cable A</strong><span>Rounded · 4 contacts</span></button><button id="recorder-cable" ${ready?'disabled':''} aria-label="Cable B: angled sides, five contacts">${plug('recorder')}<strong>Cable B</strong><span>Angled · 5 contacts</span></button></div></div><p id="cable-feedback" role="status">${ready?'Click. Recorder alive. Somewhere, an expense form just lost an argument.':'Compare the socket shape and contacts, then try a cable.'}</p><div class="buttons">${button('back-search','Back to the mess')}</div>`);
+  for (const connector of ['phone','recorder'] as const) bind(`${connector}-cable`,()=>{act({type:'pair-recorder',connector}); if(connector==='recorder')recorderPuzzle();else document.getElementById('cable-feedback')!.textContent='That is the phone cable. The phone feels supported. The recorder remains professionally abandoned.';});
   bind('back-search',play);
 }
 function notebook() {
@@ -142,9 +155,9 @@ function submit() {
   bind('back-search',play);
 }
 function resultScreen(){result();}
-function result(){panel('result',`<div class="eyebrow">Assignment complete / K01</div><h2>You're officially on the beat.</h2><p>Six finds. One working recorder. A story to chase. The editor calls this suspiciously competent.</p><p class="edition-card">“Right. City Hall. Try to come back with a story and our recorder.”</p><p class="muted">Next: Meanwhile at City Hall. That scene is still being built. Your first assignment is saved.</p><div class="buttons">${button('return-title','Back to title',true)}</div>`);bind('return-title',title);}
+function result(){const state=session.getState();panel('result',`<div class="eyebrow">Toronna Haps / Assignment filed</div><div class="filed-stamp">ON THE BEAT</div><h2>There goes patio season.</h2>${dialogue([['Alex / You','Published report logged. Office rumour stays here. Recorder\'s alive.'],['Elliot / Editor','Careful. Competence makes the furniture nervous.'],['Alex / You','Then point me at City Hall.']])}<div class="shift-receipt"><span><strong>6 / 6</strong> kit found</span><span><strong>${state.hintsUsed} / 3</strong> hints used</span><span><strong>READY</strong> recorder</span></div><div class="next-assignment"><div class="eyebrow">Next assignment / 02</div><h3>Meanwhile at City Hall</h3><p>A public corridor. A jammed printer. Everyone has a statement. Nobody has a spare cable.</p></div><p class="muted">End of this playable preview. Your assignment is saved.</p><div class="buttons">${button('return-title','Back to title',true)}</div>`);bind('return-title',title);}
 function pause(){panel('paused',`<div class="eyebrow">Hold the presses</div><h2>Coffee break.</h2><div class="buttons">${button('resume','Resume',true)}${button('return-title','Return to title')}</div><p class="muted">${memoryOnly?'Progress is temporary. Keep this tab open.':'Your progress is saved on this device.'}</p>`);bind('resume',play);bind('return-title',title);}
-function settings(){panel('settings',`<h2>Keep it comfortable.</h2><label><input id="motion" type="checkbox" ${reducedMotion?'checked':''}> Reduce motion</label><p class="muted">This prototype is silent. Every cue is visible.</p><div class="buttons">${button('return-title','Back to title')}</div>`);document.getElementById('motion')!.addEventListener('change',e=>{reducedMotion=(e.target as HTMLInputElement).checked;renderer?.setReducedMotion(reducedMotion);});bind('return-title',title);}
+function settings(){const sound=audio.getState();panel('settings',`<h2>Keep it comfortable.</h2><label><input id="motion" type="checkbox" ${reducedMotion?'checked':''}> Reduce motion</label><label><input id="mute" type="checkbox" ${sound.muted?'checked':''}> Mute sound</label><label for="volume">Sound level <output id="volume-value">${Math.round(sound.volume*100)}%</output></label><input id="volume" type="range" min="0" max="100" value="${Math.round(sound.volume*100)}"><div class="buttons">${button('test-sound','Try sound')}</div><p id="sound-status" role="status">Short equipment cues. Everything can be played silently.</p><div class="buttons">${button('return-title','Back to title')}</div>`);document.getElementById('motion')!.addEventListener('change',e=>{reducedMotion=(e.target as HTMLInputElement).checked;renderer?.setReducedMotion(reducedMotion);document.getElementById('app')!.dataset.reducedMotion=String(reducedMotion);});document.getElementById('mute')!.addEventListener('change',e=>audio.setMuted((e.target as HTMLInputElement).checked));document.getElementById('volume')!.addEventListener('input',e=>{const value=Number((e.target as HTMLInputElement).value);audio.setVolume(value/100);document.getElementById('volume-value')!.textContent=`${value}%`;});bind('test-sound',()=>{void audio.unlock().then(()=>{audio.play('ready');const state=audio.getState();const status=document.getElementById('sound-status');if(status)status.textContent=state.muted||!state.volume?'Sound is muted.':state.available?'Equipment cue played.':'Sound is unavailable. Silent play is ready.';});});bind('return-title',title);}
 function credits(){panel('credits',`<div class="eyebrow">Ford Frenzy</div><h2>jr42 productions</h2><p>Original fictional newsroom and game presentation. Powered by Minoo and PixiJS.</p><p>The Haps, the Hogtown Howler and their reporters are fictional. The clipping is original game writing. Everything needed for this assignment is included in the game.</p><div class="buttons">${button('return-title','Back to title')}</div>`);bind('return-title',title);}
 
 async function boot(){
@@ -152,7 +165,7 @@ async function boot(){
   panel('loading','<div class="eyebrow">jr42 productions</div><h2>Opening the Haps…</h2><p>Finding a clean desk may take longer.</p>');
   try{
     const response=await fetch('./assets/manifest.json');if(!response.ok)throw Error('Asset manifest is unavailable.');
-    renderer=await createSceneRenderer({host:stage,scene,manifest:await response.json(),backgroundId:'S01.BG01',reducedMotion,onSelect:id=>{if(mode==='playing')act({type:'select',objectId:id});},labels:[{text:'Toronna Haps',x:1060,y:72,fontSize:46,rotation:.07,color:0x302c25},{text:'MAY 2013',x:98,y:147,fontSize:18,color:0x302c25},{text:'Su Mo Tu We Th Fr Sa\n          1  2  3  4\n 5  6  7  8  9 10 11\n12 13 14 15 16 17 18\n19 20 21 22 23 24 25\n26 27 28 29 30 31',x:98,y:175,fontSize:10,color:0x302c25},{text:'PATIO??',x:98,y:270,fontSize:16,color:0x8b3529}]});
+    renderer=await createSceneRenderer({host:stage,scene,manifest:await response.json(),backgroundId:'S01.BG01',objectLighting:{tint:0xded3b8,shadow:true},reducedMotion,onSelect:id=>{if(mode==='playing')act({type:'select',objectId:id});},labels:[{text:'Toronna Haps',x:1060,y:72,fontSize:46,rotation:.07,color:0x302c25},{text:'MAY 2013',x:98,y:147,fontSize:18,color:0x302c25},{text:'Su Mo Tu We Th Fr Sa\n          1  2  3  4\n 5  6  7  8  9 10 11\n12 13 14 15 16 17 18\n19 20 21 22 23 24 25\n26 27 28 29 30 31',x:98,y:175,fontSize:10,color:0x302c25},{text:'PATIO??',x:98,y:270,fontSize:16,color:0x8b3529}]});
     title();
   }catch(error){renderer?.dispose();renderer=undefined;panel('error',`<div class="eyebrow">Ford Frenzy</div><h2>The desk didn't load.</h2><p>${escapeHtml(error instanceof Error?error.message:'Unable to load required artwork.')}</p><p class="muted">Your saved progress has not been changed.</p><div class="buttons">${button('retry','Retry loading',true)}${button('return-title','Back to title')}</div>`);bind('retry',()=>void boot());bind('return-title',title);}
   finally{loading=false;}
@@ -195,7 +208,8 @@ document.addEventListener('keydown',e=>{
   if(e.key==='f' && !e.ctrlKey && !e.metaKey && !e.altKey){if(document.fullscreenElement)void document.exitFullscreen();else void document.getElementById('app')!.requestFullscreen().catch(()=>{});}
   if(e.key==='Tab' && overlay.firstChild){const nodes=[...overlay.querySelectorAll<HTMLElement>('button:not(:disabled),a,input')];const first=nodes[0],last=nodes.at(-1);if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}}
 });
-window.addEventListener('pagehide',event=>{if(!event.persisted)renderer?.dispose();});
+window.addEventListener('pagehide',event=>{if(!event.persisted){renderer?.dispose();audio.dispose();}});
 Object.assign(window,{render_game_to_text:()=>JSON.stringify({mode,coordinates:'screen CSS pixels; origin top-left, x right, y down',targets:renderer?.getTargets()??[],keyboardCursor:searchCursor,state:session.getState(),memoryOnly}),advanceTime:(ms:number)=>renderer?.advanceTime(ms)});
+document.getElementById('app')!.dataset.reducedMotion=String(reducedMotion);
 void boot();
 

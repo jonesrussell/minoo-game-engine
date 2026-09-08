@@ -20,6 +20,8 @@ export interface BrowserSceneRendererOptions {
   reducedMotion: boolean;
   backgroundId: string;
   labels?: BrowserLabel[];
+  /** Optional presentation only. Does not change object coordinates or hit areas. */
+  objectLighting?: { tint: number; shadow: boolean };
 }
 export interface BrowserTarget { id: string; x: number; y: number; width: number; height: number }
 export interface SceneRenderer {
@@ -89,6 +91,16 @@ export async function createSceneRenderer(options: BrowserSceneRendererOptions):
     for (const object of objects) {
       const sprite = Sprite.from(textureByUrl.get(assetsById.get(object.id)!.url)!);
       sprite.x = object.x; sprite.y = object.y; sprite.width = object.width; sprite.height = object.height;
+      if (options.objectLighting) {
+        sprite.tint = options.objectLighting.tint;
+        if (options.objectLighting.shadow) {
+          const shadow = new Sprite(sprite.texture);
+          shadow.position.set(object.x + 4, object.y + 6);
+          shadow.width = object.width; shadow.height = object.height;
+          shadow.tint = 0x131714; shadow.alpha = 0.24; shadow.eventMode = 'none';
+          root.addChild(shadow);
+        }
+      }
       sprite.eventMode = 'static'; sprite.cursor = 'pointer';
       // Pixi hitArea is in texture-local coordinates, before sprite scaling.
       sprite.hitArea = new Rectangle(-BORDER / sprite.scale.x, -BORDER / sprite.scale.y, sprite.texture.width + BORDER * 2 / sprite.scale.x, sprite.texture.height + BORDER * 2 / sprite.scale.y);
