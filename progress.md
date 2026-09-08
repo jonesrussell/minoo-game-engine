@@ -12,3 +12,5 @@ Next: #3 adds executable GitHub CI and artifact delivery; #6 defines scene contr
 Current request: build the first playable S01 checkpoint after artwork approval. Parent owns browser shell, public renderer adapter integration and browser evidence. S02 and S03 remain later work.
 
 S01 playable candidate 85311ad: 88 unit tests, existing Journey production/browser/validation/replay checks, repository checks and Ford production pointer/touch/keyboard completion passed. Required texture abort/retry and corrupt-save preservation passed. Inspected title, scene and result screenshots; bundled game client passed. Integrated reviewed prerequisites at36c5a48 without code delta. Next: owner playtest, proper connector visuals, occlusion/search balancing, then S02/S03. Broader parent issues remain open.
+
+Owner request: remove source cards from the game. Removed screens, buttons, classification badges and the completion gate; kept research metadata. Changed scene revision to prevent silently reinterpreting earlier saves.

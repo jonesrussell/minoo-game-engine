@@ -43,3 +43,5 @@ recorder pairing uses visible text choices until connector art is delivered. The
 browser adapter is a single active scene surface, not a multi-renderer shared-cache
 service. Sound, campaign saves, S02/S03 transitions and final rights approval are
 not claimed. Do not close broader parent issues solely from this slice.
+
+Owner correction (#126): source cards are removed from the playable game. S01 completes through six finds, recorder pairing and draft choice. Historical references remain development metadata.

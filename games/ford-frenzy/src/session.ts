@@ -3,7 +3,7 @@ import { validateSceneV2, type InvestigativeContent, type SceneV2 } from '@minoo
 import sceneData from '../data/s01.json' with { type: 'json' };
 
 export const NEWSROOM_SAVE_VERSION = 1;
-export const S01_SCENE_REVISION = 'ford-frenzy-s01-v2-2026-09-07';
+export const S01_SCENE_REVISION = 'ford-frenzy-s01-v2-no-source-cards-2026-09-07';
 export const NEWSROOM_ACTION_LIMIT = 1000;
 
 export type NewsroomAction =
@@ -143,7 +143,7 @@ class S01Session implements NewsroomSession {
   #transitionS02: 'locked' | 'unlocked' = 'locked';
   #recordedContentIds: string[] = [];
   #actions: NewsroomAction[] = [];
-  #lastMessage = 'Find six newsroom objects, then check what can support the assignment.';
+  #lastMessage = 'Find six newsroom objects, get the recorder working and file your draft.';
   #hintedObjectId: string | null = null;
 
   constructor(scene: SceneV2) {
@@ -258,7 +258,6 @@ class S01Session implements NewsroomSession {
       const reasons: string[] = [];
       if (this.#chargerPaired !== 'recorder') reasons.push(this.#chargerPaired === 'phone' ? 'The phone connector does not fit the recorder.' : 'Match the recorder connector first.');
       if (action.basis !== 'published-report') reasons.push('Office rumour cannot be filed as a published-report basis.');
-      if (!this.#sourceChecks.includes('S01.C5')) reasons.push('Check the source attached to the published report summary.');
       if (reasons.length) {
         this.#editorialAccepted = false;
         this.#lastMessage = reasons.join(' ');
