@@ -1,0 +1,5 @@
+public/assets/
+test-results/
+dist/
+dist-pixi/
+dist-phaser/
