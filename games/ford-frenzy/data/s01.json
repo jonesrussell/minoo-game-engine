@@ -4,23 +4,153 @@
   "width": 1920,
   "height": 1080,
   "objects": [
-    { "id": "S01.O1", "x": 350, "y": 740, "width": 190, "height": 126.667, "contentId": "S01.C1" },
-    { "id": "S01.O2", "x": 560, "y": 720, "width": 250, "height": 166.667, "contentId": "S01.C2" },
-    { "id": "S01.O3", "x": 40, "y": 65, "width": 270, "height": 293.566, "contentId": "S01.C3" },
-    { "id": "S01.O4", "x": 925, "y": 800, "width": 310, "height": 206.667, "contentId": "S01.C4" },
-    { "id": "S01.O5", "x": 340, "y": 590, "width": 225, "height": 150, "contentId": "S01.C5" },
-    { "id": "S01.O6", "x": 1560, "y": 560, "width": 185, "height": 123.333, "contentId": "S01.C6" }
+    {
+      "id": "S01.O1",
+      "x": 350,
+      "y": 740,
+      "width": 190,
+      "height": 126.667,
+      "contentId": "S01.C1"
+    },
+    {
+      "id": "S01.O2",
+      "x": 560,
+      "y": 720,
+      "width": 250,
+      "height": 166.667,
+      "contentId": "S01.C2"
+    },
+    {
+      "id": "S01.O3",
+      "x": 40,
+      "y": 65,
+      "width": 270,
+      "height": 293.566,
+      "contentId": "S01.C3"
+    },
+    {
+      "id": "S01.O4",
+      "x": 925,
+      "y": 800,
+      "width": 310,
+      "height": 206.667,
+      "contentId": "S01.C4"
+    },
+    {
+      "id": "S01.O5",
+      "x": 340,
+      "y": 590,
+      "width": 225,
+      "height": 150,
+      "contentId": "S01.C5"
+    },
+    {
+      "id": "S01.O6",
+      "x": 1560,
+      "y": 560,
+      "width": 185,
+      "height": 123.333,
+      "contentId": "S01.C6"
+    }
   ],
   "contents": [
-    { "id": "S01.C1", "label": "Reporter notebook", "clueId": "S01.Clue1", "classification": "fiction", "sourceRefs": [], "editorial": { "status": "draft" }, "rights": { "status": "unresolved", "basis": "Original draft content; clearance not yet recorded" } },
-    { "id": "S01.C2", "label": "Toronto contact sheet", "clueId": "S01.Clue2", "classification": "fiction", "sourceRefs": [], "editorial": { "status": "draft" }, "rights": { "status": "unresolved", "basis": "Original draft content; clearance not yet recorded" } },
-    { "id": "S01.C3", "label": "May 2013 calendar", "clueId": "S01.Clue3", "classification": "fiction", "sourceRefs": [], "editorial": { "status": "draft", "notes": "Fictional prop establishes scene date context only" }, "rights": { "status": "unresolved", "basis": "Original draft content; clearance not yet recorded" } },
-    { "id": "S01.C4", "label": "Assignment folder with office rumour note", "clueId": "S01.Clue4", "classification": "fiction", "sourceRefs": [], "editorial": { "status": "draft" }, "rights": { "status": "unresolved", "basis": "Original draft content; clearance not yet recorded" } },
-    { "id": "S01.C5", "label": "Published report summary", "clueId": "S01.Clue5", "classification": "allegation", "sourceRefs": ["H01"], "editorial": { "status": "draft", "notes": "Attributed report summary; finding it does not prove the reported allegation" }, "rights": { "status": "unresolved", "basis": "Original paraphrase; source reference permits verification, not reproduction" } },
-    { "id": "S01.C6", "label": "Digital recorder", "clueId": "S01.Clue6", "classification": "fiction", "sourceRefs": [], "editorial": { "status": "draft" }, "rights": { "status": "unresolved", "basis": "Original draft content; clearance not yet recorded" } }
+    {
+      "id": "S01.C1",
+      "label": "Reporter notebook",
+      "clueId": "S01.Clue1",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S01.C2",
+      "label": "Toronto contact sheet",
+      "clueId": "S01.Clue2",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S01.C3",
+      "label": "May 2013 calendar",
+      "clueId": "S01.Clue3",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft",
+        "notes": "Fictional prop establishes scene date context only"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S01.C4",
+      "label": "Assignment folder with office rumour note",
+      "clueId": "S01.Clue4",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S01.C5",
+      "label": "Hogtown Howler clipping",
+      "clueId": "S01.Clue5",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft",
+        "notes": "Original fictional newspaper prop; the claim within the clipping remains unproven. Research mapping is maintained outside the shipped game."
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft game writing; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S01.C6",
+      "label": "Digital recorder",
+      "clueId": "S01.Clue6",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    }
   ],
-  "sources": [
-    { "id": "H01", "title": "Toronto Star original report, Doolittle and Donovan", "url": "https://www.thestar.com/news/city_hall/2013/05/16/toronto_mayor_rob_ford_in_crack_cocaine_video_scandal.html", "publishedOn": "2013-05-16" }
-  ],
-  "completion": { "type": "find-all", "requiredIds": ["S01.O1", "S01.O2", "S01.O3", "S01.O4", "S01.O5", "S01.O6"] }
+  "sources": [],
+  "completion": {
+    "type": "find-all",
+    "requiredIds": [
+      "S01.O1",
+      "S01.O2",
+      "S01.O3",
+      "S01.O4",
+      "S01.O5",
+      "S01.O6"
+    ]
+  }
 }

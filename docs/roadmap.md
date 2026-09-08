@@ -213,7 +213,6 @@ production integration and release remain open. The diagnostic viewer does not s
 
 ## S01 playable checkpoint
 
-The first local Ford Frenzy assignment is playable through New Game, six sprite finds, recorder pairing and K01 submission. Use npm run dev:ford. The independent runtime and Journey fixture remain usable. This is the bounded #9 checkpoint, with S01 session work from #96 and browser foundation slices from #8/#37/#97/#105. S02/S03, campaign saves, final art and owner playtest remain open. See [checkpoint contract](proposals/9-first-playable.md).
+The first local Ford Frenzy assignment is playable through New Game, six sprite finds, recorder pairing, embedded clipping checks and K01 submission. Use npm run dev:ford. The independent runtime and Journey fixture remain usable. This is the bounded #9 checkpoint, with S01 session work from #96 and browser foundation slices from #8/#37/#97/#105. S02/S03, campaign saves, final art and owner playtest remain open. See [checkpoint contract](proposals/9-first-playable.md).
 
-Owner correction (#126): source cards are removed from the playable game. S01 completes through six finds, recorder pairing and draft choice. Historical references remain development metadata.
-
+Source checking (#128) is a self-contained game mechanic using fictional press names and original local clippings. Research links stay in development records. This supersedes the temporary removal in #126.

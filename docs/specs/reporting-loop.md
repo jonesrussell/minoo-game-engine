@@ -27,7 +27,7 @@ type EngineAction =
 // Game package (Ford Frenzy) — investigation semantics
 type InvestigationAction =
   | EngineAction
-  | { type: 'check-source'; contentId: string }
+  | { type: 'check-source'; contentId: string; reading: 'reported-account' | 'proven-claim' }
   | { type: 'pair-recorder'; connector: 'recorder' | 'phone' }
   | { type: 'submit-draft'; basis: 'published-report' | 'office-rumour' }
   | { type: 'reset'; scope: 'scene' | 'session' }; // game-layer reset
@@ -76,7 +76,7 @@ user confirmation (LOOP-RESET-001).
 
 | Action | When allowed (S01) | Success effect |
 | --- | --- | --- |
-| `check-source` | After `contentId` is reachable from a found object | Record `contentId` in `sourceChecks` |
+| `check-source` | After `contentId` is reachable from a found object | Record `S01.C5` in `sourceChecks` only for the correct `reported-account` reading; `proven-claim` preserves progress and gives retry feedback |
 | `pair-recorder` | After `S01.O6` is found | Set `chargerPaired` to the chosen connector |
 | `submit-draft` | After all six finds | Set `editorialAccepted` or return retry feedback |
 
@@ -93,13 +93,14 @@ distinct from verified or filed status (FF-UI-002).
 
 ### LOOP-SOURCE-001: Classification on content references
 
-Each checkable source MUST reference a v2 content record (#95) carrying
+Each checkable game document MUST reference a v2 content record (#95) carrying
 `classification: 'fact' | 'allegation' | 'fiction'` plus attribution metadata.
 Scene objects link to content by `contentId`; they MUST NOT embed historical
 claims in vocabulary label fields (LOOP-CONTENT-001).
 
-S01 published-report content for `S01.O5` references historical **H01** as
-`allegation` with published-report attribution. Office rumour on `S01.O4` is
+S01 `S01.O5` contains an original fictional Hogtown Howler clipping. Its content is
+classified `fiction`; the allegation described inside it remains an unproven report.
+Historical H01 research is mapped in development records, outside shipped game data. Office rumour on `S01.O4` is
 `fiction` desk material, not a filed basis.
 
 ## S01 canonical objects
@@ -116,7 +117,7 @@ S01 `completion.requiredIds` MUST be exactly:
 | S01.O2 | Contact sheet printout | context |
 | S01.O3 | Wall calendar May 2013 | context |
 | S01.O4 | Assignment folder (office rumour sticky) | tool |
-| S01.O5 | Published report clipping summary (H01) | evidence |
+| S01.O5 | Embedded Hogtown Howler clipping (S01.C5) | evidence |
 | S01.O6 | Digital recorder (wrong phone charger nearby) | tool |
 
 ## S01 K01 gate
@@ -127,7 +128,8 @@ K01 MUST be awarded only when **all** of the following hold simultaneously:
 
 1. `searchCompleted` is true (six unique finds).
 2. `chargerPaired === 'recorder'`.
-3. Latest successful `submit-draft` used `basis: 'published-report'`.
+3. `sourceChecks` includes `S01.C5` after choosing `reading: 'reported-account'` on the embedded clipping.
+4. Latest successful `submit-draft` used `basis: 'published-report'`.
 
 On success: append immutable notebook entry **K01** once, set `k01Awarded: true`,
 set `editorialAccepted: true`, set `transitionS02: 'unlocked'`. Do not load S02
@@ -209,7 +211,7 @@ when scaled hits are too small (#41, #8).
 | FF-LOOP-002 | Given five finds, when `submit-draft` runs, then the step is rejected without clearing finds. | #96, #9 |
 | FF-LOOP-003 | Given six finds and `chargerPaired: phone`, when `submit-draft` runs, then feedback cites the wrong charger and finds persist. | #9, #43 |
 | FF-LOOP-004 | Given six finds and `submit-draft` with `basis: office-rumour`, when review runs, then feedback cites rumour-as-fact and finds persist. | #9, #43 |
-| FF-LOOP-005 | Given six finds, `chargerPaired: recorder`, H01 checked, when `submit-draft` uses `published-report`, then K01 is awarded once and `transitionS02` is `unlocked`. | #9, #96 |
+| FF-LOOP-005 | Given six finds, `chargerPaired: recorder`, S01.C5 checked through a `reported-account` reading, when `submit-draft` uses `published-report`, then K01 is awarded once and `transitionS02` is `unlocked`. | #9, #96 |
 | FF-LOOP-006 | Given K01 awarded, when the success path repeats, then no second K01 is recorded. | #96, #9 |
 | FF-LOOP-007 | Given `hintBudget: 3`, when three hints are used, then further hints fail with exhausted diagnostic and editorial retry still explains failures. | #10, #106 |
 | FF-LOOP-008 | Given a recorded S01 action sequence, when replay runs twice, then final notebook and flags match. | #96, #38 |
@@ -217,7 +219,7 @@ when scaled hits are too small (#41, #8).
 | FF-LOOP-010 | Given confirmed New Game, when accepted, then session notebook and flags clear after warning. | #11, #105 |
 | FF-LOOP-011 | Given unavailable persistence, when Title loads, then Continue is absent/disabled and New Game works in memory. | #11, #42 |
 | FF-LOOP-012 | Given reload with valid versioned log, when Continue runs, then finds, hints, checks and notebook match the log. | #11, #96 |
-| FF-LOOP-013 | Given six finds and the matching recorder connector without any `check-source` action, when a published-report draft is submitted, then K01 is awarded. | #126 |
+| FF-LOOP-013 | Given six finds and the matching recorder connector but an unread or misread clipping, when a published-report draft is submitted, then K01 is not awarded; the correct embedded reading permits completion. | #126 |
 | FF-LOOP-014 | Given keyboard-only play, when S01 K01 path runs, then outcomes match pointer play. | #8, #41, #106 |
 
 Storyboard crosswalk: FF-LOOP-001 ↔ FF-OPEN-001; FF-LOOP-003/004 ↔ FF-OPEN-002;
@@ -245,6 +247,15 @@ See [proposal 43](../proposals/43-reporting-loop.md).
 - Human review: storyboard alignment and S01 editorial copy remain owner-facing;
   green automated checks do not prove historical accuracy or shipping readiness
 
-## Owner correction: no source cards (#126)
+## Embedded source mechanic (#128)
 
-Source cards and source-check controls are removed from the game. Research, attribution and classification remain development metadata. The session retains its optional check-source action for tooling, but it is not a player task or completion prerequisite. The scene revision changes so earlier saves are preserved as incompatible rather than replayed under changed completion semantics. Players may explicitly start over.
+Owner clarification supersedes #126: source checking stays as gameplay. The player
+reads an original fictional newspaper clipping and chooses what it actually
+supports. All text, bylines, dates, choices and feedback ship locally. Real press
+names, real reporter bylines and external research links are excluded from the game.
+Research mapping remains in development documents. No browser tab or network
+lookup is required. Correct reading unlocks the existing source gate, not factual
+certainty. Wrong reading is journaled and retryable without losing finds.
+
+Scene revision changes for this content/action contract. Incompatible earlier saves
+remain intact until confirmed New Game; they are not replayed under new semantics.

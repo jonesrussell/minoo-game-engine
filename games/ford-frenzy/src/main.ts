@@ -3,6 +3,7 @@ import { createSceneRenderer, type SceneRenderer } from '@minoo/engine/browser';
 import { validateSceneV2 } from '@minoo/engine/scene-v2';
 import { createNewsroomSession, restoreNewsroomSession, type NewsroomAction } from './session.ts';
 import sceneData from '../data/s01.json';
+import clipping from '../data/s01-clipping.json';
 
 const validation = validateSceneV2(sceneData);
 if (!validation.ok) throw Error('Invalid bundled S01 scene');
@@ -69,7 +70,7 @@ function confirmNew() {
 }
 function newGame() {
   session = createNewsroomSession(); badSave = false; persist();
-  panel('assignment', `<div class="eyebrow">01 / Welcome to the Haps</div><h2>So much for patio season.</h2><p>You were hired to review patios. Congratulations. You're on the mayor beat.</p><p>The editor needs your notebook, contact sheet, calendar, assignment folder, report summary and recorder. Naturally, they're somewhere in this disaster.</p><p class="muted">Find six objects, get the recorder working, then decide what belongs in the first draft. No timer. Three hints. Keyboard search is available below the scene.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
+  panel('assignment', `<div class="eyebrow">01 / Welcome to the Haps</div><h2>So much for patio season.</h2><p>You were hired to review patios. Congratulations. You're on the mayor beat.</p><p>The editor needs your notebook, contact sheet, calendar, assignment folder, report summary and recorder. Naturally, they're somewhere in this disaster.</p><p class="muted">Find six objects, read the clipping, get the recorder working, then decide what belongs in the first draft. No timer. Three hints. Keyboard search is available below the scene.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
   bind('start-assignment', play);
 }
 function play() {
@@ -104,8 +105,18 @@ const jokes: Record<string,string> = {
 };
 function inspect(id: string) {
   const content = scene.contents.find(c=>c.id===scene.objects.find(o=>o.id===id)!.contentId)!;
-  panel('inspect', `<div class="eyebrow">Added to your notebook</div><h2>${escapeHtml(content.label)}</h2><p>${jokes[id]}</p><div class="buttons">${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
-  bind('back-search',play); bind('recorder',recorderPuzzle);
+  panel('inspect', `<div class="eyebrow">Added to your notebook</div><h2>${escapeHtml(content.label)}</h2><p>${jokes[id]}</p><div class="buttons">${id==='S01.O5'?button('source','Read the clipping',true):''}${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
+  bind('back-search',play); bind('source',sourceCheck); bind('recorder',recorderPuzzle);
+}
+function sourceCheck() {
+  const checked = session.getState().sourceChecks.includes('S01.C5');
+  panel('source', `<article class="clipping"><div class="paper-name">${escapeHtml(clipping.publication)}</div><p class="paper-tagline">${escapeHtml(clipping.tagline)}</p><p class="paper-date">${escapeHtml(clipping.date)} · ${escapeHtml(clipping.byline)}</p><h2>${escapeHtml(clipping.headline)}</h2>${clipping.paragraphs.map(text=>`<p>${escapeHtml(text)}</p>`).join('')}</article><h3>What can we put in our notes?</h3><div class="buttons">${button('reading-report','The Howler reports seeing a video',true,checked)}${button('reading-proof','The allegation is proven',false,checked)}</div><p id="reading-feedback" role="status">${checked?'Clipping checked. We have a lead to follow.':'The editor: “Read the thing before we get matching lawsuits.”'}</p><div class="buttons">${button('back-search','Back to the mess')}</div>`);
+  for (const reading of ['reported-account','proven-claim'] as const) bind(reading==='reported-account'?'reading-report':'reading-proof',()=>{
+    act({type:'check-source',contentId:'S01.C5',reading});
+    if (session.getState().sourceChecks.includes('S01.C5')) sourceCheck();
+    else document.getElementById('reading-feedback')!.textContent=session.getState().lastMessage;
+  });
+  bind('back-search',play);
 }
 function recorderPuzzle() {
   panel('recorder', `<div class="eyebrow">Equipment desk</div><h2>One job. Two cables.</h2><p>The recorder takes its matching connector. The phone cable looks optimistic.</p><div class="buttons">${button('phone-cable','Try the phone cable')}${button('recorder-cable','Use the recorder connector',true)}</div><p id="cable-feedback" role="status">${session.getState().chargerPaired==='recorder'?'Recorder ready. The editor is out of excuses.':'Pick a connector for the recorder.'}</p><div class="buttons">${button('back-search','Back to the mess')}</div>`);
@@ -114,19 +125,19 @@ function recorderPuzzle() {
 }
 function notebook() {
   const state=session.getState();
-  panel('notebook', `<div class="eyebrow">The Haps / working notebook</div><h2>Leads, not miracles.</h2>${state.notebook.length ? state.notebook.map(e=>`<article class="card"><h3>${escapeHtml(e.label)}</h3>${e.id==='S01.C6'?`<div>${button('recorder','Check recorder')}</div>`:''}</article>`).join(''):'<p>Nothing yet. The desk is unlikely to search itself.</p>'}<div class="buttons">${button('back-search','Back to the mess')}</div>`);
-  bind('recorder',recorderPuzzle);bind('back-search',play);
+  panel('notebook', `<div class="eyebrow">The Haps / working notebook</div><h2>Leads, not miracles.</h2>${state.notebook.length ? state.notebook.map(e=>`<article class="card"><h3>${escapeHtml(e.label)}</h3>${e.id==='S01.C5'?`<p>${e.checked?'Clipping checked. Follow-up needed.':'Clipping waiting to be read.'}</p><div>${button('source','Read the clipping')}</div>`:''}${e.id==='S01.C6'?`<div>${button('recorder','Check recorder')}</div>`:''}</article>`).join(''):'<p>Nothing yet. The desk is unlikely to search itself.</p>'}<div class="buttons">${button('back-search','Back to the mess')}</div>`);
+  bind('source',sourceCheck);bind('recorder',recorderPuzzle);bind('back-search',play);
 }
 function submit() {
-  panel('submit', `<div class="eyebrow">First draft</div><h2>What are we going with?</h2><p>The editor wants a starting point for the assignment. Choose the basis for your draft.</p><div class="buttons">${button('report-basis','The published report',true)}${button('rumour-basis','The office rumour')}</div><p id="draft-feedback" role="status">Get the recorder ready, then pick your story.</p><div class="buttons">${button('back-search','Back to my notes')}</div>`);
-  for(const basis of ['published-report','office-rumour'] as const) bind(basis==='published-report'?'report-basis':'rumour-basis',()=>{act({type:'submit-draft',basis}); const feedback=document.getElementById('draft-feedback');if(feedback)feedback.textContent=basis==='office-rumour'?'The editor has enough rumours. Bring the report and a working recorder.':session.getState().lastMessage;});
+  panel('submit', `<div class="eyebrow">First draft</div><h2>What are we going with?</h2><p>The editor wants a starting point for the assignment. Choose the basis for your draft.</p><div class="buttons">${button('report-basis','The published report',true)}${button('rumour-basis','The office rumour')}</div><p id="draft-feedback" role="status">Read the clipping and get the recorder ready, then pick your story.</p><div class="buttons">${button('back-search','Back to my notes')}</div>`);
+  for(const basis of ['published-report','office-rumour'] as const) bind(basis==='published-report'?'report-basis':'rumour-basis',()=>{act({type:'submit-draft',basis}); const feedback=document.getElementById('draft-feedback');if(feedback)feedback.textContent=basis==='office-rumour'?'The editor has enough rumours. Read the clipping and bring a working recorder.':session.getState().lastMessage;});
   bind('back-search',play);
 }
 function resultScreen(){result();}
 function result(){panel('result',`<div class="eyebrow">Assignment complete / K01</div><h2>You're officially on the beat.</h2><p>Six finds. One working recorder. A story to chase. The editor calls this suspiciously competent.</p><p class="edition-card">“Right. City Hall. Try to come back with a story and our recorder.”</p><p class="muted">Next: Meanwhile at City Hall. That scene is still being built. Your first assignment is saved.</p><div class="buttons">${button('return-title','Back to title',true)}</div>`);bind('return-title',title);}
 function pause(){panel('paused',`<div class="eyebrow">Hold the presses</div><h2>Coffee break.</h2><div class="buttons">${button('resume','Resume',true)}${button('return-title','Return to title')}</div><p class="muted">${memoryOnly?'Progress is temporary. Keep this tab open.':'Your progress is saved on this device.'}</p>`);bind('resume',play);bind('return-title',title);}
 function settings(){panel('settings',`<h2>Keep it comfortable.</h2><label><input id="motion" type="checkbox" ${reducedMotion?'checked':''}> Reduce motion</label><p class="muted">This prototype is silent. Every cue is visible.</p><div class="buttons">${button('return-title','Back to title')}</div>`);document.getElementById('motion')!.addEventListener('change',e=>{reducedMotion=(e.target as HTMLInputElement).checked;renderer?.setReducedMotion(reducedMotion);});bind('return-title',title);}
-function credits(){panel('credits',`<div class="eyebrow">Ford Frenzy</div><h2>jr42 productions</h2><p>Original fictional newsroom and game presentation. Powered by Minoo and PixiJS.</p><p class="muted">Approved S01 art proof: seven original generated exports, preserved unchanged. Production rights and final art review remain separate. Historical reporting is referenced, not reproduced as artwork. The Haps, its staff and their dialogue are fictional.</p><p><a href="${escapeHtml(scene.sources[0].url)}" target="_blank" rel="noopener noreferrer">Historical source: Toronto Star, May 16, 2013</a></p><div class="buttons">${button('return-title','Back to title')}</div>`);bind('return-title',title);}
+function credits(){panel('credits',`<div class="eyebrow">Ford Frenzy</div><h2>jr42 productions</h2><p>Original fictional newsroom and game presentation. Powered by Minoo and PixiJS.</p><p>The Haps, the Hogtown Howler and their reporters are fictional. The clipping is original game writing. Everything needed for this assignment is included in the game.</p><div class="buttons">${button('return-title','Back to title')}</div>`);bind('return-title',title);}
 
 async function boot(){
   if(loading)return; loading=true;
@@ -140,7 +151,7 @@ async function boot(){
 }
 document.querySelector('.wordmark')!.addEventListener('click',e=>{e.preventDefault();if(renderer)title();});
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){if(mode==='playing')pause();else if(['paused','inspect','recorder','notebook','submit'].includes(mode))play();}
+  if(e.key==='Escape'){if(mode==='playing')pause();else if(['paused','inspect','source','recorder','notebook','submit'].includes(mode))play();}
   if(e.key==='f' && !e.ctrlKey && !e.metaKey && !e.altKey){if(document.fullscreenElement)void document.exitFullscreen();else void document.getElementById('app')!.requestFullscreen().catch(()=>{});}
   if(e.key==='Tab' && overlay.firstChild){const nodes=[...overlay.querySelectorAll<HTMLElement>('button:not(:disabled),a,input')];const first=nodes[0],last=nodes.at(-1);if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}}
 });

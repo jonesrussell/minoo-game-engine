@@ -3,13 +3,13 @@ import { validateSceneV2, type InvestigativeContent, type SceneV2 } from '@minoo
 import sceneData from '../data/s01.json' with { type: 'json' };
 
 export const NEWSROOM_SAVE_VERSION = 1;
-export const S01_SCENE_REVISION = 'ford-frenzy-s01-v2-no-source-cards-2026-09-07';
+export const S01_SCENE_REVISION = 'ford-frenzy-s01-v2-embedded-clipping-2026-09-07';
 export const NEWSROOM_ACTION_LIMIT = 1000;
 
 export type NewsroomAction =
   | { type: 'select'; objectId: string }
   | { type: 'hint' }
-  | { type: 'check-source'; contentId: string }
+  | { type: 'check-source'; contentId: string; reading: 'reported-account' | 'proven-claim' }
   | { type: 'pair-recorder'; connector: 'recorder' | 'phone' }
   | { type: 'submit-draft'; basis: 'published-report' | 'office-rumour' }
   | { type: 'reset'; scope: 'scene' | 'session' };
@@ -106,7 +106,7 @@ function diagnostic(code: NewsroomDiagnostic['code'], pointer: string, requireme
 function parseAction(input: unknown): { ok: true; action: NewsroomAction } | { ok: false; errors: NewsroomDiagnostic[] } {
   if (!dataRecord(input) || typeof input.type !== 'string') return { ok: false, errors: [diagnostic('NEWSROOM_INVALID_ACTION', '', 'LOOP-ACTION-001', 'Action must be a plain object with a supported type.')] };
   const shapes: Record<string, readonly string[]> = {
-    select: ['type', 'objectId'], hint: ['type'], 'check-source': ['type', 'contentId'],
+    select: ['type', 'objectId'], hint: ['type'], 'check-source': ['type', 'contentId', 'reading'],
     'pair-recorder': ['type', 'connector'], 'submit-draft': ['type', 'basis'], reset: ['type', 'scope'],
   };
   const allowed = shapes[input.type];
@@ -119,7 +119,7 @@ function parseAction(input: unknown): { ok: true; action: NewsroomAction } | { o
   }
   if (input.type === 'select' && typeof input.objectId === 'string') return { ok: true, action: { type: 'select', objectId: input.objectId } };
   if (input.type === 'hint') return { ok: true, action: { type: 'hint' } };
-  if (input.type === 'check-source' && typeof input.contentId === 'string') return { ok: true, action: { type: 'check-source', contentId: input.contentId } };
+  if (input.type === 'check-source' && typeof input.contentId === 'string' && (input.reading === 'reported-account' || input.reading === 'proven-claim')) return { ok: true, action: { type: 'check-source', contentId: input.contentId, reading: input.reading } };
   if (input.type === 'pair-recorder' && (input.connector === 'recorder' || input.connector === 'phone')) return { ok: true, action: { type: 'pair-recorder', connector: input.connector } };
   if (input.type === 'submit-draft' && (input.basis === 'published-report' || input.basis === 'office-rumour')) return { ok: true, action: { type: 'submit-draft', basis: input.basis } };
   if (input.type === 'reset' && (input.scope === 'scene' || input.scope === 'session')) return { ok: true, action: { type: 'reset', scope: input.scope } };
@@ -143,7 +143,7 @@ class S01Session implements NewsroomSession {
   #transitionS02: 'locked' | 'unlocked' = 'locked';
   #recordedContentIds: string[] = [];
   #actions: NewsroomAction[] = [];
-  #lastMessage = 'Find six newsroom objects, get the recorder working and file your draft.';
+  #lastMessage = 'Find six newsroom objects, read the clipping, get the recorder working and file your draft.';
   #hintedObjectId: string | null = null;
 
   constructor(scene: SceneV2) {
@@ -167,7 +167,7 @@ class S01Session implements NewsroomSession {
       const content = this.#scene.contents.find(candidate => candidate.id === id)!;
       return {
         id: content.id, label: content.label, classification: content.classification,
-        sourceRefs: [...content.sourceRefs], ...(content.sourceRefs.length ? { checked: this.#sourceChecks.includes(content.id) } : {}),
+        sourceRefs: [...content.sourceRefs], ...(content.id === 'S01.C5' ? { checked: this.#sourceChecks.includes(content.id) } : {}),
       };
     });
     if (this.#k01Awarded) entries.push({ id: 'K01', label: 'Gear and report triage complete', classification: 'fiction', sourceRefs: [], checked: true });
@@ -217,7 +217,7 @@ class S01Session implements NewsroomSession {
         return this.#fail(diagnostic('NEWSROOM_PROGRESSION_LOCKED', '/basis', 'LOOP-NOTEBOOK-001', 'K01 is already awarded; the accepted draft basis cannot be replaced with office rumour.'));
       }
       if (action.type === 'check-source') {
-        if (this.#sourceChecks.includes(action.contentId)) return this.#accept(action, []);
+        if (this.#sourceChecks.includes(action.contentId) && action.reading === 'reported-account') return this.#accept(action, []);
         return this.#fail(diagnostic('NEWSROOM_PROGRESSION_LOCKED', '/contentId', 'LOOP-NOTEBOOK-001', 'K01 is already awarded; source-check progression is closed for S01.'));
       }
     }
@@ -240,8 +240,13 @@ class S01Session implements NewsroomSession {
     if (action.type === 'check-source') {
       const object = this.#scene.objects.find(candidate => candidate.contentId === action.contentId);
       if (!object || !this.#runtime.getState().foundIds.includes(object.id)) return this.#fail(diagnostic('NEWSROOM_PREREQUISITE', '/contentId', 'LOOP-SOURCE-001', `Find the object linked to "${action.contentId}" before checking its source.`));
+      if (action.contentId !== 'S01.C5') return this.#fail(diagnostic('NEWSROOM_INVALID_ACTION', '/contentId', 'LOOP-SOURCE-001', 'Only the newsroom clipping has a reading choice.'));
+      if (action.reading === 'proven-claim') {
+        this.#lastMessage = 'Easy, headline cowboy. The Howler reports what its reporters say they saw. We still have a lead to follow, not proof.';
+        return this.#accept(action, []);
+      }
       if (!this.#sourceChecks.includes(action.contentId)) this.#sourceChecks.push(action.contentId);
-      this.#lastMessage = action.contentId === 'S01.C5' ? 'Source checked: this is attributed reporting, not proof of the allegation.' : 'Source status checked.';
+      this.#lastMessage = 'Clipping checked. The Howler gives us a lead to follow.';
       return this.#accept(action, [{ type: 'source-checked', contentId: action.contentId }]);
     }
 
@@ -258,6 +263,7 @@ class S01Session implements NewsroomSession {
       const reasons: string[] = [];
       if (this.#chargerPaired !== 'recorder') reasons.push(this.#chargerPaired === 'phone' ? 'The phone connector does not fit the recorder.' : 'Match the recorder connector first.');
       if (action.basis !== 'published-report') reasons.push('Office rumour cannot be filed as a published-report basis.');
+      if (!this.#sourceChecks.includes('S01.C5')) reasons.push('Read the Howler clipping and decide what it actually tells us.');
       if (reasons.length) {
         this.#editorialAccepted = false;
         this.#lastMessage = reasons.join(' ');
