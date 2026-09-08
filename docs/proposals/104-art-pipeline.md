@@ -46,3 +46,10 @@ Owner export approval is the gate for this issue. Until the actual background
 and targets are approved, candidates remain pending and #104 stays open. On
 rejection, retain the prior approved revision and its manifest entry. This
 workflow does not claim finished art or release approval.
+
+## Proof accepted
+
+The owner approved the completed separated-asset proof on 2026-09-07.
+See [approval record](../art/pipeline-proof-01/approval.md).
+Earlier pending-review wording describes the candidate gate; it is now satisfied
+for these exact proof exports. Future revisions and release art remain separately reviewed.

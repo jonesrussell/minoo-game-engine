@@ -54,3 +54,10 @@ The proof manifest links each stable ID to source IDs/hashes, candidate output
 hash and dimensions, alpha policy, logical scale, prompt/tool/model/date,
 manual-edit status, review state, and immutable file path. It also records the
 QA checks and their evidence paths. Missing evidence is pending, not passed.
+
+## Proof accepted
+
+The owner approved the completed separated-asset proof on 2026-09-07.
+See [approval record](art/pipeline-proof-01/approval.md).
+Earlier pending-review wording describes the candidate gate; it is now satisfied
+for these exact proof exports. Future revisions and release art remain separately reviewed.

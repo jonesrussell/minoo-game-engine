@@ -208,6 +208,5 @@ Native dependencies identify prerequisites; sub-issues identify phase ownership.
 Keep scopes, evidence and project readiness current. A completed issue needs acceptance evidence at the reviewed commit and a merged PR. Planning tasks require the named owner review before their own completion. Phase trackers close only when their required children and exit gate are satisfied. Tests cannot establish historical accuracy, content rights or enjoyable play.
 
 Asset workflow #104: [generation workflow](art-generation-workflow.md) and
-[layered S01 proof](art/pipeline-proof-01/index.html) are available for candidate
-export review. One background and six independent PNG targets; approval and
-production integration remain open. The diagnostic viewer does not select #40.
+[layered S01 proof](art/pipeline-proof-01/index.html) have owner proof approval. One background and six independent PNG targets;
+production integration and release remain open. The diagnostic viewer does not select #40.
