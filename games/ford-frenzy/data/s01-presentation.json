@@ -20,12 +20,35 @@
       "url": "./assets/dialogue-elliot.png",
       "required": false
     },
-    { "id": "portrait-alex-annoyed", "url": "./assets/dialogue-alex-annoyed.png", "required": false },
-    { "id": "portrait-alex-amused", "url": "./assets/dialogue-alex-amused.png", "required": false },
-    { "id": "portrait-alex-surprised", "url": "./assets/dialogue-alex-surprised.png", "required": false },
-    { "id": "portrait-elliot-annoyed", "url": "./assets/dialogue-elliot-annoyed.png", "required": false },
-    { "id": "portrait-elliot-amused", "url": "./assets/dialogue-elliot-amused.png", "required": false },
-    { "id": "portrait-elliot-surprised", "url": "./assets/dialogue-elliot-surprised.png", "required": false
+    {
+      "id": "portrait-alex-annoyed",
+      "url": "./assets/dialogue-alex-annoyed.png",
+      "required": false
+    },
+    {
+      "id": "portrait-alex-amused",
+      "url": "./assets/dialogue-alex-amused.png",
+      "required": false
+    },
+    {
+      "id": "portrait-alex-surprised",
+      "url": "./assets/dialogue-alex-surprised.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot-annoyed",
+      "url": "./assets/dialogue-elliot-annoyed.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot-amused",
+      "url": "./assets/dialogue-elliot-amused.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot-surprised",
+      "url": "./assets/dialogue-elliot-surprised.png",
+      "required": false
     }
   ],
   "characters": [
@@ -33,59 +56,105 @@
       "id": "alex",
       "name": "Alex / You",
       "assetId": "portrait-alex",
-      "expressions": { "neutral": "portrait-alex", "annoyed": "portrait-alex-annoyed", "amused": "portrait-alex-amused", "surprised": "portrait-alex-surprised" }
+      "expressions": {
+        "neutral": "portrait-alex",
+        "annoyed": "portrait-alex-annoyed",
+        "amused": "portrait-alex-amused",
+        "surprised": "portrait-alex-surprised"
+      }
     },
     {
       "id": "elliot",
       "name": "Elliot / Editor",
       "assetId": "portrait-elliot",
-      "expressions": { "neutral": "portrait-elliot", "annoyed": "portrait-elliot-annoyed", "amused": "portrait-elliot-amused", "surprised": "portrait-elliot-surprised" }
-    }
-  ],
-  "dialogue": [
-    {
-      "id": "s01-opening-01",
-      "speaker": "elliot",
-      "line": "Welcome to the Haps. Patio desk is Tuesday. Today you're on the mayor beat.",
-      "expression": "neutral"
-    },
-    {
-      "id": "s01-opening-02",
-      "speaker": "alex",
-      "line": "I don't even have a chair.",
-      "expression": "annoyed"
-    },
-    {
-      "id": "s01-opening-03",
-      "speaker": "elliot",
-      "line": "Classifieds has the chair. You get the folder, the recorder, and whatever coffee still answers to coffee.",
-      "expression": "amused"
+      "expressions": {
+        "neutral": "portrait-elliot",
+        "annoyed": "portrait-elliot-annoyed",
+        "amused": "portrait-elliot-amused",
+        "surprised": "portrait-elliot-surprised"
+      }
     }
   ],
   "targetLabels": [
     {
       "objectId": "S01.O1",
-      "label": "Notebook"
+      "label": "Notebook",
+      "inspection": "brief"
     },
     {
       "objectId": "S01.O2",
-      "label": "Contact sheet"
+      "label": "Contact sheet",
+      "inspection": "brief"
     },
     {
       "objectId": "S01.O3",
-      "label": "Calendar"
+      "label": "Calendar",
+      "inspection": "brief"
     },
     {
       "objectId": "S01.O4",
-      "label": "Folder"
+      "label": "Folder",
+      "inspection": "brief"
     },
     {
       "objectId": "S01.O5",
-      "label": "Clipping"
+      "label": "Clipping",
+      "inspection": "inspect"
     },
     {
       "objectId": "S01.O6",
-      "label": "Recorder"
+      "label": "Recorder",
+      "inspection": "inspect"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "s01-opening",
+      "beats": [
+        {
+          "id": "s01-opening-01",
+          "speaker": "elliot",
+          "line": "Welcome to the Haps. Patio desk is Tuesday. Today you're on the mayor beat.",
+          "expression": "neutral"
+        },
+        {
+          "id": "s01-opening-02",
+          "speaker": "alex",
+          "line": "I don't even have a chair.",
+          "expression": "annoyed"
+        },
+        {
+          "id": "s01-opening-03",
+          "speaker": "elliot",
+          "line": "Classifieds has the chair. You get the folder, the recorder, and whatever coffee still answers to coffee.",
+          "expression": "amused"
+        }
+      ],
+      "title": "Your first shift"
+    },
+    {
+      "id": "s01-closing",
+      "beats": [
+        {
+          "id": "s01-closing-01",
+          "speaker": "alex",
+          "line": "Published report logged. Office rumour stays here. Recorder's alive.",
+          "expression": "neutral"
+        },
+        {
+          "id": "s01-closing-02",
+          "speaker": "elliot",
+          "line": "Careful. Competence makes the furniture nervous.",
+          "expression": "amused"
+        },
+        {
+          "id": "s01-closing-03",
+          "speaker": "alex",
+          "line": "Then point me at City Hall.",
+          "expression": "neutral"
+        }
+      ],
+      "title": "Point me at City Hall"
     }
   ]
 }

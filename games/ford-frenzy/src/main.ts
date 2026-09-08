@@ -8,7 +8,7 @@ import clipping from '../data/s01-clipping.json';
 import { createGameAudio } from './audio.ts';
 import { renderHud, reactionsForTransition } from './hud.ts';
 import presentationData from '../data/s01-presentation.json';
-import { conversationView, renderConversation, validatePresentation } from './presentation.ts';
+import { createDialogueController, renderConversation, validatePresentation } from './presentation.ts';
 
 const audio = createGameAudio();
 const presentationValidation = validatePresentation(presentationData, sceneData.objects.map(object => object.id));
@@ -34,6 +34,7 @@ let memoryOnly = false;
 let originFocusId = 'notebook';
 let titleFocusId = 'new-game';
 let loading = false;
+let conversationEscape: (() => void) | undefined;
 const searchCursor = {x:960,y:540};
 stage.tabIndex = 0;
 stage.setAttribute('role','application');
@@ -42,7 +43,6 @@ stage.setAttribute('aria-describedby','search-help search-location');
 const escapeHtml = (s: string) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const button = (id: string, text: string, primary = false, disabled = false) => `<button id="${id}" ${primary ? 'class="primary"' : ''} ${disabled ? 'disabled' : ''}>${text}</button>`;
 const bind = (id: string, action: () => void) => document.getElementById(id)?.addEventListener('click', () => { void audio.unlock(); action(); });
-const dialogue = (lines: readonly [string, string][]) => `<div class="dialogue">${lines.map(([speaker, line]) => `<div class="dialogue-line"><span class="speaker">${escapeHtml(speaker)}</span><p>${escapeHtml(line)}</p></div>`).join('')}</div>`;
 
 try {
   const raw = localStorage.getItem(SAVE);
@@ -62,6 +62,7 @@ function persist() {
 function panel(next: string, body: string, title = false) {
   if (mode === 'playing') originFocusId = document.activeElement?.id || 'notebook';
   if (mode === 'title') titleFocusId = document.activeElement?.id || 'new-game';
+  if (next !== 'conversation') conversationEscape = undefined;
   mode = next;
   audio.setPaused(['paused','title','loading','error'].includes(next));
   document.getElementById('app')!.dataset.screen = next;
@@ -93,36 +94,46 @@ function newGame() {
   session = createNewsroomSession(); badSave = false; persist();
   openingDialogue();
 }
-function openingDialogue(index=0) {
-  const line = conversationView(presentation, index);
-  panel('conversation', `<img class="conversation-backdrop" src="./assets/background.png" alt="">${renderConversation(presentation, index, button)}`);
-  overlay.querySelector('.panel')!.classList.add('conversation-panel');
-  for(const portrait of overlay.querySelectorAll<HTMLImageElement>('.character-portrait')){
-    let retriedNeutral = false;
-    let settled = false;
-    const fallback=()=>{
-      if (settled) return;
-      if (!retriedNeutral && portrait.dataset.expression !== 'neutral' && portrait.dataset.neutralSrc) {
-        retriedNeutral = true;
-        portrait.dataset.expression = 'neutral';
-        portrait.src = portrait.dataset.neutralSrc;
-        return;
-      }
-      settled = true;
-      portrait.hidden=true;
-      (portrait.nextElementSibling as HTMLElement).hidden=false;
-    };
-    portrait.addEventListener('load', () => { if (portrait.naturalWidth > 0) settled = true; });
-    portrait.addEventListener('error',fallback);
-    if(portrait.complete){ if (portrait.naturalWidth > 0) settled = true; else fallback(); }
-  }
-  bind('dialogue-next',()=>line.index+1<line.total?openingDialogue(line.index+1):play());
-  bind('dialogue-back',()=>openingDialogue(Math.max(0,index-1)));
-  bind('dialogue-skip',play);
-  document.getElementById('dialogue-next')!.focus();
+function showConversation(conversationId: string, returnTo: 'search' | 'receipt' | 'previous-screen', onDone: () => void, index = 0) {
+  const controller = createDialogueController(presentation, conversationId, returnTo, returnTo === 'previous-screen');
+  const finish = () => { if (conversationEscape === finish) conversationEscape = undefined; onDone(); };
+  conversationEscape = finish;
+  for (let i = 0; i < index; i++) controller.next();
+  const render = (focus = true) => {
+    const current = controller.view();
+    panel('conversation', `<img class="conversation-backdrop" src="./assets/background.png" alt="">${renderConversation(presentation, conversationId, current.index, button, returnTo, returnTo === 'previous-screen')}`);
+    overlay.querySelector('.panel')!.classList.add('conversation-panel');
+    for (const portrait of overlay.querySelectorAll<HTMLImageElement>('.character-portrait')) {
+      let retriedNeutral = false;
+      let settled = false;
+      const fallback = () => {
+        if (settled) return;
+        if (!retriedNeutral && portrait.dataset.expression !== 'neutral' && portrait.dataset.neutralSrc) {
+          retriedNeutral = true;
+          portrait.dataset.expression = 'neutral';
+          portrait.src = portrait.dataset.neutralSrc;
+          return;
+        }
+        settled = true;
+        portrait.hidden = true;
+        (portrait.nextElementSibling as HTMLElement).hidden = false;
+      };
+      portrait.addEventListener('load', () => { if (portrait.naturalWidth > 0) settled = true; });
+      portrait.addEventListener('error', fallback);
+      if (portrait.complete) { if (portrait.naturalWidth > 0) settled = true; else fallback(); }
+    }
+    bind('dialogue-next', () => { const next = controller.next(); if (next.done) finish(); else render(); });
+    bind('dialogue-back', () => { controller.back(); render(); });
+    bind('dialogue-skip', finish);
+    if (focus) document.getElementById('dialogue-next')?.focus();
+  };
+  render();
 }
+function openingDialogue(index = 0) { showConversation('s01-opening', 'search', play, index); }
+function closingDialogue() { showConversation('s01-closing', 'receipt', result, 0); }
 function play() {
   if (session.getState().k01Awarded) { result(); return; }
+  conversationEscape = undefined;
   audio.setPaused(false);
   mode = 'playing'; document.getElementById('app')!.dataset.screen = 'playing'; stage.inert = false; overlay.innerHTML = ''; renderer?.setPaused(false); update();
   (document.getElementById(originFocusId) ?? document.getElementById('notebook'))?.focus();
@@ -135,8 +146,12 @@ function act(action: NewsroomAction) {
   for (const reaction of reactionsForTransition(before, result)) {
     if (reaction.type === 'sound') audio.play(reaction.cue);
   }
-  if (result.state.k01Awarded) { resultScreen(); return; }
-  if (action.type === 'select') inspect(action.objectId);
+  if (result.state.k01Awarded) {
+    if (result.events.some(event => event.type === 'k01-awarded')) closingDialogue();
+    else resultScreen();
+    return;
+  }
+  if (action.type === 'select' && presentation.targetLabels.find(target => target.objectId === action.objectId)?.inspection === 'inspect') inspect(action.objectId);
 }
 function update() {
   const state = session.getState();
@@ -189,8 +204,18 @@ function submit() {
   bind('back-search',play);
 }
 function resultScreen(){result();}
-function result(){const state=session.getState();panel('result',`<div class="eyebrow">Toronna Haps / Assignment filed</div><div class="filed-stamp">ON THE BEAT</div><h2>There goes patio season.</h2>${dialogue([['Alex / You','Published report logged. Office rumour stays here. Recorder\'s alive.'],['Elliot / Editor','Careful. Competence makes the furniture nervous.'],['Alex / You','Then point me at City Hall.']])}<div class="shift-receipt"><span><strong>6 / 6</strong> kit found</span><span><strong>${state.hintsUsed} / 3</strong> hints used</span><span><strong>READY</strong> recorder</span></div><div class="next-assignment"><div class="eyebrow">Next assignment / 02</div><h3>Meanwhile at City Hall</h3><p>A public corridor. A jammed printer. Everyone has a statement. Nobody has a spare cable.</p></div><p class="muted">End of this playable preview. Your assignment is saved.</p><div class="buttons">${button('return-title','Back to title',true)}</div>`);bind('return-title',title);}
-function pause(){panel('paused',`<div class="eyebrow">Hold the presses</div><h2>Coffee break.</h2><div class="buttons">${button('resume','Resume',true)}${button('return-title','Return to title')}</div><p class="muted">${memoryOnly?'Progress is temporary. Keep this tab open.':'Your progress is saved on this device.'}</p>`);bind('resume',play);bind('return-title',title);}
+function result(){const state=session.getState();panel('result',`<div class="eyebrow">Toronna Haps / Assignment filed</div><div class="filed-stamp">ON THE BEAT</div><h2>There goes patio season.</h2><div class="shift-receipt"><span><strong>6 / 6</strong> kit found</span><span><strong>${state.hintsUsed} / 3</strong> hints used</span><span><strong>READY</strong> recorder</span></div><div class="next-assignment"><div class="eyebrow">Next assignment / 02</div><h3>Meanwhile at City Hall</h3><p>A public corridor. A jammed printer. Everyone has a statement. Nobody has a spare cable.</p></div><p class="muted">End of this playable preview. Your assignment is saved.</p><div class="buttons">${button('history','Dialogue history')}${button('return-title','Back to title',true)}</div>`);bind('history',()=>history(true));bind('return-title',title);}
+let historyReturn = pause;
+function history(fromReceipt = false, focusId = 'history-opening') {
+  historyReturn = () => { (fromReceipt ? result : pause)(); document.getElementById('history')?.focus(); };
+  const closing = session.getState().k01Awarded;
+  panel('history', `<div class="eyebrow">The Haps / Dialogue history</div><h2>Replay a conversation</h2><div class="buttons">${button('history-opening','Opening conversation')}${closing ? button('history-closing','Assignment closing') : ''}${button('history-back','Back')}</div>`);
+  bind('history-opening', () => showConversation('s01-opening', 'previous-screen', () => history(fromReceipt, 'history-opening')));
+  if (closing) bind('history-closing', () => showConversation('s01-closing', 'previous-screen', () => history(fromReceipt, 'history-closing')));
+  bind('history-back', historyReturn);
+  document.getElementById(focusId)?.focus();
+}
+function pause(){panel('paused',`<div class="eyebrow">Hold the presses</div><h2>Coffee break.</h2><div class="buttons">${button('resume','Resume',true)}${button('history','Dialogue history')}${button('return-title','Return to title')}</div><p class="muted">${memoryOnly?'Progress is temporary. Keep this tab open.':'Your progress is saved on this device.'}</p>`);bind('resume',play);bind('history',()=>history(false));bind('return-title',title);}
 function settings(){const sound=audio.getState();panel('settings',`<h2>Keep it comfortable.</h2><label><input id="motion" type="checkbox" ${reducedMotion?'checked':''}> Reduce motion</label><label><input id="mute" type="checkbox" ${sound.muted?'checked':''}> Mute sound</label><label for="volume">Sound level <output id="volume-value">${Math.round(sound.volume*100)}%</output></label><input id="volume" type="range" min="0" max="100" value="${Math.round(sound.volume*100)}"><div class="buttons">${button('test-sound','Try sound')}</div><p id="sound-status" role="status">Short equipment cues. Everything can be played silently.</p><div class="buttons">${button('return-title','Back to title')}</div>`);document.getElementById('motion')!.addEventListener('change',e=>{reducedMotion=(e.target as HTMLInputElement).checked;renderer?.setReducedMotion(reducedMotion);document.getElementById('app')!.dataset.reducedMotion=String(reducedMotion);});document.getElementById('mute')!.addEventListener('change',e=>audio.setMuted((e.target as HTMLInputElement).checked));document.getElementById('volume')!.addEventListener('input',e=>{const value=Number((e.target as HTMLInputElement).value);audio.setVolume(value/100);document.getElementById('volume-value')!.textContent=`${value}%`;});bind('test-sound',()=>{void audio.unlock().then(()=>{audio.play('ready');const state=audio.getState();const status=document.getElementById('sound-status');if(status)status.textContent=state.muted||!state.volume?'Sound is muted.':state.available?'Equipment cue played.':'Sound is unavailable. Silent play is ready.';});});bind('return-title',title);}
 function credits(){panel('credits',`<div class="eyebrow">Ford Frenzy</div><h2>jr42 productions</h2><p>Original fictional newsroom and game presentation. Powered by Minoo and PixiJS.</p><p>The Haps, the Hogtown Howler and their reporters are fictional. The clipping is original game writing. Everything needed for this assignment is included in the game.</p><div class="buttons">${button('return-title','Back to title')}</div>`);bind('return-title',title);}
 
@@ -257,7 +282,7 @@ stage.addEventListener('keydown',event=>{
 });
 document.querySelector('.wordmark')?.addEventListener('click',e=>{e.preventDefault();if(renderer)title();});
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){if(mode==='playing')pause();else if(['paused','inspect','source','recorder','notebook','submit'].includes(mode))play();}
+  if(e.key==='Escape'){if(mode==='conversation'){conversationEscape?.();}else if(mode==='playing')pause();else if(mode==='history')historyReturn();else if(['paused','inspect','source','recorder','notebook','submit'].includes(mode))play();}
   if(e.key==='f' && !e.ctrlKey && !e.metaKey && !e.altKey){if(document.fullscreenElement)void document.exitFullscreen();else void document.getElementById('app')!.requestFullscreen().catch(()=>{});}
   if(e.key==='Tab' && overlay.firstChild){const nodes=[...overlay.querySelectorAll<HTMLElement>('button:not(:disabled),a,input')];const first=nodes[0],last=nodes.at(-1);if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}}
 });

@@ -5,7 +5,7 @@ import { compileFromFile } from 'json-schema-to-typescript';
 import s01 from '../../games/ford-frenzy/data/s01-presentation.json' with { type: 'json' };
 import reuseFixture from '../../games/ford-frenzy/data/presentation-reuse.fixture.json' with { type: 'json' };
 import { createNewsroomSession } from '../../games/ford-frenzy/src/session.ts';
-import { conversationView, renderConversation, validatePresentation } from '../../games/ford-frenzy/src/presentation.ts';
+import { conversationView, createDialogueController, renderConversation, validatePresentation } from '../../games/ford-frenzy/src/presentation.ts';
 import { reactionsForTransition, renderHud } from '../../games/ford-frenzy/src/hud.ts';
 import scene from '../../games/ford-frenzy/data/s01.json' with { type: 'json' };
 import type { SceneV2 } from '@minoo/engine/scene-v2';
@@ -16,32 +16,58 @@ test('validates S01 and reuses the same conversation layout for the fixture', ()
   assert.equal(first.ok, true);
   assert.equal(second.ok, true);
   if (!first.ok || !second.ok) return;
-  assert.equal(conversationView(first.presentation, 0).beat.speaker, 'elliot');
-  assert.equal(conversationView(first.presentation, 1).beat.expression, 'annoyed');
-  const annoyedMarkup = renderConversation(first.presentation, 1, (id, text) => `<button id="${id}">${text}</button>`);
+  assert.equal(conversationView(first.presentation, 's01-opening', 0).beat.speaker, 'elliot');
+  assert.equal(conversationView(first.presentation, 's01-opening', 1).beat.expression, 'annoyed');
+  const annoyedMarkup = renderConversation(first.presentation, 's01-opening', 1, (id: string, text: string) => `<button id="${id}">${text}</button>`);
   assert.match(annoyedMarkup, /dialogue-alex-annoyed\.png/);
   assert.match(annoyedMarkup, /data-expression="neutral"[^>]+src="\.\/assets\/dialogue-elliot\.png"/);
-  assert.match(renderConversation(second.presentation, 0, (id, text) => `<button id="${id}">${text}</button>`), /same conversation layout/);
+  assert.match(renderConversation(second.presentation, 'fixture-conversation', 0, (id: string, text: string) => `<button id="${id}">${text}</button>`), /same conversation layout/);
 });
 
 test('missing optional expression mapping falls back to neutral art', () => {
-  const fixture = structuredClone(reuseFixture) as { characters: Array<{ id: string; expressions: Record<string, string> }>; dialogue: Array<{ expression: string }> };
-  fixture.dialogue[0]!.expression = 'amused';
+  const fixture = structuredClone(reuseFixture) as { characters: Array<{ id: string; expressions: Record<string, string> }>; conversations: Array<{ beats: Array<{ expression: string }> }> };
+  fixture.conversations[0]!.beats[0]!.expression = 'amused';
   const result = validatePresentation(fixture);
   assert.equal(result.ok, true);
   if (!result.ok) return;
-  const markup = renderConversation(result.presentation, 0, (id, text) => `<button id="${id}">${text}</button>`);
+  const markup = renderConversation(result.presentation, 'fixture-conversation', 0, (id: string, text: string) => `<button id="${id}">${text}</button>`);
   assert.match(markup, /dialogue-alex\.png/);
   assert.doesNotMatch(markup, /dialogue-alex-amused\.png/);
-  const unknown = structuredClone(reuseFixture) as { dialogue: Array<{ expression: string }> };
-  unknown.dialogue[0]!.expression = 'confused';
+  const unknown = structuredClone(reuseFixture) as { conversations: Array<{ beats: Array<{ expression: string }> }> };
+  unknown.conversations[0]!.beats[0]!.expression = 'confused';
   assert.equal(validatePresentation(unknown).ok, false);
 });
 
+test('named dialogue controller bounds transient history without a session sink', () => {
+  const validation = validatePresentation(s01);
+  assert.equal(validation.ok, true);
+  if (!validation.ok) return;
+  const actions: unknown[] = [];
+  const controller = createDialogueController(validation.presentation, 's01-closing', 'receipt', true);
+  assert.equal(controller.view().beat.id, 's01-closing-01');
+  assert.deepEqual(controller.back().index, 0);
+  assert.equal(controller.next().view?.beat.id, 's01-closing-02');
+  assert.equal(controller.next().view?.beat.id, 's01-closing-03');
+  const done = controller.next();
+  assert.deepEqual(done, { done: true, returnTo: 'receipt' });
+  assert.deepEqual(controller.skip(), { done: true, returnTo: 'receipt' });
+  assert.deepEqual(actions, []);
+});
+
+test('named conversation and beat IDs must remain unique', () => {
+  const duplicate = structuredClone(s01) as { conversations: Array<{ id: string; beats: Array<{ id: string }> }> };
+  duplicate.conversations[1]!.id = duplicate.conversations[0]!.id;
+  duplicate.conversations[1]!.beats[0]!.id = duplicate.conversations[0]!.beats[0]!.id;
+  const result = validatePresentation(duplicate);
+  assert.equal(result.ok, false);
+  if (result.ok) return;
+  assert.equal(result.errors.some(error => error.code === 'PRESENTATION_DUPLICATE_ID' && error.path.includes('/conversations')), true);
+});
+
 test('rejects unknown references before activation', () => {
-  const invalid = structuredClone(s01) as { characters: Array<{ id: string; name: string; assetId: string }>; dialogue: Array<{ id: string; speaker: string; line: string }> };
+  const invalid = structuredClone(s01) as { characters: Array<{ id: string; name: string; assetId: string }>; conversations: Array<{ beats: Array<{ id: string; speaker: string; line: string }> }> };
   invalid.characters[0]!.assetId = 'missing-portrait';
-  invalid.dialogue[0]!.speaker = 'missing-character';
+  invalid.conversations[0]!.beats[0]!.speaker = 'missing-character';
   const result = validatePresentation(invalid);
   assert.equal(result.ok, false);
   if (result.ok) return;
