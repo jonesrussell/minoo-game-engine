@@ -8,3 +8,5 @@ Implemented npm workspace boundaries, a viewport helper, original canvas art and
 Verification: clean npm ci, typecheck, three unit tests, production build and Chromium desktop/touch-sized flows passed on Windows with Node 24.13.1 and npm 11.8.0. Inspected both screenshots. The bundled Develop Web Game client also passed start plus Space-to-inspect; text state matched the highlighted tree and no browser error file was emitted. Screenshots are in docs/evidence and test-results (ignored).
 
 Next: #3 adds executable GitHub CI and artifact delivery; #6 defines scene contracts. Authoring package is deliberately a reserved boundary with no placeholder commands. No approved language content or full game mechanics exist yet. Linux setup is documented, not yet qualified by executable CI.
+
+Current request: build the first playable S01 checkpoint after artwork approval. Parent owns browser shell, public renderer adapter integration and browser evidence. S02 and S03 remain later work.

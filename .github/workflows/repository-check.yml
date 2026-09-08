@@ -35,6 +35,8 @@ jobs:
         run: node scripts/test-scene-browser.mjs
       - name: Standalone replay agrees in Node and Chromium
         run: node scripts/test-replay-browser.mjs
+      - name: Ford Frenzy production assignment and recovery
+        run: npm run test:ford
       - name: Record source and artifact identity
         if: always()
         env:

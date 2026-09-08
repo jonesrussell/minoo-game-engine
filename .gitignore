@@ -6,3 +6,6 @@ test-results/
 .env
 .env.*
 !.env.example
+
+games/ford-frenzy/public/assets/
+

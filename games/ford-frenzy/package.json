@@ -1,0 +1,7 @@
+{
+  "name": "@minoo/ford-frenzy",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@minoo/engine": "0.0.0" }
+}

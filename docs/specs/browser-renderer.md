@@ -1,0 +1,9 @@
+# Browser renderer adapter
+
+`createSceneRenderer` in `packages/engine/src/browser.ts` is the generic PixiJS 8 browser boundary. It accepts a validated v1 or v2 scene, a manifest v1, and game-owned labels. It does not import game rules, persistence or content.
+
+The manifest must provide `assets` with unique IDs, non-empty URLs, `mediaType: image/png`, SHA-256, source and rights fields. The background ID is supplied by the caller. Every scene object ID must have a corresponding asset ID. Asset loading is all-or-fail; initialization appends no canvas until every texture and Pixi application setup succeeds. A failed load releases candidate textures. Retry means calling `createSceneRenderer` again with a fresh adapter.
+
+The renderer uses the validated scene's logical width and height (1920×1080 for S01) and preserves aspect ratio through `ResizeObserver`. `getTargets()` returns viewport CSS-pixel rectangles for QA and hit-map inspection. Sprites use rectangular texture bounds plus an 8-logical-pixel border as the prototype policy. Hit bounds are converted to texture-local coordinates before Pixi scaling. When bounds overlap, the last drawn sprite wins. `pointertap` emits only the selected stable object ID. `setPaused(true)` blocks selection and stops the private ticker; visibility changes stop presentation while the document is hidden. `dispose()` is idempotent and removes listeners, observer, ticker and Pixi resources. One active scene adapter owns its texture cache; concurrent adapters sharing URLs are not supported by this first implementation.
+
+The Pixi ticker is presentation-only. The current runtime is action-driven; `advanceTime` exists for presentation QA and future timed effects. It does not mutate runtime state. Reduced motion removes the presentation pulse, while hinted-object outlines remain visible and static. Editable labels are supplied by the game through `labels`; no story or Ford-specific text is embedded in the adapter.

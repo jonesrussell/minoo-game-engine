@@ -2,7 +2,7 @@
 
 A game framework designed for reliable agent authoring, with an independent runtime and a proper 2D rendering-engine boundary. The first game is **Ford Frenzy** by **jr42 productions**, a Toronto investigative hidden-object adventure set during Rob Ford's mayoral tenure and the crack-video scandal. Development stays local through chat.
 
-**Status:** executable workspace, interactive Journey fixture preview, production scene validation and a headless game runtime. Scene-driven browser gameplay and authoring tools are still backlog work.
+**Status:** local Ford Frenzy S01 playable checkpoint, independent scene/runtime/replay APIs and the preserved Journey fixture. Later scenes, production art and authoring tools remain backlog work.
 
 The [first-game brief](docs/first-game.md) proposes the Torrona Haps opening and a separate full-campaign storyboard track. The existing Journey preview is a legacy engineering fixture, not the new game.
 
@@ -37,6 +37,14 @@ The [first-game brief](docs/first-game.md) proposes the Torrona Haps opening and
 - [Milestones](https://github.com/jonesrussell/minoo-game-engine/milestones)
 
 ## Local development
+
+For the Ford Frenzy first assignment, run `npm ci` then `npm run dev:ford` and open
+http://127.0.0.1:5175. `npm run build:ford` produces the standalone
+`dist/ford-frenzy` build; `npm run test:ford` exercises the complete assignment and
+recovery through the production browser build. Source artwork is hash-verified and
+copied during preparation, without editing pixels or duplicating tracked textures.
+
+The commands below continue to run the separate Journey engineering fixture.
 
 Use Node.js **24.13.1** and npm **11.8.0**. From the repository root:
 
