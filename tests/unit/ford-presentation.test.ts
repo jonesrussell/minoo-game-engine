@@ -38,11 +38,10 @@ test('missing optional expression mapping falls back to neutral art', () => {
   assert.equal(validatePresentation(unknown).ok, false);
 });
 
-test('named dialogue controller bounds transient history without a session sink', () => {
+test('named dialogue controller bounds beat navigation and return destinations', () => {
   const validation = validatePresentation(s01);
   assert.equal(validation.ok, true);
   if (!validation.ok) return;
-  const actions: unknown[] = [];
   const controller = createDialogueController(validation.presentation, 's01-closing', 'receipt', true);
   assert.equal(controller.view().beat.id, 's01-closing-01');
   assert.deepEqual(controller.back().index, 0);
@@ -51,7 +50,6 @@ test('named dialogue controller bounds transient history without a session sink'
   const done = controller.next();
   assert.deepEqual(done, { done: true, returnTo: 'receipt' });
   assert.deepEqual(controller.skip(), { done: true, returnTo: 'receipt' });
-  assert.deepEqual(actions, []);
 });
 
 test('named conversation and beat IDs must remain unique', () => {
