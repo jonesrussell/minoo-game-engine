@@ -24,3 +24,5 @@ Owner request: remove source cards from the game. Removed screens, buttons, clas
 Owner clarification #128: restore source checking through a fictional embedded Hogtown Howler clipping, meaningful reading choice and retry. Remove real press identities/links from shipped data and credits. No external requests during gameplay.
 
 Owner correction #134: Toronna Haps spelling in current copy and storyboards; title art uses a separate corrected derivative, original provenance retained. No gameplay or save format changes.
+
+Issue136: S01 opening dialogue, visual connector comparison, result receipt, optional sound and warm sprite lighting. Source scene/action/save semantics unchanged. First browser attempt caught a test case mismatch against CSS-uppercase Cable A; corrected assertion case sensitivity. Qualification in progress.

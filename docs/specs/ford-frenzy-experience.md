@@ -152,3 +152,29 @@ repository checks, source/export validation, owner art/story review. None are
 reported executed here. Exact commands and results belong in implementation PRs.
 
 Owner spelling correction (#134): the canonical fictional newspaper name is **Toronna Haps**. Historical generation inputs and stable proposal filenames remain unchanged. The title uses the spelling-corrected derivative recorded in docs/art/visual-direction-02/toronna-edit.json.
+
+## S01 playtest checkpoint (#136)
+
+The first shift adds a short fictional Elliot/Alex exchange, an inspect view with
+its found prop, a visual two-cable comparison, and an assignment receipt leading
+into the City Hall premise. Cable choices describe shape and contact count equally
+in visuals and accessible names; neither button names the correct answer. The
+existing recorder action and source-check rules remain authoritative. No dialogue
+choice changes the historical timeline, clue ownership or save format.
+
+Original synthesized equipment cues supplement finds, wrong comparisons, ready
+checks and completion. No audio files or outside requests are required. Mute and
+volume survive reload under a separate preference key. Gesture unlock, hidden-tab
+silence, pause and unavailable audio must leave silent play complete. These are
+prototype cues, not an approved final soundtrack.
+
+Panel motion is decorative and disabled by the game Reduce motion option or the
+OS preference. Optional renderer objectLighting applies a warm tint and a small
+non-interactive shadow to the existing sprites. Source pixels, target bounds and
+spatial keyboard inspection remain unchanged. Finished object occlusion and
+production assets remain #17 work.
+
+The scene result is explicitly the end of this playable preview. S02/S03 delivery,
+three-scene sound qualification and owner pacing acceptance remain open under
+#98/#99, #107 and #45. A five-to-ten-minute first play is a target to measure with
+people, not a result established by automated completion tests.
