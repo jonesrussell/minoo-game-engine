@@ -1,0 +1,16 @@
+{
+  "issue": 143,
+  "date": "2026-09-08",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed by built-in tool",
+  "reference": "../gameplay-composition-01/concept.png",
+  "referenceSha256": "0154f9cc829dabe52a1ccdf3d8bb5d229d0f8d8f2ca8db8b00105949b3f1e0e1",
+  "prompt": "prompt.txt",
+  "output": "background.png",
+  "sha256": "56d787e1e620f7fef7bf198256426c0b88fe0f0de3d45a40037f620efbb02aed",
+  "width": 1672,
+  "height": 941,
+  "pixel_edits": "none; generated output copied unchanged",
+  "status": "runtime candidate derived from owner-approved composition",
+  "release_approved": false
+}

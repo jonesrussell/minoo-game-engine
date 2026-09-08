@@ -1,6 +1,7 @@
 # Full-screen Toronto gameplay composition 01
 
-Issue #142. Status: candidate for owner review. Not approved and not runtime-enabled.
+Issue #142. Status: visual direction approved by owner in chat on 2026-09-07.
+The flattened mockup is not runtime-enabled. Implementation is #143.
 
 The owner asked for a cohesive gameplay-screen redesign before more character
 expressions. This candidate uses the existing newsroom illustration as a source
@@ -15,7 +16,7 @@ Historical research and exact location accuracy are not established by this imag
 it is a fictional newsroom composition. The reference's real public-figure
 scandal setting does not turn the illustrated scene into documentary evidence.
 
-Review: Does this feel like the intended game? Assess composition, Toronto
-identity, ink/colour treatment and HUD scale before micro-details or expressions.
+Approval covers composition, Toronto identity, ink/colour treatment and HUD scale.
+It does not approve finished assets, micro-details or expressions.
 The source illustration and playable game remain unchanged. Final asset rights,
 character acceptance and release approval remain separate.

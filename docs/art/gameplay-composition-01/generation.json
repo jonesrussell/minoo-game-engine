@@ -11,7 +11,8 @@
   "width": 1672,
   "height": 941,
   "pixel_edits": "none",
-  "status": "candidate awaiting owner visual review",
+  "status": "owner-approved visual direction on 2026-09-07; implementation #143",
   "runtime_enabled": false,
-  "release_approved": false
+  "release_approved": false,
+  "approval_scope": "Composition, Toronto identity, ink/colour treatment and HUD direction only; final assets and release remain separate"
 }

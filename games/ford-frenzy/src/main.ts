@@ -1,12 +1,19 @@
 import './styles.css';
+import './layouts.css';
 import { createSceneRenderer, type SceneRenderer } from '@minoo/engine/browser';
 import { validateSceneV2 } from '@minoo/engine/scene-v2';
 import { createNewsroomSession, restoreNewsroomSession, type NewsroomAction } from './session.ts';
 import sceneData from '../data/s01.json';
 import clipping from '../data/s01-clipping.json';
 import { createGameAudio } from './audio.ts';
+import { renderHud, reactionsForTransition } from './hud.ts';
+import presentationData from '../data/s01-presentation.json';
+import { conversationView, renderConversation, validatePresentation } from './presentation.ts';
 
 const audio = createGameAudio();
+const presentationValidation = validatePresentation(presentationData, sceneData.objects.map(object => object.id));
+if (!presentationValidation.ok) throw Error(`Invalid bundled presentation: ${presentationValidation.errors.map(error => error.message).join(' ')}`);
+const presentation = presentationValidation.presentation;
 
 const validation = validateSceneV2(sceneData);
 if (!validation.ok) throw Error('Invalid bundled S01 scene');
@@ -34,7 +41,7 @@ stage.setAttribute('aria-describedby','search-help search-location');
 const escapeHtml = (s: string) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const button = (id: string, text: string, primary = false, disabled = false) => `<button id="${id}" ${primary ? 'class="primary"' : ''} ${disabled ? 'disabled' : ''}>${text}</button>`;
 const bind = (id: string, action: () => void) => document.getElementById(id)?.addEventListener('click', () => { void audio.unlock(); action(); });
-const dialogue = (lines: [string,string][]) => `<div class="dialogue">${lines.map(([speaker,line])=>`<div class="dialogue-line"><span class="speaker">${escapeHtml(speaker)}</span><p>${escapeHtml(line)}</p></div>`).join('')}</div>`;
+const dialogue = (lines: readonly [string, string][]) => `<div class="dialogue">${lines.map(([speaker, line]) => `<div class="dialogue-line"><span class="speaker">${escapeHtml(speaker)}</span><p>${escapeHtml(line)}</p></div>`).join('')}</div>`;
 
 try {
   const raw = localStorage.getItem(SAVE);
@@ -85,28 +92,19 @@ function newGame() {
   session = createNewsroomSession(); badSave = false; persist();
   openingDialogue();
 }
-const openingLines = [
-  {speaker:'elliot',name:'Elliot / Editor',line:"Welcome to the Haps. Patio desk is Tuesday. Today you're on the mayor beat."},
-  {speaker:'alex',name:'Alex / You',line:"I don't even have a chair."},
-  {speaker:'elliot',name:'Elliot / Editor',line:'Classifieds has the chair. You get the folder, the recorder, and whatever coffee still answers to coffee.'},
-];
 function openingDialogue(index=0) {
-  const line=openingLines[index]!;
-  panel('conversation', `<img class="conversation-backdrop" src="./assets/background.png" alt=""><div class="conversation-heading"><span>TORONNA HAPS</span><span>Friday morning / May 17, 2013</span></div><div class="conversation-cast" aria-hidden="true">${['alex','elliot'].map(id=>`<div class="character-slot ${id} ${id===line.speaker?'speaking':''}"><img class="character-portrait" src="./assets/dialogue-${id}.png" alt=""><span class="portrait-fallback" hidden>${id==='alex'?'Alex':'Elliot'}</span></div>`).join('')}</div><div class="conversation-strip"><div class="speaker-name">${escapeHtml(line.name)}</div><p class="spoken-line" aria-live="polite">${escapeHtml(line.line)}</p><div class="dialogue-controls"><span class="line-count">${index+1} / ${openingLines.length}</span>${button('dialogue-back','Back',false,index===0)}${button('dialogue-skip','Skip conversation')}${button('dialogue-next',index===openingLines.length-1?'Get the assignment':'Next',true)}</div></div>`);
+  const line = conversationView(presentation, index);
+  panel('conversation', `<img class="conversation-backdrop" src="./assets/background.png" alt="">${renderConversation(presentation, index, button)}`);
   overlay.querySelector('.panel')!.classList.add('conversation-panel');
   for(const portrait of overlay.querySelectorAll<HTMLImageElement>('.character-portrait')){
     const fallback=()=>{portrait.hidden=true;(portrait.nextElementSibling as HTMLElement).hidden=false;};
     portrait.addEventListener('error',fallback,{once:true});
     if(portrait.complete && !portrait.naturalWidth)fallback();
   }
-  bind('dialogue-next',()=>index+1<openingLines.length?openingDialogue(index+1):assignmentSummary());
+  bind('dialogue-next',()=>line.index+1<line.total?openingDialogue(line.index+1):play());
   bind('dialogue-back',()=>openingDialogue(Math.max(0,index-1)));
-  bind('dialogue-skip',assignmentSummary);
+  bind('dialogue-skip',play);
   document.getElementById('dialogue-next')!.focus();
-}
-function assignmentSummary() {
-  panel('assignment', `<div class="eyebrow">01 / Your first shift</div><h2>So much for patio season.</h2><div class="assignment-slip"><strong>GET YOUR KIT. GET THE STORY.</strong><p>Find your six pieces of kit. Read the clipping. Wake up the recorder. Bring Elliot a story he can actually chase.</p></div><p class="muted">No timer. Three optional hints. Keyboard search uses arrows to explore and Enter to inspect.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
-  bind('start-assignment', play);
 }
 function play() {
   if (session.getState().k01Awarded) { result(); return; }
@@ -119,10 +117,9 @@ function act(action: NewsroomAction) {
   const result = session.step(action);
   if (!result.ok) { const message = result.errors.map(e => e.message).join(' '); document.querySelector('#feedback')!.textContent = message; return; }
   persist(); update();
-  if (result.state.k01Awarded && !before.k01Awarded) audio.play('complete');
-  else if (result.state.foundIds.length > before.foundIds.length) audio.play('find');
-  else if ((action.type==='pair-recorder' && action.connector==='recorder') || (action.type==='check-source' && action.reading==='reported-account')) audio.play('ready');
-  else if (action.type==='pair-recorder' || action.type==='check-source' || action.type==='submit-draft') audio.play('wrong');
+  for (const reaction of reactionsForTransition(before, result)) {
+    if (reaction.type === 'sound') audio.play(reaction.cue);
+  }
   if (result.state.k01Awarded) { resultScreen(); return; }
   if (action.type === 'select') inspect(action.objectId);
 }
@@ -130,7 +127,7 @@ function update() {
   const state = session.getState();
   renderer?.setView({foundIds:state.foundIds,hintedObjectId:state.hintedObjectId});
   const focusedId = document.activeElement?.id;
-  hud.innerHTML = `<div class="hud-row"><div class="objective"><div class="eyebrow">01 / Welcome to the Haps</div><strong>GET YOUR SHIT TOGETHER.</strong> <span class="big-number">${state.foundIds.length}<small> / 6</small></span></div>${button('hint',`Hint • ${state.hintBudget-state.hintsUsed} left`,false,state.hintsUsed>=state.hintBudget || state.searchCompleted)}${button('notebook','Your notes')}${button('file-draft','File it',true,!state.searchCompleted)}${button('pause','Pause')}</div><p class="target-names">${scene.contents.map(c=>`<span class="${state.foundIds.includes(scene.objects.find(o=>o.contentId===c.id)!.id)?'found':''}">${escapeHtml(c.label.replace(' with office rumour note',''))}</span>`).join('')}</p><p id="feedback" class="feedback" role="status">${escapeHtml(state.lastMessage)}</p><div class="keyboard-tools">${button('keyboard-search','Search with keyboard')}<span id="search-help">Arrows move · Shift + arrows for fine movement · Enter inspects · Tab leaves the scene</span></div><p id="search-location" class="search-location" role="status" aria-live="polite"></p>`;
+  hud.innerHTML = renderHud(presentation, scene, state, button);
   bind('hint',()=>act({type:'hint'})); bind('notebook',notebook); bind('pause',pause); bind('file-draft',submit);
   bind('keyboard-search',()=>stage.focus());
   if (focusedId) document.getElementById(focusedId)?.focus();
@@ -187,7 +184,8 @@ async function boot(){
   panel('loading','<div class="eyebrow">jr42 productions</div><h2>Opening the Haps…</h2><p>Finding a clean desk may take longer.</p>');
   try{
     const response=await fetch('./assets/manifest.json');if(!response.ok)throw Error('Asset manifest is unavailable.');
-    renderer=await createSceneRenderer({host:stage,scene,manifest:await response.json(),backgroundId:'S01.BG01',objectLighting:{tint:0xded3b8,shadow:true},reducedMotion,onSelect:id=>{if(mode==='playing')act({type:'select',objectId:id});},labels:[{text:'Toronna Haps',x:1060,y:72,fontSize:46,rotation:.07,color:0x302c25},{text:'MAY 2013',x:98,y:147,fontSize:18,color:0x302c25},{text:'Su Mo Tu We Th Fr Sa\n          1  2  3  4\n 5  6  7  8  9 10 11\n12 13 14 15 16 17 18\n19 20 21 22 23 24 25\n26 27 28 29 30 31',x:98,y:175,fontSize:10,color:0x302c25},{text:'PATIO??',x:98,y:270,fontSize:16,color:0x8b3529}]});
+    const calendar = scene.objects.find(object => object.id === 'S01.O3')!;
+    renderer=await createSceneRenderer({host:stage,scene,manifest:await response.json(),backgroundId:'S01.BG01',objectLighting:{tint:0xded3b8,shadow:true},reducedMotion,onSelect:id=>{if(mode==='playing')act({type:'select',objectId:id});},labels:[{text:'MAY 2013',x:calendar.x+calendar.width*.22,y:calendar.y+calendar.height*.27,fontSize:12,color:0x302c25},{text:'Su Mo Tu We Th Fr Sa\n          1  2  3  4\n 5  6  7  8  9 10 11\n12 13 14 15 16 17 18\n19 20 21 22 23 24 25\n26 27 28 29 30 31',x:calendar.x+calendar.width*.22,y:calendar.y+calendar.height*.38,fontSize:5.5,color:0x302c25},{text:'PATIO??',x:calendar.x+calendar.width*.22,y:calendar.y+calendar.height*.75,fontSize:10,color:0x8b3529}]});
     title();
   }catch(error){renderer?.dispose();renderer=undefined;panel('error',`<div class="eyebrow">Ford Frenzy</div><h2>The desk didn't load.</h2><p>${escapeHtml(error instanceof Error?error.message:'Unable to load required artwork.')}</p><p class="muted">Your saved progress has not been changed.</p><div class="buttons">${button('retry','Retry loading',true)}${button('return-title','Back to title')}</div>`);bind('retry',()=>void boot());bind('return-title',title);}
   finally{loading=false;}
@@ -224,7 +222,7 @@ stage.addEventListener('keydown',event=>{
     }
   }
 });
-document.querySelector('.wordmark')!.addEventListener('click',e=>{e.preventDefault();if(renderer)title();});
+document.querySelector('.wordmark')?.addEventListener('click',e=>{e.preventDefault();if(renderer)title();});
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){if(mode==='playing')pause();else if(['paused','inspect','source','recorder','notebook','submit'].includes(mode))play();}
   if(e.key==='f' && !e.ctrlKey && !e.metaKey && !e.altKey){if(document.fullscreenElement)void document.exitFullscreen();else void document.getElementById('app')!.requestFullscreen().catch(()=>{});}

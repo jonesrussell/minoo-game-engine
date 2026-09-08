@@ -1,0 +1,79 @@
+{
+  "$schema": "./presentation.schema.json",
+  "version": 1,
+  "id": "ford-frenzy-s01",
+  "layout": "conversation",
+  "mission": {
+    "brand": "TORONNA HAPS",
+    "eyebrow": "01 / Welcome to the Haps",
+    "title": "GET YOUR KIT. GET THE STORY.",
+    "totalTargets": 6
+  },
+  "assets": [
+    {
+      "id": "portrait-alex",
+      "url": "./assets/dialogue-alex.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot",
+      "url": "./assets/dialogue-elliot.png",
+      "required": false
+    }
+  ],
+  "characters": [
+    {
+      "id": "alex",
+      "name": "Alex / You",
+      "assetId": "portrait-alex"
+    },
+    {
+      "id": "elliot",
+      "name": "Elliot / Editor",
+      "assetId": "portrait-elliot"
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "s01-opening-01",
+      "speaker": "elliot",
+      "line": "Welcome to the Haps. Patio desk is Tuesday. Today you're on the mayor beat."
+    },
+    {
+      "id": "s01-opening-02",
+      "speaker": "alex",
+      "line": "I don't even have a chair."
+    },
+    {
+      "id": "s01-opening-03",
+      "speaker": "elliot",
+      "line": "Classifieds has the chair. You get the folder, the recorder, and whatever coffee still answers to coffee."
+    }
+  ],
+  "targetLabels": [
+    {
+      "objectId": "S01.O1",
+      "label": "Notebook"
+    },
+    {
+      "objectId": "S01.O2",
+      "label": "Contact sheet"
+    },
+    {
+      "objectId": "S01.O3",
+      "label": "Calendar"
+    },
+    {
+      "objectId": "S01.O4",
+      "label": "Folder"
+    },
+    {
+      "objectId": "S01.O5",
+      "label": "Clipping"
+    },
+    {
+      "objectId": "S01.O6",
+      "label": "Recorder"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Structured game presentation
 
-Status: accepted design direction, 2026-09-07. Implementation pending in #143;
-visual acceptance remains #142. This spec does not certify the current UI.
+Status: accepted design direction, 2026-09-07. S01 implementation under #143;
+#142 visual direction approved by owner. Final asset and playtest acceptance remain separate.
 
 ## Ownership and structure
 
@@ -97,6 +97,31 @@ checks. Inspect screenshots for composition and readable search. Record exact
 candidate and executed results in the PR. Visual approval and playtest acceptance
 remain separate from automated checks.
 
-Current evidence: main.ts contains hardcoded openingDialogue and calls session.step
-in act. Structured actions exist; the reusable presentation contract above is not
-yet implemented. Documentation checks cannot establish runtime conformance.
+## S01 implementation boundary (#143)
+
+The opening conversation and HUD are pure reusable render functions; shared layout
+CSS composes them over the independent Pixi scene. The existing panel helper hosts
+specialised notebook, puzzle and result content. These specialised screens are not
+a generic puzzle-definition language. Expression variants and closing/history data
+remain #139/#140. Later scene work follows the same spec.
+
+presentation.schema.json is the canonical game-owned contract. The existing
+`npm run generate:scene-types` command also generates its declarations. Strict,
+non-mutating Ajv validation checks structure; semantic checks cover unique IDs,
+speaker/portrait references and complete target-label references. The alternate
+fixture proves the same conversation renderer accepts different content.
+
+The presentation asset catalog contains optional local portraits. Required scene
+textures stay in the renderer manifest, with its loading/error/retry lifecycle;
+there is no second required-asset loader in the conversation layer. The background
+plate contains no painted HUD, characters or collectibles. Text and control labels
+remain live. Object coordinates changed for this plate while ID-based gameplay
+journals and the save revision remain compatible.
+
+Accepted session state feeds renderHud; reactionsForTransition maps accepted events
+to optional sounds/status. Sound and animation never commit progress. Replacing a
+panel drops its controls and listeners; global input handlers attach once. Dialogue
+index is transient; Back and Skip cannot discover clues, and resume uses the stored
+assignment state. Required texture, portrait, audio and save failures have separate
+recovery paths. Production browser evidence and exact candidate are recorded in the
+linked PR, not inferred from this document.

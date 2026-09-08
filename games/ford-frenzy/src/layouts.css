@@ -1,0 +1,78 @@
+/* Shared game layouts. The stage stays interactive; UI never contains painted controls. */
+#app { min-height: 100dvh; max-width: none; overflow: hidden; }
+#stage { position: absolute; inset: 0; width: 100%; height: 100dvh; min-height: 0; }
+#overlay { inset: 0; padding: 24px; }
+#brand { position: fixed; top: 22px; right: 26px; z-index: 6; pointer-events: none; color: #f5f0df; text-shadow: 2px 2px #050809, -1px -1px #050809, 3px 3px #050809; }
+#brand strong { display: block; font: 30px/.9 var(--display); letter-spacing: -.5px; }
+#brand small { display: block; font-size: 10px; margin-top: 7px; }
+#hud { position: fixed; inset: auto 0 0; z-index: 5; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 18px; padding: 12px 24px 10px; background: #111515f7; border-top: 2px solid #928878; box-shadow: 0 -4px 12px #0005; }
+.hud-row { grid-column: 2; grid-row: 1; gap: 8px; flex-wrap: nowrap; }
+.hud-row button { min-height: 42px; padding: 8px 12px; background: transparent; box-shadow: none; border: 0; font: 17px var(--display); color: #eee6d4; }
+.hud-row button:hover { color: #e8b373; background: #ffffff0c; }
+.hud-row .primary { color: #e2916c; }
+.objective { position: fixed; top: 22px; left: 26px; max-width: 70%; pointer-events: none; text-shadow: 2px 2px #050809, -1px -1px #050809, 3px 3px #050809; }
+.objective .eyebrow { color: #fff4dc; font: 27px/1 var(--display); letter-spacing: 0; margin-bottom: 4px; }
+.objective strong { color: #fff4dc; font: 21px/1.15 var(--display); letter-spacing: 0; }
+.big-number { font: 24px var(--display); color: #eee6d4; margin: 0 8px; }
+.big-number small { color: inherit; font: 17px var(--display); }
+.target-names { grid-column: 1; grid-row: 1; justify-content: space-between; gap: 8px; margin: 0; font: 17px var(--display); text-transform: uppercase; color: #e8e0cd; }
+.target-names span:before { content: none; }
+.target-names span.found { color: #949889; }
+.keyboard-tools { grid-column: 1 / -1; display: flex; margin: 0; gap: 10px; }
+.keyboard-tools button { min-height: 26px; font-size: 11px; padding: 2px 0; color: #c4c4b8; }
+.keyboard-tools span { font-size: 11px; color: #c4c4b8; }
+.feedback, .search-location, .save-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+#app:has(#stage:focus) .search-location { position: fixed; left: 24px; bottom: 108px; width: auto; height: auto; max-width: calc(100% - 48px); padding: 8px 12px; margin: 0; clip-path: none; white-space: normal; background: #101716f2; color: #f4e8cc; }
+#app:not([data-screen=playing]) #hud, #app:not([data-screen=playing]) #brand { visibility: hidden; }
+.panel:not(.title-panel):not(.conversation-panel) { background: #172020; color: #eee4cc; border-top-color: #ac4934; box-shadow: 8px 8px #0008; }
+.panel .eyebrow, .panel .speaker { color: #d8ad79; }
+.panel .muted { color: #b8b9aa; }
+.panel .card { border-color: #59605a; }
+.panel .clipping { color: #272a26; }
+.panel .clipping .paper-name { color: #272a26; }
+.panel .filed-stamp, .panel .shift-receipt strong { color: #e29470; }
+.panel.conversation-panel { width: 100%; }
+.conversation-backdrop { filter: brightness(.9); }
+.conversation-heading { background: transparent; border: 0; text-shadow: 2px 2px #000; }
+.conversation-strip { background: #111919f5; border-top: 2px solid #988774; }
+@media (max-width: 1000px) and (min-width: 701px) {
+  #hud { padding-inline: 16px; gap: 4px 10px; }
+  .hud-row button { padding-inline: 7px; font-size: 15px; }
+  .target-names { font-size: 14px; }
+}
+/* Portrait phones keep the complete logical scene, with controls below it. */
+@media (max-width: 700px) and (orientation: portrait) {
+  #app { display: flex; flex-direction: column; min-height: 100dvh; padding-top: 92px; background: #141b1b; }
+  #stage { position: relative; inset: auto; height: auto; aspect-ratio: 16 / 9; flex: none; }
+  #brand { top: 18px; right: 16px; }
+  #brand strong { font-size: 24px; }
+  #brand small { font-size: 8px; }
+  .objective { top: 19px; left: 16px; max-width: 66%; }
+  .objective .eyebrow { font-size: 21px; }
+  .objective strong { font-size: 16px; }
+  #hud { position: relative; inset: auto; display: flex; flex-direction: column; align-items: stretch; padding: 15px 16px; gap: 13px; flex: 1; }
+  .target-names { order: -1; display: grid; grid-template-columns: repeat(3,1fr); gap: 12px 8px; font-size: 16px; }
+  .hud-row { flex-wrap: wrap; justify-content: space-between; gap: 6px; }
+  .hud-row button { min-height: 44px; font-size: 17px; }
+  .keyboard-tools { align-items: flex-start; gap: 5px; }
+  .keyboard-tools button { min-height: 40px; }
+  .keyboard-tools span { max-width: none; line-height: 1.5; }
+  #app:has(#stage:focus) .search-location { position: static; width: auto; max-width: none; }
+  #overlay { padding: 14px; align-items: center; }
+  .panel { max-height: calc(100dvh - 28px); margin: 0; }
+}
+@media (max-height: 550px) and (orientation: landscape) {
+  #brand { top: 10px; right: 15px; }
+  #brand strong { font-size: 20px; }
+  #brand small { font-size: 8px; }
+  .objective { top: 10px; left: 15px; }
+  .objective .eyebrow { font-size: 20px; }
+  .objective strong { font-size: 15px; }
+  #hud { padding: 5px 12px; gap: 0 8px; }
+  .hud-row { gap: 2px; }
+  .hud-row button { font-size: 13px; min-height: 34px; padding: 5px; }
+  .target-names { font-size: 12px; }
+  .keyboard-tools { gap: 8px; }
+  .keyboard-tools button { min-height: 24px; font-size: 10px; }
+  .keyboard-tools span { font-size: 9px; }
+}
