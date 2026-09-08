@@ -18,8 +18,8 @@ try{
     await page.goto(url);await page.locator('#new-game').waitFor();
     if(input==='pointer')await page.screenshot({path:'test-results/ford/title.png',fullPage:true});
     assert(await page.locator('#continue').isDisabled());
-    await press('#settings');assert(await page.locator('#motion').isChecked());await press('#return-title');
-    await press('#credits');await press('#return-title');
+    await press('#settings');assert(await page.locator('#motion').isChecked());await press('#return-title');assert.equal(await page.evaluate(()=>document.activeElement.id),'settings');
+    await press('#credits');await press('#return-title');assert.equal(await page.evaluate(()=>document.activeElement.id),'credits');
     await press('#new-game');await press('#start-assignment');
     await page.screenshot({path:`test-results/ford/${input}-scene.png`,fullPage:true});
     // A click in an empty piece of the scene must not count as a target.
@@ -38,12 +38,13 @@ try{
       assert.equal((await state()).mode,'inspect',`target O${i} inspection`);
       assert.equal((await state()).state.foundIds.length,i);
       await press('#back-search');
+      if(input==='keyboard')assert.equal(await page.evaluate(()=>document.activeElement.id),`target-S01.O${i}`);
     }
     assert.equal((await state()).state.k01Awarded,false);
     await press('#file-draft');await press('#rumour-basis');assert.equal((await state()).state.k01Awarded,false);await press('#back-search');
     await press('#notebook');await press('#source');await press('#check-source');assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);await press('#back-search');
     await press('#notebook');await press('#recorder');await press('#phone-cable');assert.equal((await state()).state.chargerPaired,'phone');await press('#recorder-cable');assert.equal((await state()).state.chargerPaired,'recorder');await press('#back-search');
-    await press('#pause');const before=(await state()).state;await page.keyboard.press('Escape');assert.deepEqual((await state()).state,before);
+    await press('#pause');const before=(await state()).state;await page.keyboard.press('Escape');assert.deepEqual((await state()).state,before);assert.equal(await page.evaluate(()=>document.activeElement.id),'pause');
     await page.reload();await page.locator('#continue').waitFor();await press('#continue');assert.deepEqual((await state()).state,before);
     await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'result');assert.equal((await state()).state.k01Awarded,true);
     await page.screenshot({path:`test-results/ford/${input}-result.png`,fullPage:true});
@@ -60,6 +61,7 @@ try{
   await context.close();records.push({input:'corrupt save preserved',status:'passed'});
   const failContext=await browser.newContext();const failPage=await failContext.newPage();
   await failPage.route('**/S01.O6.png',route=>route.abort());await failPage.goto(url);await failPage.locator('#retry').waitFor();assert.equal(await failPage.locator('canvas').count(),0);
+  await failPage.locator('#return-title').click();await failPage.locator('#settings').click();await failPage.locator('#return-title').click();await failPage.locator('#new-game').click();await failPage.locator('#retry').waitFor();
   await failPage.unroute('**/S01.O6.png');await failPage.locator('#retry').click();await failPage.locator('#new-game').waitFor();assert.equal(await failPage.locator('canvas').count(),1);
   await failContext.close();records.push({input:'required texture failure and retry',status:'passed'});
   console.log(JSON.stringify(records,null,2));

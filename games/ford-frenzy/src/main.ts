@@ -19,7 +19,8 @@ let reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let saveExists = false;
 let badSave = false;
 let memoryOnly = false;
-let originFocus: HTMLElement | null = null;
+let originFocusId = 'notebook';
+let titleFocusId = 'new-game';
 let loading = false;
 const escapeHtml = (s: string) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const button = (id: string, text: string, primary = false, disabled = false) => `<button id="${id}" ${primary ? 'class="primary"' : ''} ${disabled ? 'disabled' : ''}>${text}</button>`;
@@ -41,7 +42,8 @@ function persist() {
   catch { memoryOnly = true; saveStatus.textContent = 'Save failed • keep this tab open; reloading returns to the last saved point'; }
 }
 function panel(next: string, body: string, title = false) {
-  if (mode === 'playing') originFocus = document.activeElement as HTMLElement;
+  if (mode === 'playing') originFocusId = document.activeElement?.id || 'notebook';
+  if (mode === 'title') titleFocusId = document.activeElement?.id || 'new-game';
   mode = next;
   renderer?.setPaused(true);
   overlay.innerHTML = `<section role="dialog" aria-modal="true" aria-label="${next}" class="panel ${title ? 'title-panel' : ''}">${body}</section>`;
@@ -50,14 +52,16 @@ function panel(next: string, body: string, title = false) {
 function title() {
   panel('title', `<div class="eyebrow">A Torrona Haps adventure</div><h1>FORD<br>FRENZY</h1><p class="byline">jr42 productions</p><p class="edition-card">You wanted the patio beat.<br>Toronto had other plans.</p><div class="buttons">${button('new-game','New Game',true)}${button('continue','Continue',false,!saveExists && !session.getActions().length)}</div><div class="buttons">${button('settings','Settings')}${button('credits','Credits')}</div><p class="muted">First playable • Welcome to the Haps<br>Search the scene. Check your leads. Get the story.</p>${badSave ? '<p class="muted">The saved game could not be read. It will be preserved until you confirm a new game.</p>' : ''}` , true);
   bind('new-game', () => {
+    if (!renderer) { void boot(); return; }
     if (saveExists || badSave || session.getActions().length) confirmNew();
     else newGame();
   });
-  bind('continue', play);
+  bind('continue', () => { if (!renderer) void boot(); else play(); });
   bind('settings', settings);
   bind('credits', credits);
   hud.innerHTML = '<span class="eyebrow">May 17, 2013</span><p>Welcome to the Haps. The coffee is ancient. The news is not.</p>';
   saveStatus.textContent = memoryOnly ? 'Temporary play • keep this tab open' : saveExists ? 'Saved game available' : 'Local play • no account needed';
+  document.getElementById(titleFocusId)?.focus();
 }
 function confirmNew() {
   panel('confirm', `<h2>Fresh notebook?</h2><p>Starting over replaces your saved assignment. Your display setting stays as it is.</p><div class="buttons">${button('confirm-new','Start over',true)}${button('cancel-new','Keep my progress')}</div>`);
@@ -71,8 +75,7 @@ function newGame() {
 function play() {
   if (session.getState().k01Awarded) { result(); return; }
   mode = 'playing'; overlay.innerHTML = ''; renderer?.setPaused(false); update();
-  if (originFocus?.isConnected) originFocus.focus();
-  else document.getElementById('notebook')?.focus();
+  (document.getElementById(originFocusId) ?? document.getElementById('notebook'))?.focus();
 }
 function act(action: NewsroomAction) {
   const result = session.step(action);
@@ -137,7 +140,7 @@ async function boot(){
     const response=await fetch('./assets/manifest.json');if(!response.ok)throw Error('Asset manifest is unavailable.');
     renderer=await createSceneRenderer({host:stage,scene,manifest:await response.json(),backgroundId:'S01.BG01',reducedMotion,onSelect:id=>{if(mode==='playing')act({type:'select',objectId:id});},labels:[{text:'Torrona Haps',x:1060,y:72,fontSize:46,rotation:.07,color:0x302c25},{text:'MAY 2013',x:98,y:147,fontSize:18,color:0x302c25},{text:'Su Mo Tu We Th Fr Sa\n          1  2  3  4\n 5  6  7  8  9 10 11\n12 13 14 15 16 17 18\n19 20 21 22 23 24 25\n26 27 28 29 30 31',x:98,y:175,fontSize:10,color:0x302c25},{text:'PATIO??',x:98,y:270,fontSize:16,color:0x8b3529}]});
     title();
-  }catch(error){renderer?.dispose();renderer=undefined;panel('error',`<div class="eyebrow">Ford Frenzy</div><h2>The desk didn't load.</h2><p>${escapeHtml(error instanceof Error?error.message:'Unable to load required artwork.')}</p><p class="muted">Your saved progress has not been changed.</p><div class="buttons">${button('retry','Retry loading',true)}</div>`);bind('retry',()=>void boot());}
+  }catch(error){renderer?.dispose();renderer=undefined;panel('error',`<div class="eyebrow">Ford Frenzy</div><h2>The desk didn't load.</h2><p>${escapeHtml(error instanceof Error?error.message:'Unable to load required artwork.')}</p><p class="muted">Your saved progress has not been changed.</p><div class="buttons">${button('retry','Retry loading',true)}${button('return-title','Back to title')}</div>`);bind('retry',()=>void boot());bind('return-title',title);}
   finally{loading=false;}
 }
 document.querySelector('.wordmark')!.addEventListener('click',e=>{e.preventDefault();if(renderer)title();});
