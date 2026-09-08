@@ -16,6 +16,35 @@ const records=[];
 const scene=JSON.parse(await readFile('games/ford-frenzy/data/s01.json','utf8'));
 const saveKey='ford-frenzy.s01.save.v1';
 try{
+  for (const pointerType of ['mouse','touch']) {
+    const context=await testContext({viewport:{width:1280,height:720},hasTouch:pointerType==='touch',reducedMotion:'reduce'});
+    const page=await context.newPage();
+    const state=()=>page.evaluate(()=>JSON.parse(window.render_game_to_text()));
+    await page.goto(url);await page.locator('#new-game').click();await page.locator('#dialogue-skip').click();
+    const initial=(await state()).state;
+    const empty={x:640,y:320};
+    const point=()=>pointerType==='touch'?page.touchscreen.tap(empty.x,empty.y):page.mouse.click(empty.x,empty.y);
+    await point();assert.equal((await state()).keyboardSearchActive,false);
+    assert.equal(await page.locator('#search-location').innerText(),'');
+    await page.locator('#keyboard-search').click();assert.equal((await state()).keyboardSearchActive,true);
+    await page.screenshot({path:`test-results/ford/${pointerType}-keyboard-cursor.png`});
+    if(pointerType==='mouse')await page.mouse.move(empty.x+8,empty.y+8);else await point();
+    assert.equal((await state()).keyboardSearchActive,false);
+    assert.equal(await page.locator('#search-location').innerText(),'');
+    const cursorBefore=(await state()).keyboardCursor;
+    await page.keyboard.press('ArrowRight');assert.equal((await state()).keyboardSearchActive,true);
+    assert.equal((await state()).keyboardCursor.x,cursorBefore.x+40);
+    await page.keyboard.press('Shift+ArrowLeft');assert.equal((await state()).keyboardCursor.x,cursorBefore.x+30);
+    await page.keyboard.press('Tab');assert.equal((await state()).keyboardSearchActive,false);
+    await page.keyboard.press('Shift+Tab');assert.equal((await state()).keyboardSearchActive,true);
+    await page.keyboard.press('Escape');assert.equal((await state()).mode,'paused');assert.equal((await state()).keyboardSearchActive,false);
+    await page.keyboard.press('Escape');assert.equal((await state()).keyboardSearchActive,true);
+    await page.keyboard.press('Escape');await page.locator('#resume').click();
+    assert.equal((await state()).keyboardSearchActive,false);
+    await point();await page.screenshot({path:`test-results/ford/${pointerType}-pointer-cursor-hidden.png`});
+    assert.deepEqual((await state()).state,initial);
+    await context.close();records.push({input:`${pointerType}/keyboard switching and modal restoration`,status:'passed'});
+  }
   for(const input of ['pointer','touch','keyboard']){
     const context=await testContext({viewport:input==='touch'?{width:390,height:844}:{width:1440,height:960},hasTouch:input==='touch',reducedMotion:'reduce'});
     const external=[];await context.route('**/*',route=>{if(new URL(route.request().url()).origin!==new URL(url).origin){external.push(route.request().url());return route.abort();}return route.continue();});

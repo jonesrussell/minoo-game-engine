@@ -26,6 +26,7 @@ const SAVE = 'ford-frenzy.s01.save.v1';
 let session = createNewsroomSession();
 let renderer: SceneRenderer | undefined;
 let mode = 'loading';
+let inputMethod: 'pointer' | 'keyboard' = 'pointer';
 let reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let saveExists = false;
 let badSave = false;
@@ -65,7 +66,7 @@ function panel(next: string, body: string, title = false) {
   audio.setPaused(['paused','title','loading','error'].includes(next));
   document.getElementById('app')!.dataset.screen = next;
   stage.inert = true;
-  renderer?.setSearchCursor(null);
+  hideSearchCursor();
   renderer?.setPaused(true);
   overlay.innerHTML = `<section role="dialog" aria-modal="true" aria-label="${next}" class="panel ${title ? 'title-panel' : ''}">${body}</section>`;
   overlay.querySelector<HTMLElement>('button, a, input')?.focus();
@@ -129,7 +130,7 @@ function update() {
   const focusedId = document.activeElement?.id;
   hud.innerHTML = renderHud(presentation, scene, state, button);
   bind('hint',()=>act({type:'hint'})); bind('notebook',notebook); bind('pause',pause); bind('file-draft',submit);
-  bind('keyboard-search',()=>stage.focus());
+  bind('keyboard-search',()=>{ inputMethod='keyboard'; stage.focus(); describeSearch(); });
   if (focusedId) document.getElementById(focusedId)?.focus();
   if(document.activeElement===stage) describeSearch();
 }
@@ -190,8 +191,15 @@ async function boot(){
   }catch(error){renderer?.dispose();renderer=undefined;panel('error',`<div class="eyebrow">Ford Frenzy</div><h2>The desk didn't load.</h2><p>${escapeHtml(error instanceof Error?error.message:'Unable to load required artwork.')}</p><p class="muted">Your saved progress has not been changed.</p><div class="buttons">${button('retry','Retry loading',true)}${button('return-title','Back to title')}</div>`);bind('retry',()=>void boot());bind('return-title',title);}
   finally{loading=false;}
 }
+function hideSearchCursor() {
+  renderer?.setSearchCursor(null);
+  stage.dataset.keyboardSearch = 'false';
+  const location=document.getElementById('search-location');
+  if(location) location.textContent='';
+}
 function describeSearch() {
-  if(mode!=='playing') return;
+  if(mode!=='playing' || inputMethod!=='keyboard' || document.activeElement!==stage) { hideSearchCursor(); return; }
+  stage.dataset.keyboardSearch = 'true';
   renderer?.setSearchCursor(searchCursor);
   const column = searchCursor.x < 640 ? 'left' : searchCursor.x < 1280 ? 'middle' : 'right';
   const row = searchCursor.y < 360 ? 'upper' : searchCursor.y < 720 ? 'centre' : 'lower';
@@ -204,7 +212,18 @@ function describeSearch() {
   if(location) location.textContent=`${regions[row+'-'+column]}. ${Math.round(searchCursor.x/scene.width*100)}% across, ${Math.round(searchCursor.y/scene.height*100)}% down. Enter to inspect here.`;
 }
 stage.addEventListener('focus',describeSearch);
-stage.addEventListener('blur',()=>renderer?.setSearchCursor(null));
+stage.addEventListener('blur',hideSearchCursor);
+// Capture intent before the browser moves focus or a control restores it.
+document.addEventListener('pointerdown',()=>{inputMethod='pointer';hideSearchCursor();},true);
+document.addEventListener('pointermove',event=>{
+  if(event.movementX || event.movementY) {inputMethod='pointer';hideSearchCursor();}
+},true);
+document.addEventListener('keydown',event=>{
+  if(['Tab','Escape','Enter',' ','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) {
+    inputMethod='keyboard';
+    if(event.target===stage && event.key!=='Tab' && event.key!=='Escape') describeSearch();
+  }
+},true);
 stage.addEventListener('keydown',event=>{
   if(mode!=='playing') return;
   const directions: Record<string,[number,number]>={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
@@ -229,7 +248,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Tab' && overlay.firstChild){const nodes=[...overlay.querySelectorAll<HTMLElement>('button:not(:disabled),a,input')];const first=nodes[0],last=nodes.at(-1);if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}}
 });
 window.addEventListener('pagehide',event=>{if(!event.persisted){renderer?.dispose();audio.dispose();}});
-Object.assign(window,{render_game_to_text:()=>JSON.stringify({mode,coordinates:'screen CSS pixels; origin top-left, x right, y down',targets:renderer?.getTargets()??[],keyboardCursor:searchCursor,state:session.getState(),memoryOnly}),advanceTime:(ms:number)=>renderer?.advanceTime(ms)});
+Object.assign(window,{render_game_to_text:()=>JSON.stringify({mode,coordinates:'screen CSS pixels; origin top-left, x right, y down',targets:renderer?.getTargets()??[],keyboardCursor:searchCursor,keyboardSearchActive:stage.dataset.keyboardSearch==='true',state:session.getState(),memoryOnly}),advanceTime:(ms:number)=>renderer?.advanceTime(ms)});
 document.getElementById('app')!.dataset.reducedMotion=String(reducedMotion);
 void boot();
 
