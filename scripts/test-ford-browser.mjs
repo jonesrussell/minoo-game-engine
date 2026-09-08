@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {preview} from 'vite';
 import {chromium} from 'playwright';
 const server=await preview({configFile:'vite.ford.config.ts',preview:{host:'127.0.0.1',port:0,open:false}});
@@ -7,6 +7,7 @@ const url=`http://127.0.0.1:${server.httpServer.address().port}`;
 const browser=await chromium.launch();
 await mkdir('test-results/ford',{recursive:true});
 const records=[];
+const scene=JSON.parse(await readFile('games/ford-frenzy/data/s01.json','utf8'));
 const saveKey='ford-frenzy.s01.save.v1';
 try{
   for(const input of ['pointer','touch','keyboard']){
@@ -26,11 +27,33 @@ try{
     // A click in an empty piece of the scene must not count as a target.
     const canvas=await page.locator('canvas').boundingBox();await page.mouse.click(canvas.x+canvas.width*.52,canvas.y+canvas.height*.35);
     assert.equal((await state()).state.foundIds.length,0);
+    assert.equal(await page.locator('[id^="target-S01."]').count(),0);
+    if(input==='keyboard'){
+      await press('#keyboard-search');
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'stage');
+      const before=(await state()).state;
+      await page.keyboard.press('Enter');assert.equal((await state()).mode,'playing');
+      assert.deepEqual((await state()).state,before);
+      await page.keyboard.press('ArrowRight');assert.deepEqual((await state()).state,before);
+      await page.screenshot({path:'test-results/ford/keyboard-cursor.png',fullPage:true});
+      await page.keyboard.press('Tab');assert.notEqual(await page.evaluate(()=>document.activeElement.id),'stage');
+    }
     for(let i=1;i<=6;i++){
       if(i===3 && input==='pointer'){await page.setViewportSize({width:1000,height:850});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));}
       if(input==='keyboard'){
-        if(!await page.locator('details').evaluate(e=>e.open))await press('summary');
-        await press(`[id="target-S01.O${i}"]`);
+        await press('#keyboard-search');
+        const object=scene.objects.find(o=>o.id===`S01.O${i}`);
+        for(const [axis,positive,negative] of [['x','ArrowRight','ArrowLeft'],['y','ArrowDown','ArrowUp']]){
+          const size=axis==='x'?'width':'height';
+          const goal=Math.round((object[axis]+object[size]/2)/10)*10;
+          while(Math.abs((await state()).keyboardCursor[axis]-goal)>=10){
+            const delta=goal-(await state()).keyboardCursor[axis];
+            await page.keyboard.press((Math.abs(delta)<40?'Shift+':'')+(delta>0?positive:negative));
+          }
+        }
+        assert.equal((await state()).state.foundIds.length,i-1,'Movement must not discover objects');
+        assert.doesNotMatch(await page.locator('#search-location').innerText(),/notebook|clipping|recorder|calendar|contact sheet|assignment folder/i);
+        await page.keyboard.press('Enter');
       }else{
         const target=(await state()).targets.find(t=>t.id===`S01.O${i}`);
         if(input==='touch')await page.touchscreen.tap(target.x+target.width/2,target.y+target.height/2);
@@ -39,7 +62,7 @@ try{
       assert.equal((await state()).mode,'inspect',`target O${i} inspection`);
       assert.equal((await state()).state.foundIds.length,i);
       await press('#back-search');
-      if(input==='keyboard')assert.equal(await page.evaluate(()=>document.activeElement.id),`target-S01.O${i}`);
+      if(input==='keyboard')assert.equal(await page.evaluate(()=>document.activeElement.id),'stage');
     }
     assert.equal((await state()).state.k01Awarded,false);
     await press('#file-draft');await press('#rumour-basis');assert.equal((await state()).state.k01Awarded,false);await press('#back-search');

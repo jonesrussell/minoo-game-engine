@@ -23,6 +23,8 @@ export interface BrowserSceneRendererOptions {
 }
 export interface BrowserTarget { id: string; x: number; y: number; width: number; height: number }
 export interface SceneRenderer {
+  setSearchCursor(point: { x: number; y: number } | null): void;
+  inspectAt(point: { x: number; y: number }): boolean;
   setView(view: { foundIds: readonly string[]; hintedObjectId: string | null }): void;
   setPaused(paused: boolean): void;
   setReducedMotion(reducedMotion: boolean): void;
@@ -95,6 +97,11 @@ export async function createSceneRenderer(options: BrowserSceneRendererOptions):
       const hint = new Graphics(); hint.rect(object.x - BORDER, object.y - BORDER, object.width + BORDER * 2, object.height + BORDER * 2).stroke({ width: 4, color: 0xffdc5c, alpha: 0.95 }); hint.visible = false; root.addChild(hint); hints.set(object.id, hint);
     }
     for (const label of options.labels ?? []) { const text = new Text({ text: label.text, style: { fill: label.color ?? 0xeee4cd, fontFamily: 'Georgia', fontWeight: 'bold', fontSize: label.fontSize } }); text.x = label.x; text.y = label.y; text.rotation = label.rotation ?? 0; root.addChild(text); }
+    const searchCursor = new Graphics();
+    searchCursor.circle(0, 0, 24).stroke({width: 8, color: 0x171b1b});
+    searchCursor.circle(0, 0, 24).stroke({width: 4, color: 0xffdc5c});
+    searchCursor.moveTo(-36, 0).lineTo(-14, 0).moveTo(14, 0).lineTo(36, 0).moveTo(0, -36).lineTo(0, -14).moveTo(0, 14).lineTo(0, 36).stroke({width:4,color:0xffdc5c});
+    searchCursor.eventMode = 'none'; searchCursor.visible = false; root.addChild(searchCursor);
     app.stage.addChild(root); options.host.appendChild(app.canvas);
     let scale = 1; let offsetX = 0; let offsetY = 0; let paused = false; let reducedMotion = options.reducedMotion; let elapsed = 0; let hidden = document.visibilityState === 'hidden';
     const resize = () => { if (!app || disposed) return; const width = Math.max(1, options.host.clientWidth); const height = Math.max(1, options.host.clientHeight); app.renderer.resize(width, height); scale = Math.min(width / scene.width, height / scene.height); offsetX = (width - scene.width * scale) / 2; offsetY = (height - scene.height * scale) / 2; root.x = offsetX; root.y = offsetY; root.scale.set(scale); app.render(); };
@@ -104,6 +111,14 @@ export async function createSceneRenderer(options: BrowserSceneRendererOptions):
     const frame = (ticker: { deltaMS: number }) => { if (!paused && !hidden) elapsed += ticker.deltaMS; for (const hint of hints.values()) hint.alpha = reducedMotion ? 1 : 0.8 + Math.sin(elapsed / 300) * 0.2; };
     app.ticker.add(frame); if (!hidden) app.ticker.start();
     const renderer: SceneRenderer = {
+      setSearchCursor(point) { if (disposed) return; searchCursor.visible = !!point; if (point) searchCursor.position.set(point.x, point.y); app?.render(); },
+      inspectAt(point) {
+        if (disposed || paused || hidden || !Number.isFinite(point.x) || !Number.isFinite(point.y)) return false;
+        // Match pointer overlap/border policy; never snap the search cursor to a target.
+        const object = [...objects].reverse().find(o => point.x >= o.x-BORDER && point.x <= o.x+o.width+BORDER && point.y >= o.y-BORDER && point.y <= o.y+o.height+BORDER);
+        if (!object) return false;
+        options.onSelect(object.id); return true;
+      },
       setView(view) { if (disposed) return; const found = new Set(view.foundIds); for (const [id, sprite] of sprites) sprite.alpha = found.has(id) ? 0.45 : 1; for (const [id, hint] of hints) hint.visible = view.hintedObjectId === id; app?.render(); },
       setPaused(value) { if (disposed || paused === value) return; paused = value; if (paused) app?.ticker.stop(); else if (!hidden) app?.ticker.start(); },
       setReducedMotion(value) { if (!disposed) { reducedMotion = value; if (reducedMotion) root.alpha = 1; } },

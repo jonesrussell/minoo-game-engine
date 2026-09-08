@@ -3,3 +3,5 @@
 #stage{height:min(56.25vw,calc(100dvh - 290px))}@media(max-width:650px){#stage{height:56.25vw;min-height:0}#overlay{min-height:520px;align-items:flex-start}.panel{margin-top:10px}}
 
 .clipping{background:#e9ddbc;color:#302c24;padding:22px 24px;box-shadow:3px 4px 0 #1119;margin-bottom:24px;transform:rotate(-.5deg)}.paper-name{font:900 clamp(24px,4vw,38px) Georgia;text-align:center;border-bottom:3px double #514835;padding-bottom:8px}.paper-tagline{text-align:center;font:italic 13px Georgia;margin:8px 0}.paper-date{font:11px Arial;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #514835;padding-bottom:12px}.clipping h2{font:900 clamp(23px,4vw,32px) Georgia;line-height:1.05}.clipping p{font-family:Georgia}.clipping .paper-date{font-family:Arial}
+.keyboard-tools{display:flex;gap:15px;align-items:center;margin-top:14px}.keyboard-tools span{font-size:12px;color:#c0bdad}.search-location{font-size:13px;margin:10px 0 0;color:#e3b34e;min-height:18px}#stage:focus-visible{outline:3px solid #e3b34e;outline-offset:-3px}@media(max-width:650px){.keyboard-tools{align-items:flex-start;flex-direction:column}}
+

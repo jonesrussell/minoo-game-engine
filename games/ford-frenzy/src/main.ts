@@ -23,6 +23,11 @@ let memoryOnly = false;
 let originFocusId = 'notebook';
 let titleFocusId = 'new-game';
 let loading = false;
+const searchCursor = {x:960,y:540};
+stage.tabIndex = 0;
+stage.setAttribute('role','application');
+stage.setAttribute('aria-label','Search the newsroom');
+stage.setAttribute('aria-describedby','search-help search-location');
 const escapeHtml = (s: string) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const button = (id: string, text: string, primary = false, disabled = false) => `<button id="${id}" ${primary ? 'class="primary"' : ''} ${disabled ? 'disabled' : ''}>${text}</button>`;
 const bind = (id: string, action: () => void) => document.getElementById(id)?.addEventListener('click', action);
@@ -46,6 +51,8 @@ function panel(next: string, body: string, title = false) {
   if (mode === 'playing') originFocusId = document.activeElement?.id || 'notebook';
   if (mode === 'title') titleFocusId = document.activeElement?.id || 'new-game';
   mode = next;
+  stage.inert = true;
+  renderer?.setSearchCursor(null);
   renderer?.setPaused(true);
   overlay.innerHTML = `<section role="dialog" aria-modal="true" aria-label="${next}" class="panel ${title ? 'title-panel' : ''}">${body}</section>`;
   overlay.querySelector<HTMLElement>('button, a, input')?.focus();
@@ -70,12 +77,12 @@ function confirmNew() {
 }
 function newGame() {
   session = createNewsroomSession(); badSave = false; persist();
-  panel('assignment', `<div class="eyebrow">01 / Welcome to the Haps</div><h2>So much for patio season.</h2><p>You were hired to review patios. Congratulations. You're on the mayor beat.</p><p>The editor needs your notebook, contact sheet, calendar, assignment folder, report summary and recorder. Naturally, they're somewhere in this disaster.</p><p class="muted">Find six objects, read the clipping, get the recorder working, then decide what belongs in the first draft. No timer. Three hints. Keyboard search is available below the scene.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
+  panel('assignment', `<div class="eyebrow">01 / Welcome to the Haps</div><h2>So much for patio season.</h2><p>You were hired to review patios. Congratulations. You're on the mayor beat.</p><p>The editor needs your notebook, contact sheet, calendar, assignment folder, report summary and recorder. Naturally, they're somewhere in this disaster.</p><p class="muted">Find six objects, read the clipping, get the recorder working, then decide what belongs in the first draft. No timer. Three hints. Use the keyboard search control to explore with arrow keys and inspect with Enter.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
   bind('start-assignment', play);
 }
 function play() {
   if (session.getState().k01Awarded) { result(); return; }
-  mode = 'playing'; overlay.innerHTML = ''; renderer?.setPaused(false); update();
+  mode = 'playing'; stage.inert = false; overlay.innerHTML = ''; renderer?.setPaused(false); update();
   (document.getElementById(originFocusId) ?? document.getElementById('notebook'))?.focus();
 }
 function act(action: NewsroomAction) {
@@ -89,11 +96,11 @@ function update() {
   const state = session.getState();
   renderer?.setView({foundIds:state.foundIds,hintedObjectId:state.hintedObjectId});
   const focusedId = document.activeElement?.id;
-  const detailsOpen = hud.querySelector('details')?.open ?? false;
-  hud.innerHTML = `<div class="hud-row"><div class="objective"><div class="eyebrow">01 / Welcome to the Haps</div><strong>Find your reporting kit</strong> <span class="big-number">${state.foundIds.length}<small> / 6</small></span></div>${button('hint',`Hint • ${state.hintBudget-state.hintsUsed} left`,false,state.hintsUsed>=state.hintBudget || state.searchCompleted)}${button('notebook','Notebook')}${button('file-draft','File draft',true,!state.searchCompleted)}${button('pause','Pause')}</div><p class="target-names">${scene.contents.map(c=>`<span class="${state.foundIds.includes(scene.objects.find(o=>o.contentId===c.id)!.id)?'found':''}">${escapeHtml(c.label.replace(' with office rumour note',''))}</span>`).join('')}</p><p id="feedback" class="feedback" role="status">${escapeHtml(state.lastMessage)}</p><details ${detailsOpen?'open':''}><summary>Keyboard search / object list</summary><div class="targets">${scene.objects.map(o=>`<button id="target-${o.id}" class="${state.foundIds.includes(o.id)?'found':''}">${state.foundIds.includes(o.id)?'✓ ':''}${escapeHtml(scene.contents.find(c=>c.id===o.contentId)!.label)}</button>`).join('')}</div></details>`;
+  hud.innerHTML = `<div class="hud-row"><div class="objective"><div class="eyebrow">01 / Welcome to the Haps</div><strong>Find your reporting kit</strong> <span class="big-number">${state.foundIds.length}<small> / 6</small></span></div>${button('hint',`Hint • ${state.hintBudget-state.hintsUsed} left`,false,state.hintsUsed>=state.hintBudget || state.searchCompleted)}${button('notebook','Notebook')}${button('file-draft','File draft',true,!state.searchCompleted)}${button('pause','Pause')}</div><p class="target-names">${scene.contents.map(c=>`<span class="${state.foundIds.includes(scene.objects.find(o=>o.contentId===c.id)!.id)?'found':''}">${escapeHtml(c.label.replace(' with office rumour note',''))}</span>`).join('')}</p><p id="feedback" class="feedback" role="status">${escapeHtml(state.lastMessage)}</p><div class="keyboard-tools">${button('keyboard-search','Search with keyboard')}<span id="search-help">Arrows move · Shift + arrows for fine movement · Enter inspects · Tab leaves the scene</span></div><p id="search-location" class="search-location" role="status" aria-live="polite"></p>`;
   bind('hint',()=>act({type:'hint'})); bind('notebook',notebook); bind('pause',pause); bind('file-draft',submit);
-  for (const o of scene.objects) bind(`target-${o.id}`,()=>{ if(mode==='playing') act({type:'select',objectId:o.id}); });
+  bind('keyboard-search',()=>stage.focus());
   if (focusedId) document.getElementById(focusedId)?.focus();
+  if(document.activeElement===stage) describeSearch();
 }
 const jokes: Record<string,string> = {
   'S01.O1': 'Three blank pages. One phone number. Forty-seven doodles of the editor as a raccoon. Ready for journalism.',
@@ -149,6 +156,38 @@ async function boot(){
   }catch(error){renderer?.dispose();renderer=undefined;panel('error',`<div class="eyebrow">Ford Frenzy</div><h2>The desk didn't load.</h2><p>${escapeHtml(error instanceof Error?error.message:'Unable to load required artwork.')}</p><p class="muted">Your saved progress has not been changed.</p><div class="buttons">${button('retry','Retry loading',true)}${button('return-title','Back to title')}</div>`);bind('retry',()=>void boot());bind('return-title',title);}
   finally{loading=false;}
 }
+function describeSearch() {
+  if(mode!=='playing') return;
+  renderer?.setSearchCursor(searchCursor);
+  const column = searchCursor.x < 640 ? 'left' : searchCursor.x < 1280 ? 'middle' : 'right';
+  const row = searchCursor.y < 360 ? 'upper' : searchCursor.y < 720 ? 'centre' : 'lower';
+  const regions: Record<string,string> = {
+    'upper-left':'Pinboard and window frame', 'upper-middle':'Windows and the newsroom sign', 'upper-right':'Wall shelves and window',
+    'centre-left':'Monitor and paperwork', 'centre-middle':'Keyboard, lamp and desk clutter', 'centre-right':'The far desk',
+    'lower-left':'Chair and near desk edge', 'lower-middle':'The broad desktop', 'lower-right':'Desk edge and cabinets',
+  };
+  const location=document.getElementById('search-location');
+  if(location) location.textContent=`${regions[row+'-'+column]}. ${Math.round(searchCursor.x/scene.width*100)}% across, ${Math.round(searchCursor.y/scene.height*100)}% down. Enter to inspect here.`;
+}
+stage.addEventListener('focus',describeSearch);
+stage.addEventListener('blur',()=>renderer?.setSearchCursor(null));
+stage.addEventListener('keydown',event=>{
+  if(mode!=='playing') return;
+  const directions: Record<string,[number,number]>={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+  const direction=directions[event.key];
+  if(direction){
+    event.preventDefault(); const step=event.shiftKey?10:40;
+    searchCursor.x=Math.max(0,Math.min(scene.width,searchCursor.x+direction[0]*step));
+    searchCursor.y=Math.max(0,Math.min(scene.height,searchCursor.y+direction[1]*step));
+    describeSearch();
+  }else if(event.key==='Enter' || event.key===' '){
+    event.preventDefault(); if(event.repeat)return;
+    if(!renderer?.inspectAt(searchCursor)){
+      const location=document.getElementById('search-location');
+      if(location)location.textContent='Nothing for your kit at this spot. Keep looking.';
+    }
+  }
+});
 document.querySelector('.wordmark')!.addEventListener('click',e=>{e.preventDefault();if(renderer)title();});
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){if(mode==='playing')pause();else if(['paused','inspect','source','recorder','notebook','submit'].includes(mode))play();}
@@ -156,6 +195,6 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Tab' && overlay.firstChild){const nodes=[...overlay.querySelectorAll<HTMLElement>('button:not(:disabled),a,input')];const first=nodes[0],last=nodes.at(-1);if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}}
 });
 window.addEventListener('pagehide',event=>{if(!event.persisted)renderer?.dispose();});
-Object.assign(window,{render_game_to_text:()=>JSON.stringify({mode,coordinates:'screen CSS pixels; origin top-left, x right, y down',targets:renderer?.getTargets()??[],state:session.getState(),memoryOnly}),advanceTime:(ms:number)=>renderer?.advanceTime(ms)});
+Object.assign(window,{render_game_to_text:()=>JSON.stringify({mode,coordinates:'screen CSS pixels; origin top-left, x right, y down',targets:renderer?.getTargets()??[],keyboardCursor:searchCursor,state:session.getState(),memoryOnly}),advanceTime:(ms:number)=>renderer?.advanceTime(ms)});
 void boot();
 

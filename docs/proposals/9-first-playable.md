@@ -16,8 +16,8 @@ working fixture; no Studio, account or model service is required.
 - FF-UI-001/002: title, assignment, HUD, inspect, notebook, embedded clipping, recorder,
   submission, pause, settings, credits and result views. Keyboard focus stays in
   dialogs and returns to a stable play control.
-- FF-INPUT-001: all six objects selectable by sprite pointer/touch or labelled
-  keyboard alternatives. Resizing preserves logical bounds. Empty scene clicks
+- FF-INPUT-001: all six objects selectable by sprite pointer/touch or a freely
+  movable keyboard search cursor. Resizing preserves logical bounds. Empty scene clicks
   do not create finds.
 - FF-UI-003: all required textures load before a canvas is appended. An aborted
   required texture yields retry, which recovers with a single canvas.
