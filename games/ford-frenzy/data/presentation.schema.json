@@ -94,7 +94,8 @@
         "required": [
           "id",
           "name",
-          "assetId"
+          "assetId",
+          "expressions"
         ],
         "properties": {
           "id": {
@@ -107,6 +108,17 @@
           },
           "assetId": {
             "type": "string"
+          },
+          "expressions": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["neutral"],
+            "properties": {
+              "neutral": { "type": "string" },
+              "annoyed": { "type": "string" },
+              "amused": { "type": "string" },
+              "surprised": { "type": "string" }
+            }
           }
         }
       }
@@ -120,7 +132,8 @@
         "required": [
           "id",
           "speaker",
-          "line"
+          "line",
+          "expression"
         ],
         "properties": {
           "id": {
@@ -133,6 +146,9 @@
           "line": {
             "type": "string",
             "minLength": 1
+          },
+          "expression": {
+            "enum": ["neutral", "annoyed", "amused", "surprised"]
           }
         }
       }

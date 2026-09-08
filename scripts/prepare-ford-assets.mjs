@@ -37,3 +37,13 @@ for (const id of ['elliot', 'alex']) {
   if (createHash('sha256').update(await readFile(source)).digest('hex') !== asset.sha256) throw Error(`Dialogue portrait hash mismatch: ${id}`);
   await copyFile(source, new URL(`dialogue-${id}.png`, destination));
 }
+
+// Optional expression candidates share the portrait fallback lifecycle.
+const expressionSource = new URL('docs/art/expressions-01/', root);
+const expressions = JSON.parse(await readFile(new URL('manifest.json', expressionSource), 'utf8'));
+for (const asset of expressions.assets) {
+  if (!['alex', 'elliot'].includes(asset.character) || !['annoyed', 'amused', 'surprised'].includes(asset.expression) || asset.file !== `${asset.character}-${asset.expression}.png`) throw Error('Invalid expression asset');
+  const bytes = await readFile(new URL(asset.file, expressionSource));
+  if (createHash('sha256').update(bytes).digest('hex') !== asset.sha256) throw Error(`Expression hash mismatch: ${asset.file}`);
+}
+for (const asset of expressions.assets) await copyFile(new URL(asset.file, expressionSource), new URL(`dialogue-${asset.file}`, destination));

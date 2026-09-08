@@ -53,3 +53,6 @@ intent separately from focus; gate cursor and location overlay together. Parent
 owns main/layout/spec and regression checks. Existing scene/action/save semantics
 unchanged. Qualification planned: pointer/touch/keyboard switching and modal
 return, then production assignment/recovery.
+Issue139: expression catalog and per-beat selection are declarative and schema-validated. S01 uses Elliot neutral, Alex annoyed, and Elliot amused; inactive characters remain neutral. Expression image failure retries neutral once, then exposes the visible name fallback. Browser qualification adds phone/reduced-motion variant retry and both-failure fallback checks; no browser suite claim is made here.
+
+#139 qualification: 104 unit tests passed; build/typecheck, framework browser/replay checks and repository checks passed. Ford mouse/touch/keyboard assignment suite passed on expression implementation; final expanded expression suite and independent review recorded in the PR. Six RGBA candidates inspected together against dark backgrounds; source PNGs and alpha-cleanup provenance preserved. Owner character acceptance remains pending.

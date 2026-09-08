@@ -138,3 +138,14 @@ shows it; moving the mouse hides it without changing progress. Arrow input on th
 focused scene enables it again. Tab exit hides it; keyboard return restores it.
 Returning from a panel follows the latest input method, including pointer close.
 No action, target coordinate or save contract changes are part of this behaviour.
+
+## Expression presentation (#139)
+
+Character expressions use stable IDs `neutral`, `annoyed`, `amused`, and
+`surprised`. A dialogue beat selects one expression for its active speaker;
+inactive speakers always use their neutral asset. Expression assets are optional
+local presentation assets. If a beat has no mapping for its requested expression,
+the renderer selects neutral art. If a requested expression image fails, the
+browser presentation retries neutral once and then reveals the character name
+fallback if neutral also fails. Expressions do not alter session actions, saves,
+replay, or progression.

@@ -184,11 +184,34 @@ try{
   assert.equal(await portraitPage.locator('.spoken-line').isVisible(),true);
   await portraitPage.locator('.portrait-fallback').first().waitFor({state:'visible'});
   assert.equal(await portraitPage.locator('.portrait-fallback:visible').count(),2);
+  await portraitPage.locator('#dialogue-next').tap();
+  await portraitPage.locator('.portrait-fallback:visible').first().waitFor({state:'visible'});
+  assert.equal(await portraitPage.locator('.portrait-fallback:visible').count(),2);
+  assert.match((await portraitPage.locator('.portrait-fallback:visible').allTextContents()).join(' '),/Alex|Elliot/);
   await portraitPage.locator('#dialogue-skip').tap();
   assert.equal(await portraitPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');
   assert.equal(await portraitPage.locator('.portrait-fallback').count(),0);
   assert.equal(await portraitPage.locator('#stage').getAttribute('inert'),null);
   assert.deepEqual((await portraitPage.evaluate(()=>JSON.parse(window.render_game_to_text()))).state.foundIds,[]);
+  const expressionContext=await testContext({viewport:{width:390,height:844},hasTouch:true,reducedMotion:'reduce'});
+  const expressionPage=await expressionContext.newPage();
+  await expressionPage.goto(url);await expressionPage.locator('#new-game').tap();
+  for(const portrait of await expressionPage.locator('img.character-portrait').all()){await portrait.evaluate(async image=>{await image.decode();});assert.equal(await portrait.evaluate(image=>image.naturalWidth>0),true);}
+  assert.equal(await expressionPage.locator('.character-slot.speaking').getAttribute('class'),'character-slot elliot speaking');
+  assert.equal(await expressionPage.locator('.character-slot.elliot img').getAttribute('data-expression'),'neutral');
+  await expressionPage.locator('#dialogue-next').tap();
+  const alexExpression=expressionPage.locator('.character-slot.alex img');await alexExpression.evaluate(async image=>{await image.decode();});
+  assert.equal(await alexExpression.getAttribute('data-expression'),'annoyed');
+  assert.equal(await alexExpression.evaluate(image=>image.naturalWidth>0),true);
+  assert.match(await alexExpression.getAttribute('src'),/dialogue-alex-annoyed\.png$/);
+  assert.equal(await expressionPage.locator('.character-slot.elliot img').getAttribute('data-expression'),'neutral');
+  await expressionPage.locator('#dialogue-next').tap();
+  const elliotExpression=expressionPage.locator('.character-slot.elliot img');await elliotExpression.evaluate(async image=>{await image.decode();});
+  assert.equal(await elliotExpression.getAttribute('data-expression'),'amused');
+  assert.match(await elliotExpression.getAttribute('src'),/dialogue-elliot-amused\.png$/);
+  await expressionPage.screenshot({path:'test-results/ford/phone-expressions.png',fullPage:true});
+  await expressionPage.locator('#dialogue-skip').tap();assert.equal(await expressionPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');
+  await expressionContext.close();records.push({input:'expression variants phone/reduced-motion',status:'passed'});
   await portraitContext.close();records.push({input:'broken dialogue portraits remain playable',status:'passed'});  for(const failure of ['missing','blocked']){
   const silentContext=await testContext();const silentPage=await silentContext.newPage();const silentErrors=[];silentPage.on('pageerror',e=>silentErrors.push(String(e)));
   await silentPage.addInitScript(failure=>{class BlockedAudio{state='suspended';resume(){return Promise.reject(new Error('policy'));}suspend(){return Promise.resolve();}close(){return Promise.resolve();}}Object.defineProperty(window,'AudioContext',{value:failure==='blocked'?BlockedAudio:undefined});Object.defineProperty(window,'webkitAudioContext',{value:undefined});},failure);
@@ -202,6 +225,8 @@ try{
   await failContext.close();records.push({input:'required texture failure and retry',status:'passed'});
   console.log(JSON.stringify(records,null,2));
 }finally{await writeFile('test-results/ford/results.json',JSON.stringify(records,null,2));await browser.close();await new Promise(r=>server.httpServer.close(r));}
+
+
 
 
 
