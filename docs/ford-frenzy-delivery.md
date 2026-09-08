@@ -102,7 +102,7 @@ It is a bounded contribution to #105/#106/#107, not completion of their three-sc
 scope. Owner playtest #45 follows this local preview; timing and fun remain human
 acceptance. S02 and S03 remain #98 and #99.
 
-## Character presentation order
+## Earlier character presentation order (reordered by #142)
 
 1. **#138: visible opening conversation.** Derive Elliot and Alex portraits from
    the approved newsroom concept. Stage one line at a time, identify the speaker,
@@ -124,3 +124,31 @@ shows character-led communication. Its [gameplay guide](https://wooga.theymes.co
 describes search and adventure-puzzle scene types. Our implementation uses original
 art and satire, a standalone runtime, and no outside links in gameplay. These are
 presentation lessons, not a commitment to the reference game's economy or structure.
+
+## Current presentation priority: complete composition first
+
+Owner feedback on 2026-09-07 rejects the overall current play presentation: beige
+assignment popup, website-like header/footer, dimming overlay and generic office.
+Character staging did not resolve that composition problem. This changes delivery
+order without undoing the working runtime, dialogue or input checks.
+
+1. **#142: visual review.** Produce one complete edge-to-edge Toronto gameplay
+   mockup using the existing art as reference. Include compact integrated HUD and
+   mission copy over the scene, strong ink shapes and a recognisable Toronto
+   street/neighbourhood context. Keep the scene readable and the satire present
+   in the environment. Owner acceptance is still required.
+2. **#143: implement the selected composition.** After #142 approval, implement
+   editable game UI and separate scene/prop assets, preserving input and saves.
+   A flat concept image is not a playable scene or production asset package.
+3. **#139: expressions.** Resume character expression variants after the overall
+   presentation is implemented. The added native dependency is #143.
+4. **#140: closing conversation and discovery pace.** Follow expression work.
+
+The original style reference remains GTA IV illustrated promotional/loading art,
+translated into an original Toronto hidden-object game. No open-world 3D scope,
+weapons, minimap, energy gates or multiplayer is introduced by this visual review.
+
+Candidate and provenance: [gameplay composition 01](art/gameplay-composition-01/README.md).
+The mockup's generated UI lettering is for composition review; production UI
+must remain editable and accessible. The live playable build stays unchanged
+until the selected direction is implemented under #143.

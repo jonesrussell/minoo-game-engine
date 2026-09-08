@@ -1109,7 +1109,8 @@
     {
       "issue": 139,
       "dependencies": [
-        138
+        138,
+        143
       ],
       "title": "Add consistent character expressions and dialogue reactions",
       "phase": "M2 - Investigation vertical slice",
@@ -1125,6 +1126,26 @@
       "title": "Stage closing conversations and tune discovery pacing",
       "phase": "M2 - Investigation vertical slice",
       "workstream": "game",
+      "priority": "P0",
+      "effort": "M"
+    },
+    {
+      "issue": 142,
+      "title": "Approve a cohesive Toronto gameplay composition before further character polish",
+      "dependencies": [],
+      "workstream": "content",
+      "phase": "M2 - Investigation vertical slice",
+      "priority": "P0",
+      "effort": "M"
+    },
+    {
+      "issue": 143,
+      "title": "Implement the approved full-screen Toronto gameplay composition",
+      "dependencies": [
+        142
+      ],
+      "workstream": "game",
+      "phase": "M2 - Investigation vertical slice",
       "priority": "P0",
       "effort": "M"
     }
@@ -1228,5 +1249,11 @@
       "unique_hashes": 99,
       "release_approved": false
     }
-  }
+  },
+  "presentation_order": [
+    142,
+    143,
+    139,
+    140
+  ]
 }
