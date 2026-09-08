@@ -89,6 +89,26 @@
       "verification": "npm run test:ford",
       "session_issue": 96,
       "remaining": "S02/S03, campaign saves, production art, puzzle balancing and owner playtest"
+    },
+    "game_presentation": {
+      "status": "accepted design; implementation pending",
+      "spec": "docs/specs/game-presentation.md",
+      "proposal": "docs/proposals/143-structured-presentation.md",
+      "implementation_issue": 143,
+      "requirements": [
+        "PRES-001",
+        "PRES-002",
+        "PRES-003",
+        "PRES-004",
+        "PRES-005"
+      ],
+      "follow_on_issues": [
+        139,
+        140,
+        98,
+        99
+      ],
+      "visual_approval_issue": 142
     }
   },
   "issues": [

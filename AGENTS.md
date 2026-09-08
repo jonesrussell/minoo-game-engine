@@ -47,3 +47,10 @@ The product is a framework with a small runtime engine. Read docs/roadmap.md and
 - UI work requires browser exercise and screenshot inspection. Include keyboard/touch behavior where affected. Record tested commit and failures.
 - A green check does not prove learning quality, cultural accuracy or enjoyable play. Keep human acceptance explicit for release content.
 - No deployment to minoo.live is part of routine work. Use the separate review/alpha host defined by its delivery issue.
+
+## Game presentation delivery
+
+Follow docs/specs/game-presentation.md for every new or changed game screen.
+Reuse components/layouts, validate declarative content, and derive presentation
+from accepted state. Map issue tasks to requirement IDs before implementation;
+record actual evidence and update the durable spec with the final behaviour.
