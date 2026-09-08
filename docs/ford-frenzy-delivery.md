@@ -152,3 +152,14 @@ Candidate and provenance: [gameplay composition 01](art/gameplay-composition-01/
 The mockup's generated UI lettering is for composition review; production UI
 must remain editable and accessible. The live playable build stays unchanged
 until the selected direction is implemented under #143.
+
+## Structured scene creation
+
+Owner direction on 2026-09-07 makes reusable components/layouts, validated scene
+presentation data and state-driven events part of normal game creation.
+[The durable spec](specs/game-presentation.md) defines PRES-001 through PRES-005;
+[the #143 proposal](proposals/143-structured-presentation.md) maps implementation
+tasks to them. #143 establishes the S01 pattern before #139 expressions and #140
+closing dialogue. #98/#99 reuse it for S02/S03. The current runtime has structured
+actions, but reusable presentation remains implementation work. Visual approval
+#142 and the existing milestone/dependency order remain unchanged.

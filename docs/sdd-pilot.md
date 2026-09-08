@@ -81,3 +81,14 @@ Status: proposed | implemented | archived
 - Executed at <commit>: <command and result>
 - Evidence: <test/browser/review link>
 ```
+
+## Ongoing game delivery
+
+This plain Markdown SDD flow also governs game creation. Use the durable
+[presentation contract](specs/game-presentation.md) and
+[#143 proposal](proposals/143-structured-presentation.md). Before coding, link the
+issue to requirement IDs, examples, exclusions and planned checks. Prefer existing
+components/layouts and data changes; justify new shared behaviour in the proposal.
+After implementation, reconcile specs with the delivered behaviour, record the
+exact candidate and executed evidence, and update issues/dependencies on both
+boards. Passing checks do not substitute for visual or playtest approval.
