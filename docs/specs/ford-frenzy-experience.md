@@ -7,7 +7,7 @@ The owner selected Ford Frenzy, jr42 productions, three opening scenes and reuse
 existing art to guide new generated art. Specific storyboards and visual candidates
 remain subject to owner review.
 
-The owner-selected newsroom is **Torrona Haps**, with satire driving the fictional
+The owner-selected newsroom is **Toronna Haps**, with satire driving the fictional
 assignments and dialogue. [Revision 2](../proposals/114-torrona-haps-rewrite.md)
 defines the current storyboard and future assignment-route requirements. Its route
 state is a proposed extension, not an implemented save/schema capability. The
@@ -150,3 +150,5 @@ cost and interaction on named devices; agree budgets from that baseline in #51.
 Planned checks: typecheck, runtime tests, production build, browser tests,
 repository checks, source/export validation, owner art/story review. None are
 reported executed here. Exact commands and results belong in implementation PRs.
+
+Owner spelling correction (#134): the canonical fictional newspaper name is **Toronna Haps**. Historical generation inputs and stable proposal filenames remain unchanged. The title uses the spelling-corrected derivative recorded in docs/art/visual-direction-02/toronna-edit.json.

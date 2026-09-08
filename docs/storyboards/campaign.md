@@ -4,14 +4,14 @@
 **Storyboard revision:** 2 (see migration note below).
 **Issue:** [#91](https://github.com/jonesrussell/minoo-game-engine/issues/91)
 **Production:** jr42 productions
-**Paper name (exact):** Torrona Haps
+**Paper name (exact):** Toronna Haps
 **Research:** [Ford Frenzy historical ledger](../research/ford-frenzy-history.md), [press-events register](../research/ford-frenzy-press-events.md) for H15-H18.
 
 This six-chapter satirical hidden-object adventure fixes playable shape while leaving release approval, rights, final copy and art selection with the owner. Public history remains fixed. The player is a fictional Haps reporter assembling attributed coverage, never the source of the original video, a police action, a vote or an election result.
 
 ## Logline and cast
 
-Alex Chen thought they were covering patio openings for **Torrona Haps**, a scrappy neighborhood paper with one working chair and a fog machine on layaway. The previous mayor-beat reporter quit mid-coffee. Now Alex is on the Ford story because nobody else is standing upright. Editor Elliot Vance believes international attention can save the paper and has already spent anticipated revenue on election-night fog. Photographer Priya D'Souza wants one clean frame without a satellite truck in it. Copy chief Nadia Okafor kills headlines that sound like ransom notes. Intern Sasha Bell becomes an accidental broadcast engineer every time someone plugs the wrong cable. Cafe contact Tomás Reyes is unimpressed by media circus and very impressed by accurate transit coverage.
+Alex Chen thought they were covering patio openings for **Toronna Haps**, a scrappy neighborhood paper with one working chair and a fog machine on layaway. The previous mayor-beat reporter quit mid-coffee. Now Alex is on the Ford story because nobody else is standing upright. Editor Elliot Vance believes international attention can save the paper and has already spent anticipated revenue on election-night fog. Photographer Priya D'Souza wants one clean frame without a satellite truck in it. Copy chief Nadia Okafor kills headlines that sound like ransom notes. Intern Sasha Bell becomes an accidental broadcast engineer every time someone plugs the wrong cable. Cafe contact Tomás Reyes is unimpressed by media circus and very impressed by accurate transit coverage.
 
 All dialogue for this cast is original fiction. Real public figures appear only in attributed summaries of dated public events. Satire targets publicity, bureaucracy, deadline chaos and newsroom self-importance. Toronto neighborhoods remain lived-in communities, not punchlines.
 
@@ -129,7 +129,7 @@ Fiction is clearly marked. Player-facing text is punchy; no engineering labels i
 
 **Revision 1** (superseded): eighteen scenes only; Ledger Gazette tone; S11 on 13 Nov council gallery; no assignment routes.
 
-**Revision 2** (this document): Torrona Haps branding; satirical voice; S11 moved to 14 Nov apology beat; four route scenes and AS1/AS2; 22 scenes / 88 panels / 132 finds; H15-H18 anchors; fog-machine arc. Runtime save migration for in-flight players is **not** implemented here; parent systems own compatibility if saves exist.
+**Revision 2** (this document): Toronna Haps branding; satirical voice; S11 moved to 14 Nov apology beat; four route scenes and AS1/AS2; 22 scenes / 88 panels / 132 finds; H15-H18 anchors; fog-machine arc. Runtime save migration for in-flight players is **not** implemented here; parent systems own compatibility if saves exist.
 
 ## Art and candidate references
 
@@ -139,4 +139,4 @@ ff-011, ff-073, ff-075: logo and title palette only. ff-044: City Hall compositi
 
 ## Owner review items
 
-Torrona Haps and satirical direction are owner-selected. The owner approved the revision 2 storyboard content and structure on 2026-09-07. Candidate art, rights, final release copy, runtime implementation and playtest approval remain open. Opening slice S01-S03 can proceed without route assets. This outline does not claim art, rights, release, runtime or playtest completion.
+Toronna Haps and satirical direction are owner-selected. The owner approved the revision 2 storyboard content and structure on 2026-09-07. Candidate art, rights, final release copy, runtime implementation and playtest approval remain open. Opening slice S01-S03 can proceed without route assets. This outline does not claim art, rights, release, runtime or playtest completion.

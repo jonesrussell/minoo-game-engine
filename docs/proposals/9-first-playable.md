@@ -5,7 +5,7 @@ Status: implemented for local review; later scene and release acceptance remains
 
 ## Outcome
 
-New Game enters the Torrona Haps newsroom. Six approved proof sprites emit stable
+New Game enters the Toronna Haps newsroom. Six approved proof sprites emit stable
 selection actions through a public Pixi renderer adapter. The game-owned session
 records finds, embedded clipping checks and recorder pairing before accepting a draft and
 awarding K01 once. The result names S02 as unfinished. Journey remains a separate

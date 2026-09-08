@@ -201,9 +201,9 @@ Credits MUST list Ford Frenzy, jr42 productions, content/source acknowledgements
 - Failure example: GIVEN credits that attribute invented dialogue to a real mayor, WHEN
   content review runs, THEN credits fail SB-CRED-001.
 
-### SB-TONE-001: Torrona Haps satire and source chronology
+### SB-TONE-001: Toronna Haps satire and source chronology
 
-The canonical boards MUST keep Torrona Haps as the owner-selected fictional paper
+The canonical boards MUST keep Toronna Haps as the owner-selected fictional paper
 and satire as a core voice. S01, S02 and S03 MUST use the May 17 opening titles and
 beats. S11 MUST use 14 November after the afternoon apology, S12 MUST use a
 November 19 retrospective after the cancellation report with dated November 13,

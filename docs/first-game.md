@@ -29,7 +29,7 @@ These presentation screens are not implemented. When built, they must follow:
 
 ## Player experience
 
-Play a fictional investigative journalist at the fictional Torrona Haps local paper
+Play a fictional investigative journalist at the fictional Toronna Haps local paper
 during Rob Ford's mayoral tenure, with the 2013 crack-video scandal as the central
 historical backdrop. The Haps competes with worldwide media while its editor tries
 to keep a tiny newsroom functioning. Satire is a core story mode: broken gear,

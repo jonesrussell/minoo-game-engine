@@ -3,7 +3,7 @@
 **Status:** STORYBOARD APPROVED on every scene, panel, route and ending. Revision 2 owner approval recorded 2026-09-07. This does not approve art, rights, final release copy, runtime implementation or playtest completion.
 **Storyboard revision:** 2
 **Game:** Ford Frenzy by **jr42 productions**
-**Paper (exact name):** Torrona Haps
+**Paper (exact name):** Toronna Haps
 **Issue:** #92
 
 Cast in dialogue: **Alex Chen** (player), **Elliot Vance** (editor), **Priya D'Souza** (photographer), **Nadia Okafor** (copy chief), **Sasha Bell** (intern), **Tomás Reyes** (cafe contact). Cast dialogue is original fiction; the single attributed historical quotation in S11 is separately identified.
@@ -122,7 +122,7 @@ Persist AS1/AS2 before route entry. Untaken route never blocks completion.
 
 ## Title sequence (STORYBOARD APPROVED)
 
-**Composition:** Night Toronto skyline; foreground **Torrona Haps** window with crooked neon; midground CN Tower and council dome as simplified shapes; background indigo gradient.
+**Composition:** Night Toronto skyline; foreground **Toronna Haps** window with crooked neon; midground CN Tower and council dome as simplified shapes; background indigo gradient.
 
 **Beat:** Logo **Ford Frenzy**; subline **jr42 productions**; tag "A fictional newsroom farce around documented public events."
 
@@ -153,7 +153,7 @@ Persist AS1/AS2 before route entry. Untaken route never blocks completion.
 
 **Beat:** Alex arrives expecting patio listings. Elliot slides a mayor folder over a tower of takeout. The assignment chair lists to the left (running gag). Priya is already photographing the broken chair "for posterity."
 
-Foreground: grease-stained takeout bag, invoice stack. Midground: wobbly chair, dim monitor. Background: BG01 newsroom bay, **Torrona Haps** masthead crooked on wall. Camera: over-shoulder. Light: desk lamp vs fluorescent hum.
+Foreground: grease-stained takeout bag, invoice stack. Midground: wobbly chair, dim monitor. Background: BG01 newsroom bay, **Toronna Haps** masthead crooked on wall. Camera: over-shoulder. Light: desk lamp vs fluorescent hum.
 
 **Dialogue:** Elliot: "Welcome to the Haps. Patio column is Tuesday. Today you are mayor-adjacent." Alex: "I do not have a chair." Elliot: "You have urgency. Same thing."
 
@@ -300,7 +300,7 @@ Assemble layout: O3 magnets + O4 grid must pair O1 report line with O2 denial li
 
 **Beat:** Priya refuses to shoot a "reenactment of guilt." Elliot pitches "DENIAL DENIAL DENIAL" as a three-part headline. Alex builds questions that sound like journalism, not a wrestling promo.
 
-Foreground: teleprompter glass with fingerprint smear. Midground: prep table, index cards fanned like a losing hand of poker. Background: BG03 briefing room door, **Torrona Haps** mic flag chipped. Camera: low side angle. Light: flat studio fill.
+Foreground: teleprompter glass with fingerprint smear. Midground: prep table, index cards fanned like a losing hand of poker. Background: BG03 briefing room door, **Toronna Haps** mic flag chipped. Camera: low side angle. Light: flat studio fill.
 
 **Dialogue:** Priya: "I shoot faces, not fan fiction." Elliot: "Give me a question that lands." Alex: "Give me one that survives Nadia."
 
@@ -736,7 +736,7 @@ Record O3 with O6 consent; draft O4 sidebar layout using O2 annotations; O5 stay
 
 #### S11.P1 Establish and arrival (STORYBOARD APPROVED)
 
-**Beat:** Nadia spreads a **Torrona Haps press kit** on the rearranged desk: morning appearance, afternoon apology, no private reenactment. Elliot waves a fog-machine brochure. "Apology atmosphere," he says. Nadia says no.
+**Beat:** Nadia spreads a **Toronna Haps press kit** on the rearranged desk: morning appearance, afternoon apology, no private reenactment. Elliot waves a fog-machine brochure. "Apology atmosphere," he says. Nadia says no.
 
 Foreground: kit folders labeled AM and PM. Midground: BG01 Nov 14 layout, route callback prop (KR1A truck mug or KR1B takeaway cup). Background: printer finally works, prints one page, jams again. Camera: tight desk.
 
@@ -1263,7 +1263,7 @@ Six BR bits at S03, S06, S09, S12, S15, S18. AS1/AS2 do not affect END predicate
 
 1. Ford Frenzy
 2. jr42 productions
-3. Torrona Haps (fictional paper)
+3. Toronna Haps (fictional paper)
 4. Fictional cast list
 5. H00-H18 acknowledgements
 6. Content policy line
@@ -1278,7 +1278,7 @@ BG01 newsroom (+variants), BG02 City Hall corridor, BG03 briefing, BG04 cafe, BG
 
 ## Revision 2 migration (design)
 
-Revision 1 boards lacked routes and used Ledger Gazette tone. Revision 2 renames paper to Torrona Haps, moves S11 to Nov 14 H15 beat, adds R1A-R2B and AS selectors. Runtime save migration not specified here.
+Revision 1 boards lacked routes and used Ledger Gazette tone. Revision 2 renames paper to Toronna Haps, moves S11 to Nov 14 H15 beat, adds R1A-R2B and AS selectors. Runtime save migration not specified here.
 
 ## Review checklist
 

@@ -172,7 +172,7 @@
     sx.save();
     sx.translate(1040,140); sx.rotate(0.07);
     sx.fillStyle='#142536'; sx.font='bold 46px Georgia';
-    sx.fillText('Torrona Haps',0,0);
+    sx.fillText('Toronna Haps',0,0);
     sx.restore();
     st.manifest.objects.forEach((o) => {
       if (!st.visible.get(o.id)) return;

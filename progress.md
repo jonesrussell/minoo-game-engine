@@ -22,3 +22,5 @@ S01 playable candidate 85311ad: 88 unit tests, existing Journey production/brows
 Owner request: remove source cards from the game. Removed screens, buttons, classification badges and the completion gate; kept research metadata. Changed scene revision to prevent silently reinterpreting earlier saves.
 
 Owner clarification #128: restore source checking through a fictional embedded Hogtown Howler clipping, meaningful reading choice and retry. Remove real press identities/links from shipped data and credits. No external requests during gameplay.
+
+Owner correction #134: Toronna Haps spelling in current copy and storyboards; title art uses a separate corrected derivative, original provenance retained. No gameplay or save format changes.

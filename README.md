@@ -4,7 +4,7 @@ A game framework designed for reliable agent authoring, with an independent runt
 
 **Status:** local Ford Frenzy S01 playable checkpoint, independent scene/runtime/replay APIs and the preserved Journey fixture. Later scenes, production art and authoring tools remain backlog work.
 
-The [first-game brief](docs/first-game.md) proposes the Torrona Haps opening and a separate full-campaign storyboard track. The existing Journey preview is a legacy engineering fixture, not the new game.
+The [first-game brief](docs/first-game.md) proposes the Toronna Haps opening and a separate full-campaign storyboard track. The existing Journey preview is a legacy engineering fixture, not the new game.
 
 - [Chat-based development](docs/chat-development.md)
 - [CI and downloadable evidence](docs/ci-evidence.md)
@@ -26,7 +26,7 @@ The [first-game brief](docs/first-game.md) proposes the Torrona Haps opening and
 - [Ford Frenzy full campaign storyboard](docs/storyboards/full-game.md)
 - [Ford Frenzy visual direction and concept](docs/art-direction.md)
 - [Campaign outline and endings](docs/storyboards/campaign.md)
-- [Torrona Haps rewrite contract](docs/proposals/114-torrona-haps-rewrite.md)
+- [Toronna Haps rewrite contract](docs/proposals/114-torrona-haps-rewrite.md)
 - [Historical timeline and sources](docs/research/ford-frenzy-history.md)
 - [Contribution workflow](CONTRIBUTING.md)
 

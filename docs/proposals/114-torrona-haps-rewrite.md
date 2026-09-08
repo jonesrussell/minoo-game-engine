@@ -1,4 +1,4 @@
-# Proposal 114: Torrona Haps satire and route contract
+# Proposal 114: Toronna Haps satire and route contract
 
 Issue: [#114](https://github.com/jonesrussell/minoo-game-engine/issues/114)
 Status: revision 2 documentation contract, storyboard approved by owner on 2026-09-07
@@ -7,7 +7,7 @@ Canonical targets: [campaign outline](../storyboards/campaign.md) and [full-game
 
 ## Purpose
 
-Make the owner-selected fictional Torrona Haps the stable newsroom identity and
+Make the owner-selected fictional Toronna Haps the stable newsroom identity and
 make satire a core game voice. The Haps is a small local paper competing with
 worldwide media. Its escalating editor panic, broken gear and fog-machine election
 broadcast are fictional comic beats around a sourced public chronology. This
@@ -42,7 +42,7 @@ dated March 3 Kimmel card. Neither is a live May scene.
 ### FF-SAT-001: owner-selected newsroom and tone
 
 Given the player enters the campaign, when the newsroom identity is shown, then it
-is Torrona Haps and the local paper competes with worldwide media. Given a comic
+is Toronna Haps and the local paper competes with worldwide media. Given a comic
 beat, when it is staged, then it is original fiction such as broken gear, deadline
 panic or a fog-machine broadcast and does not masquerade as a historical fact.
 
