@@ -178,3 +178,17 @@ The scene result is explicitly the end of this playable preview. S02/S03 deliver
 three-scene sound qualification and owner pacing acceptance remain open under
 #98/#99, #107 and #45. A five-to-ten-minute first play is a target to measure with
 people, not a result established by automated completion tests.
+
+### FF-DLG-001: staged opening conversation (#138)
+
+New Game presents visible Elliot and Alex over the newsroom, with one complete
+line at a time and a named, visually emphasized speaker. Next/Back move only the
+transient dialogue index; Skip opens the assignment summary. Clicking the scene
+or pressing search keys while dialogue is open cannot discover a clue. The final
+line leads to the summary, then search removes all character overlays. No automatic
+reading timer, essential sound or expression-only meaning is allowed.
+
+Portraits are optional presentation assets with a visible speaker-name fallback
+on load failure. Save/session actions and clue bounds do not change. Reloading a
+newly started save resumes the assignment rather than persisting the dialogue
+index; replay/history is planned under #140. Character expressions are #139.

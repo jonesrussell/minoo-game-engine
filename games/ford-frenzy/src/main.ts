@@ -83,7 +83,29 @@ function confirmNew() {
 }
 function newGame() {
   session = createNewsroomSession(); badSave = false; persist();
-  panel('assignment', `<div class="eyebrow">01 / Toronna Haps / Friday morning</div><h2>So much for patio season.</h2>${dialogue([['Elliot / Editor','Welcome to the Haps. Patio desk is Tuesday. Today you\'re on the mayor beat.'],['Alex / You','I don\'t even have a chair.'],['Elliot / Editor','Classifieds has the chair. You get the folder, the recorder, and whatever coffee still answers to coffee.']])}<div class="assignment-slip"><strong>YOUR FIRST SHIFT</strong><p>Find your six pieces of kit. Read the clipping. Wake up the recorder. Bring Elliot a story he can actually chase.</p></div><p class="muted">No timer. Three optional hints. Keyboard search uses arrows to explore and Enter to inspect.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
+  openingDialogue();
+}
+const openingLines = [
+  {speaker:'elliot',name:'Elliot / Editor',line:"Welcome to the Haps. Patio desk is Tuesday. Today you're on the mayor beat."},
+  {speaker:'alex',name:'Alex / You',line:"I don't even have a chair."},
+  {speaker:'elliot',name:'Elliot / Editor',line:'Classifieds has the chair. You get the folder, the recorder, and whatever coffee still answers to coffee.'},
+];
+function openingDialogue(index=0) {
+  const line=openingLines[index]!;
+  panel('conversation', `<img class="conversation-backdrop" src="./assets/background.png" alt=""><div class="conversation-heading"><span>TORONNA HAPS</span><span>Friday morning / May 17, 2013</span></div><div class="conversation-cast" aria-hidden="true">${['alex','elliot'].map(id=>`<div class="character-slot ${id} ${id===line.speaker?'speaking':''}"><img class="character-portrait" src="./assets/dialogue-${id}.png" alt=""><span class="portrait-fallback" hidden>${id==='alex'?'Alex':'Elliot'}</span></div>`).join('')}</div><div class="conversation-strip"><div class="speaker-name">${escapeHtml(line.name)}</div><p class="spoken-line" aria-live="polite">${escapeHtml(line.line)}</p><div class="dialogue-controls"><span class="line-count">${index+1} / ${openingLines.length}</span>${button('dialogue-back','Back',false,index===0)}${button('dialogue-skip','Skip conversation')}${button('dialogue-next',index===openingLines.length-1?'Get the assignment':'Next',true)}</div></div>`);
+  overlay.querySelector('.panel')!.classList.add('conversation-panel');
+  for(const portrait of overlay.querySelectorAll<HTMLImageElement>('.character-portrait')){
+    const fallback=()=>{portrait.hidden=true;(portrait.nextElementSibling as HTMLElement).hidden=false;};
+    portrait.addEventListener('error',fallback,{once:true});
+    if(portrait.complete && !portrait.naturalWidth)fallback();
+  }
+  bind('dialogue-next',()=>index+1<openingLines.length?openingDialogue(index+1):assignmentSummary());
+  bind('dialogue-back',()=>openingDialogue(Math.max(0,index-1)));
+  bind('dialogue-skip',assignmentSummary);
+  document.getElementById('dialogue-next')!.focus();
+}
+function assignmentSummary() {
+  panel('assignment', `<div class="eyebrow">01 / Your first shift</div><h2>So much for patio season.</h2><div class="assignment-slip"><strong>GET YOUR KIT. GET THE STORY.</strong><p>Find your six pieces of kit. Read the clipping. Wake up the recorder. Bring Elliot a story he can actually chase.</p></div><p class="muted">No timer. Three optional hints. Keyboard search uses arrows to explore and Enter to inspect.</p><div class="buttons">${button('start-assignment',"Let's find the desk",true)}</div>`);
   bind('start-assignment', play);
 }
 function play() {

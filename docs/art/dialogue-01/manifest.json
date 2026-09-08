@@ -1,0 +1,36 @@
+{
+  "issue": 138,
+  "date": "2026-09-07",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed by built-in tool",
+  "source": "../visual-direction-02/newsroom-toronna.png",
+  "sourceSha256": "45bbadd3908d62822793254a4e6ad0bfc6c9c4a97fbffd32a07bc73ba0fc9a7f",
+  "prompts": "prompts.json",
+  "review": "Agent checked source style and RGBA boundaries. Candidate portrait identities and final release remain for owner review.",
+  "release_approved": false,
+  "assets": [
+    {
+      "id": "elliot",
+      "file": "elliot.png",
+      "sha256": "e091633c35293827db6ddf5d915f20bfdde6118215a620cd6fb5acf91bc2c742",
+      "width": 1023,
+      "height": 1537,
+      "mode": "RGBA"
+    },
+    {
+      "id": "alex",
+      "file": "alex.png",
+      "sha256": "e1b6c4f5bad27b18511a37bd55ad1270ed9aeb4904c404ee38d6ea32c938b905",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA"
+    }
+  ],
+  "local_edit": {
+    "authorization": "Owner explicitly approved local background removal in conversation on 2026-09-07",
+    "source": "elliot-opaque.png",
+    "sourceSha256": "d4d2c714b200fb9ec370652741adf9d42aafccdecb788de0136787f2b2665fc7",
+    "method": "Boundary-connected neutral-bright matte removal with 0.35px alpha edge softening; original RGB export preserved.",
+    "script": "remove-background.py"
+  }
+}
