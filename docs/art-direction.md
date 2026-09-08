@@ -132,3 +132,7 @@ The approved 1672x941 image is flat: props and characters remain baked in.
 Exact target placement, readable historical copy, final character identities,
 lighting and separate alpha exports remain production tasks. Presentation buttons
 switch mockups and do not run gameplay. UI and release approval remain separate.
+
+The next [layered asset proof](art/pipeline-proof-01/index.html) uses this approved
+style. Its new exports remain candidates under #104, with a separate
+[generation and approval workflow](art-generation-workflow.md).

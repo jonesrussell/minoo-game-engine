@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ford Frenzy asset pipeline proof review viewer">
+  <title>Ford Frenzy · Asset review</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <div>
+      <p class="eyebrow">jr42 productions · asset review</p>
+      <h1>Ford Frenzy</h1>
+    </div>
+    <div class="masthead-note">Pipeline proof 01<br><span>Separate exports · diagnostic viewer</span></div>
+  </header>
+
+  <main class="shell">
+    <section class="topbar" aria-label="Review status">
+      <div class="status-group">
+        <span class="status-pill candidate">Candidate export</span>
+        <span class="status-pill pending">Export approval pending</span>
+      </div>
+      <p class="approval-note">Approved reference style informs this proof; it does not approve new exports.</p>
+    </section>
+
+    <div class="workspace">
+      <section class="scene-panel" aria-labelledby="scene-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="kicker">Canvas2D inspection</p>
+            <h2 id="scene-heading">Scene assembly</h2>
+          </div>
+          <div class="load-state-wrap"><div id="load-state" class="load-state" role="status" aria-live="polite">Loading manifest…</div><button id="retry" class="retry" type="button" hidden>Retry</button></div>
+        </div>
+        <div class="scene-frame">
+          <canvas id="scene" aria-label="Asset review scene"></canvas>
+          <div id="scene-empty" class="scene-empty">Loading complete scene…</div>
+        </div>
+        <div class="scene-controls" aria-label="Scene controls">
+          <button id="bounds-toggle" class="control" type="button" aria-pressed="false">Show bounds</button>
+          <button id="reset-view" class="control" type="button">Reset view</button>
+          <span class="scene-help">Select an object from the review list to inspect its alpha export.</span>
+        </div>
+      </section>
+
+      <aside class="review-panel" aria-label="Asset review controls">
+        <section class="review-section">
+          <div class="section-heading"><h2>Layers</h2><span id="layer-count" class="muted">—</span></div>
+          <div id="object-list" class="object-list" role="listbox" aria-label="Scene objects"></div>
+        </section>
+
+        <section class="review-section selected-section" aria-labelledby="selected-heading">
+          <div class="section-heading"><h2 id="selected-heading">Selected export</h2><span id="selected-id" class="muted">None</span></div>
+          <div id="preview-wrap" class="preview-wrap checker-light">
+            <button id="close-zoom" type="button" class="control" hidden>Close enlarged view</button>
+            <canvas id="preview" aria-label="Selected asset alpha preview"></canvas>
+            <div id="preview-empty" class="preview-empty">Choose an object to inspect</div>
+          </div>
+          <div class="preview-actions">
+            <button id="zoom-selected" class="control primary" type="button" disabled>Zoom selected</button>
+            <button id="preview-bg" class="control" type="button" aria-pressed="false" disabled>Dark backing</button>
+          </div>
+          <dl id="metadata" class="metadata"></dl>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer"><span>Ford Frenzy · jr42 productions</span><span>Visual QA proof · no gameplay state</span></footer>
+  <script src="./viewer.js" defer></script>
+</body>
+</html>
