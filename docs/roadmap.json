@@ -75,7 +75,7 @@
       "scope": "Style approval only; separate production assets and release remain open",
       "pipeline_proof": {
         "issue": 104,
-        "status": "candidate exports in owner review; not approved or runtime enabled",
+        "status": "owner-approved on 2026-09-07; runtime integration and release remain separate",
         "document": "docs/art-generation-workflow.md",
         "preview": "docs/art/pipeline-proof-01/index.html"
       }

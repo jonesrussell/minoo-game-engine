@@ -29,5 +29,7 @@ Full workspace typecheck, 68 unit tests, production build, desktop/touch browser
 checks, scene validation, replay parity and repository link checks also passed.
 They verify the existing runtime is unaffected, not that this is a playable game.
 
-**Open:** owner approval of the candidate background/target treatment; production
+**Owner approval:** recorded in [approval.md](approval.md).
+
+**Open:** production
 compression and residency measurement; final occlusion, copy and release approval.
