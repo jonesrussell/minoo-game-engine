@@ -6,6 +6,8 @@ const status = document.querySelector('#status'); const live = document.querySel
 const controls = document.querySelector('#controls');
 controls.innerHTML = `<button id="retry">Retry assets</button><button id="motion">Toggle reduced motion</button><span id="scene-label"></span>`;
 const sceneLabel = document.querySelector('#scene-label'); let selected=0; let reduced=false; let runtime;
+window.rendererEvidence={targetEvents:[]};
+function targetClicked(id){window.rendererEvidence.targetEvents.push(id);announce(`Target clicked ${id}`)}
 function announce(message){ live.textContent=message; }
 function select(i){selected=(i+targets.length)%targets.length; sceneLabel.textContent=` Target ${targets[selected]}`; runtime?.select(selected); announce(`Selected ${targets[selected]}`);}
 targets.forEach((id,i)=>{const b=document.createElement('button');b.textContent=id;b.dataset.target=id;b.addEventListener('click',()=>select(i));controls.append(b);});
@@ -16,7 +18,7 @@ async function boot(){
   status.textContent=`${choice} loading`; stage.replaceChildren();
   const attemptUrls=urls.map((url)=>`${url}?attempt=${attempt++}`);
   const onStatus=(x)=>{status.textContent=x;if(x.includes('failed')) announce('Asset load failed; use Retry assets')};
-  runtime = choice==='phaser' ? await import('./phaser.js').then(m=>m.create({stage,urls:attemptUrls,onStatus,onSelect:()=>announce('Target clicked')})) : await import('./pixi.js').then(m=>m.create({stage,urls:attemptUrls,onStatus,onSelect:()=>announce('Target clicked')}));
+  runtime = choice==='phaser' ? await import('./phaser.js').then(m=>m.create({stage,urls:attemptUrls,onStatus,onSelect:targetClicked})) : await import('./pixi.js').then(m=>m.create({stage,urls:attemptUrls,onStatus,onSelect:targetClicked}));
   select(0);
 }
 boot().catch((e)=>{status.textContent='load failed: '+e.message; announce('Asset load failed; use Retry assets');});

@@ -1,3 +1,8 @@
 import {spawn} from 'node:child_process';
-const npm=process.platform==='win32'?'npx.cmd':'npx';
-for(const renderer of ['pixi','phaser']) await new Promise((resolve,reject)=>{const p=spawn(npm,['vite','build','--mode',renderer,'--outDir',`dist-${renderer}`],{stdio:'inherit',shell:process.platform==='win32'});p.on('exit',code=>code?reject(new Error(`${renderer} build failed`)):resolve());});
+import {fileURLToPath} from 'node:url';
+const vite=fileURLToPath(new URL('../node_modules/vite/bin/vite.js',import.meta.url));
+for(const renderer of ['pixi','phaser']) await new Promise((resolve,reject)=>{
+ const child=spawn(process.execPath,[vite,'build','--mode',renderer,'--outDir',`dist-${renderer}`],{stdio:'inherit'});
+ child.once('error',reject);
+ child.once('exit',(code,signal)=>code?reject(new Error(`${renderer} build failed (${signal??code})`)):resolve());
+});
