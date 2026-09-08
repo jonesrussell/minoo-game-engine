@@ -1,11 +1,10 @@
-import { validateScene, type SceneDiagnostic } from './scene.ts';
+import { validateAnyScene, type AnyScene, type SceneDiagnostic } from './scene.ts';
 import {
   createRuntime,
   type RuntimeDiagnostic,
   type RuntimeEvent,
   type RuntimeState,
 } from './runtime.ts';
-import type { Scene } from './contracts/scene.generated.d.ts';
 
 export const REPLAY_ENVELOPE_VERSION = 1;
 export const REPLAY_RUNTIME_VERSION = 1;
@@ -17,7 +16,7 @@ export interface ReplayLogV1 {
   readonly actionVersion: 1;
   readonly content: {
     readonly revision: string;
-    readonly scene: Scene;
+    readonly scene: AnyScene;
   };
   readonly options: {
     readonly hintBudget: number;
@@ -273,7 +272,7 @@ export function captureReplay(
     });
   }
 
-  const sceneValidation = validateScene(scene);
+  const sceneValidation = validateAnyScene(scene);
   if (!sceneValidation.ok) return freeze({ ok: false, actionIndex: null, errors: [...sceneValidation.errors] });
 
   const created = createRuntime(scene, options);
