@@ -42,13 +42,13 @@ try{
     }
     assert.equal((await state()).state.k01Awarded,false);
     await press('#file-draft');await press('#rumour-basis');assert.equal((await state()).state.k01Awarded,false);await press('#back-search');
-    await press('#notebook');await press('#source');await press('#check-source');assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);await press('#back-search');
+    await press('#notebook');assert.equal(await page.getByText(/source card|source checked/i).count(),0);await press('#back-search');
     await press('#notebook');await press('#recorder');await press('#phone-cable');assert.equal((await state()).state.chargerPaired,'phone');await press('#recorder-cable');assert.equal((await state()).state.chargerPaired,'recorder');await press('#back-search');
     await press('#pause');const before=(await state()).state;await page.keyboard.press('Escape');assert.deepEqual((await state()).state,before);assert.equal(await page.evaluate(()=>document.activeElement.id),'pause');
     await page.reload();await page.locator('#continue').waitFor();await press('#continue');assert.deepEqual((await state()).state,before);
-    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'result');assert.equal((await state()).state.k01Awarded,true);
+    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'result');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,[]);
     await page.screenshot({path:`test-results/ford/${input}-result.png`,fullPage:true});
-    await press('#return-title');await press('#new-game');await press('#cancel-new');assert.equal((await state()).state.k01Awarded,true);
+    await press('#return-title');await press('#new-game');await press('#cancel-new');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,[]);
     assert.equal(await page.locator('canvas').count(),1);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
     assert.deepEqual(errors,[]);records.push({input,status:'passed',errors});await context.close();

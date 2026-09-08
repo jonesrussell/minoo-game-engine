@@ -50,7 +50,7 @@ function panel(next: string, body: string, title = false) {
   overlay.querySelector<HTMLElement>('button, a, input')?.focus();
 }
 function title() {
-  panel('title', `<div class="eyebrow">A Torrona Haps adventure</div><h1>FORD<br>FRENZY</h1><p class="byline">jr42 productions</p><p class="edition-card">You wanted the patio beat.<br>Toronto had other plans.</p><div class="buttons">${button('new-game','New Game',true)}${button('continue','Continue',false,!saveExists && !session.getActions().length)}</div><div class="buttons">${button('settings','Settings')}${button('credits','Credits')}</div><p class="muted">First playable • Welcome to the Haps<br>Search the scene. Check your leads. Get the story.</p>${badSave ? '<p class="muted">The saved game could not be read. It will be preserved until you confirm a new game.</p>' : ''}` , true);
+  panel('title', `<div class="eyebrow">A Torrona Haps adventure</div><h1>FORD<br>FRENZY</h1><p class="byline">jr42 productions</p><p class="edition-card">You wanted the patio beat.<br>Toronto had other plans.</p><div class="buttons">${button('new-game','New Game',true)}${button('continue','Continue',false,!saveExists && !session.getActions().length)}</div><div class="buttons">${button('settings','Settings')}${button('credits','Credits')}</div><p class="muted">First playable • Welcome to the Haps<br>Search the scene. Get your kit. Get the story.</p>${badSave ? '<p class="muted">The saved game could not be read. It will be preserved until you confirm a new game.</p>' : ''}` , true);
   bind('new-game', () => {
     if (!renderer) { void boot(); return; }
     if (saveExists || badSave || session.getActions().length) confirmNew();
@@ -99,18 +99,13 @@ const jokes: Record<string,string> = {
   'S01.O2': 'A contact sheet with actual Toronto on it. An unusually strong start for this office.',
   'S01.O3': 'May 2013. Someone wrote PATIO?? in enormous letters. Someone else cancelled happiness.',
   'S01.O4': 'The assignment is real. The sticky-note rumour is office chatter. The editor has underlined this twice.',
-  'S01.O5': 'A summary of the Toronto Star report. Read what was reported, who reported it and when. Finding the paper is only the start.',
+  'S01.O5': 'The story everyone is talking about. Someone printed it, lost it, and blamed the printer. Classic Haps.',
   'S01.O6': 'The recorder is dead. The editor suggests shouting everything from memory. You should probably find the right connector.',
 };
 function inspect(id: string) {
   const content = scene.contents.find(c=>c.id===scene.objects.find(o=>o.id===id)!.contentId)!;
-  panel('inspect', `<div class="eyebrow">Added to your notebook</div><h2>${escapeHtml(content.label)}</h2><span class="badge">${content.classification === 'fiction' ? 'Fictional newsroom prop' : 'Attributed allegation'}</span><p>${jokes[id]}</p><div class="buttons">${id==='S01.O5'?button('source','Read source card',true):''}${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
-  bind('back-search',play); bind('source',sourceCard); bind('recorder',recorderPuzzle);
-}
-function sourceCard() {
-  const checked = session.getState().sourceChecks.includes('S01.C5');
-  panel('source', `<div class="eyebrow">Source card / H01</div><h2>Read before running with it.</h2><p class="source-copy">On May 16, the Toronto Star published Robyn Doolittle and Kevin Donovan's account of viewing a video they reported appeared to show Mayor Rob Ford smoking crack cocaine.</p><p>This is an attributed report at this point in the story. It does not establish every allegation as fact.</p><p><a href="${escapeHtml(scene.sources[0].url)}" target="_blank" rel="noopener noreferrer">Toronto Star • May 16, 2013</a></p><div class="buttons">${button('check-source',checked?'Source checked':'Record source check',true,checked)}${button('back-search','Back to the mess')}</div>`);
-  bind('check-source',()=>{act({type:'check-source',contentId:'S01.C5'}); sourceCard();}); bind('back-search',play);
+  panel('inspect', `<div class="eyebrow">Added to your notebook</div><h2>${escapeHtml(content.label)}</h2><p>${jokes[id]}</p><div class="buttons">${id==='S01.O6'?button('recorder','Sort out the recorder',true):''}${button('back-search','Back to the mess')}</div>`);
+  bind('back-search',play); bind('recorder',recorderPuzzle);
 }
 function recorderPuzzle() {
   panel('recorder', `<div class="eyebrow">Equipment desk</div><h2>One job. Two cables.</h2><p>The recorder takes its matching connector. The phone cable looks optimistic.</p><div class="buttons">${button('phone-cable','Try the phone cable')}${button('recorder-cable','Use the recorder connector',true)}</div><p id="cable-feedback" role="status">${session.getState().chargerPaired==='recorder'?'Recorder ready. The editor is out of excuses.':'Pick a connector for the recorder.'}</p><div class="buttons">${button('back-search','Back to the mess')}</div>`);
@@ -119,16 +114,16 @@ function recorderPuzzle() {
 }
 function notebook() {
   const state=session.getState();
-  panel('notebook', `<div class="eyebrow">The Haps / working notebook</div><h2>Leads, not miracles.</h2>${state.notebook.length ? state.notebook.map(e=>`<article class="card"><h3>${escapeHtml(e.label)}</h3><span class="badge">${e.classification==='fiction'?'Fictional prop':'Attributed allegation'}${e.checked?' • source checked':''}</span>${e.id==='S01.C5'?`<div>${button('source','Read source card')}</div>`:''}${e.id==='S01.C6'?`<div>${button('recorder','Check recorder')}</div>`:''}</article>`).join(''):'<p>Nothing yet. The desk is unlikely to search itself.</p>'}<div class="buttons">${button('back-search','Back to the mess')}</div>`);
-  bind('source',sourceCard);bind('recorder',recorderPuzzle);bind('back-search',play);
+  panel('notebook', `<div class="eyebrow">The Haps / working notebook</div><h2>Leads, not miracles.</h2>${state.notebook.length ? state.notebook.map(e=>`<article class="card"><h3>${escapeHtml(e.label)}</h3>${e.id==='S01.C6'?`<div>${button('recorder','Check recorder')}</div>`:''}</article>`).join(''):'<p>Nothing yet. The desk is unlikely to search itself.</p>'}<div class="buttons">${button('back-search','Back to the mess')}</div>`);
+  bind('recorder',recorderPuzzle);bind('back-search',play);
 }
 function submit() {
-  panel('submit', `<div class="eyebrow">First draft</div><h2>What are we going with?</h2><p>The editor wants a starting point for the assignment. Choose the basis for your draft.</p><div class="buttons">${button('report-basis','The published report',true)}${button('rumour-basis','The office rumour')}</div><p id="draft-feedback" role="status">Check the report source and get the recorder ready first.</p><div class="buttons">${button('back-search','Back to my notes')}</div>`);
-  for(const basis of ['published-report','office-rumour'] as const) bind(basis==='published-report'?'report-basis':'rumour-basis',()=>{act({type:'submit-draft',basis}); const feedback=document.getElementById('draft-feedback');if(feedback)feedback.textContent=basis==='office-rumour'?'The editor has enough rumours. Bring the report, its source and a working recorder.':session.getState().lastMessage;});
+  panel('submit', `<div class="eyebrow">First draft</div><h2>What are we going with?</h2><p>The editor wants a starting point for the assignment. Choose the basis for your draft.</p><div class="buttons">${button('report-basis','The published report',true)}${button('rumour-basis','The office rumour')}</div><p id="draft-feedback" role="status">Get the recorder ready, then pick your story.</p><div class="buttons">${button('back-search','Back to my notes')}</div>`);
+  for(const basis of ['published-report','office-rumour'] as const) bind(basis==='published-report'?'report-basis':'rumour-basis',()=>{act({type:'submit-draft',basis}); const feedback=document.getElementById('draft-feedback');if(feedback)feedback.textContent=basis==='office-rumour'?'The editor has enough rumours. Bring the report and a working recorder.':session.getState().lastMessage;});
   bind('back-search',play);
 }
 function resultScreen(){result();}
-function result(){panel('result',`<div class="eyebrow">Assignment complete / K01</div><h2>You're officially on the beat.</h2><p>Six finds. One working recorder. An actual source. The editor calls this suspiciously competent.</p><p class="edition-card">“Right. City Hall. Try to come back with a story and our recorder.”</p><p class="muted">Next: Meanwhile at City Hall. That scene is still being built. Your first assignment is saved.</p><div class="buttons">${button('return-title','Back to title',true)}</div>`);bind('return-title',title);}
+function result(){panel('result',`<div class="eyebrow">Assignment complete / K01</div><h2>You're officially on the beat.</h2><p>Six finds. One working recorder. A story to chase. The editor calls this suspiciously competent.</p><p class="edition-card">“Right. City Hall. Try to come back with a story and our recorder.”</p><p class="muted">Next: Meanwhile at City Hall. That scene is still being built. Your first assignment is saved.</p><div class="buttons">${button('return-title','Back to title',true)}</div>`);bind('return-title',title);}
 function pause(){panel('paused',`<div class="eyebrow">Hold the presses</div><h2>Coffee break.</h2><div class="buttons">${button('resume','Resume',true)}${button('return-title','Return to title')}</div><p class="muted">${memoryOnly?'Progress is temporary. Keep this tab open.':'Your progress is saved on this device.'}</p>`);bind('resume',play);bind('return-title',title);}
 function settings(){panel('settings',`<h2>Keep it comfortable.</h2><label><input id="motion" type="checkbox" ${reducedMotion?'checked':''}> Reduce motion</label><p class="muted">This prototype is silent. Every cue is visible.</p><div class="buttons">${button('return-title','Back to title')}</div>`);document.getElementById('motion')!.addEventListener('change',e=>{reducedMotion=(e.target as HTMLInputElement).checked;renderer?.setReducedMotion(reducedMotion);});bind('return-title',title);}
 function credits(){panel('credits',`<div class="eyebrow">Ford Frenzy</div><h2>jr42 productions</h2><p>Original fictional newsroom and game presentation. Powered by Minoo and PixiJS.</p><p class="muted">Approved S01 art proof: seven original generated exports, preserved unchanged. Production rights and final art review remain separate. Historical reporting is referenced, not reproduced as artwork. The Haps, its staff and their dialogue are fictional.</p><p><a href="${escapeHtml(scene.sources[0].url)}" target="_blank" rel="noopener noreferrer">Historical source: Toronto Star, May 16, 2013</a></p><div class="buttons">${button('return-title','Back to title')}</div>`);bind('return-title',title);}
@@ -145,7 +140,7 @@ async function boot(){
 }
 document.querySelector('.wordmark')!.addEventListener('click',e=>{e.preventDefault();if(renderer)title();});
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){if(mode==='playing')pause();else if(['paused','inspect','source','recorder','notebook','submit'].includes(mode))play();}
+  if(e.key==='Escape'){if(mode==='playing')pause();else if(['paused','inspect','recorder','notebook','submit'].includes(mode))play();}
   if(e.key==='f' && !e.ctrlKey && !e.metaKey && !e.altKey){if(document.fullscreenElement)void document.exitFullscreen();else void document.getElementById('app')!.requestFullscreen().catch(()=>{});}
   if(e.key==='Tab' && overlay.firstChild){const nodes=[...overlay.querySelectorAll<HTMLElement>('button:not(:disabled),a,input')];const first=nodes[0],last=nodes.at(-1);if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}}
 });

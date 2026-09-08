@@ -7,13 +7,13 @@ Status: implemented for local review; later scene and release acceptance remains
 
 New Game enters the Torrona Haps newsroom. Six approved proof sprites emit stable
 selection actions through a public Pixi renderer adapter. The game-owned session
-records finds, source checks and recorder pairing before accepting a draft and
+records finds and recorder pairing before accepting a draft and
 awarding K01 once. The result names S02 as unfinished. Journey remains a separate
 working fixture; no Studio, account or model service is required.
 
 ## Requirements and evidence
 
-- FF-UI-001/002: title, assignment, HUD, inspect, notebook, source card, recorder,
+- FF-UI-001/002: title, assignment, HUD, inspect, notebook, recorder,
   submission, pause, settings, credits and result views. Keyboard focus stays in
   dialogs and returns to a stable play control.
 - FF-INPUT-001: all six objects selectable by sprite pointer/touch or labelled
@@ -24,12 +24,12 @@ working fixture; no Studio, account or model service is required.
 - FF-SAVE-001, bounded S01: strict session journal restore gates Continue; corrupt
   save data survives until explicit New Game confirmation. Storage failure offers
   temporary play and explains that reload returns to the last saved point.
-- FF-SCN-001, S01 fragment: wrong cable, rumour and missing source cannot complete
+- FF-SCN-001, S01 fragment: wrong cable and rumour cannot complete
   the assignment. Pointer, touch and keyboard flows reach K01. S02/S03 remain open.
 
 `npm run test:ford` builds the production entry and starts its own ephemeral Vite
 preview server. It checks full pointer/touch/keyboard completion, live resize,
-wrong choices, source checks, save/reload, reset cancellation, required-asset retry,
+wrong choices, completion without source checks, save/reload, reset cancellation, required-asset retry,
 single canvas, horizontal overflow and browser errors. The game skill's bundled
 action client also exercises New Game and captures the scene/text state. Screenshots
 are in `test-results/ford`; tested commit and full qualification belong in the PR.
@@ -43,3 +43,6 @@ recorder pairing uses visible text choices until connector art is delivered. The
 browser adapter is a single active scene surface, not a multi-renderer shared-cache
 service. Sound, campaign saves, S02/S03 transitions and final rights approval are
 not claimed. Do not close broader parent issues solely from this slice.
+
+Owner correction (#126): source cards are removed from the playable game. S01 completes through six finds, recorder pairing and draft choice. Historical references remain development metadata.
+

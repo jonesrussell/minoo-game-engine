@@ -127,8 +127,7 @@ K01 MUST be awarded only when **all** of the following hold simultaneously:
 
 1. `searchCompleted` is true (six unique finds).
 2. `chargerPaired === 'recorder'`.
-3. H01 published-report `contentId` from `S01.O5` is in `sourceChecks`.
-4. Latest successful `submit-draft` used `basis: 'published-report'`.
+3. Latest successful `submit-draft` used `basis: 'published-report'`.
 
 On success: append immutable notebook entry **K01** once, set `k01Awarded: true`,
 set `editorialAccepted: true`, set `transitionS02: 'unlocked'`. Do not load S02
@@ -218,7 +217,7 @@ when scaled hits are too small (#41, #8).
 | FF-LOOP-010 | Given confirmed New Game, when accepted, then session notebook and flags clear after warning. | #11, #105 |
 | FF-LOOP-011 | Given unavailable persistence, when Title loads, then Continue is absent/disabled and New Game works in memory. | #11, #42 |
 | FF-LOOP-012 | Given reload with valid versioned log, when Continue runs, then finds, hints, checks and notebook match the log. | #11, #96 |
-| FF-LOOP-013 | Given `select` on `S01.O5` without `check-source`, when `submit-draft` runs, then K01 is not awarded. | #9, #95 |
+| FF-LOOP-013 | Given six finds and the matching recorder connector without any `check-source` action, when a published-report draft is submitted, then K01 is awarded. | #126 |
 | FF-LOOP-014 | Given keyboard-only play, when S01 K01 path runs, then outcomes match pointer play. | #8, #41, #106 |
 
 Storyboard crosswalk: FF-LOOP-001 ↔ FF-OPEN-001; FF-LOOP-003/004 ↔ FF-OPEN-002;
@@ -245,3 +244,7 @@ See [proposal 43](../proposals/43-reporting-loop.md).
 - Executed: none by this specification change
 - Human review: storyboard alignment and S01 editorial copy remain owner-facing;
   green automated checks do not prove historical accuracy or shipping readiness
+
+## Owner correction: no source cards (#126)
+
+Source cards and source-check controls are removed from the game. Research, attribution and classification remain development metadata. The session retains its optional check-source action for tooling, but it is not a player task or completion prerequisite. The scene revision changes so earlier saves are preserved as incompatible rather than replayed under changed completion semantics. Players may explicitly start over.

@@ -75,7 +75,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 ## M2 - Investigation vertical slice
 
-[Phase tracker #26](https://github.com/jonesrussell/minoo-game-engine/issues/26). Exit evidence: Three linked scenes, notebook/source checks, editorial retry, hints, save/reset and accessible play with owner review.
+[Phase tracker #26](https://github.com/jonesrussell/minoo-game-engine/issues/26). Exit evidence: Three linked scenes, notebook leads, editorial retry, hints, save/reset and accessible play with owner review.
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
@@ -213,4 +213,7 @@ production integration and release remain open. The diagnostic viewer does not s
 
 ## S01 playable checkpoint
 
-The first local Ford Frenzy assignment is playable through New Game, six sprite finds, recorder pairing, source checking and K01 submission. Use npm run dev:ford. The independent runtime and Journey fixture remain usable. This is the bounded #9 checkpoint, with S01 session work from #96 and browser foundation slices from #8/#37/#97/#105. S02/S03, campaign saves, final art and owner playtest remain open. See [checkpoint contract](proposals/9-first-playable.md).
+The first local Ford Frenzy assignment is playable through New Game, six sprite finds, recorder pairing and K01 submission. Use npm run dev:ford. The independent runtime and Journey fixture remain usable. This is the bounded #9 checkpoint, with S01 session work from #96 and browser foundation slices from #8/#37/#97/#105. S02/S03, campaign saves, final art and owner playtest remain open. See [checkpoint contract](proposals/9-first-playable.md).
+
+Owner correction (#126): source cards are removed from the playable game. S01 completes through six finds, recorder pairing and draft choice. Historical references remain development metadata.
+

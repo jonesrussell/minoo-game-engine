@@ -76,7 +76,7 @@ test('recorder pairing is available after O6 and wrong choices remain replayable
   assert.equal(session.getActions().length, 2);
 });
 
-test('wrong connector, office rumour and unchecked source preserve finds for retry', () => {
+test('wrong choices preserve finds; completing S01 needs no source checks', () => {
   const session = createNewsroomSession();
   apply(session, [...finds, { type: 'pair-recorder', connector: 'phone' }]);
   const first = session.step({ type: 'submit-draft', basis: 'office-rumour' });
@@ -89,8 +89,11 @@ test('wrong connector, office rumour and unchecked source preserve finds for ret
   apply(session, [{ type: 'pair-recorder', connector: 'recorder' }]);
   const unchecked = session.step({ type: 'submit-draft', basis: 'published-report' });
   assert.equal(unchecked.ok, true);
-  assert.match(unchecked.state.lastMessage, /check the source/i);
-  assert.equal(unchecked.state.k01Awarded, false);
+  assert.deepEqual(unchecked.state.sourceChecks, []);
+  assert.equal(unchecked.state.k01Awarded, true);
+  const restored = restoreNewsroomSession(session.exportSave());
+  assert.equal(restored.ok, true);
+  if (restored.ok) assert.deepEqual(restored.session.getState(), session.getState());
 });
 
 test('the complete supported path awards K01 once and only unlocks S02', () => {
