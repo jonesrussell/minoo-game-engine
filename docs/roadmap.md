@@ -216,3 +216,10 @@ production integration and release remain open. The diagnostic viewer does not s
 The first local Ford Frenzy assignment is playable through New Game, six sprite finds, recorder pairing, embedded clipping checks and K01 submission. Use npm run dev:ford. The independent runtime and Journey fixture remain usable. This is the bounded #9 checkpoint, with S01 session work from #96 and browser foundation slices from #8/#37/#97/#105. S02/S03, campaign saves, final art and owner playtest remain open. See [checkpoint contract](proposals/9-first-playable.md).
 
 Source checking (#128) is a self-contained game mechanic using fictional press names and original local clippings. Research links stay in development records. This supersedes the temporary removal in #126.
+
+## Public work in progress
+
+[Ford Frenzy S01 is playable on Waaseyaa Labs](https://labs.waaseyaa.org/ford-frenzy/)
+under [#151](https://github.com/jonesrussell/minoo-game-engine/issues/151).
+See the [publication record](public-wip.md). This owner-authorized WIP does not
+complete the later M4 alpha, final content review or remaining character/pacing acceptance.
