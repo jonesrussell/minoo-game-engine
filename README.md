@@ -2,10 +2,11 @@
 
 A game framework designed for reliable agent authoring, with an independent runtime and a proper 2D rendering-engine boundary. The first game is **Ford Frenzy** by **jr42 productions**, a Toronto investigative hidden-object adventure set during Rob Ford's mayoral tenure and the crack-video scandal. Development stays local through chat.
 
-**Status:** [public Ford Frenzy S01 work in progress](https://labs.waaseyaa.org/ford-frenzy/), independent scene/runtime/replay APIs and the preserved Journey fixture. Later scenes, production art and authoring tools remain backlog work.
+**Status:** [public Ford Frenzy S01 work in progress](https://labs.waaseyaa.org/ford-frenzy/), independent scene/runtime/replay APIs and the preserved Journey fixture. S02, S03, production art and authoring tools remain backlog work.
 
-The [first-game brief](docs/first-game.md) proposes the Toronna Haps opening and a separate full-campaign storyboard track. The existing Journey preview is a legacy engineering fixture, not the new game.
+The [first-game brief](docs/first-game.md) proposes the Toronna Haps opening and a separate full-campaign storyboard track. The owner has approved that opening slice — S01, S02 and S03 — as the project's MVP; see [the MVP definition](docs/mvp.md). The existing Journey preview is a legacy engineering fixture, not the new game.
 
+- [MVP definition and delivery checklist](docs/mvp.md)
 - [Public WIP and deployment record](docs/public-wip.md)
 - [Chat-based development](docs/chat-development.md)
 - [CI and downloadable evidence](docs/ci-evidence.md)
