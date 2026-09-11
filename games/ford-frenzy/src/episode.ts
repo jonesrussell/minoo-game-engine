@@ -354,11 +354,23 @@ class FordEpisodeSession implements EpisodeSession {
 
   #importS01Save(action: { type: 'import-s01-save'; save: unknown }): EpisodeStepResult {
     if (this.#actions.length > 0) return this.#fail(diagnostic('EPISODE_IMPORT_NOT_FIRST', '', 'EPI-S01-IMPORT-001', 'A public S01 save can only be imported as the first episode action.'));
+    // Only dense data arrays may cross the import boundary. Array extras or
+    // accessors are not JSON journal entries and must fail before state changes.
+    if (dataRecord(action.save) && Array.isArray(action.save.actions)) {
+      const actions = action.save.actions;
+      const keys = Reflect.ownKeys(actions);
+      if (keys.length !== actions.length + 1 || keys.some(key => {
+        if (key === 'length') return false;
+        if (typeof key !== 'string' || !/^(0|[1-9][0-9]*)$/.test(key) || Number(key) >= actions.length) return true;
+        return !Object.hasOwn(Object.getOwnPropertyDescriptor(actions, key)!, 'value');
+      })) return this.#fail(diagnostic('EPISODE_INVALID_SAVE', '/save/actions', 'EPI-S01-IMPORT-001', 'Imported actions must be a dense JSON data array without extra properties.'));
+    }
     const restored = restoreNewsroomSession(action.save);
     if (!restored.ok) return this.#fail(restored.errors[0]);
+    const canonicalAction: EpisodeAction = { type: 'import-s01-save', save: restored.session.exportSave() };
     this.#s01Session = restored.session;
     this.#lastMessage = 'Imported an existing S01 save.';
-    return this.#accept(action, [{ type: 's01-save-imported' }]);
+    return this.#accept(canonicalAction, [{ type: 's01-save-imported' }]);
   }
 
   #enterScene(action: { type: 'enter-scene'; scene: 'S02' | 'S03' }): EpisodeStepResult {

@@ -300,6 +300,27 @@ test('import-s01-save is rejected once the episode journal already has actions',
   assert.deepEqual(session.getState().s01.foundIds, ['S01.O1']);
 });
 
+test('malformed public save arrays reject before state or journal mutation', () => {
+  const s01 = createNewsroomSession();
+  for (const action of completeS01) assert.equal(s01.step(action).ok, true);
+  for (const extra of [() => 1, 'unwanted metadata']) {
+    const save = structuredClone(s01.exportSave());
+    Object.assign(save.actions, { extra });
+    const session = createEpisodeSession();
+    const before = session.getState();
+    const result = session.step({ type: 'import-s01-save', save });
+    assert.equal(result.ok, false);
+    if (!result.ok) assert.equal(result.errors[0].code, 'EPISODE_INVALID_SAVE');
+    assert.deepEqual(session.getState(), before);
+    assert.deepEqual(session.getActions(), []);
+    assert.equal(session.step(enterS02).ok, false);
+    assert.equal(restoreEpisodeSession(session.exportSave()).ok, true);
+  }
+  const save = structuredClone(s01.exportSave());
+  Object.defineProperty(save.actions, '0', { get() { throw Error('must not execute'); }, enumerable: true });
+  assert.equal(createEpisodeSession().step({ type: 'import-s01-save', save }).ok, false);
+});
+
 test('scene reset clears only the current unfinished scene and preserves prior scene outputs', () => {
   const session = createEpisodeSession();
   apply(session, [...completeS01, enterS02, { type: 'select', objectId: 'S02.O1' }, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' }]);
