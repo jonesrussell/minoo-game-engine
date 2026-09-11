@@ -1,0 +1,155 @@
+{
+  "version": 2,
+  "id": "S03",
+  "width": 1920,
+  "height": 1080,
+  "objects": [
+    {
+      "id": "S03.O1",
+      "x": 300,
+      "y": 730,
+      "width": 190,
+      "height": 130,
+      "contentId": "S03.C1"
+    },
+    {
+      "id": "S03.O2",
+      "x": 780,
+      "y": 700,
+      "width": 220,
+      "height": 150,
+      "contentId": "S03.C2"
+    },
+    {
+      "id": "S03.O3",
+      "x": 1180,
+      "y": 640,
+      "width": 210,
+      "height": 140,
+      "contentId": "S03.C3"
+    },
+    {
+      "id": "S03.O4",
+      "x": 1440,
+      "y": 300,
+      "width": 220,
+      "height": 190,
+      "contentId": "S03.C4"
+    },
+    {
+      "id": "S03.O5",
+      "x": 260,
+      "y": 950,
+      "width": 150,
+      "height": 90,
+      "contentId": "S03.C5"
+    },
+    {
+      "id": "S03.O6",
+      "x": 1560,
+      "y": 780,
+      "width": 150,
+      "height": 110,
+      "contentId": "S03.C6"
+    }
+  ],
+  "contents": [
+    {
+      "id": "S03.C1",
+      "label": "Source log booklet",
+      "clueId": "S03.Clue1",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S03.C2",
+      "label": "Denial response notes",
+      "clueId": "S03.Clue2",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft",
+        "notes": "Original fictional notes paraphrasing an on-record denial; research mapping is maintained outside the shipped game."
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft game writing; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S03.C3",
+      "label": "Headline word magnets, satirical options",
+      "clueId": "S03.Clue3",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S03.C4",
+      "label": "Layout column grid",
+      "clueId": "S03.Clue4",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S03.C5",
+      "label": "Elliot's rejected pun napkin",
+      "clueId": "S03.Clue5",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    },
+    {
+      "id": "S03.C6",
+      "label": "Nadia's \"boring but legal\" stamp",
+      "clueId": "S03.Clue6",
+      "classification": "fiction",
+      "sourceRefs": [],
+      "editorial": {
+        "status": "draft"
+      },
+      "rights": {
+        "status": "unresolved",
+        "basis": "Original draft content; clearance not yet recorded"
+      }
+    }
+  ],
+  "sources": [],
+  "completion": {
+    "type": "find-all",
+    "requiredIds": [
+      "S03.O1",
+      "S03.O2",
+      "S03.O3",
+      "S03.O4",
+      "S03.O5",
+      "S03.O6"
+    ]
+  }
+}
