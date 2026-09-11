@@ -14,7 +14,7 @@ async function testContext(options) {
 await mkdir('test-results/ford',{recursive:true});
 const records=[];
 const scene=JSON.parse(await readFile('games/ford-frenzy/data/s01.json','utf8'));
-const saveKey='ford-frenzy.s01.save.v1';
+const saveKey='ford-frenzy.episode.save.v1';
 try{
   for (const pointerType of ['mouse','touch']) {
     const context=await testContext({viewport:{width:1280,height:720},hasTouch:pointerType==='touch',reducedMotion:'reduce'});
@@ -78,12 +78,12 @@ try{
     assert.equal(await page.locator('.speaker-name').count(),1);
     assert.match(await page.locator('.spoken-line').innerText(),/Welcome to the Haps/i);
     assert.match(await page.locator('.character-slot.speaking').getAttribute('class'),/elliot/);
-    assert.equal((await state()).state.foundIds.length,0);
+    assert.equal((await state()).state.s01.foundIds.length,0);
     assert.equal(await page.locator('canvas').count(),1);
     assert.equal(await page.locator('#stage').getAttribute('inert'),'');
     const conversationCanvas=await page.locator('canvas').boundingBox();
     await page.mouse.click(conversationCanvas.x+conversationCanvas.width*.5,conversationCanvas.y+conversationCanvas.height*.5);
-    assert.equal((await state()).state.foundIds.length,0);
+    assert.equal((await state()).state.s01.foundIds.length,0);
     await page.screenshot({path:`test-results/ford/${input}-dialogue-first.png`,fullPage:true});
     await press('#dialogue-next');
     assert.match(await page.locator('.speaker-name').innerText(),/Alex/i);
@@ -118,7 +118,7 @@ try{
     await press('#resume');
     // A click in an empty piece of the scene must not count as a target.
     const canvas=await page.locator('canvas').boundingBox();await page.mouse.click(canvas.x+canvas.width*.52,canvas.y+canvas.height*.35);
-    assert.equal((await state()).state.foundIds.length,0);
+    assert.equal((await state()).state.s01.foundIds.length,0);
     assert.equal(await page.locator('[id^="target-S01."]').count(),0);
     if(input==='keyboard'){
       await press('#keyboard-search');
@@ -143,7 +143,7 @@ try{
             await page.keyboard.press((Math.abs(delta)<40?'Shift+':'')+(delta>0?positive:negative));
           }
         }
-        assert.equal((await state()).state.foundIds.length,i-1,'Movement must not discover objects');
+        assert.equal((await state()).state.s01.foundIds.length,i-1,'Movement must not discover objects');
         assert.doesNotMatch(await page.locator('#search-location').innerText(),/notebook|clipping|recorder|calendar|contact sheet|assignment folder/i);
         await page.keyboard.press('Enter');
       }else{
@@ -152,28 +152,28 @@ try{
         else await page.mouse.click(target.x+target.width/2,target.y+target.height/2);
       }
       assert.equal((await state()).mode,i<=4?'playing':'inspect',`target O${i} pacing`);
-      assert.equal((await state()).state.foundIds.length,i);
+      assert.equal((await state()).state.s01.foundIds.length,i);
       if(i>4) await press('#back-search');
       else {assert.notEqual((await state()).state.lastMessage,'');assert.equal(await page.locator('.panel').count(),0);assert.equal(await page.locator('#feedback').isVisible(),true);}
       if(i===1){assert.match(await page.locator('#hud').innerText(),/1\s*\/\s*6/i);assert.equal(await page.locator('.target-names span.found').count(),1);}
       if(input==='keyboard')assert.equal(await page.evaluate(()=>document.activeElement.id),'stage');
     }
-    assert.equal((await state()).state.k01Awarded,false);
-    await press('#file-draft');await press('#rumour-basis');assert.equal((await state()).state.k01Awarded,false);await press('#back-search');
+    assert.equal((await state()).state.s01.k01Awarded,false);
+    await press('#file-draft');await press('#rumour-basis');assert.equal((await state()).state.s01.k01Awarded,false);await press('#back-search');
     await press('#notebook');await press('#source');
     assert.equal(await page.locator('a[href^="http"]').count(),0);
     assert.match(await page.locator('.clipping').innerText(),/Hogtown Howler/);
     assert.doesNotMatch(await page.locator('body').innerText(),/Toronto Star|Doolittle|Donovan/);
-    await press('#reading-proof');assert.deepEqual((await state()).state.sourceChecks,[]);
+    await press('#reading-proof');assert.deepEqual((await state()).state.s01.sourceChecks,[]);
     await page.screenshot({path:`test-results/ford/${input}-clipping.png`,fullPage:true});
-    await press('#reading-report');assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
+    await press('#reading-report');assert.deepEqual((await state()).state.s01.sourceChecks,['S01.C5']);
     await press('#back-search');
     await press('#notebook');await press('#recorder');assert.match(await page.locator('#phone-cable').innerText(),/Cable A/i);assert.match(await page.locator('#recorder-cable').innerText(),/Cable B/i);
     await page.screenshot({path:`test-results/ford/${input}-recorder.png`,fullPage:true});
-    await press('#phone-cable');assert.equal((await state()).state.chargerPaired,'phone');await press('#recorder-cable');assert.equal((await state()).state.chargerPaired,'recorder');assert(await page.locator('#recorder-cable').isDisabled());assert.match(await page.locator('.recorder-display').innerText(),/READY/);await press('#back-search');
+    await press('#phone-cable');assert.equal((await state()).state.s01.chargerPaired,'phone');await press('#recorder-cable');assert.equal((await state()).state.s01.chargerPaired,'recorder');assert(await page.locator('#recorder-cable').isDisabled());assert.match(await page.locator('.recorder-display').innerText(),/READY/);await press('#back-search');
     await press('#pause');const before=(await state()).state;await page.keyboard.press('Escape');assert.deepEqual((await state()).state,before);assert.equal(await page.evaluate(()=>document.activeElement.id),'pause');
     await page.reload();await page.locator('#continue').waitFor();await press('#continue');assert.deepEqual((await state()).state,before);
-    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'conversation');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
+    await press('#file-draft');await press('#report-basis');assert.equal((await state()).mode,'conversation');assert.equal((await state()).state.s01.k01Awarded,true);assert.deepEqual((await state()).state.s01.sourceChecks,['S01.C5']);
     assert.match(await page.locator('.spoken-line').innerText(),/Published report logged/i);
     const completedSnapshot=await sessionSnapshot();
     if(input!=='keyboard')await page.screenshot({path:`test-results/ford/${input}-closing.png`,fullPage:true});
@@ -193,7 +193,7 @@ try{
     await press('#history-opening');assert.equal((await state()).mode,'conversation');assert.match(await page.locator('.spoken-line').innerText(),/Welcome to the Haps/i);assert.deepEqual(await sessionSnapshot(),completedSnapshot);
     await page.keyboard.press('Escape');assert.equal((await state()).mode,'history');assert.equal(await page.evaluate(()=>document.activeElement.id),'history-opening');assert.deepEqual(await sessionSnapshot(),completedSnapshot);
     await press('#history-back');assert.equal((await state()).mode,'result');assert.equal(await page.evaluate(()=>document.activeElement.id),'history');assert.deepEqual(await sessionSnapshot(),completedSnapshot);
-    await press('#return-title');await press('#new-game');await press('#cancel-new');assert.equal((await state()).state.k01Awarded,true);assert.deepEqual((await state()).state.sourceChecks,['S01.C5']);
+    await press('#return-title');await press('#new-game');await press('#cancel-new');assert.equal((await state()).state.s01.k01Awarded,true);assert.deepEqual((await state()).state.s01.sourceChecks,['S01.C5']);
     assert.equal(await page.locator('canvas').count(),1);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
     assert.deepEqual(errors,[]);assert.deepEqual(external,[]);records.push({input,status:'passed',errors});await context.close();
@@ -221,7 +221,7 @@ try{
   assert.equal(await portraitPage.evaluate(()=>JSON.parse(window.render_game_to_text()).mode),'playing');
   assert.equal(await portraitPage.locator('.portrait-fallback').count(),0);
   assert.equal(await portraitPage.locator('#stage').getAttribute('inert'),null);
-  assert.deepEqual((await portraitPage.evaluate(()=>JSON.parse(window.render_game_to_text()))).state.foundIds,[]);
+  assert.deepEqual((await portraitPage.evaluate(()=>JSON.parse(window.render_game_to_text()))).state.s01.foundIds,[]);
   const expressionContext=await testContext({viewport:{width:390,height:844},hasTouch:true,reducedMotion:'reduce'});
   const expressionPage=await expressionContext.newPage();
   await expressionPage.goto(url);await expressionPage.locator('#new-game').tap();
