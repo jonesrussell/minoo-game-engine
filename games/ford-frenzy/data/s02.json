@@ -6,50 +6,50 @@
   "objects": [
     {
       "id": "S02.O1",
-      "x": 220,
-      "y": 700,
-      "width": 210,
-      "height": 150,
+      "x": 160,
+      "y": 660,
+      "width": 220,
+      "height": 160,
       "contentId": "S02.C1"
     },
     {
       "id": "S02.O2",
-      "x": 470,
-      "y": 690,
+      "x": 200,
+      "y": 520,
       "width": 200,
-      "height": 160,
+      "height": 140,
       "contentId": "S02.C2"
     },
     {
       "id": "S02.O3",
-      "x": 1420,
-      "y": 260,
+      "x": 1540,
+      "y": 340,
       "width": 170,
       "height": 220,
       "contentId": "S02.C3"
     },
     {
       "id": "S02.O4",
-      "x": 900,
-      "y": 610,
-      "width": 240,
-      "height": 200,
+      "x": 1560,
+      "y": 760,
+      "width": 230,
+      "height": 190,
       "contentId": "S02.C4"
     },
     {
       "id": "S02.O5",
-      "x": 1180,
-      "y": 780,
+      "x": 1150,
+      "y": 820,
       "width": 130,
       "height": 110,
       "contentId": "S02.C5"
     },
     {
       "id": "S02.O6",
-      "x": 1610,
-      "y": 660,
-      "width": 220,
-      "height": 160,
+      "x": 860,
+      "y": 720,
+      "width": 240,
+      "height": 170,
       "contentId": "S02.C6"
     }
   ],

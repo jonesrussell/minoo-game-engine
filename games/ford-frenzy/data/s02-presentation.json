@@ -1,0 +1,160 @@
+{
+  "$schema": "./presentation.schema.json",
+  "version": 1,
+  "id": "ford-frenzy-s02",
+  "layout": "conversation",
+  "mission": {
+    "brand": "TORONNA HAPS",
+    "eyebrow": "02 / Meanwhile at City Hall",
+    "title": "THE PRINTER HAS LAWYERED UP.",
+    "totalTargets": 6
+  },
+  "assets": [
+    {
+      "id": "portrait-alex",
+      "url": "./assets/dialogue-alex.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot",
+      "url": "./assets/dialogue-elliot.png",
+      "required": false
+    },
+    {
+      "id": "portrait-alex-annoyed",
+      "url": "./assets/dialogue-alex-annoyed.png",
+      "required": false
+    },
+    {
+      "id": "portrait-alex-amused",
+      "url": "./assets/dialogue-alex-amused.png",
+      "required": false
+    },
+    {
+      "id": "portrait-alex-surprised",
+      "url": "./assets/dialogue-alex-surprised.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot-annoyed",
+      "url": "./assets/dialogue-elliot-annoyed.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot-amused",
+      "url": "./assets/dialogue-elliot-amused.png",
+      "required": false
+    },
+    {
+      "id": "portrait-elliot-surprised",
+      "url": "./assets/dialogue-elliot-surprised.png",
+      "required": false
+    }
+  ],
+  "characters": [
+    {
+      "id": "alex",
+      "name": "Alex / You",
+      "assetId": "portrait-alex",
+      "expressions": {
+        "neutral": "portrait-alex",
+        "annoyed": "portrait-alex-annoyed",
+        "amused": "portrait-alex-amused",
+        "surprised": "portrait-alex-surprised"
+      }
+    },
+    {
+      "id": "elliot",
+      "name": "Elliot / Editor",
+      "assetId": "portrait-elliot",
+      "expressions": {
+        "neutral": "portrait-elliot",
+        "annoyed": "portrait-elliot-annoyed",
+        "amused": "portrait-elliot-amused",
+        "surprised": "portrait-elliot-surprised"
+      }
+    }
+  ],
+  "targetLabels": [
+    {
+      "objectId": "S02.O1",
+      "label": "Press-kit tray",
+      "inspection": "brief"
+    },
+    {
+      "objectId": "S02.O2",
+      "label": "Press-kit page two",
+      "inspection": "brief"
+    },
+    {
+      "objectId": "S02.O3",
+      "label": "May 17 denial card",
+      "inspection": "inspect"
+    },
+    {
+      "objectId": "S02.O4",
+      "label": "Filing label",
+      "inspection": "brief"
+    },
+    {
+      "objectId": "S02.O5",
+      "label": "Visitor bell",
+      "inspection": "brief"
+    },
+    {
+      "objectId": "S02.O6",
+      "label": "May 16 summary folder",
+      "inspection": "inspect"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "s02-opening",
+      "beats": [
+        {
+          "id": "s02-opening-01",
+          "speaker": "elliot",
+          "line": "City Hall has a public counter and a printer with main character energy. Get the dates straight before Nadia sees a headline.",
+          "expression": "neutral"
+        },
+        {
+          "id": "s02-opening-02",
+          "speaker": "alex",
+          "line": "Bold of you to assume the printer respects my authority.",
+          "expression": "annoyed"
+        },
+        {
+          "id": "s02-opening-03",
+          "speaker": "elliot",
+          "line": "It respects nothing. Bring back May 16 and May 17, in that order, and nothing dated after it.",
+          "expression": "amused"
+        }
+      ],
+      "title": "Two dates, one counter"
+    },
+    {
+      "id": "s02-closing",
+      "beats": [
+        {
+          "id": "s02-closing-01",
+          "speaker": "alex",
+          "line": "Corridor's filed. May 16 report, May 17 denial. That's order, not a verdict.",
+          "expression": "neutral"
+        },
+        {
+          "id": "s02-closing-02",
+          "speaker": "elliot",
+          "line": "Nadia will only mildly threaten us. Progress.",
+          "expression": "amused"
+        },
+        {
+          "id": "s02-closing-03",
+          "speaker": "alex",
+          "line": "Next stop, the deadline desk. Once someone tells me what that means.",
+          "expression": "neutral"
+        }
+      ],
+      "title": "Order, not a verdict"
+    }
+  ]
+}

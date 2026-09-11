@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "status": "candidate; not integrated or owner-approved",
+  "sha256": "883e08f3b901968b2a5e055c36f413cdbe5ad3217af62fee24490db92ca3a770",
+  "file": "background.png",
+  "references": [
+    "docs/art/toronto-runtime-01/background.png",
+    "games/ford-frenzy/assets/references/cityhall-hallway.png"
+  ],
+  "date": "2026-09-11",
+  "pixel_edits": "none",
+  "prompt": "prompt.txt",
+  "issue": 98
+}
