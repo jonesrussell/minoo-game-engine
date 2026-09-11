@@ -1,7 +1,8 @@
 # Episode session specification
 
-Status: specified in #154. No browser scene, HUD, S02/S03 art or full-campaign
-runtime is claimed implemented by this document.
+Status: specified in #154; the S02 press-kit stacking and S03 layout/stamp/pun
+puzzle gates were added in #157. No browser scene, HUD, S02/S03 art or
+full-campaign runtime is claimed implemented by this document.
 
 This contract defines a headless, deterministic three-scene episode
 (**S01 → S02 → S03**) built on top of the shipped [reporting-loop](reporting-loop.md)
@@ -33,12 +34,16 @@ type S01SubAction = Exclude<NewsroomAction, { type: 'reset' }>; // select | hint
 type S02Action =
   | { type: 'select'; objectId: string }
   | { type: 'hint' }
+  | { type: 'stack-kit'; first: 'S02.O1' | 'S02.O2'; second: 'S02.O1' | 'S02.O2' }
   | { type: 'order-timeline'; first: 'S02.O3' | 'S02.O6'; second: 'S02.O3' | 'S02.O6' }
   | { type: 'submit-timeline'; interpretation: 'order-of-reports' | 'proof-of-allegation' };
 
 type S03Action =
   | { type: 'select'; objectId: string }
   | { type: 'hint' }
+  | { type: 'assemble-layout'; pairing: 'report-and-denial' | 'report-only' }
+  | { type: 'stamp-uncertainty'; target: 'video-claim' | 'sourced-report' }
+  | { type: 'resolve-pun'; decision: 'discard' | 'keep' }
   | { type: 'choose-emphasis'; branch: 'splash-first' | 'lawyer-voice' }
   | { type: 'submit-account'; support: 'attributed-and-denied' | 'exclusive-video-claim' };
 
@@ -92,9 +97,20 @@ S02 `completion.requiredIds` MUST be exactly `S02.O1`–`S02.O6`; S03
 `completion.requiredIds` MUST be exactly `S03.O1`–`S03.O6`, matching
 [full-game.md](../storyboards/full-game.md).
 
+### EPI-S02-KIT-001: Press-kit stacking order
+
+`stack-kit` MUST fail with `EPISODE_PREREQUISITE` unless both `S02.O1` and
+`S02.O2` are already found. Otherwise it records the attempted `first`/`second`
+order and MUST NOT itself fail or mutate any other field, matching
+`order-timeline`. K02 MUST NOT be awarded unless the last recorded `stack-kit`
+order is `first: 'S02.O1', second: 'S02.O2'` (page one stacked before page two,
+clearing the jam) — this is required in addition to EPI-S02-GATE-001's timeline
+order and interpretation.
+
 ### EPI-S02-GATE-001: May 16/17 timeline
 
 K02 MUST be awarded only when all six S02 objects are found, the last
+`stack-kit` recorded the order required by EPI-S02-KIT-001, the last
 `order-timeline` recorded `first: 'S02.O6', second: 'S02.O3'` (the May 16 report
 before the May 17 denial) and the matching `submit-timeline` used
 `interpretation: 'order-of-reports'`. On success: append notebook entry **K02**
@@ -103,15 +119,41 @@ once, set `k02Awarded: true`, set `transitionS03: 'unlocked'`.
 ### EPI-S02-RETRY-001: Wrong order or interpretation preserves finds
 
 - GIVEN six S02 finds
-- WHEN `submit-timeline` runs with the May 17 denial ordered before the May 16
-  report, or with `interpretation: 'proof-of-allegation'`
+- WHEN `submit-timeline` runs with the press-kit pages stacked out of order,
+  the May 17 denial ordered before the May 16 report, or with
+  `interpretation: 'proof-of-allegation'`
 - THEN the step succeeds (`ok: true`) with retry feedback, `foundIds` and the
-  attempted `timelineOrder` are unchanged in meaning, `k02Awarded` remains
-  `false`, and unlimited retries are allowed with no hint penalty.
+  attempted `kitOrder`/`timelineOrder` are unchanged in meaning, `k02Awarded`
+  remains `false`, and unlimited retries are allowed with no hint penalty.
+
+### EPI-S03-LAYOUT-001: Report/denial layout pairing
+
+`assemble-layout` MUST fail with `EPISODE_PREREQUISITE` unless `S03.O1`,
+`S03.O2`, `S03.O3` and `S03.O4` are already found. Otherwise it records the
+attempted `pairing` and MUST NOT itself fail. K03 MUST NOT be awarded unless
+the last recorded `pairing` is `'report-and-denial'`; `'report-only'` omits the
+on-record denial and MUST explicitly retry (see EPI-S03-RETRY-001) — omitting
+the denial never yields K03 by any other path.
+
+### EPI-S03-STAMP-001: Uncertainty stamp target
+
+`stamp-uncertainty` MUST fail with `EPISODE_PREREQUISITE` unless `S03.O6` is
+already found. Otherwise it records the attempted `target` and MUST NOT itself
+fail. K03 MUST NOT be awarded unless the last recorded `target` is
+`'video-claim'` (the unverified video claim gets the uncertainty stamp, not the
+sourced report).
+
+### EPI-S03-PUN-001: Reject the pun
+
+`resolve-pun` MUST fail with `EPISODE_PREREQUISITE` unless `S03.O5` is already
+found. Otherwise it records the attempted `decision` and MUST NOT itself fail.
+K03 MUST NOT be awarded unless the last recorded `decision` is `'discard'`.
 
 ### EPI-S03-GATE-001: Supported account and atomic branch commit
 
-K03 MUST be awarded only when all six S03 objects are found, an emphasis branch
+K03 MUST be awarded only when all six S03 objects are found, the last
+`assemble-layout`, `stamp-uncertainty` and `resolve-pun` each recorded the
+value required by EPI-S03-LAYOUT-001/STAMP-001/PUN-001, an emphasis branch
 (`splash-first` or `lawyer-voice`) has been chosen, and `submit-account` uses
 `support: 'attributed-and-denied'`. On the single successful transition,
 `k03Awarded: true`, the committed `branch` and notebook entry **K03** MUST be set
@@ -119,14 +161,16 @@ together — `branch` MUST remain `null` in state until that same successful ste
 `episodeCompleted` becomes `true` only at this point and is never a caller-supplied
 flag.
 
-### EPI-S03-RETRY-001: Wrong account or missing emphasis preserves finds
+### EPI-S03-RETRY-001: Wrong account, missing emphasis or an unresolved layout choice preserves finds
 
 - GIVEN six S03 finds
-- WHEN `submit-account` runs before an emphasis choice, or with
-  `support: 'exclusive-video-claim'`
+- WHEN `submit-account` runs before an emphasis choice, with
+  `support: 'exclusive-video-claim'`, before `assemble-layout`/
+  `stamp-uncertainty`/`resolve-pun` have recorded a value, or with any of them
+  recording `'report-only'`, `'sourced-report'` or `'keep'`
 - THEN the step succeeds with retry feedback, finds and any already-chosen
-  emphasis persist, `k03Awarded` remains `false`, `branch` remains `null`, and
-  retries are unlimited with no hint penalty.
+  emphasis or layout sub-choices persist, `k03Awarded` remains `false`,
+  `branch` remains `null`, and retries are unlimited with no hint penalty.
 
 ### EPI-FIND-001: Finds do not prove allegations
 
@@ -160,9 +204,10 @@ stepping MUST yield identical `currentScene`, S01/S02/S03 state, notebook,
 - **Scene reset** (`reset` with `scope: 'scene'`): applies only to the current,
   unfinished scene. For S01 it delegates to `NewsroomSession`'s own scene reset
   (rejected once K01 is awarded, per [LOOP-RESET-001](reporting-loop.md)). For S02/S03
-  it clears that scene's engine finds and in-progress choice fields (timeline
-  order, chosen emphasis, hint pointer) but preserves that scene's already
-  recorded notebook entries; it MUST be rejected with
+  it clears that scene's engine finds and in-progress choice fields (kit
+  order, timeline order, layout pairing, uncertainty stamp target, pun
+  resolution, chosen emphasis, hint pointer) but preserves that scene's
+  already recorded notebook entries; it MUST be rejected with
   `EPISODE_SCENE_RESET_LOCKED` once that scene's K output is awarded. Prior
   scenes' K outputs and notebook entries are always preserved.
 - **Episode reset** (`reset` with `scope: 'episode'`): clears the full episode —
@@ -191,7 +236,13 @@ oversized action journal (`EPISODE_ACTION_LIMIT`), and any action that fails to
 replay — all transactionally, returning no partial session. Given a session that
 imported a valid S01 v1 save and then played across S02/S03,
 `restoreEpisodeSession(session.exportSave())` MUST reproduce an identical state,
-action journal and re-exported save (round-trip).
+action journal and re-exported save (round-trip). `S02_SCENE_REVISION`/
+`S03_SCENE_REVISION` change whenever this document's S02/S03 rules change
+(see EPI-S02-KIT-001, EPI-S03-LAYOUT-001, EPI-S03-STAMP-001, EPI-S03-PUN-001);
+a save recorded under a prior revision MUST be rejected with
+`EPISODE_UNSUPPORTED_SAVE` rather than replayed under the new rules. No public
+S02 build has shipped, so this affects development saves only; the public S01
+v1 import path (EPI-S01-IMPORT-001) is unaffected.
 
 ### EPI-IMMUTABLE-001: Bounded journal and frozen snapshots
 
@@ -227,17 +278,20 @@ remain out of scope. The `main.ts`/HUD/renderer integration that will consume
 
 ## Proposal trace
 
-See [proposal 154](../proposals/154-episode-session.md).
+See [proposal 154](../proposals/154-episode-session.md) and
+[proposal 157](../proposals/157-opening-puzzles.md).
 
 ## Verification
 
 - Planned/executed: headless unit tests in `tests/unit/ford-episode.test.ts`
   covering gating (EPI-SCENE-ORDER-001, EPI-SCENE-LOCKED-001), correct
-  completion (EPI-S02-GATE-001, EPI-S03-GATE-001), wrong answers
-  (EPI-S02-RETRY-001, EPI-S03-RETRY-001), duplicates (EPI-DUPLICATE-001), exact
-  replay state (EPI-REPLAY-001), malformed/tampered save rejection
-  (EPI-SAVE-001), S01 save compatibility (EPI-S01-IMPORT-001) and reset
-  boundaries (EPI-RESET-001).
+  completion (EPI-S02-GATE-001, EPI-S03-GATE-001), the press-kit and layout
+  sub-choices (EPI-S02-KIT-001, EPI-S03-LAYOUT-001, EPI-S03-STAMP-001,
+  EPI-S03-PUN-001), wrong answers (EPI-S02-RETRY-001, EPI-S03-RETRY-001),
+  duplicates (EPI-DUPLICATE-001), exact replay state (EPI-REPLAY-001),
+  malformed/tampered save rejection and old-revision rejection (EPI-SAVE-001),
+  S01 save compatibility (EPI-S01-IMPORT-001) and reset boundaries
+  (EPI-RESET-001).
 - `npm run typecheck`, `node --test tests/unit/ford-episode.test.ts` and
   `npm run check:repository` are run at implementation time; browser/HUD
   evidence is explicitly out of scope for this headless foundation.

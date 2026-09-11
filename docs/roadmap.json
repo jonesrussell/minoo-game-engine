@@ -111,7 +111,7 @@
       "visual_approval_issue": 142
     },
     "mvp": {
-      "status": "owner-approved scope, 2026-09-11; opening slice S01-S03; S01 implemented and public WIP, S02/S03 not implemented",
+      "status": "Owner-approved three-scene scope; S01 public WIP; headless episode foundation merged; City Hall browser draft blocked by renderer lifecycle #158; S03 browser integration pending",
       "document": "docs/mvp.md",
       "requirements": [
         "MVP-001",
@@ -156,7 +156,7 @@
         "S1",
         "S2"
       ],
-      "next_source_issue": 154,
+      "next_source_issue": 158,
       "reconciliation_note": "Issue 153 separates game release 19 from M3 authoring 15; production art, owner review and release checks remain required."
     },
     "public_wip": {
@@ -1083,7 +1083,9 @@
         94,
         95,
         96,
-        154
+        154,
+        157,
+        158
       ],
       "parent": 26
     },
@@ -1099,7 +1101,8 @@
         98,
         96,
         10,
-        154
+        154,
+        157
       ],
       "parent": 26
     },
@@ -1262,6 +1265,26 @@
         95,
         96
       ]
+    },
+    {
+      "issue": 157,
+      "title": "Complete replayable printer and deadline-layout puzzle gates",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        154
+      ]
+    },
+    {
+      "issue": 158,
+      "title": "Fix shared texture lifetime across in-page renderer transitions",
+      "phase": "M1 - Framework contracts and runtime",
+      "workstream": "engine",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": []
     }
   ],
   "integration_tracks": [
