@@ -169,11 +169,11 @@ Implementation sequence, followed by release gates. Recheck each issue's live pr
 
 1. **#153** Codify scope and reconcile release dependencies.
 2. **#154** Implement ordered episode state and compatible S01 saves.
-3. **#9 / #139 / #140** Resolve S01 residuals and record character/pacing acceptance.
+3. **#9 / #139 / #140** Review S01 visuals and implement bounded residuals. Final #9 acceptance waits for #105, which waits for #11; this step does not close those parent issues.
 4. **#98** Integrate City Hall through the shared renderer and presentation.
 5. **#10** Extend bounded hints and progression feedback for the episode.
 6. **#99** Integrate the deadline scene, supported draft and episode ending.
-7. **#105 / #106 / #107** Complete navigation, notebook/HUD and sound/settings across the episode.
+7. **#105 / #106 / #107** Implement navigation, notebook/HUD and sound/settings across the episode; final navigation acceptance follows #11 persistence qualification.
 8. **#11 / #42 / #41** Qualify cross-scene save/recovery and equivalent input.
 9. **#12** Qualify the complete three-scene slice.
 10. **#17** Record acceptance of original opening art; development placeholders do not satisfy MVP.
