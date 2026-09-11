@@ -15,7 +15,10 @@ Storyboard the entire planned campaign, starting with its chapter outline and en
 Develop a three-scene opening slice for the fictional Toronna Haps local paper:
 Welcome to the Haps, Meanwhile at City Hall, and We're Going With WHAT? Those scene
 treatments have owner storyboard approval recorded in [approval.md](storyboards/approval.md). Finished campaign
-art do not block the opening slice.
+art do not block the opening slice. The owner has approved this opening slice as the
+project's MVP; see [the MVP definition](mvp.md) for its requirement IDs, acceptance
+scenarios, exclusions and delivery checklist. S01 is implemented and playable,
+including a [public WIP](public-wip.md); S02 and S03 are not implemented yet.
 
 The player searches, records leads, checks sources, builds a timeline and submits a
 supported account while the local paper competes with worldwide media. Satire is a

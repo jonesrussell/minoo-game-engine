@@ -1,14 +1,16 @@
 # Minoo framework and first-game roadmap
 
-Updated September 7, 2026. The first game is **Ford Frenzy**, a Toronto investigative hidden-object adventure during the Ford era. Production presentation uses the **jr42 productions** brand. See [the product scope](product.md) and [game brief](first-game.md). There are 79 active delivery/decision records plus phase trackers, and 2 deferred Journey learning records.
+Updated September 11, 2026. The first game is **Ford Frenzy**, a Toronto investigative hidden-object adventure during the Ford era. Production presentation uses the **jr42 productions** brand. See [the product scope](product.md) and [game brief](first-game.md). The roadmap includes game delivery, separate framework tracks and deferred Journey learning.
 
-See the [asset-to-playable SDD plan](ford-frenzy-delivery.md) and [experience scenarios](specs/ford-frenzy-experience.md). Asset library #103, generation workflow #104, title/menus #105, HUD #106 and sound/settings #107 complete the visible-game delivery scope.
+See the [asset-to-playable SDD plan](ford-frenzy-delivery.md) and [experience scenarios](specs/ford-frenzy-experience.md). Asset library #103, generation workflow #104, title/menus #105, HUD #106 and sound/settings #107 complete the visible-game delivery scope. See [the MVP definition](mvp.md) for the three-scene opening episode scoped out of this broader roadmap, its acceptance scenarios and an ordered delivery checklist.
 
 ## Current checkpoint
 
-The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. The new game's scene content, notebook and progression are not implemented. The current Journey preview is a legacy fixture. The renderer evaluation #40 now requires a proper rendering engine, frame loop, drawing/sprites, assets and an explicit future-3D boundary; HTML/SVG-only is not the product direction.
+The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. Renderer evaluation #40 is closed; S01 ships on PixiJS 8.20.1. S01's scene content, notebook and progression are implemented and playable, including a [public WIP](public-wip.md) (#9, #96, #136, #138, #143); S02 and S03 (#98, #99) have no scene content yet. The current Journey preview remains a legacy fixture, unrelated to Ford Frenzy's implementation state.
 
 The revision 2 campaign, full-game and opening storyboards (#91, #92 and #93), including the Toronna Haps rewrite contract (#114), received owner storyboard approval on 2026-09-07. This approval covers storyboard structure and content only. Art direction #94 received separate owner approval on 2026-09-07; #104 has owner proof approval; runtime integration is next; rights, release copy, runtime implementation and playtest remain open. Parent status and issue readiness are reconciled in GitHub after merge. Reporting-loop spec #43 has its storyboard dependency satisfied and becomes ready when its other dependency checks are closed. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 remain explicit prerequisites.
+
+MVP reconciliation #153 defines the polished opening episode. Episode session #154 supplies cross-scene state and save compatibility before S02/S03 integration; S01 public publication does not close that scope.
 
 ## Projects and boundaries
 
@@ -111,7 +113,7 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 
 | Issue | Priority | Workstream | Prerequisites |
 |---|---|---|---|
-| [#19 Publish first-game browser alpha with release evidence](https://github.com/jonesrussell/minoo-game-engine/issues/19) | P0 | delivery | #4, #15, #18, #52, #54, #53 |
+| [#19 Publish first-game browser alpha with release evidence](https://github.com/jonesrussell/minoo-game-engine/issues/19) | P0 | delivery | #4, #12, #17, #18, #45, #51, #52, #53, #54 |
 | [#18 Qualify accessibility touch and supported browsers](https://github.com/jonesrussell/minoo-game-engine/issues/18) | P0 | quality | #90, #17, #12, #50, #51 |
 | [#17 Produce approved original art for the investigative slice](https://github.com/jonesrussell/minoo-game-engine/issues/17) | P1 | content | #94, #37, #104, #105 |
 | [#50 Add automated accessibility checks and manual coverage notes](https://github.com/jonesrussell/minoo-game-engine/issues/50) | P0 | quality | #12 |
