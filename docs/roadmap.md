@@ -87,8 +87,8 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 | [#43 Specify the hidden-object reporting and evidence loop](https://github.com/jonesrussell/minoo-game-engine/issues/43) | P0 | game | #32, #91 |
 | [#45 Run an owner playtest of investigative clarity and pacing](https://github.com/jonesrussell/minoo-game-engine/issues/45) | P0 | quality | #12 |
 | [#96 Implement replayable investigation notebook and scene progression](https://github.com/jonesrussell/minoo-game-engine/issues/96) | P0 | engine | #7, #43, #95 |
-| [#98 Build investigation scene S02: City Hall records](https://github.com/jonesrussell/minoo-game-engine/issues/98) | P0 | game | #8, #93, #94, #95, #96 |
-| [#99 Build investigation scene S03: deadline review](https://github.com/jonesrussell/minoo-game-engine/issues/99) | P0 | game | #9, #98, #96, #10 |
+| [#98 Build investigation scene S02: City Hall records](https://github.com/jonesrussell/minoo-game-engine/issues/98) | P0 | game | #8, #93, #94, #95, #96, #154 |
+| [#99 Build investigation scene S03: deadline review](https://github.com/jonesrussell/minoo-game-engine/issues/99) | P0 | game | #9, #98, #96, #10, #154 |
 | [#105 Build Ford Frenzy title screen menus and game navigation](https://github.com/jonesrussell/minoo-game-engine/issues/105) | P0 | game | #8, #11, #37 |
 | [#106 Build investigation HUD notebook and scene transition UI](https://github.com/jonesrussell/minoo-game-engine/issues/106) | P0 | game | #105, #96, #10 |
 | [#107 Implement sound settings and essential game feedback](https://github.com/jonesrussell/minoo-game-engine/issues/107) | P0 | game | #105, #37 |

@@ -165,46 +165,24 @@ Not required for MVP delivery, and not implied by any MVP requirement above:
 
 ## Delivery checklist
 
-Ordered by dependency, not by issue number. Each step names its GitHub state
-as observed during this review; recheck before starting work, since state
-changes independently of this document.
+Implementation sequence, followed by release gates. Recheck each issue's live prerequisites before starting; broad capability parents may need bounded follow-ups rather than premature closure.
 
-0. **#154** Implement the episode session, scene gates and compatible saves, the explicit cross-scene residual of #96.
-1. **#98** Build investigation scene S02: City Hall records, OPEN, blocked.
-   Its listed dependencies (#8, #93, #94, #95, #96) are closed or already
-   proven by the S01 implementation; #8 itself stays open for broader engine
-   acceptance beyond S01. This is the next concrete source issue.
-2. **#99** Build investigation scene S03: deadline review, OPEN, blocked on
-   #98 and #10.
-3. **#10** Add bounded hints and investigation progression feedback, OPEN,
-   needed by #99, #106 and #12.
-4. **#139** Add consistent character expressions, code merged, `in-review`;
-   needs recorded owner acceptance (MVP-003).
-5. **#140** Stage closing conversations and tune discovery pacing, code
-   merged, `in-review`, depends on #139; needs recorded owner acceptance
-   (MVP-003).
-6. **#105 / #106 / #107** Close residual title/menu, HUD/notebook and sound
-   scope across all three scenes (MVP-004), all OPEN, blocked.
-7. **#11 / #42** Extend persistence and recovery testing to S02/S03
-   (MVP-005), both OPEN, blocked.
-8. **#41** Verify input coordinates and accessible equivalents across all
-   three scenes, OPEN, blocked.
-9. **#12** Qualify the three-scene investigation slice, OPEN, blocked;
-   aggregates steps 1-8 through its native dependencies.
-10. **#45** Run an owner playtest of investigative clarity and pacing, OPEN,
-    blocked on #12 (MVP-006).
-11. **#52** Review investigative content, sources and asset rights for
-    release, OPEN, blocked on #12 (MVP-006).
-12. **#50 / #18** Accessibility checks and cross-browser qualification —
-    both OPEN, blocked on #12.
-13. **#54** Rehearse deployment rollback, OPEN, blocked on #52.
-14. **#53** Provide alpha feedback intake and release support notes, OPEN,
-    blocked on #45.
+1. **#153** Codify scope and reconcile release dependencies.
+2. **#154** Implement ordered episode state and compatible S01 saves.
+3. **#9 / #139 / #140** Resolve S01 residuals and record character/pacing acceptance.
+4. **#98** Integrate City Hall through the shared renderer and presentation.
+5. **#10** Extend bounded hints and progression feedback for the episode.
+6. **#99** Integrate the deadline scene, supported draft and episode ending.
+7. **#105 / #106 / #107** Complete navigation, notebook/HUD and sound/settings across the episode.
+8. **#11 / #42 / #41** Qualify cross-scene save/recovery and equivalent input.
+9. **#12** Qualify the complete three-scene slice.
+10. **#17** Record acceptance of original opening art; development placeholders do not satisfy MVP.
+11. **#45 / #50 / #51 / #52** Owner playtest, accessibility, performance and content/rights qualification after their prerequisites.
+12. **#18** Verify supported browsers and touch with the qualified art and budgets.
+13. **#53 / #54** Feedback/release support and rollback rehearsal.
+14. **#19** Publish the accepted, qualified episode on Waaseyaa Labs.
 
-15. **#17 / #51** Approve the opening art and verify performance budgets.
-16. **#19** Publish the qualified, owner-accepted episode on Waaseyaa Labs.
-
-All applicable gates above are required. The public S01 WIP does not satisfy them.
+The public S01 WIP does not satisfy these remaining gates. All checks and owner acceptance must be recorded; this checklist is not completion evidence.
 
 ## M4 alpha (#19) and authoring (#15)
 
