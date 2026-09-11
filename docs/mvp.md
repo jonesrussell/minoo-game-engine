@@ -43,8 +43,9 @@ MVP-001 is not met regardless of how complete S01 is.
 
 Current status: not met. S01 is implemented and playable, including a
 [public WIP](public-wip.md) (#9, #96, #136, #138, #143). `games/ford-frenzy/data`
-contains only `s01.json`; S02 and S03 (#98, #99) have no scene data or
-implementation yet.
+now includes S02/S03 definitions and the merged #154 headless episode session.
+The City Hall browser candidate (#98, draft PR #159) is blocked by renderer
+lifecycle #158. S03 browser integration (#99) remains pending.
 
 ### MVP-002: continuous notebook and source status across scenes
 
@@ -57,8 +58,8 @@ changes from "unverified" to "verified" without an in-game corroborating
 action.
 
 Current status: not met beyond S01. #96 (notebook/progression engine) is
-closed, but nothing exercises continuity into S02/S03 until those scenes
-exist.
+closed and #154 tests headless episode continuity. Browser qualification
+across all three scenes remains outstanding.
 
 ### MVP-003: character-led conversations with owner-accepted expressions and pacing
 
@@ -77,7 +78,7 @@ and pacing separately from merged code.
 Current status: code implemented and merged; owner acceptance open. #139 and
 #140 both carry the `in-review` label but are not owner-accepted; #140
 depends on #139. Extending this pattern into S02/S03 is explicit follow-on
-work and has not started.
+work; City Hall is an unqualified draft and S03 is pending.
 
 ### MVP-004: baseline navigation, HUD and sound work across the episode
 
@@ -104,7 +105,8 @@ restores finds, hints, notebook and scene without replaying rewards; GIVEN a
 confirmed reset, THEN campaign progress clears while sound/accessibility
 preferences remain.
 
-Current status: implemented for S01 saves only. #11 (persistence) and #42
+Current status: #154 implements headless episode saves and S01 import. Browser
+save/reset qualification remains complete only for S01. #11 (persistence) and #42
 (corruption/recovery testing) stay open pending S02/S03.
 
 ### MVP-006: the owner accepts pacing, content and rights before calling it done
@@ -170,7 +172,7 @@ Implementation sequence, followed by release gates. Recheck each issue's live pr
 1. **#153** Codify scope and reconcile release dependencies.
 2. **#154** Implement ordered episode state and compatible S01 saves.
 3. **#9 / #139 / #140** Review S01 visuals and implement bounded residuals. Final #9 acceptance waits for #105, which waits for #11; this step does not close those parent issues.
-4. **#98** Integrate City Hall through the shared renderer and presentation.
+4. **#157 / #158 / #98** Complete puzzle rules, fix shared renderer resource lifetime, then integrate City Hall through shared presentation.
 5. **#10** Extend bounded hints and progression feedback for the episode.
 6. **#99** Integrate the deadline scene, supported draft and episode ending.
 7. **#105 / #106 / #107** Implement navigation, notebook/HUD and sound/settings across the episode; final navigation acceptance follows #11 persistence qualification.
@@ -194,7 +196,9 @@ Under #153, #19 replaces its #15 prerequisite with explicit game qualification
 
 ## Next concrete source issue
 
-#154 implements ordered episode state and S01-save compatibility before
-#98 and #99 integrate City Hall and the deadline scene through shared
-components. #96 delivered the S01 checkpoint only. #9, #139 and #140
+#154 is merged. #157 checkpoints the remaining headless puzzle rules.
+#158 is the next implementation prerequisite: reproduce and fix renderer
+resource lifetime before resuming City Hall draft PR #159. No reload or
+localStorage requirement is accepted for scene transitions. #99 follows
+through shared components. #96 delivered the S01 checkpoint only. #9, #139 and #140
 retain their outstanding scope and owner acceptance.

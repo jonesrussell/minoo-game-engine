@@ -138,3 +138,11 @@ existing `order-timeline`/`choose-emphasis` pattern.
 ## Proposal trace
 
 Durable behavior: [docs/specs/episode.md](../specs/episode.md).
+
+## Checkpoint evidence
+
+Candidate c027611228d8988330e2ea7b4cd3aab72ba42511 received an independent
+Sol review with no actionable findings. Root ran the full unit suite: 128/128
+passed. Typecheck, 22 focused episode tests and repository checks passed.
+Browser integration and owner acceptance remain open; no deployment is included.
+The accompanying roadmap update records #158 and the paused City Hall draft.

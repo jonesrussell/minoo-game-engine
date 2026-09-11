@@ -6,7 +6,7 @@ See the [asset-to-playable SDD plan](ford-frenzy-delivery.md) and [experience sc
 
 ## Current checkpoint
 
-The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. Renderer evaluation #40 is closed; S01 ships on PixiJS 8.20.1. S01's scene content, notebook and progression are implemented and playable, including a [public WIP](public-wip.md) (#9, #96, #136, #138, #143); S02 and S03 (#98, #99) have no scene content yet. The current Journey preview remains a legacy fixture, unrelated to Ford Frenzy's implementation state.
+The headless runtime, versioned replay and generated invariant evidence (#7/#38/#39) are delivered. Renderer evaluation #40 is closed; S01 ships on PixiJS 8.20.1. S01's scene content, notebook and progression are implemented and playable, including a [public WIP](public-wip.md) (#9, #96, #136, #138, #143); S02/S03 headless definitions and episode state are merged in #154; City Hall browser draft PR #159 is blocked by renderer lifecycle #158, and S03 browser integration is pending. The current Journey preview remains a legacy fixture, unrelated to Ford Frenzy's implementation state.
 
 The revision 2 campaign, full-game and opening storyboards (#91, #92 and #93), including the Toronna Haps rewrite contract (#114), received owner storyboard approval on 2026-09-07. This approval covers storyboard structure and content only. Art direction #94 received separate owner approval on 2026-09-07; #104 has owner proof approval; runtime integration is next; rights, release copy, runtime implementation and playtest remain open. Parent status and issue readiness are reconciled in GitHub after merge. Reporting-loop spec #43 has its storyboard dependency satisfied and becomes ready when its other dependency checks are closed. The three scene implementation issues are #9, #98 and #99. Generalized content #95 and investigation progression #96 remain explicit prerequisites.
 
@@ -87,8 +87,8 @@ Minoo owns game contracts/simulation/rendering/assets/replay/validation. Studio 
 | [#43 Specify the hidden-object reporting and evidence loop](https://github.com/jonesrussell/minoo-game-engine/issues/43) | P0 | game | #32, #91 |
 | [#45 Run an owner playtest of investigative clarity and pacing](https://github.com/jonesrussell/minoo-game-engine/issues/45) | P0 | quality | #12 |
 | [#96 Implement replayable investigation notebook and scene progression](https://github.com/jonesrussell/minoo-game-engine/issues/96) | P0 | engine | #7, #43, #95 |
-| [#98 Build investigation scene S02: City Hall records](https://github.com/jonesrussell/minoo-game-engine/issues/98) | P0 | game | #8, #93, #94, #95, #96, #154 |
-| [#99 Build investigation scene S03: deadline review](https://github.com/jonesrussell/minoo-game-engine/issues/99) | P0 | game | #9, #98, #96, #10, #154 |
+| [#98 Build investigation scene S02: City Hall records](https://github.com/jonesrussell/minoo-game-engine/issues/98) | P0 | game | #8, #93, #94, #95, #96, #154, #157, #158 |
+| [#99 Build investigation scene S03: deadline review](https://github.com/jonesrussell/minoo-game-engine/issues/99) | P0 | game | #9, #98, #96, #10, #154, #157 |
 | [#105 Build Ford Frenzy title screen menus and game navigation](https://github.com/jonesrussell/minoo-game-engine/issues/105) | P0 | game | #8, #11, #37 |
 | [#106 Build investigation HUD notebook and scene transition UI](https://github.com/jonesrussell/minoo-game-engine/issues/106) | P0 | game | #105, #96, #10 |
 | [#107 Implement sound settings and essential game feedback](https://github.com/jonesrussell/minoo-game-engine/issues/107) | P0 | game | #105, #37 |
@@ -225,3 +225,11 @@ Source checking (#128) is a self-contained game mechanic using fictional press n
 under [#151](https://github.com/jonesrussell/minoo-game-engine/issues/151).
 See the [publication record](public-wip.md). This owner-authorized WIP does not
 complete the later M4 alpha, final content review or remaining character/pacing acceptance.
+
+## Paused delivery checkpoint, 2026-09-11
+
+#153 MVP scope and #154 episode foundation are merged. #157 completes the
+headless printer/layout gates; its PR records qualification. #158 is queued
+for shared renderer lifetime, before City Hall draft PR #159 can resume.
+S03 browser work and owner art/playtest acceptance remain open. The public
+S01 Labs build is unchanged. Work pauses at this checkpoint at owner request.
