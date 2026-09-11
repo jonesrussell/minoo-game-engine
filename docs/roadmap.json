@@ -110,6 +110,55 @@
       ],
       "visual_approval_issue": 142
     },
+    "mvp": {
+      "status": "owner-approved scope, 2026-09-11; opening slice S01-S03; S01 implemented and public WIP, S02/S03 not implemented",
+      "document": "docs/mvp.md",
+      "requirements": [
+        "MVP-001",
+        "MVP-002",
+        "MVP-003",
+        "MVP-004",
+        "MVP-005",
+        "MVP-006",
+        "MVP-007"
+      ],
+      "delivery_checklist_issues": [
+        153,
+        154,
+        98,
+        99,
+        10,
+        139,
+        140,
+        105,
+        106,
+        107,
+        11,
+        42,
+        41,
+        12,
+        45,
+        52,
+        50,
+        18,
+        54,
+        53,
+        17,
+        51,
+        19
+      ],
+      "excludes_milestones": [
+        "M3",
+        "M5",
+        "M6",
+        "M7",
+        "S0",
+        "S1",
+        "S2"
+      ],
+      "next_source_issue": 154,
+      "reconciliation_note": "Issue 153 separates game release 19 from M3 authoring 15; production art, owner review and release checks remain required."
+    },
     "public_wip": {
       "issue": 151,
       "url": "https://labs.waaseyaa.org/ford-frenzy/",
@@ -153,11 +202,14 @@
       "effort": "M",
       "dependencies": [
         4,
-        15,
+        12,
+        17,
         18,
+        45,
+        51,
         52,
-        54,
-        53
+        53,
+        54
       ]
     },
     {
@@ -1030,7 +1082,8 @@
         93,
         94,
         95,
-        96
+        96,
+        154
       ],
       "parent": 26
     },
@@ -1045,7 +1098,8 @@
         9,
         98,
         96,
-        10
+        10,
+        154
       ],
       "parent": 26
     },
@@ -1185,6 +1239,29 @@
       "priority": "P0",
       "effort": "M",
       "dependencies": []
+    },
+    {
+      "issue": 153,
+      "title": "Codify Ford Frenzy MVP scope and reconcile release dependencies",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": []
+    },
+    {
+      "issue": 154,
+      "title": "Implement deterministic three-scene episode session and save compatibility",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "game",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        7,
+        43,
+        95,
+        96
+      ]
     }
   ],
   "integration_tracks": [
@@ -1254,7 +1331,7 @@
     "later_boards_block_opening": false
   },
   "first_game": {
-    "status": "direction accepted; title confirmed; scene treatments proposed",
+    "status": "opening storyboard approved; S01 public WIP; three-scene MVP in development",
     "brief": "docs/first-game.md",
     "genre": "narrative hidden-object investigation",
     "setting": "Toronto during Rob Ford mayoral tenure and the crack-video scandal",

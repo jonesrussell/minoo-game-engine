@@ -2,8 +2,10 @@
 
 Status: product direction accepted by the owner. The game title **Ford Frenzy** is
 confirmed. Revision 2 scene treatments and campaign structure have
-[owner storyboard approval](storyboards/approval.md). This does not approve visual
-assets or claim implemented gameplay.
+[owner storyboard approval](storyboards/approval.md). S01 of the opening slice is
+implemented, playable and published as a [public WIP](public-wip.md); S02 and S03
+are not implemented yet. See [the MVP definition](mvp.md) for the opening slice's
+requirement IDs, acceptance scenarios and delivery checklist.
 
 This replaces Journey as the first game.
 
@@ -19,7 +21,11 @@ from this production line.
 scopes, runtime APIs and repository identity are unchanged. The `games/journey` legacy
 fixture and optional Studio contracts stay as documented elsewhere.
 
-These presentation screens are not implemented. When built, they must follow:
+S01 ships candidate title, menu, credits, settings and loading screens with the
+**Ford Frenzy** and **jr42 productions** branding below (`games/ford-frenzy/src/main.ts`).
+Final navigation acceptance across all three scenes (#105) and approved release art
+(#17) remain open, so these are not yet the release-quality screens. When finished,
+they must follow:
 
 | Surface | Requirements |
 |---|---|
