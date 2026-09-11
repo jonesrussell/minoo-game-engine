@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08",
+  "updated": "2026-09-11",
   "repository": "jonesrussell/minoo-game-engine",
   "decisions": {
     "scene_schema": {
@@ -109,6 +109,14 @@
         99
       ],
       "visual_approval_issue": 142
+    },
+    "public_wip": {
+      "issue": 151,
+      "url": "https://labs.waaseyaa.org/ford-frenzy/",
+      "document": "docs/public-wip.md",
+      "status": "published S01 WIP; final alpha and content acceptance separate",
+      "infrastructure_repository": "jonesrussell/waaseyaa-infra",
+      "infrastructure_issue": 82
     }
   },
   "issues": [
@@ -1168,6 +1176,15 @@
       "phase": "M2 - Investigation vertical slice",
       "priority": "P0",
       "effort": "M"
+    },
+    {
+      "issue": 151,
+      "title": "Publish S01 as a public Waaseyaa Labs WIP",
+      "phase": "M2 - Investigation vertical slice",
+      "workstream": "delivery",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": []
     }
   ],
   "integration_tracks": [
