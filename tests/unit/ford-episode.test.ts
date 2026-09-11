@@ -14,6 +14,9 @@ import {
   type EpisodeSession,
 } from '../../games/ford-frenzy/src/episode.ts';
 
+const PRIOR_S02_SCENE_REVISION = 'ford-frenzy-s02-v2-city-hall-2026-09-11';
+const PRIOR_S03_SCENE_REVISION = 'ford-frenzy-s03-v2-deadline-desk-2026-09-11';
+
 const s01Finds: EpisodeAction[] = Array.from({ length: 6 }, (_, index) => ({ type: 'select', objectId: `S01.O${index + 1}` }));
 const s02Finds: EpisodeAction[] = Array.from({ length: 6 }, (_, index) => ({ type: 'select', objectId: `S02.O${index + 1}` }));
 const s03Finds: EpisodeAction[] = Array.from({ length: 6 }, (_, index) => ({ type: 'select', objectId: `S03.O${index + 1}` }));
@@ -34,18 +37,28 @@ const completeS01: EpisodeAction[] = [
 
 const enterS02: EpisodeAction = { type: 'enter-scene', scene: 'S02' };
 
+const stackKitCorrect: EpisodeAction = { type: 'stack-kit', first: 'S02.O1', second: 'S02.O2' };
+
 const completeS02: EpisodeAction[] = [
   { type: 'enter-scene', scene: 'S02' },
   ...s02Finds,
+  stackKitCorrect,
   { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' },
   { type: 'submit-timeline', interpretation: 'order-of-reports' },
 ];
 
 const enterS03: EpisodeAction = { type: 'enter-scene', scene: 'S03' };
 
+const assembleLayoutCorrect: EpisodeAction = { type: 'assemble-layout', pairing: 'report-and-denial' };
+const stampUncertaintyCorrect: EpisodeAction = { type: 'stamp-uncertainty', target: 'video-claim' };
+const resolvePunCorrect: EpisodeAction = { type: 'resolve-pun', decision: 'discard' };
+
 const completeS03: EpisodeAction[] = [
   { type: 'enter-scene', scene: 'S03' },
   ...s03Finds,
+  assembleLayoutCorrect,
+  stampUncertaintyCorrect,
+  resolvePunCorrect,
   { type: 'choose-emphasis', branch: 'splash-first' },
   { type: 'submit-account', support: 'attributed-and-denied' },
 ];
@@ -103,6 +116,9 @@ test('actions are locked to their owning scene', () => {
   const s03ActionInS02 = session.step({ type: 'choose-emphasis', branch: 'splash-first' });
   assert.equal(s03ActionInS02.ok, false);
   if (!s03ActionInS02.ok) assert.equal(s03ActionInS02.errors[0].code, 'EPISODE_SCENE_LOCKED');
+  const s03LayoutInS02 = session.step({ type: 'assemble-layout', pairing: 'report-and-denial' });
+  assert.equal(s03LayoutInS02.ok, false);
+  if (!s03LayoutInS02.ok) assert.equal(s03LayoutInS02.errors[0].code, 'EPISODE_SCENE_LOCKED');
 });
 
 test('the full supported path awards K01, K02, K03 once each and completes the episode', () => {
@@ -120,6 +136,31 @@ test('the full supported path awards K01, K02, K03 once each and completes the e
   assert.equal(state.notebook.filter(entry => entry.id === 'K03').length, 1);
   assert.ok(state.notebook.findIndex(entry => entry.id === 'K01') < state.notebook.findIndex(entry => entry.id === 'K02'));
   assert.ok(state.notebook.findIndex(entry => entry.id === 'K02') < state.notebook.findIndex(entry => entry.id === 'K03'));
+});
+
+test('S02 requires the press-kit stacked in order, found before it can be stacked', () => {
+  const session = createEpisodeSession();
+  apply(session, [...completeS01, enterS02]);
+
+  const tooEarly = session.step(stackKitCorrect);
+  assert.equal(tooEarly.ok, false);
+  if (!tooEarly.ok) assert.equal(tooEarly.errors[0].code, 'EPISODE_PREREQUISITE');
+
+  apply(session, s02Finds);
+  const wrongStack = session.step({ type: 'stack-kit', first: 'S02.O2', second: 'S02.O1' });
+  assert.equal(wrongStack.ok, true);
+  const submitWithBadStack = session.step({ type: 'submit-timeline', interpretation: 'order-of-reports' });
+  assert.equal(submitWithBadStack.ok, true);
+  assert.equal(session.getState().s02.k02Awarded, false);
+  assert.deepEqual(session.getState().s02.foundIds, s02Finds.map(action => 'objectId' in action ? action.objectId : ''));
+
+  const rightStack = session.step(stackKitCorrect);
+  assert.equal(rightStack.ok, true);
+  const orderTimeline = session.step({ type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' });
+  assert.equal(orderTimeline.ok, true);
+  const correct = session.step({ type: 'submit-timeline', interpretation: 'order-of-reports' });
+  assert.equal(correct.ok, true);
+  assert.equal(session.getState().s02.k02Awarded, true);
 });
 
 test('S02 wrong timeline order or interpretation preserves finds and allows retry', () => {
@@ -140,6 +181,13 @@ test('S02 wrong timeline order or interpretation preserves finds and allows retr
   assert.equal(session.getState().s02.k02Awarded, false);
   assert.deepEqual(session.getState().s02.foundIds, s02Finds.map(action => 'objectId' in action ? action.objectId : ''));
 
+  // Correct timeline and interpretation still do not award K02 while the
+  // press-kit pages remain unstacked (or stacked in the wrong order).
+  const stillNoKit = session.step({ type: 'submit-timeline', interpretation: 'order-of-reports' });
+  assert.equal(stillNoKit.ok, true);
+  assert.equal(session.getState().s02.k02Awarded, false);
+
+  apply(session, [stackKitCorrect]);
   const correct = session.step({ type: 'submit-timeline', interpretation: 'order-of-reports' });
   assert.equal(correct.ok, true);
   assert.equal(session.getState().s02.k02Awarded, true);
@@ -153,9 +201,51 @@ test('S02 submit-timeline rejects before all six finds', () => {
   if (!early.ok) assert.equal(early.errors[0].code, 'EPISODE_PREREQUISITE');
 });
 
+test('S03 layout, stamp and pun sub-choices gate K03; each requires its object found first', () => {
+  const session = createEpisodeSession();
+  apply(session, [...completeS01, ...completeS02, enterS03]);
+
+  const layoutTooEarly = session.step(assembleLayoutCorrect);
+  assert.equal(layoutTooEarly.ok, false);
+  if (!layoutTooEarly.ok) assert.equal(layoutTooEarly.errors[0].code, 'EPISODE_PREREQUISITE');
+  const stampTooEarly = session.step(stampUncertaintyCorrect);
+  assert.equal(stampTooEarly.ok, false);
+  if (!stampTooEarly.ok) assert.equal(stampTooEarly.errors[0].code, 'EPISODE_PREREQUISITE');
+  const punTooEarly = session.step(resolvePunCorrect);
+  assert.equal(punTooEarly.ok, false);
+  if (!punTooEarly.ok) assert.equal(punTooEarly.errors[0].code, 'EPISODE_PREREQUISITE');
+
+  apply(session, s03Finds);
+
+  // Omitting the denial is a distinct, explicit wrong choice; it must retry, not silently pass.
+  const omitDenial = session.step({ type: 'assemble-layout', pairing: 'report-only' });
+  assert.equal(omitDenial.ok, true);
+  const wrongStampTarget = session.step({ type: 'stamp-uncertainty', target: 'sourced-report' });
+  assert.equal(wrongStampTarget.ok, true);
+  const keepPun = session.step({ type: 'resolve-pun', decision: 'keep' });
+  assert.equal(keepPun.ok, true);
+  apply(session, [{ type: 'choose-emphasis', branch: 'lawyer-voice' }]);
+  const submitWithWrongSubChoices = session.step({ type: 'submit-account', support: 'attributed-and-denied' });
+  assert.equal(submitWithWrongSubChoices.ok, true);
+  assert.equal(session.getState().s03.k03Awarded, false);
+  assert.equal(session.getState().branch, null);
+  assert.deepEqual(session.getState().s03.foundIds, s03Finds.map(action => 'objectId' in action ? action.objectId : ''));
+
+  apply(session, [
+    { type: 'assemble-layout', pairing: 'report-and-denial' },
+    { type: 'stamp-uncertainty', target: 'video-claim' },
+    { type: 'resolve-pun', decision: 'discard' },
+  ]);
+  const correct = session.step({ type: 'submit-account', support: 'attributed-and-denied' });
+  assert.equal(correct.ok, true);
+  assert.equal(session.getState().s03.k03Awarded, true);
+  assert.equal(session.getState().branch, 'lawyer-voice');
+});
+
 test('S03 wrong account or missing emphasis preserves finds and allows retry', () => {
   const session = createEpisodeSession();
-  apply(session, [...completeS01, ...completeS02, enterS03, ...s03Finds]);
+  apply(session, [...completeS01, ...completeS02, enterS03, ...s03Finds,
+    assembleLayoutCorrect, stampUncertaintyCorrect, resolvePunCorrect]);
 
   const missingEmphasis = session.step({ type: 'submit-account', support: 'attributed-and-denied' });
   assert.equal(missingEmphasis.ok, true);
@@ -179,12 +269,17 @@ test('S03 wrong account or missing emphasis preserves finds and allows retry', (
 test('post-award choices cannot contradict the committed K02/K03 outcome, and duplicates add no reward', () => {
   const s02Session = createEpisodeSession();
   apply(s02Session, [...completeS01, ...completeS02]);
+  const wrongStack = s02Session.step({ type: 'stack-kit', first: 'S02.O2', second: 'S02.O1' });
+  assert.equal(wrongStack.ok, false);
+  if (!wrongStack.ok) assert.equal(wrongStack.errors[0].code, 'EPISODE_PROGRESSION_LOCKED');
   const wrongOrder = s02Session.step({ type: 'order-timeline', first: 'S02.O3', second: 'S02.O6' });
   assert.equal(wrongOrder.ok, false);
   if (!wrongOrder.ok) assert.equal(wrongOrder.errors[0].code, 'EPISODE_PROGRESSION_LOCKED');
   const wrongSubmit = s02Session.step({ type: 'submit-timeline', interpretation: 'proof-of-allegation' });
   assert.equal(wrongSubmit.ok, false);
   if (!wrongSubmit.ok) assert.equal(wrongSubmit.errors[0].code, 'EPISODE_PROGRESSION_LOCKED');
+  const repeatStack = s02Session.step(stackKitCorrect);
+  assert.equal(repeatStack.ok, true);
   const repeatOrder = s02Session.step({ type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' });
   assert.equal(repeatOrder.ok, true);
   const repeatTimeline = s02Session.step({ type: 'submit-timeline', interpretation: 'order-of-reports' });
@@ -195,6 +290,15 @@ test('post-award choices cannot contradict the committed K02/K03 outcome, and du
   const session = createEpisodeSession();
   completeEpisode(session);
 
+  const wrongLayout = session.step({ type: 'assemble-layout', pairing: 'report-only' });
+  assert.equal(wrongLayout.ok, false);
+  if (!wrongLayout.ok) assert.equal(wrongLayout.errors[0].code, 'EPISODE_PROGRESSION_LOCKED');
+  const wrongStamp = session.step({ type: 'stamp-uncertainty', target: 'sourced-report' });
+  assert.equal(wrongStamp.ok, false);
+  if (!wrongStamp.ok) assert.equal(wrongStamp.errors[0].code, 'EPISODE_PROGRESSION_LOCKED');
+  const wrongPun = session.step({ type: 'resolve-pun', decision: 'keep' });
+  assert.equal(wrongPun.ok, false);
+  if (!wrongPun.ok) assert.equal(wrongPun.errors[0].code, 'EPISODE_PROGRESSION_LOCKED');
   const wrongBranch = session.step({ type: 'choose-emphasis', branch: 'lawyer-voice' });
   assert.equal(wrongBranch.ok, false);
   if (!wrongBranch.ok) assert.equal(wrongBranch.errors[0].code, 'EPISODE_PROGRESSION_LOCKED');
@@ -225,8 +329,12 @@ test('exact replay: identical initial session and action list yields identical f
 
 test('canonical episode export/restore round-trips exactly', () => {
   const session = createEpisodeSession();
-  apply(session, [...completeS01, enterS02, ...s02Finds, { type: 'order-timeline', first: 'S02.O3', second: 'S02.O6' },
-    { type: 'submit-timeline', interpretation: 'proof-of-allegation' }, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' },
+  apply(session, [...completeS01, enterS02, ...s02Finds,
+    { type: 'stack-kit', first: 'S02.O2', second: 'S02.O1' },
+    { type: 'order-timeline', first: 'S02.O3', second: 'S02.O6' },
+    { type: 'submit-timeline', interpretation: 'proof-of-allegation' },
+    stackKitCorrect,
+    { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' },
     { type: 'submit-timeline', interpretation: 'order-of-reports' }, ...completeS03]);
   const save = session.exportSave();
   assert.equal(save.version, EPISODE_SAVE_VERSION);
@@ -252,11 +360,28 @@ test('restore rejects wrong version, tampered scene revisions, invalid actions a
   assert.equal(S02_SCENE_REVISION.length > 0 && S03_SCENE_REVISION.length > 0, true);
 });
 
+test('a development save recorded under the prior S02/S03 rules is rejected, not silently replayed', () => {
+  const valid = createEpisodeSession().exportSave();
+  assert.notEqual(S02_SCENE_REVISION, PRIOR_S02_SCENE_REVISION);
+  assert.notEqual(S03_SCENE_REVISION, PRIOR_S03_SCENE_REVISION);
+
+  const staleS02 = restoreEpisodeSession({ ...valid, sceneRevisions: { ...valid.sceneRevisions, s02: PRIOR_S02_SCENE_REVISION } });
+  assert.equal(staleS02.ok, false);
+  if (!staleS02.ok) assert.equal(staleS02.errors[0].code, 'EPISODE_UNSUPPORTED_SAVE');
+
+  const staleS03 = restoreEpisodeSession({ ...valid, sceneRevisions: { ...valid.sceneRevisions, s03: PRIOR_S03_SCENE_REVISION } });
+  assert.equal(staleS03.ok, false);
+  if (!staleS03.ok) assert.equal(staleS03.errors[0].code, 'EPISODE_UNSUPPORTED_SAVE');
+});
+
 test('invalid shapes and scene-order failures do not mutate state or enter the journal', () => {
   const session = createEpisodeSession();
   const before = session.getState();
   for (const action of [null, { type: 'select' }, { type: 'hint', extra: true }, { type: 'unknown' },
-    { type: 'reset', scope: 'all' }, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O6' }, { type: 'enter-scene', scene: 'S99' }]) {
+    { type: 'reset', scope: 'all' }, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O6' },
+    { type: 'stack-kit', first: 'S02.O1', second: 'S02.O1' }, { type: 'assemble-layout', pairing: 'invalid' },
+    { type: 'stamp-uncertainty', target: 'invalid' }, { type: 'resolve-pun', decision: 'invalid' },
+    { type: 'enter-scene', scene: 'S99' }]) {
     assert.equal(session.step(action).ok, false);
   }
   let accessed = false;
@@ -283,7 +408,8 @@ test('a valid public S01 v1 save imports as the first action and later scenes pr
   apply(session, [{ type: 'select', objectId: 'S01.O1' }, { type: 'select', objectId: 'S01.O2' }, { type: 'select', objectId: 'S01.O3' },
     { type: 'select', objectId: 'S01.O4' }, { type: 'select', objectId: 'S01.O5' },
     { type: 'check-source', contentId: 'S01.C5', reading: 'reported-account' }, { type: 'submit-draft', basis: 'published-report' },
-    enterS02, ...s02Finds, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' }, { type: 'submit-timeline', interpretation: 'order-of-reports' }]);
+    enterS02, ...s02Finds, stackKitCorrect, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' },
+    { type: 'submit-timeline', interpretation: 'order-of-reports' }]);
   assert.equal(session.getState().s02.k02Awarded, true);
 
   const restored = restoreEpisodeSession(session.exportSave());
@@ -323,7 +449,8 @@ test('malformed public save arrays reject before state or journal mutation', () 
 
 test('scene reset clears only the current unfinished scene and preserves prior scene outputs', () => {
   const session = createEpisodeSession();
-  apply(session, [...completeS01, enterS02, { type: 'select', objectId: 'S02.O1' }, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' }]);
+  apply(session, [...completeS01, enterS02, { type: 'select', objectId: 'S02.O1' }, { type: 'select', objectId: 'S02.O2' },
+    stackKitCorrect, { type: 'order-timeline', first: 'S02.O6', second: 'S02.O3' }]);
   const beforeReset = session.getState();
   assert.equal(beforeReset.notebook.some(entry => entry.id === 'K01'), true);
 
@@ -331,6 +458,7 @@ test('scene reset clears only the current unfinished scene and preserves prior s
   assert.equal(reset.ok, true);
   const afterReset = session.getState();
   assert.deepEqual(afterReset.s02.foundIds, []);
+  assert.deepEqual(afterReset.s02.kitOrder, []);
   assert.deepEqual(afterReset.s02.timelineOrder, []);
   assert.equal(afterReset.notebook.some(entry => entry.id === 'K01'), true);
   assert.equal(afterReset.notebook.some(entry => entry.id === 'S02.C1'), true);
@@ -349,6 +477,29 @@ test('scene reset clears only the current unfinished scene and preserves prior s
   if (!rejectedS02.ok) assert.equal(rejectedS02.errors[0].code, 'EPISODE_SCENE_RESET_LOCKED');
 });
 
+test('S03 scene reset clears the unfinished layout/stamp/pun sub-choices and preserves prior scene outputs', () => {
+  const session = createEpisodeSession();
+  apply(session, [...completeS01, ...completeS02, enterS03, ...s03Finds, assembleLayoutCorrect, stampUncertaintyCorrect, resolvePunCorrect]);
+  const beforeReset = session.getState();
+  assert.equal(beforeReset.notebook.some(entry => entry.id === 'K02'), true);
+
+  const reset = session.step({ type: 'reset', scope: 'scene' });
+  assert.equal(reset.ok, true);
+  const afterReset = session.getState();
+  assert.deepEqual(afterReset.s03.foundIds, []);
+  assert.equal(afterReset.s03.layoutPairing, null);
+  assert.equal(afterReset.s03.uncertaintyStamp, null);
+  assert.equal(afterReset.s03.punResolution, null);
+  assert.equal(afterReset.notebook.some(entry => entry.id === 'K02'), true);
+  assert.equal(afterReset.s02.k02Awarded, true);
+
+  const completedSession = createEpisodeSession();
+  completeEpisode(completedSession);
+  const rejectedS03 = completedSession.step({ type: 'reset', scope: 'scene' });
+  assert.equal(rejectedS03.ok, false);
+  if (!rejectedS03.ok) assert.equal(rejectedS03.errors[0].code, 'EPISODE_SCENE_RESET_LOCKED');
+});
+
 test('episode reset clears all scenes, notebook, branch and completion', () => {
   const session = createEpisodeSession();
   completeEpisode(session);
@@ -359,7 +510,11 @@ test('episode reset clears all scenes, notebook, branch and completion', () => {
   assert.deepEqual(state.notebook, []);
   assert.equal(state.s01.k01Awarded, false);
   assert.equal(state.s02.k02Awarded, false);
+  assert.deepEqual(state.s02.kitOrder, []);
   assert.equal(state.s03.k03Awarded, false);
+  assert.equal(state.s03.layoutPairing, null);
+  assert.equal(state.s03.uncertaintyStamp, null);
+  assert.equal(state.s03.punResolution, null);
   assert.equal(state.branch, null);
   assert.equal(state.episodeCompleted, false);
   assert.equal(session.getActions().at(-1)?.type, 'reset');

@@ -15,8 +15,8 @@ import s02Data from '../data/s02.json' with { type: 'json' };
 import s03Data from '../data/s03.json' with { type: 'json' };
 
 export const EPISODE_SAVE_VERSION = 1;
-export const S02_SCENE_REVISION = 'ford-frenzy-s02-v2-city-hall-2026-09-11';
-export const S03_SCENE_REVISION = 'ford-frenzy-s03-v2-deadline-desk-2026-09-11';
+export const S02_SCENE_REVISION = 'ford-frenzy-s02-v3-city-hall-2026-09-11';
+export const S03_SCENE_REVISION = 'ford-frenzy-s03-v3-deadline-desk-2026-09-11';
 export const EPISODE_ACTION_LIMIT = 3000;
 
 export type EpisodeSceneId = 'S01' | 'S02' | 'S03';
@@ -27,16 +27,20 @@ const S01_ACTION_TYPES: readonly S01SubAction['type'][] = ['select', 'hint', 'ch
 export type S02Action =
   | { type: 'select'; objectId: string }
   | { type: 'hint' }
+  | { type: 'stack-kit'; first: 'S02.O1' | 'S02.O2'; second: 'S02.O1' | 'S02.O2' }
   | { type: 'order-timeline'; first: 'S02.O3' | 'S02.O6'; second: 'S02.O3' | 'S02.O6' }
   | { type: 'submit-timeline'; interpretation: 'order-of-reports' | 'proof-of-allegation' };
-const S02_ACTION_TYPES: readonly S02Action['type'][] = ['select', 'hint', 'order-timeline', 'submit-timeline'];
+const S02_ACTION_TYPES: readonly S02Action['type'][] = ['select', 'hint', 'stack-kit', 'order-timeline', 'submit-timeline'];
 
 export type S03Action =
   | { type: 'select'; objectId: string }
   | { type: 'hint' }
+  | { type: 'assemble-layout'; pairing: 'report-and-denial' | 'report-only' }
+  | { type: 'stamp-uncertainty'; target: 'video-claim' | 'sourced-report' }
+  | { type: 'resolve-pun'; decision: 'discard' | 'keep' }
   | { type: 'choose-emphasis'; branch: 'splash-first' | 'lawyer-voice' }
   | { type: 'submit-account'; support: 'attributed-and-denied' | 'exclusive-video-claim' };
-const S03_ACTION_TYPES: readonly S03Action['type'][] = ['select', 'hint', 'choose-emphasis', 'submit-account'];
+const S03_ACTION_TYPES: readonly S03Action['type'][] = ['select', 'hint', 'assemble-layout', 'stamp-uncertainty', 'resolve-pun', 'choose-emphasis', 'submit-account'];
 
 export type EpisodeAction =
   | S01SubAction
@@ -55,12 +59,16 @@ export interface EpisodeSceneProgress {
 }
 
 export interface S02State extends EpisodeSceneProgress {
+  readonly kitOrder: readonly string[];
   readonly timelineOrder: readonly string[];
   readonly k02Awarded: boolean;
   readonly transitionS03: 'locked' | 'unlocked';
 }
 
 export interface S03State extends EpisodeSceneProgress {
+  readonly layoutPairing: 'report-and-denial' | 'report-only' | null;
+  readonly uncertaintyStamp: 'video-claim' | 'sourced-report' | null;
+  readonly punResolution: 'discard' | 'keep' | null;
   readonly chosenEmphasis: 'splash-first' | 'lawyer-voice' | null;
   readonly k03Awarded: boolean;
 }
@@ -171,7 +179,9 @@ function parseAction(input: unknown): { ok: true; action: EpisodeAction } | { ok
   const shapes: Record<string, readonly string[]> = {
     select: ['type', 'objectId'], hint: ['type'], 'check-source': ['type', 'contentId', 'reading'],
     'pair-recorder': ['type', 'connector'], 'submit-draft': ['type', 'basis'],
+    'stack-kit': ['type', 'first', 'second'],
     'order-timeline': ['type', 'first', 'second'], 'submit-timeline': ['type', 'interpretation'],
+    'assemble-layout': ['type', 'pairing'], 'stamp-uncertainty': ['type', 'target'], 'resolve-pun': ['type', 'decision'],
     'choose-emphasis': ['type', 'branch'], 'submit-account': ['type', 'support'],
     'enter-scene': ['type', 'scene'], 'import-s01-save': ['type', 'save'], reset: ['type', 'scope'],
   };
@@ -199,6 +209,12 @@ function parseAction(input: unknown): { ok: true; action: EpisodeAction } | { ok
     case 'submit-draft':
       if (input.basis === 'published-report' || input.basis === 'office-rumour') return { ok: true, action: { type: 'submit-draft', basis: input.basis } };
       break;
+    case 'stack-kit':
+      if ((input.first === 'S02.O1' || input.first === 'S02.O2') && (input.second === 'S02.O1' || input.second === 'S02.O2')) {
+        if (input.first === input.second) return { ok: false, errors: [diagnostic('EPISODE_INVALID_ACTION', '/second', 'EPI-ACTION-001', 'The kit stack order must name two distinct objects.')] };
+        return { ok: true, action: { type: 'stack-kit', first: input.first, second: input.second } };
+      }
+      break;
     case 'order-timeline':
       if ((input.first === 'S02.O3' || input.first === 'S02.O6') && (input.second === 'S02.O3' || input.second === 'S02.O6')) {
         if (input.first === input.second) return { ok: false, errors: [diagnostic('EPISODE_INVALID_ACTION', '/second', 'EPI-ACTION-001', 'The timeline order must name two distinct objects.')] };
@@ -208,6 +224,15 @@ function parseAction(input: unknown): { ok: true; action: EpisodeAction } | { ok
     case 'submit-timeline':
       if (input.interpretation === 'order-of-reports' || input.interpretation === 'proof-of-allegation')
         return { ok: true, action: { type: 'submit-timeline', interpretation: input.interpretation } };
+      break;
+    case 'assemble-layout':
+      if (input.pairing === 'report-and-denial' || input.pairing === 'report-only') return { ok: true, action: { type: 'assemble-layout', pairing: input.pairing } };
+      break;
+    case 'stamp-uncertainty':
+      if (input.target === 'video-claim' || input.target === 'sourced-report') return { ok: true, action: { type: 'stamp-uncertainty', target: input.target } };
+      break;
+    case 'resolve-pun':
+      if (input.decision === 'discard' || input.decision === 'keep') return { ok: true, action: { type: 'resolve-pun', decision: input.decision } };
       break;
     case 'choose-emphasis':
       if (input.branch === 'splash-first' || input.branch === 'lawyer-voice') return { ok: true, action: { type: 'choose-emphasis', branch: input.branch } };
@@ -260,8 +285,12 @@ class FordEpisodeSession implements EpisodeSession {
   #s02: SceneRuntime | undefined;
   #s03: SceneRuntime | undefined;
   #currentScene: EpisodeSceneId = 'S01';
+  #s02KitOrder: readonly string[] = [];
   #s02TimelineOrder: readonly string[] = [];
   #k02Awarded = false;
+  #s03LayoutPairing: 'report-and-denial' | 'report-only' | null = null;
+  #s03UncertaintyStamp: 'video-claim' | 'sourced-report' | null = null;
+  #s03PunResolution: 'discard' | 'keep' | null = null;
   #s03ChosenEmphasis: 'splash-first' | 'lawyer-voice' | null = null;
   #k03Awarded = false;
   #branch: 'splash-first' | 'lawyer-voice' | null = null;
@@ -283,6 +312,7 @@ class FordEpisodeSession implements EpisodeSession {
         hintBudget: 3,
         searchCompleted: this.#s02?.runtime.getState().completed ?? false,
         hintedObjectId: this.#s02?.hintedObjectId ?? null,
+        kitOrder: [...this.#s02KitOrder],
         timelineOrder: [...this.#s02TimelineOrder],
         k02Awarded: this.#k02Awarded,
         transitionS03: this.#k02Awarded ? 'unlocked' : 'locked',
@@ -293,6 +323,9 @@ class FordEpisodeSession implements EpisodeSession {
         hintBudget: 3,
         searchCompleted: this.#s03?.runtime.getState().completed ?? false,
         hintedObjectId: this.#s03?.hintedObjectId ?? null,
+        layoutPairing: this.#s03LayoutPairing,
+        uncertaintyStamp: this.#s03UncertaintyStamp,
+        punResolution: this.#s03PunResolution,
         chosenEmphasis: this.#s03ChosenEmphasis,
         k03Awarded: this.#k03Awarded,
       },
@@ -401,6 +434,10 @@ class FordEpisodeSession implements EpisodeSession {
     const s02 = this.#s02!;
     if (this.#k02Awarded) {
       if (action.type === 'select' || action.type === 'hint') return this.#applySceneRuntimeAction(s02, action);
+      if (action.type === 'stack-kit') {
+        if (action.first === 'S02.O1' && action.second === 'S02.O2') return this.#accept(action, []);
+        return this.#fail(diagnostic('EPISODE_PROGRESSION_LOCKED', '/first', 'EPI-DUPLICATE-001', 'K02 is already awarded; the press-kit stack order cannot be changed.'));
+      }
       if (action.type === 'order-timeline') {
         if (action.first === 'S02.O6' && action.second === 'S02.O3') return this.#accept(action, []);
         return this.#fail(diagnostic('EPISODE_PROGRESSION_LOCKED', '/first', 'EPI-DUPLICATE-001', 'K02 is already awarded; the timeline order cannot be changed.'));
@@ -411,6 +448,14 @@ class FordEpisodeSession implements EpisodeSession {
 
     if (action.type === 'select' || action.type === 'hint') return this.#applySceneRuntimeAction(s02, action);
 
+    if (action.type === 'stack-kit') {
+      const found = s02.runtime.getState().foundIds;
+      if (!found.includes('S02.O1') || !found.includes('S02.O2')) return this.#fail(diagnostic('EPISODE_PREREQUISITE', '/first', 'EPI-S02-KIT-001', 'Find both press-kit pages before stacking them.'));
+      this.#s02KitOrder = [action.first, action.second];
+      this.#lastMessage = action.first === 'S02.O1' && action.second === 'S02.O2' ? 'Jam cleared; page one stacked before page two.' : 'That stack order still jams the printer; try again.';
+      return this.#accept(action, []);
+    }
+
     if (action.type === 'order-timeline') {
       this.#s02TimelineOrder = [action.first, action.second];
       this.#lastMessage = action.first === 'S02.O6' && action.second === 'S02.O3' ? 'May 16 before May 17.' : 'That order does not match the public record; try again.';
@@ -419,6 +464,7 @@ class FordEpisodeSession implements EpisodeSession {
 
     if (!s02.runtime.getState().completed) return this.#fail(diagnostic('EPISODE_PREREQUISITE', '/interpretation', 'EPI-S02-GATE-001', 'Find all six City Hall objects before filing the timeline.'));
     const reasons: string[] = [];
+    if (this.#s02KitOrder[0] !== 'S02.O1' || this.#s02KitOrder[1] !== 'S02.O2') reasons.push('Stack the press-kit pages in order, page one before page two, to clear the jam.');
     if (this.#s02TimelineOrder[0] !== 'S02.O6' || this.#s02TimelineOrder[1] !== 'S02.O3') reasons.push('Order the May 16 report before the May 17 denial on the timeline strip.');
     if (action.interpretation !== 'order-of-reports') reasons.push('These public materials show order of reports and response, not private proof.');
     if (reasons.length) {
@@ -434,6 +480,18 @@ class FordEpisodeSession implements EpisodeSession {
     const s03 = this.#s03!;
     if (this.#k03Awarded) {
       if (action.type === 'select' || action.type === 'hint') return this.#applySceneRuntimeAction(s03, action);
+      if (action.type === 'assemble-layout') {
+        if (action.pairing === 'report-and-denial') return this.#accept(action, []);
+        return this.#fail(diagnostic('EPISODE_PROGRESSION_LOCKED', '/pairing', 'EPI-DUPLICATE-001', 'K03 is already awarded; the committed layout pairing cannot change.'));
+      }
+      if (action.type === 'stamp-uncertainty') {
+        if (action.target === 'video-claim') return this.#accept(action, []);
+        return this.#fail(diagnostic('EPISODE_PROGRESSION_LOCKED', '/target', 'EPI-DUPLICATE-001', 'K03 is already awarded; the committed uncertainty stamp cannot change.'));
+      }
+      if (action.type === 'resolve-pun') {
+        if (action.decision === 'discard') return this.#accept(action, []);
+        return this.#fail(diagnostic('EPISODE_PROGRESSION_LOCKED', '/decision', 'EPI-DUPLICATE-001', 'K03 is already awarded; the committed pun resolution cannot change.'));
+      }
       if (action.type === 'choose-emphasis') {
         if (action.branch === this.#branch) return this.#accept(action, []);
         return this.#fail(diagnostic('EPISODE_PROGRESSION_LOCKED', '/branch', 'EPI-DUPLICATE-001', 'K03 is already awarded; the committed emphasis cannot change.'));
@@ -444,6 +502,28 @@ class FordEpisodeSession implements EpisodeSession {
 
     if (action.type === 'select' || action.type === 'hint') return this.#applySceneRuntimeAction(s03, action);
 
+    if (action.type === 'assemble-layout') {
+      const found = s03.runtime.getState().foundIds;
+      if (!['S03.O1', 'S03.O2', 'S03.O3', 'S03.O4'].every(id => found.includes(id))) return this.#fail(diagnostic('EPISODE_PREREQUISITE', '/pairing', 'EPI-S03-LAYOUT-001', 'Find the source log, denial notes, headline magnets and layout grid before assembling the layout.'));
+      this.#s03LayoutPairing = action.pairing;
+      this.#lastMessage = action.pairing === 'report-and-denial' ? 'Report line paired with the on-record denial.' : 'That layout omits the denial; the copy desk will bounce it.';
+      return this.#accept(action, []);
+    }
+
+    if (action.type === 'stamp-uncertainty') {
+      if (!s03.runtime.getState().foundIds.includes('S03.O6')) return this.#fail(diagnostic('EPISODE_PREREQUISITE', '/target', 'EPI-S03-STAMP-001', "Find Nadia's stamp before using it."));
+      this.#s03UncertaintyStamp = action.target;
+      this.#lastMessage = action.target === 'video-claim' ? 'Uncertainty stamp placed on the unverified video claim.' : 'That stamp belongs on the unverified claim, not the sourced report.';
+      return this.#accept(action, []);
+    }
+
+    if (action.type === 'resolve-pun') {
+      if (!s03.runtime.getState().foundIds.includes('S03.O5')) return this.#fail(diagnostic('EPISODE_PREREQUISITE', '/decision', 'EPI-S03-PUN-001', "Find Elliot's rejected pun napkin before deciding its fate."));
+      this.#s03PunResolution = action.decision;
+      this.#lastMessage = action.decision === 'discard' ? "Elliot's pun hits the recycling bin." : 'Keeping the pun will not survive the copy desk.';
+      return this.#accept(action, []);
+    }
+
     if (action.type === 'choose-emphasis') {
       this.#s03ChosenEmphasis = action.branch;
       this.#lastMessage = action.branch === 'splash-first' ? 'Splash First emphasis chosen.' : 'Lawyer Voice emphasis chosen.';
@@ -452,6 +532,9 @@ class FordEpisodeSession implements EpisodeSession {
 
     if (!s03.runtime.getState().completed) return this.#fail(diagnostic('EPISODE_PREREQUISITE', '/support', 'EPI-S03-GATE-001', 'Find all six deadline-desk objects before filing the lede.'));
     const reasons: string[] = [];
+    if (this.#s03LayoutPairing !== 'report-and-denial') reasons.push('Pair the report line with the on-record denial before filing; omitting the denial is not supported.');
+    if (this.#s03UncertaintyStamp !== 'video-claim') reasons.push('Stamp the unverified video claim, not the sourced report.');
+    if (this.#s03PunResolution !== 'discard') reasons.push("Discard Elliot's rejected pun before filing the layout.");
     if (this.#s03ChosenEmphasis === null) reasons.push('Choose Splash First or Lawyer Voice before filing.');
     if (action.support !== 'attributed-and-denied') reasons.push('We do not have the video. Keep the lede attributed and on-record denied.');
     if (reasons.length) {
@@ -486,8 +569,12 @@ class FordEpisodeSession implements EpisodeSession {
       this.#s02 = undefined;
       this.#s03 = undefined;
       this.#currentScene = 'S01';
+      this.#s02KitOrder = [];
       this.#s02TimelineOrder = [];
       this.#k02Awarded = false;
+      this.#s03LayoutPairing = null;
+      this.#s03UncertaintyStamp = null;
+      this.#s03PunResolution = null;
       this.#s03ChosenEmphasis = null;
       this.#k03Awarded = false;
       this.#branch = null;
@@ -506,17 +593,21 @@ class FordEpisodeSession implements EpisodeSession {
       if (this.#k02Awarded) return this.#fail(diagnostic('EPISODE_SCENE_RESET_LOCKED', '/scope', 'EPI-RESET-001', 'S02 is complete; use a confirmed episode reset to start over.'));
       const result = this.#s02!.runtime.step({ type: 'reset' });
       if (!result.ok) return this.#fail(result.errors[0]);
+      this.#s02KitOrder = [];
       this.#s02TimelineOrder = [];
       this.#s02!.hintedObjectId = null;
-      this.#lastMessage = 'S02 search and timeline attempt reset; recorded notebook entries remain.';
+      this.#lastMessage = 'S02 search, kit-stack and timeline attempts reset; recorded notebook entries remain.';
       return this.#accept(action, [{ type: 'scene-reset', scene: 'S02' }]);
     }
     if (this.#k03Awarded) return this.#fail(diagnostic('EPISODE_SCENE_RESET_LOCKED', '/scope', 'EPI-RESET-001', 'S03 is complete; use a confirmed episode reset to start over.'));
     const result = this.#s03!.runtime.step({ type: 'reset' });
     if (!result.ok) return this.#fail(result.errors[0]);
+    this.#s03LayoutPairing = null;
+    this.#s03UncertaintyStamp = null;
+    this.#s03PunResolution = null;
     this.#s03ChosenEmphasis = null;
     this.#s03!.hintedObjectId = null;
-    this.#lastMessage = 'S03 search and emphasis choice reset; recorded notebook entries remain.';
+    this.#lastMessage = 'S03 search, layout choices and emphasis choice reset; recorded notebook entries remain.';
     return this.#accept(action, [{ type: 'scene-reset', scene: 'S03' }]);
   }
 }
