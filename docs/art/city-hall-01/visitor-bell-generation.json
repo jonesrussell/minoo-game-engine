@@ -1,0 +1,14 @@
+{
+  "pixel_edits": "none; generated alpha preserved",
+  "width": 1295,
+  "prompt": "visitor-bell-prompt.txt",
+  "sha256": "0310e46165af37bc053c4d9a678b462571e05def15bc43ba6f96eec8e0256cd0",
+  "issue": 98,
+  "status": "generated candidate; owner acceptance pending",
+  "file": "visitor-bell.png",
+  "reference": "background.png",
+  "height": 1214,
+  "date": "2026-09-11",
+  "mode": "RGBA",
+  "tool": "image_gen.imagegen"
+}

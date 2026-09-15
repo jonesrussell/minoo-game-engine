@@ -88,18 +88,17 @@ test('generated presentation declarations stay derived from the canonical schema
 
 test('state reactions only describe accepted transitions and duplicate finds', () => {
   const session = createNewsroomSession();
-  const before = session.getState();
   const accepted = session.step({ type: 'select', objectId: 'S01.O1' });
   assert.equal(accepted.ok, true);
   if (!accepted.ok) return;
-  assert.deepEqual(reactionsForTransition(before, accepted), [{ type: 'sound', cue: 'find' }]);
+  assert.deepEqual(reactionsForTransition(accepted), [{ type: 'sound', cue: 'find' }]);
   const duplicate = session.step({ type: 'select', objectId: 'S01.O1' });
   assert.equal(duplicate.ok, true);
   if (!duplicate.ok) return;
-  assert.deepEqual(reactionsForTransition(accepted.state, duplicate), [{ type: 'status', key: 'duplicate' }]);
+  assert.deepEqual(reactionsForTransition(duplicate), [{ type: 'status', key: 'duplicate' }]);
   const rejected = session.step({ type: 'select', objectId: 'missing-object' });
   assert.equal(rejected.ok, false);
-  assert.deepEqual(reactionsForTransition(duplicate.state, rejected), []);
+  assert.deepEqual(reactionsForTransition(rejected), []);
   assert.deepEqual(rejected.state.foundIds, ['S01.O1']);
 });
 
@@ -110,16 +109,16 @@ test('HUD output is a deterministic view of state and restored saves', () => {
   const button = (id: string, text: string) => `<button id="${id}">${text}</button>`;
   const session = createNewsroomSession();
   const typedScene = scene as unknown as SceneV2;
-  const initial = renderHud(validation.presentation, typedScene, session.getState(), button);
+  const initial = renderHud(validation.presentation, typedScene, session.getState(), session.getState().lastMessage, 'File it', button);
   session.step({ type: 'select', objectId: 'S01.O1' });
-  const progressed = renderHud(validation.presentation, typedScene, session.getState(), button);
+  const progressed = renderHud(validation.presentation, typedScene, session.getState(), session.getState().lastMessage, 'File it', button);
   assert.match(initial, /0<small> \/ 6/);
   assert.match(progressed, /1<small> \/ 6/);
   assert.match(progressed, /class="found"/);
   const restored = session.exportSave();
   const restoredSession = createNewsroomSession();
   restoredSession.step(restored.actions[0]!);
-  assert.equal(renderHud(validation.presentation, typedScene, restoredSession.getState(), button), progressed);
+  assert.equal(renderHud(validation.presentation, typedScene, restoredSession.getState(), restoredSession.getState().lastMessage, 'File it', button), progressed);
 });
 
 
